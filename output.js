@@ -1,1041 +1,650 @@
-//Tue Jul 22 2025 11:49:55 GMT+0000 (Coordinated Universal Time)
+//Tue Jul 22 2025 14:53:25 GMT+0000 (Coordinated Universal Time)
 //Base:<url id="cv1cref6o68qmpt26ol0" type="url" status="parsed" title="GitHub - echo094/decode-js: JS混淆代码的AST分析工具 AST analysis tool for obfuscated JS code" wc="2165">https://github.com/echo094/decode-js</url>
 //Modify:<url id="cv1cref6o68qmpt26olg" type="url" status="parsed" title="GitHub - smallfawn/decode_action: 世界上本来不存在加密，加密的人多了，也便成就了解密" wc="741">https://github.com/smallfawn/decode_action</url>
-var _0x25b3ca = _0x1699;
-function _0x1699(n, r) {
-  var u = _0x45c7();
-  return _0x1699 = function (r, t) {
-    var e = u[r -= 342];
-    if (undefined === _0x1699.lSvPEG) {
-      _0x1699.sKzJXy = function (n) {
-        for (var r, u, t = "", e = "", f = 0, c = 0; u = n.charAt(c++); ~u && (r = f % 4 ? 64 * r + u : u, f++ % 4) ? t += String.fromCharCode(255 & r >> (-2 * f & 6)) : 0) u = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=".indexOf(u);
-        for (var i = 0, v = t.length; i < v; i++) e += "%" + ("00" + t.charCodeAt(i).toString(16)).slice(-2);
-        return decodeURIComponent(e);
-      }, n = arguments, _0x1699.lSvPEG = true;
-    }
-    var f = r + u[0],
-      c = n[f];
-    return c ? e = c : (e = _0x1699.sKzJXy(e), n[f] = e), e;
-  }, _0x1699(n, r);
-}
-!function () {
-  for (var n = _0x1699, r = _0x45c7();;) try {
-    if (179149 === -parseInt(n(827)) / 1 * (-parseInt(n(399)) / 2) + parseInt(n(357)) / 3 * (-parseInt(n(447)) / 4) + -parseInt(n(437)) / 5 * (parseInt(n(859)) / 6) + parseInt(n(584)) / 7 + parseInt(n(615)) / 8 + -parseInt(n(597)) / 9 * (-parseInt(n(633)) / 10) + -parseInt(n(472)) / 11) break;
-    r.push(r.shift());
-  } catch (n) {
-    r.push(r.shift());
-  }
-}();
-var _0x305471 = function () {
-  var n = _0x1699,
-    r = {};
-  r[n(802)] = function (n, r) {
-    return n === r;
-  }, r[n(520)] = n(712), r[n(682)] = function (n, r) {
-    return n === r;
-  }, r[n(413)] = n(474), r[n(571)] = n(631);
-  var u = r,
-    t = true;
-  return function (r, e) {
-    var f = n,
-      c = {
-        akqXA: function (n, r) {
-          return u[_0x1699(802)](n, r);
-        },
-        TJMYp: u[f(520)],
-        nTiwF: function (n, r) {
-          return u[f(682)](n, r);
-        },
-        kJgbj: u[f(413)]
-      };
-    if (u[f(802)](u[f(571)], u[f(571)])) {
-      var i = t ? function () {
-        var n = f;
-        if (c[n(438)](c[n(348)], c[n(348)])) {
-          if (e) {
-            if (c[n(771)](c[n(855)], c[n(855)])) {
-              var u = e[n(521)](r, arguments);
-              return e = null, u;
-            }
-            _0x5cb116[n(564)](_0x24d57f);
-          }
-        } else {
-          var t = {};
-          t[n(803)] = true, _0x5262c3[n(564)](_0x1a5044, t);
-        }
-      } : function () {};
-      return t = false, i;
-    }
-    var v = _0x5ab76e[f(521)](_0x33c2bd, arguments);
-    return _0x2293eb = null, v;
+(function () {
+  "use strict";
+  const _0x2780d9 = unsafeWindow || window;
+  const _0x36f5e5 = "[咸鱼工具箱]:";
+  const _0x5b3949 = {
+    top: "10px",
+    left: "10px"
   };
-}();
-function _0x45c7() {
-  var n = ["twH1BNa", "twXMs0e", "wevSquK", "mtyYodG1nM9zD2vQva", "zuLkDKO", "s2vIwwK", "A0vzve0", "uw1bzLu", "BgrUz3e", "vfjmtKG", "zxjYB3i", "vvnjq2e", "DgDnvLe", "CMvHzfvjBNqZmG", "q3HdseO", "vwPltxq", "rKLcCxy", "Dci7", "u0XIzxe", "D3DjzKW", "A3jUsLe", "nJbhCxnHCvu", "EvjPrgG", "vKjnr1G", "zgvNCKq", "z0Hhzgq", "EeHXqvK", "t0HrrK8", "zNfdueK", "CMv0thO", "DxzHr3a", "yxbWAwq9", "zMfTAwX5", "uxLLwvu", "EKvNt20", "yvv3B3q", "BK1wswW", "D3PdCKe", "ALbdsKS", "AgrtCui", "s3DYEuG", "mhHnr2jnntCWjq", "CKz5Agy", "DJmVBwv0yt90Da", "uMv1qxe", "z2DLCG", "Dg1xDM0", "uNzJANC", "t2XItfO", "D2LfuhK", "t2jRD1C", "y2fSBa", "ruzHyve", "zKDLBum", "uMT3v0O", "sKDnvNa", "yuzLyLG", "mKzbyLjsrfjuAG", "zhPMEfa", "DKH6uM0", "yxHPB3m", "zsKGE30", "qLL0vwm", "uMTZyNq", "s3PjAKm", "vK1dvgq", "6icd6jMr5PIV5lIn5PIVAhr0CoMDNG", "shHbBLq", "BMDUBLq", "BurHy0i", "C0f6CuK", "y2Liq3m", "mJuYqNy4wNnAza", "EfPzBNq", "tKDRs3a", "rhjuB2e", "rLH0z1O", "m3WXmhW0Fdb8oa", "wevcuxy", "z2X6D1m", "zMLSzu5HBwu", "CNzdvg0", "qNnRrgO", "DfjOCxy", "DwnAugu", "z1n2EKC", "zKvKsLy", "lMPZ", "vK1uwe0", "ueH0Deq", "yKDRAxK", "twXcwhy", "wuzfy0W", "yvHkveS", "Dg5cwgu", "rhv5A1m", "zw5KC1DPDgG", "yxrnBu8", "t05uA0q", "AeDWwgS", "z2jNDfa", "qKLTCM4", "zMfPBa", "AvLjrgm", "BMTSy1m", "s0flBLu", "uxbhDeC", "BMXuzwe", "C3f1ywm", "zg93BMXVywq", "zM9YrwfJAa", "mJuYqLu0uvD4qq", "sMHJCMm", "BLvOs2y", "A1DAvvC", "z2f0zu4", "ELfpwLy", "EMj5Bwi", "uwvxBLC", "CK9Rr0i", "q2PYAwm", "wff0Bxq", "tenpsNq", "wxjLD0W", "BMLNyw1LlNPPAG", "rLnPs2S", "ANzeBxq", "uxzZugO", "Evnvt0i", "Dxvjy1y", "y0nPwwK", "C0T2EKS", "Bvnzvfu", "l21HAw4", "rgvlAvC", "CLnxzNi", "C3rHCNrZv2L0Aa", "wLjpque", "DxbuB1i", "svvJqw8", "q2nsuNG", "xcTCkYaQkd86wW", "v0DnqsuYntnejG", "zgvIDq", "AwnVBI5WBMC", "wMXKB2e", "mc4W", "ugnxq3O", "rffLq0G", "tNbwCgu", "r3jnBgK", "C3bSAxq", "suzouxu", "reP4tgS", "tKLPseO", "EvzMCge", "qMvdwuu", "vLbvsu8", "zuvks0W", "BLrPD0y", "y0Luruq", "zenmC3m", "sgzTreC", "wvLLrgy", "Avz4y3q", "CMvHzezPBgvtEq", "wwHruhq", "zwLZvu4", "A05uversy0DpBa", "Dgnbq1u", "wcuYntjcAvi1vW", "vvLysK4", "DgnpEKe", "nxWXmhW2Fdr8mq", "uhfrrLy", "vKjRtwe", "Bhbnweu", "t09Ythy", "s2TiA2q", "zxzXyw4", "yNjms2q", "Aw5PDa", "BwDWBgf0zM9YBq", "zMvIuw4", "B2TYy1u", "s0ztz2q", "AuXYywC", "z2v0", "q2niC3u", "qvL4rfq", "r0H3q2G", "CMvJDxjZAxzL", "rKDtELu", "uezQq3m", "CgfAwxq", "vLneuMm", "oxW3Fdz8mxWYFa", "z0fqsLC", "s3zsueW", "tevHuNK", "u2XVzwK", "zw5K", "ywn0Aw9U", "vKLbt2m", "AMH1Agq", "z0zlzvm", "zNvUy3rPB24GkG", "BLHJr0m", "CujWB3C", "Cw1isuC", "EM1tvfi", "BMfTzq", "wen0twW", "qLDeCe4", "qwL6rLe", "mtuWndvKwgPrshy", "DhL2yLu", "Dg9tDhjPBMC", "AgXADvC", "CwfWzg0", "u3bysgi", "C3rHCNq", "q1Lvteu", "sK5At2y", "Bg5vDwu", "r21iq0K", "BvHXve4", "t3PkA1a", "yMH5sgy", "DM5yC1u", "Dw9stfu", "wLPAwNy", "C3vIyxjYyxK", "wM1RvKS", "Ag1qBwG", "CuXcAKe", "s1bgyxO", "vgr5z3G", "EMPxD0G", "zuzXBLi", "tKTOrMG", "tuXNtgS", "y29UC3rYDwn0BW", "A0PNyMO", "uenAyMC", "DxrMltG", "vuzyDe8", "mtiZnZHytgjfrhC", "BwLABgu", "Cu1iEK0", "vfLrvxG", "ueXrq0W", "vMHkq1y", "xcGGkLWP", "DNLlB2G", "uwHsrhK", "tuHYsgW", "vePnwxa", "ENLSCgK", "D3jPDgvgAwXL", "Ce9gwK4", "AvLKDwG", "t1vyq2y", "weXUv2G", "uej4Bgi", "iNvZzsbZDhjPyW", "m0rQvM5TEa", "ENn4BLG", "DeDKEfm", "D0PpBLy", "j3vZzsbZDhjPyW", "rfbvBMe", "Cgj3vMS", "uNDWr2XgwwiXEq", "DgvZDa", "rLD5zei", "q3fTtNG", "zvvbqK0", "mNWWFdf8nxWZFa", "wwrJy1G", "wfD2BNa", "ywvsCey", "s2TXzKO", "yxLHy3O", "z2Potvm", "C3rYAw5N", "yMTrDe1YucuYnq", "Bfj3uKW", "vuLeEwC", "rfzeAMu", "thblCe0", "Cgf0Aa", "DeHnDK0", "Aw5WDxq", "tgjVAe8", "zu5tBuW", "vMvcuKy", "l2fWAs9HChbZlW", "y29Kzt1LB3rSqW", "rvLNzve", "sw1Rwfe", "wMzgyuW", "s1Hcu2y", "qwn3qxG", "t2vXA0C", "EKHly2m", "Bvz3Bhi", "B0rTDxm", "mZHoEu5eCMO", "uuO0qNLOAw9ksa", "DLDSCvi", "Du9Awxm", "v2Trwhy", "yMH6zfe", "CfLYzgC", "svPWwNq", "CKzXtvK", "wvLNreu", "y291BNrLCG", "mc05ys16qs1AxW", "te1wzwC", "Bhjktu4", "uwnJCgO", "BgfMtZCYD3jLDG", "t3HKqw4", "zMreDw0", "EMTvyMi", "zxfgD2S", "Aw5KzxHpzG", "vfHczfK", "sNjRChK", "B2jIu0q", "refiqvG", "C2rTu1u", "uwnxt1a", "wwziv0q", "r3DkvKK", "A0HjANa", "Dfjju20", "sg54qMm", "zffgvhG", "v2Pgyuy", "C2XPy2u", "q0neveu", "wuX1rwK", "suzRDxe", "nJaWswTlANv2", "ywTXwee", "sxDMzwO", "uwzbAKm", "t3fTmLa5vfLSsG", "s0jwB1e", "DwvwvKy", "CLvnExK", "u2ncAuTqywf6Aa", "Ahr0Chm", "mJyYodi0s1rKAgvQ", "AuLpD0W", "teforeS", "BwvZC2fNzq", "y2HHAw4", "CxLNz3q", "zKnnzMe", "qMvXvKS", "t0vLCxK", "sNbeuNC", "Fdj8m3W3FdL8oa", "BxfVv0e", "v3zdCw4", "Dxn6zxC", "AxjXtNm", "yMLUyxj5", "zLPjCuS", "B2zLBxu", "qLLTuNK", "ugH3A0i", "D2HPBguGkhrYDq", "sM1Lu1K", "y29vu3C", "qxb5tKK", "qw5Av2u", "ndmXnJGXogPhzgvtwG", "u0Tmt2G", "sfbkEwG", "CMHIrxK", "zKrrteu", "qNvsDg0", "qNP2yKO", "sMf3uhm", "u25UCvO", "quDIseO", "DgjuDui", "uvfjEg4", "DhrhAhC", "DMDPDNO", "A2rQyKm", "BuHZC2G", "EgfXt2u", "B0f2rKu", "wvr0zg8", "ANLYAhm", "EMT6zuq", "jMjKCf9ZzgTFDG", "rwTcwhG", "BMTHCwW", "Aw1pDKm", "zg5PBNG", "zxjZAw9UptiXlG", "BwfPBI5WA2C", "ANDfv2O", "EwXozMG", "zgzmugG", "qwHZB3e", "zxHPC3rZu3LUyW", "C2v0rw5JB2rPBG", "DfrXALO", "wNniuvC", "weXTv1q", "rKLYqNK", "Ahr0Chm6lY9TAq", "yMHgCNq", "DgHVELC", "C0nYuKK", "B3buB2y", "twLSugC", "AwnVBG", "vLnTwMq", "ENvrBfi", "tMrryLC", "ugHluLa", "yxbWBhK", "AwvHCgKUy29TlW", "qKzfr3L1rw5IsW", "BLzlv2S", "D1fwwe9Iz2iZAq", "zgnKzYuYntjgma", "Exb1CuS", "D1Hkzhm", "z0noveW", "vK5js1G", "y2T1ALe", "rLjOCgS", "yMjqCKm", "CgTAC0K", "rNbksNG", "uKTgEwq", "qKPHt0m", "uLLcq2e", "s1fRvgO", "sxnwv0W", "BxfPEM0", "qurWvwq", "C1HXqMu", "zfHkv1y", "CuLbsLK", "zgzxq3e", "AKX6Bfe", "C1zTzxe", "EuT1D0i", "CM5bwuG", "BgvUz3rO", "AgTysLe", "DvzNzKu", "BgfZDeLUzgv4tW", "zfvRt1u", "C3rHDgvpyMPLyW", "wuPkzhO", "sKPvzgS", "shDiBxO", "s3bMwwy", "sM5ACue", "qLHJq3O", "6k+35Rgc5AsX6lsLoIa", "BwTKAxjtEw5J", "l21HAw4UCgTN", "D3jPDgvgAwXLuW", "q3nID04", "AuruEhG", "Aevmv0K", "C3rHDhvZq29Kzq", "ENPXr2O", "Eg55sM8", "sKHQu0O", "runwuva", "EKzZA04", "nvO3tMTRsKzljq", "rxHyt3m", "zur1rLe", "D3Dkrgi", "DxPVyK0", "CvP6uxu", "jf0Qkq", "r1D3q3e", "otC2mZuZAuPmBhLb", "thftnuKLmJuYrG", "u2vLvue", "t3LzCMK", "Ew5J", "D0vnv1y", "sNDbAvm", "CK91wMD4uKLdAG", "DhPdB2K", "whLvAxO", "rNnpuNm", "Bg9N", "wfvQENq", "mZGZody4ywfyvNng", "tufxCgO", "zNHhAxG", "jti1mKjqq1LSCW", "EejnwNm", "ChPdvhC", "yvjtAhK", "6k+35Rgc5AsX6lsL", "yLrSA0y", "EM1MCwW", "zgf0yq", "ys16qs1AxYrDwW", "BKTez3G", "ChvZAa", "DcC7"];
-  return (_0x45c7 = function () {
-    return n;
-  })();
-}
-!function () {
-  var n = _0x1699,
-    r = {
-      JmeSY: n(857),
-      wwJDb: function (n, r) {
-        return n + r;
-      },
-      dQFTx: function (n, r) {
-        return n - r;
-      },
-      bhFrt: n(356) + n(629),
-      zylpi: n(361) + n(611),
-      XCtMl: function (n, r) {
-        return n < r;
-      },
-      OUXCf: function (n) {
-        return n();
-      },
-      wJOnV: function (n, r) {
-        return n === r;
-      },
-      paZYt: n(479),
-      VIAOc: n(818) + n(344),
-      sVmeq: n(753) + n(608) + n(410) + n(582),
-      FWydB: function (n, r) {
-        return n(r);
-      },
-      zsxnX: n(793),
-      ySUOB: n(451),
-      rFyhf: n(384),
-      qIAJY: function (n, r) {
-        return n !== r;
-      },
-      sdmSU: n(593),
-      ZmkVK: function (n, r) {
-        return n(r);
-      },
-      mqoWA: n(858),
-      AnZWe: n(592),
-      hmPmh: function (n) {
-        return n();
-      },
-      ApyNI: function (n, r, u) {
-        return n(r, u);
-      }
-    };
-  r[n(470)](_0x305471, this, function () {
-    var u = n,
-      t = {
-        YdccX: r[u(468)],
-        LANDK: function (n, t) {
-          return r[u(579)](n, t);
-        },
-        ZZZZv: function (n, t) {
-          return r[u(431)](n, t);
-        },
-        Tdygx: r[u(511)],
-        eFqnR: r[u(349)],
-        YYeDf: function (n, t) {
-          return r[u(824)](n, t);
-        },
-        AGbHJ: function (n) {
-          return r[u(353)](n);
-        }
-      };
-    if (r[u(360)](r[u(806)], r[u(806)])) {
-      var e = new RegExp(r[u(815)]),
-        f = new RegExp(r[u(548)], "i"),
-        c = r[u(366)](_0x41467f, r[u(358)]);
-      if (e[u(365)](r[u(579)](c, r[u(740)])) && f[u(365)](r[u(579)](c, r[u(654)]))) {
-        if (r[u(545)](r[u(458)], r[u(471)])) r[u(846)](_0x41467f);else {
-          if (_0x320657++, t[u(775)](_0x135124, 2)) return;
-          t[u(481)](_0xa76201);
-        }
-      } else if (r[u(545)](r[u(424)], r[u(424)])) {
-        var i = _0x307b9a[u(777) + "nc"](_0x352cb0, t[u(370)]);
-        (i = i[u(433)](t[u(449)](i[u(419)]("\n"), 1), t[u(843)](i[u(554) + "f"]("}"), 1)))[u(748)](t[u(849)]) ? i = i[u(433)](t[u(849)][u(551)]) : i[u(748)](t[u(851)]) && (i = i[u(433)](t[u(851)][u(551)])), _0xbe44bf[u(566) + u(588)](_0x5e6d02, i, t[u(370)]);
-      } else r[u(845)](c, "0");
-    } else {
-      var v = _0x2ef37a[u(433)](0, _0x52ea85);
-      if (!_0xb0dea0[u(504)](v)) {
-        var o = {};
-        o[u(803)] = true, _0x328bc3[u(564)](v, o);
-      }
-    }
-  })();
-}();
-const _0x52b0b0 = require("fs"),
-  _0x39ed43 = require(_0x25b3ca(446)),
-  _0x34ed8b = require(_0x25b3ca(672));
-async function _0x44a176(n, r) {
-  var u = _0x25b3ca,
-    t = {
-      kdjbC: u(369) + "4",
-      bTlkF: function (n, r) {
-        return n != r;
-      },
-      eIJvJ: function (n, r) {
-        return n + r;
-      },
-      aeRpF: function (n, r) {
-        return n + r;
-      },
-      uvaGp: u(699),
-      KpfYf: u(857),
-      Jhcrc: function (n, r) {
-        return n - r;
-      },
-      nkaql: u(356) + u(629),
-      YfHWD: u(361) + u(611),
-      wEMWV: function (n, r) {
-        return n(r);
-      },
-      zQOZV: function (n, r) {
-        return n === r;
-      },
-      Zldoa: u(732),
-      GrMli: u(785) + u(457) + "|0",
-      wXJds: function (n, r) {
-        return n + r;
-      },
-      MlBXv: function (n, r, u) {
-        return n(r, u);
-      },
-      squac: function (n, r, u) {
-        return n(r, u);
-      },
-      fqCPI: u(755),
-      sKvzK: u(657),
-      RKFyd: u(814),
-      FGSzU: function (n, r) {
-        return n !== r;
-      },
-      qLBjA: u(765),
-      KkqfJ: u(685),
-      zkUbb: function (n, r) {
-        return n + r;
-      },
-      KkHkd: u(565),
-      ADpUd: function (n, r) {
-        return n < r;
-      },
-      zjWwH: function (n, r) {
-        return n === r;
-      },
-      eisUN: u(614),
-      ttGhw: u(704),
-      KBVoQ: function (n) {
-        return n();
-      },
-      QeWnW: u(745),
-      PFjCs: function (n) {
-        return n();
-      },
-      tbTuB: u(363),
-      XLnWh: u(475),
-      zuQlR: u(627),
-      tRISm: function (n) {
-        return n();
-      },
-      ldngq: u(604),
-      bGkiy: function (n, r) {
-        return n === r;
-      },
-      gCNTL: u(514),
-      KXBSf: u(390),
-      irqNs: function (n, r) {
-        return n !== r;
-      },
-      DAHAX: u(367),
-      XEBQv: u(462),
-      JJUdk: u(607),
-      febQn: u(813),
-      OzJkP: u(622),
-      cCiYi: u(808) + u(689) + "|5",
-      zEgOm: function (n, r) {
-        return n + r;
-      },
-      ZfFaL: function (n, r, u) {
-        return n(r, u);
-      },
-      aXJTK: u(556) + "t",
-      jLzlQ: function (n, r) {
-        return n === r;
-      },
-      IFNQu: u(714),
-      jPCJK: u(368),
-      dninx: u(346),
-      FsORs: u(448),
-      zFskN: u(405),
-      ylNfh: u(818) + u(344),
-      CxCHJ: u(753) + u(608) + u(410) + u(582),
-      VMCTd: u(793),
-      VeBRF: u(451),
-      wiEPy: u(384),
-      tGdxS: u(781),
-      KebYi: u(656),
-      PCZbg: u(678) + u(446),
-      zHKcc: function (n, r) {
-        return n + r;
-      },
-      AizFQ: u(503),
-      dUkOU: u(485),
-      YrewL: function (n, r) {
-        return n + r;
-      },
-      ucZPe: u(436),
-      ofemu: function (n, r) {
-        return n < r;
-      },
-      tnBXe: function (n) {
-        return n();
-      },
-      upToR: u(467) + u(673),
-      nKDgx: u(409),
-      ngnnT: function (n) {
-        return n();
-      },
-      fEdJV: u(853),
-      xaqOe: function (n, r) {
-        return n + r;
-      },
-      FpJJx: function (n, r) {
-        return n != r;
-      },
-      CcHsu: u(840),
-      lpMXE: u(707),
-      bhzdQ: u(809),
-      XUjzt: u(664),
-      obbSD: u(709),
-      fdDum: u(407),
-      IUcAo: u(756),
-      BImrn: u(499),
-      VMTXM: function (n, r) {
-        return n + r;
-      },
-      xBMZs: u(563),
-      VSDRc: u(697),
-      ciHCs: u(769),
-      rOkGB: function (n, r) {
-        return n !== r;
-      },
-      JNZOf: u(671),
-      fGemC: u(662),
-      KvRPL: u(546),
-      hkXJQ: function (n, r) {
-        return n + r;
-      },
-      nMVIl: function (n, r) {
-        return n(r);
-      },
-      AcwAx: function (n, r) {
-        return n + r;
-      },
-      aRShy: function (n, r) {
-        return n + r;
-      },
-      nUhKf: u(686),
-      imOvC: u(811)
-    };
-  let e = u(510) + u(736) + u(522) + u(794) + u(388) + u(655) + u(389) + u(782) + u(523) + u(414) + u(653) + u(723) + u(600) + u(364) + u(576) + u(684) + u(585) + u(445) + u(377) + u(669) + u(526) + u(400) + u(591) + u(441) + u(780) + u(525) + u(754) + u(643) + n + (u(493) + u(498) + u(758));
-  var f = (await t[u(648)](async function (n) {
-      var r = u;
-      if (t[r(804)](t[r(807)], t[r(683)])) try {
-        if (t[r(731)](t[r(835)], t[r(665)])) {
-          return (await _0x34ed8b[r(799)](n))[r(607)];
-        }
-        throw new _0x36710c(t[r(700)](t[r(601)], _0x1efa2a[r(450)]));
-      } catch (n) {
-        if (t[r(731)](t[r(810)], t[r(810)])) return _0x349f96[r(844)](_0x1cc7e8, _0x4552ab)[r(829)]();
-        throw new Error(t[r(552)](t[r(601)], n[r(450)]));
-      } else VhBxht[r(573)](_0x52851f, 0);
-    }, e))[u(607)],
-    c = f[u(516)],
-    i = f[u(382)],
-    v = f[u(823)];
-  if (r = t[u(394)](t[u(603)](r, "/"), v), !_0x52b0b0[u(504)](r)) {
-    if (!t[u(731)](t[u(725)], t[u(496)])) {
-      var o = _0x13dd85 ? function () {
-        if (_0x49e368) {
-          var n = _0x35cea6[u(521)](_0x5ce6a8, arguments);
-          return _0x1e30de = null, n;
-        }
-      } : function () {};
-      return _0x395a83 = false, o;
-    }
-    _0x52b0b0[u(564)](r);
-  }
-  return new Promise(n => {
-    var e = u,
-      f = {
-        ypuqK: function (n, r) {
-          return t[_0x1699(850)](n, r);
-        },
-        jhuhd: t[e(482)],
-        VNIKX: t[e(354)],
-        CcRRx: function (n, r) {
-          return t[e(804)](n, r);
-        },
-        tyvbU: t[e(518)],
-        yRiDh: function (n) {
-          return t[e(429)](n);
-        },
-        jwEWj: t[e(620)],
-        TRLNH: function (n, r) {
-          return t[e(702)](n, r);
-        },
-        HxAnT: t[e(529)],
-        CsbwN: t[e(393)],
-        evqan: function (n, r) {
-          return t[e(461)](n, r);
-        },
-        XWvnp: t[e(423)],
-        TYQUx: t[e(690)],
-        uuIcV: t[e(558)],
-        tcOzA: t[e(795)],
-        MlfKA: t[e(839)],
-        LMVeg: t[e(742)],
-        YTtdo: function (n, r, u) {
-          return t[e(703)](n, r, u);
-        },
-        PhwkB: function (n, r) {
-          return t[e(528)](n, r);
-        },
-        PHttD: function (n, r) {
-          return t[e(646)](n, r);
-        },
-        DPUna: function (n, r, u) {
-          return t[e(392)](n, r, u);
-        },
-        MAWpj: function (n, r, u) {
-          return t[e(392)](n, r, u);
-        },
-        uVgfE: function (n, r, u) {
-          return t[e(720)](n, r, u);
-        },
-        oDmus: function (n, r) {
-          return t[e(646)](n, r);
-        },
-        YLuEi: t[e(640)],
-        BeCYE: t[e(743)],
-        NdQbW: t[e(705)],
-        OEeqy: function (n, r) {
-          return t[e(547)](n, r);
-        },
-        aFebX: t[e(764)],
-        PBxlb: t[e(650)],
-        GWwCq: t[e(497)],
-        BuRtm: t[e(594)],
-        fZIqK: t[e(575)],
-        pzCTw: t[e(501)],
-        iLrag: t[e(626)],
-        OyYri: function (n, r) {
-          return t[e(589)](n, r);
-        },
-        rnAYH: t[e(677)],
-        rUMyy: t[e(387)],
-        ZsHQW: t[e(661)],
-        qapdm: function (n, r) {
-          return t[e(804)](n, r);
-        },
-        gFKeS: t[e(359)],
-        zmfql: t[e(617)],
-        uOZYs: t[e(856)],
-        KAKnU: function (n, r) {
-          return t[e(396)](n, r);
-        },
-        hdSqB: function (n, r) {
-          return t[e(804)](n, r);
-        },
-        zbymb: t[e(826)],
-        FRhpk: t[e(555)],
-        HfmDG: function (n, r) {
-          return t[e(735)](n, r);
-        },
-        qMHzM: function (n, r) {
-          return t[e(804)](n, r);
-        },
-        PLQCL: t[e(696)],
-        OOrLv: function (n, r) {
-          return t[e(464)](n, r);
-        },
-        BeqVK: function (n) {
-          return t[e(706)](n);
-        },
-        zkzeD: t[e(750)],
-        qmHIG: t[e(609)],
-        ExXOs: function (n) {
-          return t[e(680)](n);
-        },
-        DQeCH: t[e(698)],
-        NpVpe: function (n, r) {
-          return t[e(488)](n, r);
-        },
-        JnZqA: function (n, r) {
-          return t[e(417)](n, r);
-        },
-        pkZsI: function (n, r) {
-          return t[e(535)](n, r);
-        },
-        fxGix: t[e(800)],
-        CCDTE: t[e(788)],
-        tgMVQ: function (n, r) {
-          return t[e(728)](n, r);
-        },
-        VSmZd: t[e(404)],
-        SeeUA: t[e(642)],
-        cITED: t[e(596)],
-        Jrkpy: t[e(560)],
-        jyrhs: function (n, r) {
-          return t[e(724)](n, r);
-        },
-        BWDpN: t[e(495)],
-        SpXHb: t[e(426)],
-        miZle: t[e(422)],
-        WvCqn: t[e(416)]
-      },
-      v = 0;
-    function o(n, u, t = "") {
-      var c = e,
-        i = {
-          MHrHl: f[c(411)],
-          XLmWT: function (n, r, u) {
-            return f[c(490)](n, r, u);
-          },
-          OeqkG: function (n, r) {
-            return f[c(466)](n, r);
-          },
-          mSYTU: function (n, r) {
-            return f[c(701)](n, r);
-          },
-          xHqAY: function (n, r, u) {
-            return f[c(362)](n, r, u);
-          },
-          iYduh: function (n, r, u) {
-            return f[c(598)](n, r, u);
-          },
-          KwryH: function (n, r, u) {
-            return f[c(553)](n, r, u);
-          },
-          tRhqv: function (n, r) {
-            return f[c(398)](n, r);
-          },
-          lnUue: function (n) {
-            return f[c(634)](n);
-          },
-          glzwS: f[c(435)],
-          RkwWJ: f[c(768)],
-          nXcGC: f[c(519)],
-          vWlqR: function (n, r) {
-            return f[c(455)](n, r);
-          },
-          HnxBc: f[c(862)],
-          YhQPt: f[c(668)],
-          LCOJt: function (n, r) {
-            return f[c(752)](n, r);
-          },
-          vnXsU: f[c(355)],
-          eqFwk: f[c(583)],
-          tTqjZ: f[c(477)],
-          KzIjC: f[c(463)],
-          kWZUW: function (n, r) {
-            return f[c(398)](n, r);
-          },
-          QvsPj: function (n, r) {
-            return f[c(398)](n, r);
-          },
-          EkBXx: f[c(602)],
-          gateN: f[c(798)],
-          zmSTR: function (n, r) {
-            return f[c(587)](n, r);
-          },
-          KFSgd: f[c(550)],
-          NIiHJ: f[c(444)],
-          DVDje: f[c(507)],
-          BXcCz: function (n) {
-            return f[c(634)](n);
-          },
-          BzvbJ: function (n, r) {
-            return f[c(831)](n, r);
-          },
-          yVfpa: f[c(817)],
-          gjNMS: f[c(606)],
-          BYmRy: f[c(500)],
-          Mhunp: f[c(402)],
-          HwHmz: function (n, r) {
-            return f[c(717)](n, r);
-          }
-        };
-      if (!f[c(651)](f[c(729)], f[c(532)])) return false;
-      var v = {};
-      v[c(644)] = 4;
-      var o = _0x39ed43[c(799)](n, v, e => {
-        var v = c,
-          o = {
-            DrToa: function (n, r) {
-              return f[_0x1699(527)](n, r);
-            },
-            okrcU: f[v(816)],
-            ZROAA: f[v(530)],
-            QQIxn: function (n, r) {
-              return f[v(752)](n, r);
-            },
-            AYxDT: f[v(828)],
-            ueVVF: function (n) {
-              return f[v(634)](n);
-            },
-            PqQFV: f[v(500)],
-            BskDj: function (n, r) {
-              return f[v(621)](n, r);
-            },
-            mHssh: f[v(679)],
-            UYXJN: f[v(567)]
+  const _0x3c33e0 = {
+    engine_speed_rate: 50,
+    quench_speed_enabled: true,
+    nightmare_speed_enabled: true,
+    panel_pos: _0x5b3949,
+    panel_collapsed: false,
+    accounts: [],
+    selectedAccountFileName: null,
+    activeTab: "accounts"
+  };
+  let _0x47c766 = {};
+  function _0xea8798() {
+    {
+      try {
+        {
+          const _0x98bfb6 = {
+            ..._0x47c766,
+            accounts: _0x47c766.accounts.map(_0x59b9d9 => ({
+              fileName: _0x59b9d9.fileName,
+              hexString: _0x59b9d9.hexString
+            }))
           };
-        if (f[v(791)](f[v(371)], f[v(371)])) for (var a = i[v(347)][v(763)]("|"), w = 0;;) {
-          switch (a[w++]) {
-            case "0":
-              var s = {};
-              s[v(692)] = q, s[v(833)] = C, s[v(551)] = K;
-              var z = s;
-              continue;
-            case "1":
-              _0x14c252 += D;
-              continue;
-            case "2":
-              var C = i[v(508)](_0x3f5144, _0x171da0, i[v(395)](_0x1edafe, 4));
-              continue;
-            case "3":
-              _0x3ecd34 += 4;
-              continue;
-            case "4":
-              _0x243ef4 += 4;
-              continue;
-            case "5":
-              _0x3500d0 = i[v(744)](C, K);
-              continue;
-            case "6":
-              var q = i[v(638)](_0x50479b, _0x8f2dbd, i[v(744)](_0x53feeb, D));
-              continue;
-            case "7":
-              _0x540156 += 4;
-              continue;
-            case "8":
-              _0x243d90[v(610)](z);
-              continue;
-            case "9":
-              var D = i[v(352)](_0x330d8d, _0x9666c7, i[v(395)](_0x313feb, 4));
-              continue;
-            case "10":
-              var K = i[v(652)](_0x425ad5, _0x28499e, i[v(695)](_0x45831d, 4));
-              continue;
-          }
-          break;
-        } else {
-          var L = "";
-          e[v(505) + "g"](f[v(862)]), e.on(f[v(741)], n => {
-            var r = v;
-            if (o[r(687)](o[r(796)], o[r(749)])) {
-              if (_0x454471) {
-                var u = _0x19ed56[r(521)](_0x59c0df, arguments);
-                return _0x197c2b = null, u;
-              }
-            } else L += n;
-          }), e.on(f[v(784)], () => {
-            var f = v,
-              c = {
-                kEYTM: function (n) {
-                  return i[_0x1699(836)](n);
-                },
-                mqizm: function (n, r) {
-                  return i[_0x1699(695)](n, r);
-                },
-                eEJKL: i[f(691)],
-                VBkMa: i[f(666)],
-                krnJQ: i[f(819)],
-                eDuFQ: function (n, r) {
-                  return i[f(401)](n, r);
-                },
-                VhJCV: function (n, r) {
-                  return i[f(695)](n, r);
-                },
-                aUwot: i[f(430)],
-                KQkTj: i[f(778)]
-              };
-            if (i[f(734)](i[f(841)], i[f(418)])) {
-              if (i[f(401)](e[f(570)], 200)) {
-                if (i[f(734)](i[f(506)], i[f(676)])) return void _0x52b0b0[f(350)](i[f(695)](i[f(726)](i[f(739)](r, "/"), u), t), L, i[f(430)], () => {
-                  var n = f;
-                  o[n(483)](o[n(801)], o[n(801)]) ? c[n(618)](_0x24023e) : o[n(443)](x);
-                });
-                (function () {
-                  return false;
-                })[f(854) + "r"](knUsRN[f(541)](knUsRN[f(770)], knUsRN[f(787)]))[f(521)](knUsRN[f(632)]);
-              }
-              console[f(595)](i[f(778)], hostname, n, e[f(570)]);
-            } else {
-              var a = {
-                QfAjC: function (n) {
-                  return c[f(618)](n);
-                }
-              };
-              if (c[f(578)](_0x3a3193[f(570)], 200)) return void _0x3454e2[f(350)](c[f(343)](c[f(343)](c[f(541)](_0x566996, "/"), _0x45a7b7), _0x5432bf), _0x31e85f, c[f(647)], () => {
-                a[f(440)](_0x459edc);
-              });
-              _0xe8bc75[f(595)](c[f(539)], _0x15203f, _0x58e79f, _0x3722bb[f(570)]);
+          localStorage.setItem("XYWZ_ToolboxConfig_v9.8", JSON.stringify(_0x98bfb6));
+        }
+      } catch (_0x179c9d) {
+        {
+          console.error(_0x36f5e5 + " 保存配置失败:", _0x179c9d);
+        }
+      }
+    }
+  }
+  function _0x547365() {
+    {
+      try {
+        {
+          const _0x337149 = localStorage.getItem("XYWZ_ToolboxConfig_v9.8");
+          _0x47c766 = {
+            ..._0x3c33e0,
+            ...JSON.parse(_0x337149)
+          };
+        }
+      } catch (_0x4fd052) {
+        {
+          const _0x5d8d1d = {
+            ..._0x3c33e0
+          };
+          _0x47c766 = _0x5d8d1d;
+        }
+      }
+    }
+  }
+  function _0x255596() {
+    {
+      GM_addStyle("\n            #accelerator-panel, #accelerator-toggle-btn { font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; user-select: none; box-sizing: border-box; }\n            #accelerator-panel { position: fixed; z-index: 99999; background: linear-gradient(145deg, #3e3e3e, #2a2a2a); border: 1px solid #555; border-radius: 12px; color: #e0e0e0; font-size: 14px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); display: " + (_0x47c766.panel_collapsed ? "none" : "block") + "; width: 280px; overflow: hidden; }\n            #accelerator-panel .panel-header { padding: 10px 12px; background: rgba(0,0,0,0.2); cursor: move; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #4a4a4a; }\n            #accelerator-panel .panel-title { font-weight: bold; font-size: 15px; }\n            /* 标签页导航栏 */\n            .panel-tabs { display: flex; border-bottom: 1px solid #4a4a4a; }\n            .panel-tabs button { flex: 1; background: none; border: none; color: #aaa; padding: 12px 0; font-size: 14px; cursor: pointer; transition: background 0.2s, color 0.2s; border-bottom: 3px solid transparent; }\n            .panel-tabs button:hover { background: rgba(255,255,255,0.05); }\n            .panel-tabs button.active { color: #fff; font-weight: bold; border-bottom-color: #4CAF50; }\n            /* 标签页内容 */\n            .panel-body { padding: 15px; }\n            .tab-content { display: none; flex-direction: column; gap: 18px; }\n            .tab-content.active { display: flex; }\n            /* 通用组件样式 */\n            .setting-row { display: flex; align-items: center; justify-content: space-between; }\n            .slider-container { display: flex; flex-direction: column; gap: 8px; }\n            .speed-display { display: flex; justify-content: space-between; align-items: baseline; }\n            #speed-indicator { font-weight: bold; color: #4CAF50; font-size: 16px; }\n            .account-manager { display: flex; flex-direction: column; gap: 12px; }\n            #account-selector { background-color: #333; color: #fff; border: 1px solid #555; border-radius: 4px; padding: 8px; width: 100%; font-size: 14px; }\n            #account-selector:focus { outline: 1px solid #4CAF50; }\n            .button-row { display: flex; gap: 8px; }\n            .custom-file-upload, #refresh-page-btn, #delete-account-btn { \n                flex-grow: 1; text-align: center; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; font-weight: bold; transition: background-color 0.2s;\n            }\n            .custom-file-upload { background-color: #4CAF50; }\n            .custom-file-upload:hover { background-color: #45a049; }\n            #refresh-page-btn { background-color: #2196F3; }\n            #refresh-page-btn:hover { background-color: #1976D2; }\n            #delete-account-btn { background-color: #f44336; }\n            #delete-account-btn:hover { background-color: #d32f2f; }\n            #delete-account-btn:disabled { background-color: #757575; cursor: not-allowed; opacity: 0.7; }\n            #account-file-input { display: none; }\n            .disclaimer-box { margin-top: 15px; padding-top: 15px; border-top: 1px solid #4a4a4a; font-size: 12px; color: #9e9e9e; line-height: 1.5; text-align: justify; }\n            .switch-label { position: relative; display: inline-flex; align-items: center; cursor: pointer; }\n            .switch-label input { opacity: 0; width: 0; height: 0; }\n            .switch-slider { width: 38px; height: 20px; background-color: #555; border-radius: 10px; transition: background-color 0.2s ease; position: relative; }\n            .switch-slider::before { content: \"\"; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background-color: white; border-radius: 50%; transition: transform 0.2s ease; }\n            .switch-label input:checked + .switch-slider { background-color: #4CAF50; }\n            .switch-label input:checked + .switch-slider::before { transform: translateX(18px); }\n            input[type=\"range\"] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; background: #555; border-radius: 3px; outline: none; margin: 5px 0; }\n            input[type=\"range\"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; background: #4CAF50; border-radius: 50%; cursor: pointer; border: 2px solid #fff; }\n            .collapse-btn { cursor: pointer; font-weight: bold; font-size: 20px; color: #aaa; line-height: 1; transition: color 0.2s; padding: 0 5px; }\n            .collapse-btn:hover { color: #fff; }\n            #accelerator-toggle-btn { position: fixed; z-index: 99998; background: linear-gradient(145deg, #3e3e3e, #2a2a2a); color: #fff; border: 1px solid #555; border-radius: 50%; width: 45px; height: 45px; display: " + (_0x47c766.panel_collapsed ? "flex" : "none") + "; justify-content: center; align-items: center; cursor: move; font-size: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.4); }\n        ");
+      const _0x58dbb9 = "\n            <div id=\"accelerator-panel\">\n                <div class=\"panel-header\">\n                    <span class=\"panel-title\">咸鱼之王工具箱-苏御</span>\n                    <span class=\"collapse-btn\" title=\"折叠\">−</span>\n                </div>\n                <div class=\"panel-tabs\">\n                    <button data-tab=\"accounts\">账号管理</button>\n                    <button data-tab=\"accelerator\">功能加速</button>\n                </div>\n                <div class=\"panel-body\">\n                    <div class=\"tab-content\" data-tab=\"accounts\">\n                        <div class=\"account-manager\">\n                            <select id=\"account-selector\"></select>\n                            <div class=\"button-row\">\n                               <label for=\"account-file-input\" class=\"custom-file-upload\">导入</label>\n                               <input type=\"file\" id=\"account-file-input\" multiple accept=\".bin\">\n                               <button id=\"delete-account-btn\" title=\"删除当前选中的账号\">删除</button>\n                               <button id=\"refresh-page-btn\" title=\"使用当前选中账号刷新游戏\">刷新</button>\n                            </div>\n                        </div>\n                        <div class=\"disclaimer-box\">\n                            <strong>免责声明：</strong>\n                            本工具仅供学习与技术交流，所有账号数据均存储于您的本地浏览器。作者不收集、不上传任何信息，亦不承担任何因使用本工具可能导致的风险或后果。\n                        </div>\n                    </div>\n                    <div class=\"tab-content\" data-tab=\"accelerator\">\n                        <div class=\"slider-container\">\n                            <div class=\"speed-display\">\n                                <label>引擎全局加速</label>\n                                <span id=\"speed-indicator\"></span>\n                            </div>\n                            <input type=\"range\" id=\"engine_speed_rate\" min=\"0\" max=\"50\" step=\"0.1\">\n                        </div>\n                        <div class=\"setting-row\">\n                            <span>淬炼加速</span>\n                            <label class=\"switch-label\"><input type=\"checkbox\" id=\"quench_speed_enabled\"><span class=\"switch-slider\"></span></label>\n                        </div>\n                        <div class=\"setting-row\">\n                            <span>十殿加速</span>\n                            <label class=\"switch-label\"><input type=\"checkbox\" id=\"nightmare_speed_enabled\"><span class=\"switch-slider\"></span></label>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div id=\"accelerator-toggle-btn\" title=\"展开\">🚀</div>\n        ";
+      document.body.insertAdjacentHTML("beforeend", _0x58dbb9);
+      _0x362517();
+      _0x1b2cef();
+    }
+  }
+  function _0x362517() {
+    {
+      document.getElementById("engine_speed_rate").value = _0x47c766.engine_speed_rate;
+      document.getElementById("speed-indicator").textContent = parseFloat(_0x47c766.engine_speed_rate).toFixed(1) + "x";
+      document.getElementById("quench_speed_enabled").checked = _0x47c766.quench_speed_enabled;
+      document.getElementById("nightmare_speed_enabled").checked = _0x47c766.nightmare_speed_enabled;
+      _0x1a02ee();
+      const _0x256367 = document.getElementById("accelerator-panel");
+      const _0x57d238 = document.getElementById("accelerator-toggle-btn");
+      _0x256367.style.top = _0x47c766.panel_pos.top;
+      _0x256367.style.left = _0x47c766.panel_pos.left;
+      _0x57d238.style.top = _0x47c766.panel_pos.top;
+      _0x57d238.style.left = _0x47c766.panel_pos.left;
+      _0xeda764(_0x47c766.activeTab);
+    }
+  }
+  function _0xeda764(_0xe756d2) {
+    document.querySelectorAll(".panel-tabs button").forEach(_0x8d59ce => {
+      {
+        _0x8d59ce.classList.toggle("active", _0x8d59ce.dataset.tab === _0xe756d2);
+      }
+    });
+    document.querySelectorAll(".tab-content").forEach(_0x553d3b => {
+      _0x553d3b.classList.toggle("active", _0x553d3b.dataset.tab === _0xe756d2);
+    });
+  }
+  function _0x1a02ee() {
+    {
+      const _0xa02aa2 = document.getElementById("account-selector");
+      const _0x26fff4 = _0x47c766.accounts.length > 0;
+      document.getElementById("delete-account-btn").disabled = !_0x26fff4;
+      _0xa02aa2.innerHTML = "";
+      if (!_0x26fff4) {
+        {
+          const _0x3efa87 = new Option("请先导入BIN文件", "", true, true);
+          _0x3efa87.disabled = true;
+          _0xa02aa2.add(_0x3efa87);
+          return;
+        }
+      }
+      _0x47c766.accounts.forEach(_0x3590ae => {
+        {
+          const _0x1984d4 = _0x3590ae.fileName === _0x47c766.selectedAccountFileName;
+          const _0x17ce40 = new Option(_0x3590ae.fileName.replace(".bin", ""), _0x3590ae.fileName, false, _0x1984d4);
+          _0xa02aa2.add(_0x17ce40);
+        }
+      });
+      if (_0x47c766.selectedAccountFileName) {
+        {
+          _0xa02aa2.value = _0x47c766.selectedAccountFileName;
+        }
+      }
+    }
+  }
+  function _0x1b2cef() {
+    {
+      const _0x183dd2 = document.getElementById("accelerator-panel");
+      const _0x360bd3 = _0x183dd2.querySelector(".panel-header");
+      const _0x59a63e = document.getElementById("accelerator-toggle-btn");
+      const _0xd1e48f = _0x183dd2.querySelector(".collapse-btn");
+      const _0xa06782 = _0x183dd2.querySelector(".panel-tabs");
+      _0xa06782.addEventListener("click", _0x25dabe => {
+        {
+          if (_0x25dabe.target.tagName === "BUTTON") {
+            {
+              const _0x2796d3 = _0x25dabe.target.dataset.tab;
+              _0x47c766.activeTab = _0x2796d3;
+              _0xeda764(_0x2796d3);
+              _0xea8798();
             }
-          }), e.on(f[v(613)], n => {
-            var r = v,
-              u = {};
-            u[r(715)] = o[r(786)];
-            var t = u;
-            o[r(694)](o[r(487)], o[r(783)]) ? _0x14342f[r(595)](t[r(715)], _0x904c9d) : console[r(595)](o[r(786)], n);
+          }
+        }
+      });
+      _0x183dd2.querySelectorAll("input[type=\"checkbox\"]").forEach(_0x202862 => {
+        {
+          _0x202862.addEventListener("change", _0x43d4ef => {
+            _0x47c766[_0x43d4ef.target.id] = _0x43d4ef.target.checked;
+            _0xea8798();
           });
         }
       });
-      o.on(f[c(613)], r => {
-        var u = c;
-        if (i[u(478)](i[u(767)], i[u(375)])) console[u(595)](i[u(465)], r), console[u(595)](i[u(612)]), console[u(595)](i[u(778)], i[u(559)](hostname, n));else {
-          var t = new _0x1f7546(fmwJgv[u(494)]),
-            e = new _0x20d0dc(fmwJgv[u(727)], "i"),
-            f = fmwJgv[u(822)](_0x1d3883, fmwJgv[u(797)]);
-          t[u(365)](fmwJgv[u(395)](f, fmwJgv[u(766)])) && e[u(365)](fmwJgv[u(695)](f, fmwJgv[u(380)])) ? fmwJgv[u(562)](_0x3f23bc) : fmwJgv[u(822)](f, "0");
+      const _0x489e27 = document.getElementById("engine_speed_rate");
+      _0x489e27.addEventListener("input", _0x308bdb => {
+        _0x47c766.engine_speed_rate = parseFloat(_0x308bdb.target.value);
+        document.getElementById("speed-indicator").textContent = _0x47c766.engine_speed_rate.toFixed(1) + "x";
+        _0x2a05c.accelerator.engine_speed.apply();
+      });
+      _0x489e27.addEventListener("change", () => _0xea8798());
+      document.getElementById("account-file-input").addEventListener("change", _0x16e835);
+      document.getElementById("account-selector").addEventListener("change", _0x4a07e6 => {
+        {
+          _0x47c766.selectedAccountFileName = _0x4a07e6.target.value;
+          _0xea8798();
+          console.log(_0x36f5e5 + " 已选择账号: " + _0x4a07e6.target.value + "，将自动刷新应用...");
+          location.reload();
         }
-      }), o[c(813)]();
-    }
-    function x() {
-      var n = e,
-        r = {
-          thozW: f[n(500)],
-          rSWfr: f[n(402)],
-          JpDRw: f[n(668)],
-          BYtUc: function (r, u) {
-            return f[n(774)](r, u);
-          }
-        };
-      if (f[n(861)](f[n(342)], f[n(342)])) _0x26b9ad[n(595)](r[n(512)], _0xa614ab), _0x399f3b[n(595)](r[n(747)]), _0x56e2d5[n(595)](r[n(456)], r[n(674)](_0x527766, _0x2416f7));else {
-        if (v++, f[n(789)](v, 2)) return;
-        f[n(454)](a);
-      }
-    }
-    function a() {
-      var u = e,
-        c = {
-          BJaOC: t[u(486)],
-          jvDmt: function (n, r) {
-            return t[u(605)](n, r);
-          },
-          XQtmt: function (n, r) {
-            return t[u(616)](n, r);
-          },
-          FSiKk: function (n, r) {
-            return t[u(372)](n, r);
-          },
-          SKLOh: t[u(642)],
-          rvCTm: t[u(560)],
-          coUSw: function (n, r) {
-            return t[u(724)](n, r);
-          },
-          ONTkD: t[u(495)],
-          mDacB: t[u(426)],
-          LbohO: function (n, r) {
-            return t[u(589)](n, r);
-          },
-          FIBqv: function (n, r) {
-            return t[u(728)](n, r);
-          },
-          iDTxx: t[u(757)],
-          YYgDE: t[u(762)],
-          sXqBe: function (n, r) {
-            return t[u(528)](n, r);
-          },
-          OlbLZ: function (n, r, e) {
-            return t[u(703)](n, r, e);
-          },
-          mVwlr: function (n, r, e) {
-            return t[u(720)](n, r, e);
-          },
-          nklcS: function (n, r, e) {
-            return t[u(720)](n, r, e);
-          },
-          nlTea: function (n, r) {
-            return t[u(372)](n, r);
-          },
-          GmHCI: function (n, r, e) {
-            return t[u(720)](n, r, e);
-          },
-          LpKpM: t[u(640)],
-          SLbeq: t[u(743)],
-          FXtgZ: t[u(536)],
-          ECVQP: function (n, r) {
-            return t[u(804)](n, r);
-          },
-          yKuwB: t[u(847)],
-          Rvcjw: t[u(373)],
-          ayacz: function (n, r) {
-            return t[u(589)](n, r);
-          }
-        },
-        i = 0,
-        v = _0x52b0b0[u(777) + "nc"](t[u(417)](r, t[u(790)])),
-        o = v[u(551)];
-      i = 16;
-      let x = [];
-      for (var a = 0; t[u(542)](a, o);) t[u(850)](t[u(779)], t[u(484)]) ? _0x444953 += _0x69334a : t[u(442)](w);
-      function w() {
-        var n = u;
-        if (c[n(628)](c[n(568)], c[n(568)])) for (var r = c[n(408)][n(763)]("|"), t = 0;;) {
-          switch (r[t++]) {
-            case "0":
-              a = c[n(543)](e, f);
-              continue;
-            case "1":
-              var e = c[n(660)](s, i, c[n(543)](i, 4));
-              continue;
-            case "2":
-            case "7":
-            case "10":
-              i += 4;
-              continue;
-            case "3":
-              var f = c[n(397)](s, i, c[n(733)](i, 4));
-              continue;
-            case "4":
-              i += v;
-              continue;
-            case "5":
-              var v = c[n(716)](s, i, c[n(719)](i, 4));
-              continue;
-            case "6":
-              var o = c[n(837)](z, i, c[n(719)](i, v));
-              continue;
-            case "8":
-              x[n(610)](C);
-              continue;
-            case "9":
-              var w = {};
-              w[n(692)] = o, w[n(833)] = e, w[n(551)] = f;
-              var C = w;
-              continue;
-          }
-          break;
-        } else uRwNJD[n(385)](_0x10e287, "0");
-      }
-      function s(n, r) {
-        var t = u;
-        if (c[t(574)](c[t(549)], c[t(659)])) return v[t(844)](n, r)[t(625) + "LE"]();
-        (function () {
-          return true;
-        })[t(854) + "r"](uRwNJD[t(543)](uRwNJD[t(381)], uRwNJD[t(630)]))[t(663)](uRwNJD[t(688)]);
-      }
-      function z(n, r) {
-        var t = u;
-        return f[t(527)](f[t(860)], f[t(459)]) ? _0x54c069 ? _0x5b0e9c : void uRwNJD[t(374)](_0x2c475c, 0) : v[t(844)](n, r)[t(829)]();
-      }
-      r = t[u(528)](r, t[u(730)]), x[u(722)](n => {
-        var t = u;
-        f[t(492)], f[t(821)];
-        if (f[t(621)](f[t(760)], f[t(760)])) {
-          var e = f[t(761)](f[t(561)](r, "/"), n[t(692)]),
-            i = e[t(554) + "f"]("/");
-          if (f[t(534)](i, -1)) {
-            if (!f[t(752)](f[t(599)], f[t(434)])) return _0x3f270d[t(844)](_0x1f8f13, _0x473244)[t(625) + "LE"]();
-            var o = e[t(433)](0, i);
-            if (!_0x52b0b0[t(504)](o)) {
-              if (!f[t(624)](f[t(517)], f[t(517)])) return function (n) {}[t(854) + "r"](wQqFzL[t(428)])[t(521)](wQqFzL[t(427)]);
-              var x = {};
-              x[t(803)] = true, _0x52b0b0[t(564)](o, x);
+      });
+      document.getElementById("refresh-page-btn").addEventListener("click", () => {
+        {
+          if (!_0x47c766.selectedAccountFileName) {
+            {
+              alert("请先选择一个要登录的账号！");
+              return;
             }
           }
-          var a = v[t(844)](n[t(833)], f[t(761)](n[t(833)], n[t(551)]));
-          if (_0x52b0b0[t(566) + t(588)](e, a), e[t(708)](f[t(586)])) if (f[t(527)](f[t(772)], f[t(772)])) {
-            var w = _0x52b0b0[t(777) + "nc"](e, f[t(421)]);
-            (w = w[t(433)](f[t(466)](w[t(419)]("\n"), 1), f[t(491)](w[t(554) + "f"]("}"), 1)))[t(748)](f[t(825)]) ? w = w[t(433)](f[t(825)][t(551)]) : w[t(748)](f[t(832)]) && (w = w[t(433)](f[t(832)][t(551)])), _0x52b0b0[t(566) + t(588)](e, w, f[t(421)]);
-          } else for (var s = c[t(537)][t(763)]("|"), z = 0;;) {
-            switch (s[z++]) {
-              case "0":
-                var C = K[t(554) + "f"]("/");
-                continue;
-              case "1":
-                if (c[t(738)](C, -1)) {
-                  var q = K[t(433)](0, C);
-                  if (!_0x27a9eb[t(504)](q)) {
-                    var D = {};
-                    D[t(803)] = true, _0x2177e2[t(564)](q, D);
-                  }
-                }
-                continue;
-              case "2":
-                var K = c[t(733)](c[t(737)](_0x317add, "/"), _0x1b0c08[t(692)]);
-                continue;
-              case "3":
-                _0x51f556[t(566) + t(588)](K, y);
-                continue;
-              case "4":
-                if (K[t(708)](c[t(473)])) {
-                  var L = _0xde91f[t(777) + "nc"](K, c[t(693)]);
-                  (L = L[t(433)](c[t(733)](L[t(419)]("\n"), 1), c[t(469)](L[t(554) + "f"]("}"), 1)))[t(748)](c[t(710)]) ? L = L[t(433)](c[t(710)][t(551)]) : L[t(748)](c[t(681)]) && (L = L[t(433)](c[t(681)][t(551)])), _0x5f3037[t(566) + t(588)](K, L, c[t(693)]);
-                }
-                continue;
-              case "5":
-                var y = _0x2dc1f0[t(844)](_0x54299a[t(833)], c[t(733)](_0x4fabad[t(833)], _0x2a4c79[t(551)]));
-                continue;
-            }
-            break;
-          }
-        } else wQqFzL[t(641)](_0x75ea8f);
-      }), t[u(805)](n);
-    }
-    t[e(392)](o, c, t[e(751)]), t[e(720)](o, i[0], t[e(713)]);
-  });
-}
-function _0x41467f(n) {
-  var r = _0x25b3ca,
-    u = {
-      lrJMN: r(818) + r(344),
-      QpGtG: r(753) + r(608) + r(410) + r(582),
-      dCLss: function (n, r) {
-        return n(r);
-      },
-      iVxct: r(793),
-      PcWCz: function (n, r) {
-        return n + r;
-      },
-      WjFaF: r(451),
-      qZzQu: r(384),
-      hGpXk: function (n) {
-        return n();
-      },
-      degrD: function (n, r, u) {
-        return n(r, u);
-      },
-      QcWOP: function (n, r) {
-        return n !== r;
-      },
-      bbPrC: r(502),
-      dXJWV: r(379),
-      tmWvm: function (n) {
-        return n();
-      },
-      vyKoh: function (n, r) {
-        return n + r;
-      },
-      JwAiS: function (n, r) {
-        return n + r;
-      },
-      qyggt: r(462),
-      QyeYU: function (n, r) {
-        return n === r;
-      },
-      pOFZN: r(376),
-      hELWI: r(834),
-      RYBCa: r(513),
-      lRwRL: r(467) + r(673),
-      Iwfej: r(409),
-      DeKiW: function (n, r) {
-        return n !== r;
-      },
-      IsVWL: function (n, r) {
-        return n / r;
-      },
-      uzobM: r(551),
-      ckujQ: function (n, r) {
-        return n === r;
-      },
-      TXBdY: function (n, r) {
-        return n % r;
-      },
-      VBMGX: r(403),
-      gHGdd: r(489),
-      OHQFO: function (n, r) {
-        return n + r;
-      },
-      FIrBy: r(755),
-      dzfxP: r(657),
-      wzCrA: r(814),
-      YJJdz: function (n, r) {
-        return n !== r;
-      },
-      JGMVp: r(848),
-      uszew: r(391),
-      IZpZt: r(556) + "t",
-      hlZuW: function (n, r) {
-        return n(r);
-      },
-      brLKd: function (n, r) {
-        return n(r);
-      }
-    };
-  function t(n) {
-    var e = r,
-      f = {
-        xnyJo: function (n, r) {
-          return u[_0x1699(425)](n, r);
-        },
-        uoRLU: u[e(544)],
-        mXqTN: function (n) {
-          return u[e(658)](n);
-        },
-        Rksbt: function (n, r) {
-          return u[e(345)](n, r);
-        },
-        OxdAn: function (n, r) {
-          return u[e(590)](n, r);
-        },
-        fDQLE: u[e(452)]
+          console.log(_0x36f5e5 + " 正在手动刷新页面...");
+          location.reload();
+        }
+      });
+      document.getElementById("delete-account-btn").addEventListener("click", _0x2fcbf2);
+      const _0x26308d = _0x5b51fa => {
+        {
+          _0x47c766.panel_collapsed = _0x5b51fa;
+          _0x183dd2.style.display = _0x5b51fa ? "none" : "block";
+          _0x59a63e.style.display = _0x5b51fa ? "flex" : "none";
+          _0xea8798();
+        }
       };
-    if (u[e(645)](typeof n, u[e(351)])) return u[e(425)](u[e(569)], u[e(538)]) ? function (n) {}[e(854) + "r"](u[e(378)])[e(521)](u[e(439)]) : _0xe31ed0;
-    if (u[e(746)](u[e(345)]("", u[e(540)](n, n))[u[e(580)]], 1) || u[e(531)](u[e(420)](n, 20), 0)) u[e(425)](u[e(635)], u[e(637)]) ? function () {
-      var n = e;
-      return f[n(572)](f[n(842)], f[n(842)]), true;
-    }[e(854) + "r"](u[e(639)](u[e(509)], u[e(670)]))[e(663)](u[e(649)]) : f[e(838)](_0x36ddce);else {
-      if (!u[e(557)](u[e(667)], u[e(460)])) {
-        var c = {
-          QmAfU: function (n) {
-            return f[e(838)](n);
-          }
-        };
-        return void _0x5e76cb[e(350)](f[e(675)](f[e(675)](f[e(415)](_0x3c2492, "/"), _0x3113fa), _0x27ba85), _0x14f440, f[e(476)], () => {
-          c[e(619)](_0x8d5806);
-        });
+      _0xd1e48f.onclick = () => _0x26308d(true);
+      _0x59a63e.onclick = () => _0x26308d(false);
+      _0x15c183(_0x360bd3, _0x183dd2);
+      _0x15c183(_0x59a63e, _0x59a63e);
+    }
+  }
+  function _0x2fcbf2() {
+    {
+      const _0x54fb90 = document.getElementById("account-selector");
+      const _0x127570 = _0x54fb90.value;
+      if (!_0x127570 || _0x47c766.accounts.length === 0) {
+        {
+          alert("当前没有可删除的账号。");
+          return;
+        }
       }
-      (function () {
-        var n = e,
-          r = {
-            SnnqZ: u[n(412)],
-            Sloei: u[n(718)],
-            tHMvM: function (r, t) {
-              return u[n(773)](r, t);
-            },
-            USICa: u[n(776)],
-            fCMfa: function (r, t) {
-              return u[n(759)](r, t);
-            },
-            eNSmL: u[n(432)],
-            nVKWk: u[n(581)],
-            NKhFh: function (r, t) {
-              return u[n(773)](r, t);
-            },
-            qBpow: function (r) {
-              return u[n(711)](r);
-            },
-            MilPg: function (r, t, e) {
-              return u[n(636)](r, t, e);
+      const _0x49bdf2 = _0x54fb90.options[_0x54fb90.selectedIndex].text;
+      if (confirm("您确定要删除账号 \"" + _0x49bdf2 + "\" 吗？\n此操作不可撤销！")) {
+        {
+          const _0x3eaf4e = _0x47c766.accounts.findIndex(_0x3d1201 => _0x3d1201.fileName === _0x127570);
+          if (_0x3eaf4e > -1) {
+            {
+              _0x47c766.accounts.splice(_0x3eaf4e, 1);
+              if (_0x47c766.selectedAccountFileName === _0x127570) {
+                {
+                  _0x47c766.accounts.length > 0 ? (_0x47c766.selectedAccountFileName = _0x47c766.accounts[0].fileName, console.log(_0x36f5e5 + " 已删除当前活动账号，自动切换到: " + _0x47c766.selectedAccountFileName)) : _0x47c766.selectedAccountFileName = null;
+                }
+              }
+              _0xea8798();
+              _0x1a02ee();
+              console.log(_0x36f5e5 + " 账号 \"" + _0x127570 + "\" 已被删除。");
+              alert("账号 \"" + _0x49bdf2 + "\" 已成功删除。");
+            }
+          } else {
+            {
+              alert("错误：在配置中找不到要删除的账号。");
+            }
+          }
+        }
+      }
+    }
+  }
+  async function _0x16e835(_0x5c3d86) {
+    {
+      const _0x4cfe89 = _0x5c3d86.target.files;
+      if (!_0x4cfe89 || _0x4cfe89.length === 0) {
+        return;
+      }
+      let _0x573275 = false;
+      let _0x50a66d = "";
+      const _0x34cd5a = _0x44e064 => new Promise((_0x287690, _0x4b1955) => {
+        {
+          const _0x4a984c = new FileReader();
+          _0x4a984c.onload = _0x179982 => {
+            {
+              try {
+                {
+                  const _0x347ce1 = Array.from(new Uint8Array(_0x179982.target.result)).map(_0x454d82 => _0x454d82.toString(16).padStart(2, "0")).join("");
+                  const _0x474abb = {
+                    fileName: _0x44e064.name,
+                    hexString: _0x347ce1
+                  };
+                  _0x287690(_0x474abb);
+                }
+              } catch (_0x4c54db) {
+                {
+                  _0x4b1955(_0x4c54db);
+                }
+              }
             }
           };
-        if (!u[n(425)](u[n(533)], u[n(533)])) return false;
-        r[n(515)](_0x5ba798, this, function () {
-          var u = n,
-            t = new _0x36040c(r[u(480)]),
-            e = new _0x14848f(r[u(812)], "i"),
-            f = r[u(383)](_0x5dea8f, r[u(623)]);
-          t[u(365)](r[u(453)](f, r[u(386)])) && e[u(365)](r[u(453)](f, r[u(524)])) ? r[u(820)](_0x547236) : r[u(852)](f, "0");
-        })();
-      })[e(854) + "r"](u[e(345)](u[e(509)], u[e(670)]))[e(521)](u[e(406)]);
+          _0x4a984c.onerror = _0x38bc8b => _0x4b1955(_0x38bc8b);
+          _0x4a984c.readAsArrayBuffer(_0x44e064);
+        }
+      });
+      try {
+        {
+          const _0x457cba = await Promise.all(Array.from(_0x4cfe89).map(_0x34cd5a));
+          _0x457cba.forEach(_0x18a009 => {
+            {
+              const {
+                fileName: _0xc74876,
+                hexString: _0x39b159
+              } = _0x18a009;
+              const _0x54ea42 = _0x47c766.accounts.findIndex(_0x349be9 => _0x349be9.fileName === _0xc74876);
+              if (_0x54ea42 > -1) {
+                {
+                  _0x47c766.accounts[_0x54ea42].hexString = _0x39b159;
+                }
+              } else {
+                {
+                  const _0x5b0ad0 = {
+                    fileName: _0xc74876,
+                    hexString: _0x39b159
+                  };
+                  _0x47c766.accounts.push(_0x5b0ad0);
+                  _0x573275 = true;
+                }
+              }
+              _0x50a66d = _0xc74876;
+            }
+          });
+          !_0x47c766.selectedAccountFileName && _0x47c766.accounts.length > 0 && (_0x47c766.selectedAccountFileName = _0x47c766.accounts[0].fileName);
+          _0x1a02ee();
+          if (_0x573275) {
+            {
+              if (confirm("成功导入新账号\"" + _0x50a66d.replace(".bin", "") + "\"，是否立即切换并刷新游戏？")) {
+                {
+                  _0x47c766.selectedAccountFileName = _0x50a66d;
+                  _0xea8798();
+                  location.reload();
+                }
+              } else {
+                {
+                  _0xea8798();
+                }
+              }
+            }
+          } else {
+            {
+              _0xea8798();
+              alert("所有选中的账号文件已成功更新！");
+            }
+          }
+        }
+      } catch (_0x33d55a) {
+        console.error(_0x36f5e5 + " 处理文件时出错:", _0x33d55a);
+        alert("处理文件时出错，请检查文件格式或在控制台查看详情。");
+      }
+      _0x5c3d86.target.value = "";
     }
-    u[e(830)](t, ++n);
   }
-  try {
-    if (n) return t;
-    u[r(792)](t, 0);
-  } catch (n) {}
-}
-exports[_0x25b3ca(721)] = _0x44a176;
+  function _0x15c183(_0x2e9e9d, _0x3b6975) {
+    {
+      let _0x5f2659 = false;
+      let _0x2c08fe;
+      let _0x53f68c;
+      let _0x42a98d;
+      let _0xb324e8;
+      const _0x14e628 = _0x1441ad => {
+        {
+          if (_0x1441ad.target.classList.contains("collapse-btn")) {
+            return;
+          }
+          const _0x58266b = _0x1441ad.type.startsWith("touch");
+          if (_0x58266b && _0x1441ad.touches.length > 1) {
+            return;
+          }
+          const _0x2346a7 = _0x58266b ? _0x1441ad.touches[0] : _0x1441ad;
+          _0x5f2659 = false;
+          _0x42a98d = _0x2346a7.clientX;
+          _0xb324e8 = _0x2346a7.clientY;
+          _0x2c08fe = _0x2346a7.clientX - _0x3b6975.offsetLeft;
+          _0x53f68c = _0x2346a7.clientY - _0x3b6975.offsetTop;
+          const _0x512284 = {
+            passive: false
+          };
+          document.addEventListener(_0x58266b ? "touchmove" : "mousemove", _0x44cccc, _0x512284);
+          document.addEventListener(_0x58266b ? "touchend" : "mouseup", _0xe7c9ed);
+        }
+      };
+      const _0x44cccc = _0x41fbeb => {
+        {
+          const _0x4fce17 = _0x41fbeb.type.startsWith("touch");
+          const _0x26d010 = _0x4fce17 ? _0x41fbeb.touches[0] : _0x41fbeb;
+          if (!_0x5f2659 && (Math.abs(_0x26d010.clientX - _0x42a98d) > 5 || Math.abs(_0x26d010.clientY - _0xb324e8) > 5)) {
+            {
+              _0x5f2659 = true;
+            }
+          }
+          if (_0x5f2659) {
+            {
+              _0x41fbeb.preventDefault();
+              let _0xa580ca = _0x26d010.clientX - _0x2c08fe;
+              let _0x4e7cb3 = _0x26d010.clientY - _0x53f68c;
+              const _0x5df2ef = 5;
+              _0xa580ca = Math.max(_0x5df2ef, Math.min(_0xa580ca, window.innerWidth - _0x3b6975.offsetWidth - _0x5df2ef));
+              _0x4e7cb3 = Math.max(_0x5df2ef, Math.min(_0x4e7cb3, window.innerHeight - _0x3b6975.offsetHeight - _0x5df2ef));
+              _0x3b6975.style.left = _0xa580ca + "px";
+              _0x3b6975.style.top = _0x4e7cb3 + "px";
+            }
+          }
+        }
+      };
+      const _0xe7c9ed = _0x234af8 => {
+        {
+          const _0x5b5cec = _0x234af8.type.startsWith("touch");
+          document.removeEventListener(_0x5b5cec ? "touchmove" : "mousemove", _0x44cccc);
+          document.removeEventListener(_0x5b5cec ? "touchend" : "mouseup", _0xe7c9ed);
+          if (_0x5f2659) {
+            {
+              const _0x16f0d1 = {
+                top: _0x3b6975.style.top,
+                left: _0x3b6975.style.left
+              };
+              _0x47c766.panel_pos = _0x16f0d1;
+              document.getElementById("accelerator-panel").style.top = _0x3b6975.style.top;
+              document.getElementById("accelerator-panel").style.left = _0x3b6975.style.left;
+              document.getElementById("accelerator-toggle-btn").style.top = _0x3b6975.style.top;
+              document.getElementById("accelerator-toggle-btn").style.left = _0x3b6975.style.left;
+              _0xea8798();
+            }
+          }
+        }
+      };
+      _0x2e9e9d.addEventListener("mousedown", _0x14e628);
+      const _0x5d8dce = {
+        passive: false
+      };
+      _0x2e9e9d.addEventListener("touchstart", _0x14e628, _0x5d8dce);
+    }
+  }
+  const _0x186d98 = {
+    accelerator: false,
+    login: false
+  };
+  const _0x1740bb = {
+    quench: false,
+    nightmare: false
+  };
+  const _0x31a0d4 = {
+    authUser: false,
+    serverList: false,
+    isolate: false
+  };
+  const _0x2a05c = {
+    isReady: _0x186d98,
+    accelerator: {
+      hooksInjected: _0x1740bb,
+      engine_speed: {
+        isReady: false,
+        apply: () => {
+          {
+            if (_0x2a05c.accelerator.engine_speed.isReady) {
+              _0x2780d9.cc.director.getScheduler().setTimeScale(_0x47c766.engine_speed_rate);
+            }
+          }
+        }
+      },
+      injectQuenchHook: () => {
+        {
+          if (_0x2a05c.accelerator.hooksInjected.quench) {
+            return;
+          }
+          try {
+            {
+              const _0x4feb68 = _0x2780d9.__require("TimerManager").TimerManager;
+              if (!_0x4feb68 || !_0x4feb68.instance || _0x4feb68.instance.onTimer.__isPatched) {
+                return;
+              }
+              const _0x540b5b = _0x4feb68.instance.onTimer;
+              _0x4feb68.instance.onTimer = function (..._0x22c772) {
+                {
+                  if (_0x47c766.quench_speed_enabled && _0x22c772[0] && _0x22c772[1] && _0x22c772[0] === _0x22c772[1]._updateQuench) {
+                    {
+                      _0x22c772[2] = 1;
+                      const _0x391ffe = _0x22c772[0];
+                      _0x22c772[0] = function (_0x6af159) {
+                        {
+                          this._isInQuenchAnim = false;
+                          _0x391ffe.call(this, _0x6af159);
+                        }
+                      };
+                    }
+                  }
+                  return _0x540b5b.apply(this, _0x22c772);
+                }
+              };
+              _0x4feb68.instance.onTimer.__isPatched = true;
+              console.log(_0x36f5e5 + " 淬炼加速补丁已注入。");
+              _0x2a05c.accelerator.hooksInjected.quench = true;
+            }
+          } catch (_0x2da307) {}
+        }
+      },
+      injectNightmareHook: () => {
+        {
+          if (_0x2a05c.accelerator.hooksInjected.nightmare) {
+            return;
+          }
+          try {
+            {
+              const _0x1afe77 = _0x2780d9.__require("NightmareBattlePanel").NightmareBattlePanel;
+              if (!_0x1afe77 || !_0x1afe77.prototype.onShow || _0x1afe77.prototype.onShow.__isPatched) {
+                return;
+              }
+              const _0x3d248f = _0x1afe77.prototype.onShow;
+              _0x1afe77.prototype.onShow = function (..._0x59d202) {
+                {
+                  if (this._originalDefaultTimescale === undefined) {
+                    this._originalDefaultTimescale = this.DEFAULT_TIMESCALE;
+                  }
+                  this.DEFAULT_TIMESCALE = _0x47c766.nightmare_speed_enabled ? 100 : this._originalDefaultTimescale;
+                  return _0x3d248f.apply(this, _0x59d202);
+                }
+              };
+              _0x1afe77.prototype.onShow.__isPatched = true;
+              console.log(_0x36f5e5 + " 十殿加速补丁已注入。");
+              _0x2a05c.accelerator.hooksInjected.nightmare = true;
+            }
+          } catch (_0x32f9a4) {}
+        }
+      }
+    },
+    login: {
+      decryptedData: null,
+      patchesApplied: _0x31a0d4,
+      decryptActiveAccount: () => {
+        {
+          if (_0x2a05c.login.decryptedData) {
+            return true;
+          }
+          if (!_0x47c766.selectedAccountFileName) {
+            return false;
+          }
+          const _0x4055fc = _0x47c766.accounts.find(_0x26a9b1 => _0x26a9b1.fileName === _0x47c766.selectedAccountFileName);
+          if (!_0x4055fc) {
+            {
+              console.error(_0x36f5e5 + " 找不到选定的账号文件: " + _0x47c766.selectedAccountFileName);
+              return false;
+            }
+          }
+          const _0x482531 = _0x2780d9.__require("13");
+          const _0x20101a = _0x4055fc.hexString.match(/.{1,2}/g).map(_0x22424f => parseInt(_0x22424f, 16));
+          _0x2a05c.login.decryptedData = _0x482531.decMsg(new Uint8Array(_0x20101a).buffer, {
+            decrypt: _0x482531.lz4XorDecode,
+            encrypt: _0x482531.lz4XorEncode
+          });
+          console.log(_0x36f5e5 + " 账号 [" + _0x4055fc.fileName + "] 解密成功。");
+          return true;
+        }
+      },
+      apply: () => {
+        {
+          const _0x2e9440 = _0x2780d9.__require("data-index");
+          const _0x25d15c = _0x2e9440.LoginService;
+          const _0x322bd1 = _0x2a05c.login.decryptedData;
+          if (!_0x25d15c || !_0x25d15c.authUser || !_0x25d15c.serverList || !_0x2e9440.Isolate) {
+            return false;
+          }
+          if (!_0x25d15c.authUser.isSelfCreate) {
+            {
+              const _0x3637c6 = _0x25d15c.authUser;
+              _0x25d15c.authUser = _0x1e367b => {
+                {
+                  console.log(_0x36f5e5 + " authUser 已拦截");
+                  const _0x12d4a1 = {
+                    ..._0x1e367b,
+                    platformExt: _0x322bd1._raw.platformExt,
+                    info: _0x322bd1._raw.info
+                  };
+                  return _0x3637c6(_0x12d4a1);
+                }
+              };
+              _0x25d15c.authUser.isSelfCreate = true;
+              _0x2a05c.login.patchesApplied.authUser = true;
+            }
+          }
+          if (!_0x25d15c.serverList.isSelfCreate) {
+            {
+              const _0x3e4641 = _0x25d15c.serverList;
+              _0x25d15c.serverList = () => {
+                {
+                  console.log(_0x36f5e5 + " serverList 已拦截");
+                  return _0x3e4641(_0x322bd1._raw);
+                }
+              };
+              _0x25d15c.serverList.isSelfCreate = true;
+              _0x2a05c.login.patchesApplied.serverList = true;
+            }
+          }
+          if (!_0x2e9440.Isolate.isSelfCreate) {
+            {
+              const _0x2a63ab = _0x2e9440.Isolate;
+              _0x2e9440.Isolate = function (..._0x54a382) {
+                {
+                  const _0x42a640 = new _0x2a63ab(..._0x54a382);
+                  if (_0x42a640.LoginService && !_0x42a640.LoginService.authUser.isSelfCreate) {
+                    {
+                      const _0x56b18b = _0x42a640.LoginService.authUser;
+                      _0x42a640.LoginService.authUser = _0x41be71 => _0x56b18b({
+                        ..._0x41be71,
+                        platformExt: _0x322bd1._raw.platformExt,
+                        info: _0x322bd1._raw.info
+                      });
+                      _0x42a640.LoginService.authUser.isSelfCreate = true;
+                    }
+                  }
+                  return _0x42a640;
+                }
+              };
+              _0x2e9440.Isolate.isSelfCreate = true;
+              _0x2a05c.login.patchesApplied.isolate = true;
+            }
+          }
+          const _0x20541f = Object.values(_0x2a05c.login.patchesApplied).every(Boolean);
+          if (_0x20541f && !_0x2a05c.isReady.login) {
+            {
+              document.title = "【" + _0x47c766.selectedAccountFileName.replace(".bin", "") + "】" + document.title;
+              console.log(_0x36f5e5 + " 所有登录补丁应用成功！");
+            }
+          }
+          return _0x20541f;
+        }
+      }
+    }
+  };
+  function _0x889830() {
+    _0x547365();
+    _0x255596();
+    console.log(_0x36f5e5 + " 初始化，开始轮询等待游戏模块...");
+    const _0x35611e = setInterval(() => {
+      if (_0x2a05c.isReady.accelerator && _0x2a05c.isReady.login) {
+        {
+          console.log(_0x36f5e5 + " 所有模块已加载并注入，初始化完成。");
+          clearInterval(_0x35611e);
+          return;
+        }
+      }
+      if (!_0x2a05c.isReady.accelerator) {
+        {
+          try {
+            {
+              if (!_0x2a05c.accelerator.engine_speed.isReady && _0x2780d9.cc && _0x2780d9.cc.director && _0x2780d9.cc.director.getScheduler()) {
+                {
+                  _0x2a05c.accelerator.engine_speed.isReady = true;
+                  _0x2a05c.accelerator.engine_speed.apply();
+                  console.log(_0x36f5e5 + " Cocos引擎已就绪。");
+                }
+              }
+              if (typeof _0x2780d9.__require === "function") {
+                {
+                  _0x2a05c.accelerator.injectQuenchHook();
+                  _0x2a05c.accelerator.injectNightmareHook();
+                }
+              }
+              if (_0x2a05c.accelerator.engine_speed.isReady && _0x2a05c.accelerator.hooksInjected.quench && _0x2a05c.accelerator.hooksInjected.nightmare) {
+                {
+                  _0x2a05c.isReady.accelerator = true;
+                }
+              }
+            }
+          } catch (_0x10eaa5) {}
+        }
+      }
+      if (!_0x2a05c.isReady.login) {
+        if (!_0x47c766.selectedAccountFileName) {
+          {
+            console.log(_0x36f5e5 + " 未选择任何账号，登录补丁将不生效。");
+            _0x2a05c.isReady.login = true;
+            return;
+          }
+        }
+        try {
+          _0x2a05c.login.decryptActiveAccount() && _0x2a05c.login.apply() && (_0x2a05c.isReady.login = true);
+        } catch (_0x1503e1) {}
+      }
+    }, 200);
+  }
+  _0x889830();
+})();
