@@ -1,975 +1,692 @@
-//Sat Aug 16 2025 16:47:43 GMT+0000 (Coordinated Universal Time)
+//Sun Aug 17 2025 13:17:16 GMT+0000 (Coordinated Universal Time)
 //Base:<url id="cv1cref6o68qmpt26ol0" type="url" status="parsed" title="GitHub - echo094/decode-js: JS混淆代码的AST分析工具 AST analysis tool for obfuscated JS code" wc="2165">https://github.com/echo094/decode-js</url>
 //Modify:<url id="cv1cref6o68qmpt26olg" type="url" status="parsed" title="GitHub - smallfawn/decode_action: 世界上本来不存在加密，加密的人多了，也便成就了解密" wc="741">https://github.com/smallfawn/decode_action</url>
-function qqdzz() {
-  var _0x3d5081 = function () {
+!function () {
+  function initScript() {
+    function createMenu() {
+      const element = () => {
+        const element = Array.from(document.querySelectorAll(".menu-btn")).find(t => t.textContent.includes("修改UID"));
+        e ? e.remove() : setTimeout(e, 300);
+      };
+      e();
+    }
+    function handleClick(n) {
+      if (n.matches(".menu-container")) {
+        n.style.backgroundColor = t.menuContainerBg;
+        n.style.padding = "12px";
+        n.style.borderRadius = t.borderRadius;
+        n.style.boxShadow = "0 0 15px rgba(255, 102, 178, 0.3)";
+        n.style.backgroundSize = "200px auto";
+        n.style.display = "block";
+      }
+      if (n.matches(".menu-btn")) {
+        n.style.backgroundColor = t.menuBtnBg;
+        n.style.color = t.menuBtnColor;
+        n.style.border = t.menuBtnBorder;
+        n.style.borderRadius = t.borderRadius;
+        n.style.padding = "10px 16px";
+        n.style.margin = "6px 0";
+        n.style.transition = "0.3s";
+        n.style.cursor = "pointer";
+        n.addEventListener("mouseenter", () => {
+          n.style.backgroundColor = t.menuBtnHoverBg;
+          n.style.transform = "scale(1.05)";
+        });
+        n.addEventListener("mouseleave", () => {
+          n.style.backgroundColor = t.menuBtnBg;
+          n.style.transform = "scale(1)";
+        });
+      }
+      if (n.matches("h2[style*=\"color: #333; margin: 0; font-size: 16px; font-weight: 600;\"]")) {
+        n.style.backgroundColor = t.shopPanelBg;
+        n.style.padding = "8px";
+        n.style.borderRadius = t.borderRadius;
+      }
+      if (n.matches("#savePanel")) {
+        n.style.backgroundColor = t.savePanelBg;
+        n.style.color = t.savePanelTextColor;
+        n.style.borderRadius = t.borderRadius;
+        n.style.padding = "15px";
+        n.style.boxShadow = "0 0 15px rgba(90, 42, 111, 0.5)";
+      }
+      if (n.matches(".save-slot")) {
+        n.style.backgroundColor = t.saveSlotBg;
+        n.style.border = "1px solid #A77DC2";
+        n.style.borderRadius = t.borderRadius;
+        n.style.padding = "10px";
+        n.style.marginBottom = "10px";
+        n.style.transition = "0.3s";
+        n.querySelectorAll("div").forEach(e => {
+          e.style.color = t.savePanelTextColor;
+        });
+        n.addEventListener("mouseenter", () => {
+          n.style.backgroundColor = t.saveSlotHover;
+        });
+        n.addEventListener("mouseleave", () => {
+          n.style.backgroundColor = t.saveSlotBg;
+        });
+      }
+    }
+    const obj = new MutationObserver(t => {
+      t.forEach(t => {
+        t.addedNodes.forEach(t => {
+          if (1 === t.nodeType) {
+            n(t);
+            t.querySelectorAll(".menu-container, .menu-btn, h2[style*=\"color: #333;\"] , #savePanel, .save-slot").forEach(n);
+            e();
+          }
+        });
+      });
+    });
+    o.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+    setTimeout(() => {
+      e();
+      document.querySelectorAll(".menu-container, .menu-btn, h2[style*=\"color: #333;\"] , #savePanel, .save-slot").forEach(n);
+    }, 800);
+  }
+  "complete" === document.readyState ? setTimeout(t, 1000) : window.addEventListener("load", () => {
+    setTimeout(t, 1000);
+  });
+}();
+(function () {
+  const _a = [{
+    f: ["V", "B", "X"],
+    c: 306
+  }, {
+    f: ["X", "Q", "1"],
+    c: 331
+  }, {
+    f: ["H", "A", "D"],
+    c: 335
+  }, {
+    f: ["N", "D", "M"],
+    c: 345
+  }, {
+    f: ["Q", "B", "2"],
+    c: 378
+  }, {
+    f: ["L", "J", "7"],
+    c: 340
+  }, {
+    f: ["W", "Q", "Z"],
+    c: 333
+  }, {
+    f: ["Z", "K", "8"],
+    c: 344
+  }, {
+    f: ["P", "D", "N"],
+    c: 310
+  }, {
+    f: ["E", "S", "G"],
+    c: 332
+  }];
+  const _b = x => {
+    if (!x) {
+      return false;
+    }
+    const y = x.trim().toUpperCase();
+    if (!/^TT-[A-Z0-9]{8}-[A-Z0-9]{8}$/.test(y)) {
+      return false;
+    }
+    const z = [y[3], y[9], y[15]];
+    let s = 0;
+    for (let i = 0; i < y.length; i++) {
+      s += y.charCodeAt(i);
+    }
+    return _a.some(r => r.f.every((c, d) => z[d] === c) && s % 1000 === r.c % 1000);
+  };
+  const _c = () => {
+    const element = localStorage.getItem("_km_expiry");
+    return e && Date.now() < parseInt(e);
+  };
+  const _d = () => {
+    if (_c()) {
+      return true;
+    }
+    localStorage.removeItem("_km_expiry");
+    const f = () => {
+      const g = prompt("请输入卡密（闲鱼：天天资源铺）：");
+      if (g === null) {
+        alert("必须输入有效卡密才能使用插件");
+        return f();
+      }
+      if (_b(g)) {
+        const h = Date.now() + 604800000;
+        localStorage.setItem("_km_expiry", h.toString());
+        alert("✅ 授权成功！插件已激活，有效期7天如过期请联系闲鱼");
+        return true;
+      } else {
+        alert("❌ 卡密无效！请联系闲鱼：天天资源铺");
+        return true;
+      }
+    };
+    return true;
+  };
+  const _e = _d();
+  const _f = setInterval(() => {
+    if (!_c()) {
+      clearInterval(_f);
+      localStorage.removeItem("_km_expiry");
+      alert("您的授权已过期，请联系闲鱼：天天资源铺");
+      location.reload();
+    }
+  }, 3600000);
+  if (_e) {
+    console.log("插件核心功能已启动");
+  }
+})();
+const target = "缘";
+function watchAndReplace() {
+  const selectors = ["h2[style*=\"color: #333; margin: 0; font-size: 16px; font-weight: 600;\"]", ".save-slot > div > div:first-child"];
+  function replaceText(element) {
+    if (element.matches(selectors[0]) || element.matches(selectors[1])) {
+      element.textContent = target;
+    }
+  }
+  const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      mutation.addedNodes.forEach(node => {
+        if (node.nodeType === 1) {
+          selectors.forEach(selector => {
+            node.querySelectorAll(selector).forEach(replaceText);
+            if (node.matches(selector)) {
+              replaceText(node);
+            }
+          });
+        }
+      });
+    });
+  });
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+  selectors.forEach(selector => {
+    document.querySelectorAll(selector).forEach(replaceText);
+  });
+}
+watchAndReplace();
+(function () {
+  const _0x2873c2 = function () {
+    let _0x497257 = true;
+    return function (_0xec9169, _0x303afc) {
+      const _0x40df97 = _0x497257 ? function () {
+        if (_0x303afc) {
+          {
+            const _0x4cc248 = _0x303afc.apply(_0xec9169, arguments);
+            _0x303afc = null;
+            return _0x4cc248;
+          }
+        }
+      } : function () {};
+      _0x497257 = false;
+      return _0x40df97;
+    };
+  }();
+  "use strict";
+  function _0x3a7fc3() {
+    const _0x67f90d = _0x2873c2(this, function () {
+      const _0x3f5246 = typeof window !== "undefined" ? window : typeof process === "object" && typeof require === "function" && typeof global === "object" ? global : this;
+      const _0x4daa4b = function () {
+        const _0x32ffb2 = new _0x3f5246.RegExp("^([^ ]+( +[^ ]+)+)+[^ ]}");
+        return !_0x32ffb2.test(_0x67f90d);
+      };
+      return _0x4daa4b();
+    });
+    _0x67f90d();
     {
-      var _0xb60b22 = true;
-      return function (_0x2bfa66, _0x1ba0d3) {
-        {
-          var _0x2e0fe4 = _0xb60b22 ? function () {
-            {
-              if (_0x1ba0d3) {
+      {
+        const _0x1909f7 = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+        let _0x5fcd94;
+        while (_0x5fcd94 = _0x1909f7.nextNode()) {
+          {
+            if (_0x5fcd94.textContent.includes("にこにこ")) {
+              {
                 {
-                  var _0x34f39f = _0x1ba0d3.apply(_0x2bfa66, arguments);
-                  _0x1ba0d3 = null;
-                  return _0x34f39f;
+                  _0x5fcd94.textContent = _0x5fcd94.textContent.replace(/にこにこ/g, "にこにこ");
                 }
               }
             }
-          } : function () {};
-          _0xb60b22 = false;
-          return _0x2e0fe4;
+          }
         }
-      };
+      }
+    }
+  }
+  _0x3a7fc3();
+  const _0x14e319 = {
+    childList: true,
+    subtree: true
+  };
+  new MutationObserver(_0x3a7fc3).observe(document.body, _0x14e319);
+  if (typeof _0xodF !== "undefined" && _0xodF.includes("にこにこ")) {
+    {
+      _0xodF = _0xodF.replace("にこにこ", "にこにこ");
+    }
+  }
+})();
+(function (_0x3d4519) {
+  const _0x5d99cc = function () {
+    {
+      {
+        let _0x3551f1 = true;
+        return function (_0x431bde, _0x59660c) {
+          {
+            const _0x4f66df = _0x3551f1 ? function () {
+              {
+                if (_0x59660c) {
+                  const _0x54bf58 = _0x59660c.apply(_0x431bde, arguments);
+                  _0x59660c = null;
+                  return _0x54bf58;
+                }
+              }
+            } : function () {};
+            _0x3551f1 = false;
+            return _0x4f66df;
+          }
+        };
+      }
     }
   }();
-  var _0x245ae9 = _0x3d5081(this, function () {
+  const _0x2ed550 = _0x5d99cc(this, function () {
     {
-      var _0x430208 = function () {};
-      var _0x205f6d;
-      try {
+      const _0x55abcc = typeof window !== "undefined" ? window : typeof process === "object" && typeof require === "function" && typeof global === "object" ? global : this;
+      const _0xc71271 = function () {
         {
-          var _0x2b50b0 = Function("return (function() {}.constructor(\"return this\")( ));");
-          _0x205f6d = _0x2b50b0();
-        }
-      } catch (_0x27fcc3) {
-        {
-          _0x205f6d = window;
-        }
-      }
-      if (!_0x205f6d.console) {
-        {
-          _0x205f6d.console = function (_0x330c23) {
-            {
-              var _0x3b3502 = {};
-              _0x3b3502.log = _0x330c23;
-              _0x3b3502.warn = _0x330c23;
-              _0x3b3502.debug = _0x330c23;
-              _0x3b3502.info = _0x330c23;
-              _0x3b3502.error = _0x330c23;
-              _0x3b3502.exception = _0x330c23;
-              _0x3b3502.table = _0x330c23;
-              _0x3b3502.trace = _0x330c23;
-              return _0x3b3502;
-            }
-          }(_0x430208);
-        }
-      } else {
-        {
-          _0x205f6d.console.log = _0x430208;
-          _0x205f6d.console.warn = _0x430208;
-          _0x205f6d.console.debug = _0x430208;
-          _0x205f6d.console.info = _0x430208;
-          _0x205f6d.console.error = _0x430208;
-          _0x205f6d.console.exception = _0x430208;
-          _0x205f6d.console.table = _0x430208;
-          _0x205f6d.console.trace = _0x430208;
-        }
-      }
-    }
-  });
-  _0x245ae9();
-  var _0x3cc75c = this;
-  if (_0x3cc75c.shiju_address) {
-    {
-      return;
-    }
-  }
-  var _0x33b8f2 = h5gg.getRangesList();
-  var _0x3113f1;
-  var _0x7d3c7d;
-  for (var _0x1d938d = 0; _0x1d938d < h5gg.getProcList().length; _0x1d938d++) {
-    {
-      if (h5gg.getProcList()[_0x1d938d].name == "balls") {
-        {
-          _0x3113f1 = h5gg.getProcList()[_0x1d938d];
-          h5gg.setTargetProc(_0x3113f1.pid);
-          _0x7d3c7d = _0x3113f1.name;
-          h5gg.getRangesList();
-        }
-      }
-    }
-  }
-  if (!(_0x7d3c7d == "balls")) {
-    {
-      showNotification("请进游戏", 3000);
-      qqdzz();
-    }
-  }
-  if (!_0x7d3c7d) {
-    {
-      showNotification("初始化失败，未检测到游戏进程！", 3000);
-      return;
-    }
-  }
-  if (_0x7d3c7d) {
-    {
-      showNotification("初始化成功！快去玩吧！", 3000);
-      return;
-    }
-  }
-}
-qqdzz();
-function tuqiu() {
-  var _0x2400a5 = prompt("请输入吐球数值");
-  h5gg.clearResults();
-  h5gg.searchNumber("216", "I32", "0x00000000", "0x200000000");
-  h5gg.searchNearby("1123", "I32", "0x4");
-  h5gg.searchNumber("1123", "I32", "0x00000000", "0x200000000");
-  var _0x2aa184 = h5gg.getResultsCount();
-  showNotification("开启成功", 2000);
-  var _0x366551 = h5gg.getResults(_0x2aa184);
-  setInterval(function () {
-    {
-      for (var _0x5e1b45 = 0; _0x5e1b45 < _0x2aa184; _0x5e1b45++) {
-        {
-          var _0x472a54 = _0x366551[_0x5e1b45].address;
-          var _0x4661d4 = Number(_0x472a54) + 156;
-          h5gg.setValue(_0x4661d4, _0x2400a5, "I64");
-        }
-      }
-    }
-  }, 0);
-}
-function pbsy() {
-  h5gg.clearResults();
-  var _0x43a84d = prompt("正常视野1.5请输入视野数值");
-  h5gg.clearResults();
-  h5gg.searchNumber("15", "I32", "0x00000000", "0x200000000");
-  h5gg.searchNearby("1027", "I32", "0x4");
-  h5gg.searchNearby("22", "I32", "0x4");
-  h5gg.searchNumber("22", "I32", "0x00000000", "0x200000000");
-  var _0x157dfe = h5gg.getResultsCount();
-  showNotification("开启成功", 2000);
-  var _0x1a6d5c = h5gg.getResults(_0x157dfe);
-  for (var _0x2a53db = 0; _0x2a53db < _0x157dfe; _0x2a53db++) {
-    {
-      var _0x5c4680 = _0x1a6d5c[_0x2a53db].address;
-      var _0xf449ed = Number(_0x5c4680) + 244;
-      h5gg.setValue(_0xf449ed, _0x43a84d, "F32");
-    }
-  }
-}
-function sjsy() {
-  h5gg.clearResults();
-  var _0x175368 = prompt("手机视野倍数");
-  h5gg.searchNumber("-3278106", "I32", "0x00000000", "0x200000000");
-  h5gg.searchNearby("-8880791", "I32", "0x4");
-  h5gg.searchNumber("-8880791", "I32", "0x00000000", "0x200000000");
-  var _0x5431e0 = h5gg.getResultsCount();
-  showNotification("开启成功", 2000);
-  var _0x79c721 = h5gg.getResults(_0x5431e0);
-  for (var _0x281d44 = 0; _0x281d44 < _0x5431e0; _0x281d44++) {
-    {
-      var _0x59b78f = _0x79c721[_0x281d44].address;
-      var _0x96532f = Number(_0x59b78f) + 96;
-      h5gg.setValue(_0x96532f, _0x175368, "F32");
-    }
-  }
-}
-function nianhe1() {
-  h5gg.clearResults();
-  var _0x5089e5 = prompt("默认粘合速度1.7建议0.1～1.7之间");
-  h5gg.searchNumber("1", "F32", "0x00000000", "0x200000000");
-  h5gg.searchNearby("7.9", "F32", "0x4");
-  h5gg.searchNearby("0.4", "F32", "0x4");
-  h5gg.searchNumber("0.4", "F32", "0x00000000", "0x200000000");
-  var _0x51883f = h5gg.getResultsCount();
-  showNotification("开启成功", 2000);
-  var _0x5c4ce0 = h5gg.getResults(_0x51883f);
-  for (var _0x120e3d = 0; _0x120e3d < _0x51883f; _0x120e3d++) {
-    {
-      var _0x5478d5 = _0x5c4ce0[_0x120e3d].address;
-      var _0x1fd3a9 = Number(_0x5478d5) - 208;
-      h5gg.setValue(_0x1fd3a9, _0x5089e5, "F32");
-    }
-  }
-}
-function nianhe2() {
-  h5gg.clearResults();
-  var _0x120e4d = prompt("正常开0~0.5\n反向粘合0.6以上");
-  h5gg.searchNumber("112", "I32", "0x00000000", "0x200000000");
-  h5gg.searchNearby("287", "I32", "0x4");
-  h5gg.searchNearby("65536", "I32", "0x4");
-  h5gg.searchNumber("65536", "I32", "0x00000000", "0x200000000");
-  var _0x499022 = h5gg.getResultsCount();
-  showNotification("开启成功", 2000);
-  var _0x583b4b = h5gg.getResults(_0x499022);
-  for (var _0xe365f4 = 0; _0xe365f4 < _0x499022; _0xe365f4++) {
-    {
-      var _0x41bb2b = _0x583b4b[_0xe365f4].address;
-      var _0x1633e0 = Number(_0x41bb2b) - 24;
-      h5gg.setValue(_0x1633e0, _0x120e4d, "F32");
-    }
-  }
-}
-function qj() {
-  h5gg.clearResults();
-  var _0x1f01b4 = prompt("只能砸铁不能玩游戏正常1");
-  h5gg.clearResults();
-  h5gg.searchNumber("0.03", "F32", "0x000000000", "0x2000000000");
-  h5gg.searchNearby("0.33333334327", "F32", "0x8");
-  h5gg.searchNearby("1", "F32", "0x8");
-  h5gg.searchNumber("1", "F32", "0x000000000", "0x2000000000");
-  var _0x40914f = h5gg.getResultsCount();
-  showNotification("开启成功", 2000);
-  var _0xc7258f = h5gg.getResults(_0x40914f);
-  setInterval(function () {
-    {
-      for (var _0x599799 = 0; _0x599799 < _0x40914f; _0x599799++) {
-        {
-          var _0x47ca43 = _0xc7258f[_0x599799].address;
-          h5gg.setValue(_0x47ca43, _0x1f01b4, "F32");
-        }
-      }
-    }
-  }, 0);
-}
-function sld() {
-  h5gg.clearResults();
-  h5gg.searchNumber("131375", "I32", "0x00000000", "0x200000000");
-  h5gg.searchNearby("5", "I32", "0x4");
-  h5gg.searchNumber("5", "I32", "0x00000000", "0x200000000");
-  h5gg.searchNearby("131077", "I32", "0x4");
-  h5gg.searchNumber("131077", "I32", "0x00000000", "0x200000000");
-  var _0x510da5 = h5gg.getResultsCount();
-  showNotification("开启成功", 2000);
-  var _0x42fa97 = h5gg.getResults(_0x510da5);
-  for (var _0x12dab2 = 0; _0x12dab2 < _0x510da5; _0x12dab2++) {
-    {
-      var _0x1b1cf4 = _0x42fa97[_0x12dab2].address;
-      var _0x44ef67 = Number(_0x1b1cf4) - 52;
-      h5gg.setValue(_0x44ef67, -1, "F32");
-    }
-  }
-}
-function yglm() {
-  h5gg.clearResults();
-  h5gg.searchNumber("412090411", "I32", "0x00000000", "0x200000000");
-  h5gg.searchNearby("21582", "I32", "0x4");
-  h5gg.searchNumber("21582", "I32", "0x00000000", "0x200000000");
-  var _0x52f3c0 = h5gg.getResultsCount();
-  showNotification("开启成功", 2000);
-  var _0x574c49 = h5gg.getResults(_0x52f3c0);
-  for (var _0x81e33e = 0; _0x81e33e < _0x52f3c0; _0x81e33e++) {
-    {
-      var _0x1b5ab7 = _0x574c49[_0x81e33e].address;
-      var _0x59566c = Number(_0x1b5ab7) + 64;
-      h5gg.setValue(_0x59566c, 0.0001, "F32");
-    }
-  }
-}
-function ygjx() {
-  h5gg.clearResults();
-  h5gg.searchNumber("100", "F32", "0x10000000", "0x160000000");
-  h5gg.searchNearby("131240", "I32", "0x40");
-  var _0x31a7b3 = h5gg.getResultsCount();
-  showNotification("开启成功", 2000);
-  var _0x26556c = h5gg.getResults(_0x31a7b3);
-  for (var _0xb38515 = 0; _0xb38515 < _0x31a7b3; _0xb38515++) {
-    {
-      var _0x1783fb = _0x26556c[_0xb38515].address;
-      var _0x1368c4 = /C$/;
-      var _0x289543 = _0x1368c4.test(_0x1783fb);
-      if (_0x289543) {
-        {
-          h5gg.setValue(_0x1783fb, 9999999999, "F32");
-        }
-      }
-    }
-  }
-}
-function jd1() {
-  h5gg.clearResults();
-  h5gg.searchNumber("216", "I32", "0x00000000", "0x200000000");
-  h5gg.searchNearby("1123", "I32", "0x4");
-  h5gg.searchNumber("1123", "I32", "0x00000000", "0x200000000");
-  var _0xdfc26f = h5gg.getResultsCount();
-  showNotification("开启成功", 2000);
-  var _0x537785 = h5gg.getResults(_0xdfc26f);
-  setInterval(function () {
-    {
-      for (var _0x44d902 = 0; _0x44d902 < _0xdfc26f; _0x44d902++) {
-        {
-          var _0x47914e = _0x537785[_0x44d902].address;
-          var _0x5156ed = Number(_0x47914e) + 156;
-          h5gg.setValue(_0x5156ed, 55, "I64");
-        }
-      }
-    }
-  }, 0);
-}
-function jd2() {
-  h5gg.clearResults();
-  h5gg.searchNumber("216", "I32", "0x00000000", "0x200000000");
-  h5gg.searchNearby("1123", "I32", "0x4");
-  h5gg.searchNumber("1123", "I32", "0x00000000", "0x200000000");
-  var _0x4255e3 = h5gg.getResultsCount();
-  showNotification("开启成功", 2000);
-  var _0x3a4abf = h5gg.getResults(_0x4255e3);
-  setInterval(function () {
-    {
-      for (var _0x5d1c28 = 0; _0x5d1c28 < _0x4255e3; _0x5d1c28++) {
-        {
-          var _0x3e98f3 = _0x3a4abf[_0x5d1c28].address;
-          var _0x535825 = Number(_0x3e98f3) + 156;
-          h5gg.setValue(_0x535825, 35, "I64");
-        }
-      }
-    }
-  }, 0);
-}
-function jd3() {
-  h5gg.clearResults();
-  h5gg.searchNumber("216", "I32", "0x00000000", "0x200000000");
-  h5gg.searchNearby("1123", "I32", "0x4");
-  h5gg.searchNumber("1123", "I32", "0x00000000", "0x200000000");
-  var _0x241155 = h5gg.getResultsCount();
-  showNotification("开启成功", 2000);
-  var _0x42b990 = h5gg.getResults(_0x241155);
-  setInterval(function () {
-    {
-      for (var _0x1cfe50 = 0; _0x1cfe50 < _0x241155; _0x1cfe50++) {
-        {
-          var _0x2388ca = _0x42b990[_0x1cfe50].address;
-          var _0x2911b0 = Number(_0x2388ca) + 156;
-          h5gg.setValue(_0x2911b0, 25, "I64");
-        }
-      }
-    }
-  }, 0);
-}
-function showNotification(_0x103edc, _0x29e8c9) {
-  var _0x5aca78 = document.createElement("div");
-  _0x5aca78.className = "notification";
-  _0x5aca78.textContent = _0x103edc;
-  document.body.appendChild(_0x5aca78);
-  setTimeout(function () {
-    {
-      _0x5aca78.style.opacity = 0;
-      setTimeout(function () {
-        {
-          document.body.removeChild(_0x5aca78);
-        }
-      }, 1000);
-    }
-  }, _0x29e8c9);
-}
-const buttons = document.querySelectorAll(".anniu");
-const pages = document.querySelectorAll(".gnjm > div");
-pages[0].classList.add("active");
-buttons[0].classList.add("active");
-buttons.forEach((_0x4592dd, _0x59c025) => {
-  _0x4592dd.addEventListener("click", () => {
-    {
-      pages.forEach(_0x1162e1 => _0x1162e1.classList.remove("active"));
-      buttons.forEach(_0xe4b56 => _0xe4b56.classList.remove("active"));
-      pages[_0x59c025].classList.add("active");
-      _0x4592dd.classList.add("active");
-    }
-  });
-});
-window.print = function () {
-  console.warn("打印功能已被禁用。");
-  alert("抱歉，此页面不允许打印。");
-};
-window.addEventListener("keydown", function (_0x5d3e20) {
-  if ((_0x5d3e20.ctrlKey || _0x5d3e20.metaKey) && _0x5d3e20.key.toLowerCase() === "p") {
-    {
-      _0x5d3e20.preventDefault();
-      alert("抱歉，此页面不允许打印。");
-    }
-  }
-});
-window.addEventListener("beforeprint", function (_0x9184b6) {
-  const _0x171e29 = document.body.innerHTML;
-  document.body.innerHTML = "<h1>此页面内容受保护，禁止打印。</h1>";
-  window.addEventListener("afterprint", function _0x3d7924() {
-    {
-      document.body.innerHTML = _0x171e29;
-      window.removeEventListener("afterprint", _0x3d7924);
-    }
-  });
-});
-let _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-const appConfig = {
-  uri: "http://www.wigwy.xyz/api/loginJavaScript",
-  appid: "30430",
-  appsecret: "dE9PuPKrOXaLqWb",
-  imei: null
-};
-function md5(_0x4eeca2) {
-  function _0x497e78(_0xda2c6a, _0x1cea47) {
-    {
-      var _0xfc87d4 = (_0xda2c6a & 65535) + (_0x1cea47 & 65535);
-      var _0x558ac0 = (_0xda2c6a >> 16) + (_0x1cea47 >> 16) + (_0xfc87d4 >> 16);
-      return _0x558ac0 << 16 | _0xfc87d4 & 65535;
-    }
-  }
-  function _0x51aa37(_0x77b7e5, _0x3e8d9b) {
-    {
-      return _0x77b7e5 << _0x3e8d9b | _0x77b7e5 >>> 32 - _0x3e8d9b;
-    }
-  }
-  function _0x265e89(_0x46fe5c, _0x22385e, _0x367487, _0x5e08c9, _0x51b63f, _0x5e91ed) {
-    {
-      return _0x497e78(_0x51aa37(_0x497e78(_0x497e78(_0x22385e, _0x46fe5c), _0x497e78(_0x5e08c9, _0x5e91ed)), _0x51b63f), _0x367487);
-    }
-  }
-  function _0x1b2dc8(_0x4cd474, _0x3a49ef, _0x4e6ab5, _0x37ec22, _0x5895a2, _0xf20721, _0x5a63f9) {
-    {
-      return _0x265e89(_0x3a49ef & _0x4e6ab5 | ~_0x3a49ef & _0x37ec22, _0x4cd474, _0x3a49ef, _0x5895a2, _0xf20721, _0x5a63f9);
-    }
-  }
-  function _0x218dd8(_0x334495, _0x15a158, _0x243914, _0x1dfa4b, _0x2bab8c, _0x314ad8, _0x150bc8) {
-    {
-      return _0x265e89(_0x15a158 & _0x1dfa4b | _0x243914 & ~_0x1dfa4b, _0x334495, _0x15a158, _0x2bab8c, _0x314ad8, _0x150bc8);
-    }
-  }
-  function _0x8344c2(_0x2bb6f5, _0xea3f40, _0x579738, _0x317314, _0x3a03de, _0x4e35e2, _0x781015) {
-    {
-      return _0x265e89(_0xea3f40 ^ _0x579738 ^ _0x317314, _0x2bb6f5, _0xea3f40, _0x3a03de, _0x4e35e2, _0x781015);
-    }
-  }
-  function _0xd8c2e2(_0x21acd7, _0xfca1b0, _0x184972, _0x23c51f, _0x1e6bbd, _0x26d457, _0x2bc493) {
-    {
-      return _0x265e89(_0x184972 ^ (_0xfca1b0 | ~_0x23c51f), _0x21acd7, _0xfca1b0, _0x1e6bbd, _0x26d457, _0x2bc493);
-    }
-  }
-  function _0x23caba(_0x37f14a, _0x455338) {
-    {
-      _0x37f14a[_0x455338 >> 5] |= 128 << _0x455338 % 32;
-      _0x37f14a[(_0x455338 + 64 >>> 9 << 4) + 14] = _0x455338;
-      var _0x715e9b;
-      var _0x661c55;
-      var _0x396887;
-      var _0x9e4930;
-      var _0x199c93;
-      var _0x273b49 = 1732584193;
-      var _0x11d9fb = -271733879;
-      var _0x45757d = -1732584194;
-      var _0x88857f = 271733878;
-      for (_0x715e9b = 0; _0x715e9b < _0x37f14a.length; _0x715e9b += 16) {
-        {
-          _0x661c55 = _0x273b49;
-          _0x396887 = _0x11d9fb;
-          _0x9e4930 = _0x45757d;
-          _0x199c93 = _0x88857f;
-          _0x273b49 = _0x1b2dc8(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b], 7, -680876936);
-          _0x88857f = _0x1b2dc8(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b + 1], 12, -389564586);
-          _0x45757d = _0x1b2dc8(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 2], 17, 606105819);
-          _0x11d9fb = _0x1b2dc8(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b + 3], 22, -1044525330);
-          _0x273b49 = _0x1b2dc8(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b + 4], 7, -176418897);
-          _0x88857f = _0x1b2dc8(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b + 5], 12, 1200080426);
-          _0x45757d = _0x1b2dc8(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 6], 17, -1473231341);
-          _0x11d9fb = _0x1b2dc8(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b + 7], 22, -45705983);
-          _0x273b49 = _0x1b2dc8(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b + 8], 7, 1770035416);
-          _0x88857f = _0x1b2dc8(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b + 9], 12, -1958414417);
-          _0x45757d = _0x1b2dc8(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 10], 17, -42063);
-          _0x11d9fb = _0x1b2dc8(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b + 11], 22, -1990404162);
-          _0x273b49 = _0x1b2dc8(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b + 12], 7, 1804603682);
-          _0x88857f = _0x1b2dc8(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b + 13], 12, -40341101);
-          _0x45757d = _0x1b2dc8(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 14], 17, -1502002290);
-          _0x11d9fb = _0x1b2dc8(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b + 15], 22, 1236535329);
-          _0x273b49 = _0x218dd8(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b + 1], 5, -165796510);
-          _0x88857f = _0x218dd8(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b + 6], 9, -1069501632);
-          _0x45757d = _0x218dd8(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 11], 14, 643717713);
-          _0x11d9fb = _0x218dd8(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b], 20, -373897302);
-          _0x273b49 = _0x218dd8(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b + 5], 5, -701558691);
-          _0x88857f = _0x218dd8(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b + 10], 9, 38016083);
-          _0x45757d = _0x218dd8(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 15], 14, -660478335);
-          _0x11d9fb = _0x218dd8(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b + 4], 20, -405537848);
-          _0x273b49 = _0x218dd8(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b + 9], 5, 568446438);
-          _0x88857f = _0x218dd8(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b + 14], 9, -1019803690);
-          _0x45757d = _0x218dd8(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 3], 14, -187363961);
-          _0x11d9fb = _0x218dd8(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b + 8], 20, 1163531501);
-          _0x273b49 = _0x218dd8(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b + 13], 5, -1444681467);
-          _0x88857f = _0x218dd8(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b + 2], 9, -51403784);
-          _0x45757d = _0x218dd8(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 7], 14, 1735328473);
-          _0x11d9fb = _0x218dd8(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b + 12], 20, -1926607734);
-          _0x273b49 = _0x8344c2(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b + 5], 4, -378558);
-          _0x88857f = _0x8344c2(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b + 8], 11, -2022574463);
-          _0x45757d = _0x8344c2(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 11], 16, 1839030562);
-          _0x11d9fb = _0x8344c2(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b + 14], 23, -35309556);
-          _0x273b49 = _0x8344c2(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b + 1], 4, -1530992060);
-          _0x88857f = _0x8344c2(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b + 4], 11, 1272893353);
-          _0x45757d = _0x8344c2(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 7], 16, -155497632);
-          _0x11d9fb = _0x8344c2(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b + 10], 23, -1094730640);
-          _0x273b49 = _0x8344c2(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b + 13], 4, 681279174);
-          _0x88857f = _0x8344c2(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b], 11, -358537222);
-          _0x45757d = _0x8344c2(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 3], 16, -722521979);
-          _0x11d9fb = _0x8344c2(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b + 6], 23, 76029189);
-          _0x273b49 = _0x8344c2(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b + 9], 4, -640364487);
-          _0x88857f = _0x8344c2(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b + 12], 11, -421815835);
-          _0x45757d = _0x8344c2(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 15], 16, 530742520);
-          _0x11d9fb = _0x8344c2(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b + 2], 23, -995338651);
-          _0x273b49 = _0xd8c2e2(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b], 6, -198630844);
-          _0x88857f = _0xd8c2e2(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b + 7], 10, 1126891415);
-          _0x45757d = _0xd8c2e2(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 14], 15, -1416354905);
-          _0x11d9fb = _0xd8c2e2(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b + 5], 21, -57434055);
-          _0x273b49 = _0xd8c2e2(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b + 12], 6, 1700485571);
-          _0x88857f = _0xd8c2e2(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b + 3], 10, -1894986606);
-          _0x45757d = _0xd8c2e2(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 10], 15, -1051523);
-          _0x11d9fb = _0xd8c2e2(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b + 1], 21, -2054922799);
-          _0x273b49 = _0xd8c2e2(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b + 8], 6, 1873313359);
-          _0x88857f = _0xd8c2e2(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b + 15], 10, -30611744);
-          _0x45757d = _0xd8c2e2(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 6], 15, -1560198380);
-          _0x11d9fb = _0xd8c2e2(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b + 13], 21, 1309151649);
-          _0x273b49 = _0xd8c2e2(_0x273b49, _0x11d9fb, _0x45757d, _0x88857f, _0x37f14a[_0x715e9b + 4], 6, -145523070);
-          _0x88857f = _0xd8c2e2(_0x88857f, _0x273b49, _0x11d9fb, _0x45757d, _0x37f14a[_0x715e9b + 11], 10, -1120210379);
-          _0x45757d = _0xd8c2e2(_0x45757d, _0x88857f, _0x273b49, _0x11d9fb, _0x37f14a[_0x715e9b + 2], 15, 718787259);
-          _0x11d9fb = _0xd8c2e2(_0x11d9fb, _0x45757d, _0x88857f, _0x273b49, _0x37f14a[_0x715e9b + 9], 21, -343485551);
-          _0x273b49 = _0x497e78(_0x273b49, _0x661c55);
-          _0x11d9fb = _0x497e78(_0x11d9fb, _0x396887);
-          _0x45757d = _0x497e78(_0x45757d, _0x9e4930);
-          _0x88857f = _0x497e78(_0x88857f, _0x199c93);
-        }
-      }
-      return [_0x273b49, _0x11d9fb, _0x45757d, _0x88857f];
-    }
-  }
-  function _0x4d5b19(_0x454196) {
-    {
-      var _0x5479d3;
-      var _0x253815 = "";
-      var _0x16f117 = _0x454196.length * 32;
-      for (_0x5479d3 = 0; _0x5479d3 < _0x16f117; _0x5479d3 += 8) {
-        {
-          _0x253815 += String.fromCharCode(_0x454196[_0x5479d3 >> 5] >>> _0x5479d3 % 32 & 255);
-        }
-      }
-      return _0x253815;
-    }
-  }
-  function _0x3ccef9(_0xf005c1) {
-    {
-      var _0x25e26e;
-      var _0x4a89d1 = [];
-      _0x4a89d1[(_0xf005c1.length >> 2) - 1] = undefined;
-      for (_0x25e26e = 0; _0x25e26e < _0x4a89d1.length; _0x25e26e += 1) {
-        {
-          _0x4a89d1[_0x25e26e] = 0;
-        }
-      }
-      var _0x342dac = _0xf005c1.length * 8;
-      for (_0x25e26e = 0; _0x25e26e < _0x342dac; _0x25e26e += 8) {
-        {
-          _0x4a89d1[_0x25e26e >> 5] |= (_0xf005c1.charCodeAt(_0x25e26e / 8) & 255) << _0x25e26e % 32;
-        }
-      }
-      return _0x4a89d1;
-    }
-  }
-  function _0x542ac8(_0x124c4a) {
-    {
-      return _0x4d5b19(_0x23caba(_0x3ccef9(_0x124c4a), _0x124c4a.length * 8));
-    }
-  }
-  function _0x4a7cc8(_0x1cab55, _0x26af76) {
-    {
-      var _0x52f33c;
-      var _0x1664f3 = _0x3ccef9(_0x1cab55);
-      var _0x32e32a = [];
-      var _0x2dec3c = [];
-      var _0x2f81ae;
-      _0x32e32a[15] = _0x2dec3c[15] = undefined;
-      if (_0x1664f3.length > 16) {
-        {
-          _0x1664f3 = _0x23caba(_0x1664f3, _0x1cab55.length * 8);
-        }
-      }
-      for (_0x52f33c = 0; _0x52f33c < 16; _0x52f33c += 1) {
-        {
-          _0x32e32a[_0x52f33c] = _0x1664f3[_0x52f33c] ^ 909522486;
-          _0x2dec3c[_0x52f33c] = _0x1664f3[_0x52f33c] ^ 1549556828;
-        }
-      }
-      _0x2f81ae = _0x23caba(_0x32e32a.concat(_0x3ccef9(_0x26af76)), 512 + _0x26af76.length * 8);
-      return _0x4d5b19(_0x23caba(_0x2dec3c.concat(_0x2f81ae), 640));
-    }
-  }
-  function _0x49cd3f(_0x383af4) {
-    {
-      var _0x554853 = "0123456789abcdef";
-      var _0x35caf1 = "";
-      var _0x2b256b;
-      var _0x6842e9;
-      for (_0x6842e9 = 0; _0x6842e9 < _0x383af4.length; _0x6842e9 += 1) {
-        {
-          _0x2b256b = _0x383af4.charCodeAt(_0x6842e9);
-          _0x35caf1 += _0x554853.charAt(_0x2b256b >>> 4 & 15) + _0x554853.charAt(_0x2b256b & 15);
-        }
-      }
-      return _0x35caf1;
-    }
-  }
-  function _0x517260(_0x2c2ca6) {
-    {
-      return unescape(encodeURIComponent(_0x2c2ca6));
-    }
-  }
-  function _0x491c14(_0x34b3e6) {
-    {
-      return _0x542ac8(_0x517260(_0x34b3e6));
-    }
-  }
-  function _0x5d16cd(_0x955650) {
-    {
-      return _0x49cd3f(_0x491c14(_0x955650));
-    }
-  }
-  function _0x4eb695(_0x3b212b, _0x220fb7) {
-    {
-      return _0x4a7cc8(_0x517260(_0x3b212b), _0x517260(_0x220fb7));
-    }
-  }
-  function _0x1d333d(_0x5227ee, _0x506c3d) {
-    {
-      return _0x49cd3f(_0x4eb695(_0x5227ee, _0x506c3d));
-    }
-  }
-  function _0x174c4e(_0x57da01, _0x290dfb, _0x40cda9) {
-    {
-      if (!_0x290dfb) {
-        {
-          if (!_0x40cda9) {
-            {
-              return _0x5d16cd(_0x57da01);
-            }
-          }
-          return _0x491c14(_0x57da01);
-        }
-      }
-      if (!_0x40cda9) {
-        {
-          return _0x1d333d(_0x290dfb, _0x57da01);
-        }
-      }
-      return _0x4eb695(_0x290dfb, _0x57da01);
-    }
-  }
-  return _0x174c4e(_0x4eeca2);
-}
-function getDataByJsonP(_0x24d61c, _0x53d69c, _0x58b8e9) {
-  return new Promise((_0x51454d, _0x4f0527) => {
-    {
-      var _0x449d89 = document.createElement("script");
-      _0x449d89.src = _0x53d69c;
-      _0x449d89.type = "text/javascript";
-      _0x449d89.id = _0x24d61c;
-      _0x449d89.onload = _0x449d89.onreadystatechange = function () {
-        {
-          if (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") {
-            {
-              _0x51454d(window[_0x58b8e9]);
-            }
-          }
+          const _0x4de67e = new _0x55abcc.RegExp("^([^ ]+( +[^ ]+)+)+[^ ]}");
+          return !_0x4de67e.test(_0x2ed550);
         }
       };
-      _0x449d89.onerror = function (_0x5c2328) {
-        {
-          _0x4f0527(_0x5c2328);
-        }
-      };
-      var _0x3734ca = document.querySelector("head");
-      var _0x41a1ae = document.querySelector("#" + _0x24d61c);
-      if (!_0x3734ca) {
-        {
-          throw new Error("错误 - 文档中没有head标签");
-        }
-      }
-      if (_0x41a1ae) {
-        {
-          _0x41a1ae.remove();
-        }
-      }
-      _0x3734ca.appendChild(_0x449d89);
+      return _0xc71271();
     }
   });
-}
-function getIp(_0xcf302d = "http://www.wigwy.xyz/api/cityjson?ie=utf-8", _0x4f6d69 = "USERIP") {
-  return getDataByJsonP("get_ip", _0xcf302d, _0x4f6d69);
-}
-function machineCode() {
-  return new Promise(async (_0x28f588, _0x371e74) => {
+  _0x2ed550();
+  let _0x517d91 = false;
+  const _0x52755f = window.requestAnimationFrame;
+  window.requestAnimationFrame = function (_0x571000) {
     {
-      try {
+      {
+        if (_0x571000.name == "f") {
+          return;
+        }
+        return _0x52755f(_0x571000);
+      }
+    }
+  };
+  const _0x5f004b = {
+    get: function () {
+      {
+        return window.hxsj;
+      }
+    },
+    set: function (_0x519631) {
+      {
         {
-          var _0x227bb3 = localStorage.getItem("wig_login_4_0");
-          if (!_0x227bb3) {
-            {
-              _IP = await getIp();
-              _0x227bb3 = Date.now() / 1000 + "-" + _IP + (Math.floor(Math.random() * 900) + 100) + "wigkmlogin";
-              localStorage.setItem("wig_login_4_0", _0x227bb3);
+          window.hxsj = _0x519631;
+          if (!_0x519631) {
+            return;
+          }
+        }
+      }
+    }
+  };
+  Object.defineProperty(Object.prototype, "scene", _0x5f004b);
+  const _0x3f2a22 = {
+    SLOT_COUNT: 20,
+    DEFAULT_UID: "1",
+    STORAGE_PREFIX: "cg_save_",
+    GAME_ID_UNKNOWN: "unknown"
+  };
+  let _0x49952c = localStorage.getItem("desiredUid") || _0x3f2a22.DEFAULT_UID;
+  let _0x43c2f4 = localStorage.getItem("lc") || "100";
+  let _0x19331b = _0x4b2404();
+  let _0x4f4d88 = "none";
+  function _0x4b2404() {
+    {
+      const _0x3080c4 = window.location.pathname;
+      const _0x102aff = _0x3080c4.match(/\/h5\/(\d+)/);
+      return _0x102aff ? _0x102aff[1] : _0x3f2a22.GAME_ID_UNKNOWN;
+    }
+  }
+  const _0x907fde = () => {
+    if (typeof window.getUserData === "function") {
+      const _0x5be8d7 = window.getUserData;
+      window.getUserData = function () {
+        const _0x259b46 = _0x5be8d7 ? _0x5be8d7() : {};
+        _0x259b46.uid = parseInt(_0x49952c);
+        _0x259b46.isLogin = true;
+        const _0x2f9ac3 = parseInt(_0x43c2f4);
+        ["totalFlower", "freshFlower", "wildFlower", "tempFlower", "realFlower", "haveFlower"].forEach(_0x2d59ad => {
+          {
+            _0x259b46[_0x2d59ad] = _0x2f9ac3;
+          }
+        });
+        return _0x259b46;
+      };
+    } else {
+      setTimeout(_0x907fde, 100);
+    }
+  };
+  const _0x3e7d58 = () => {
+    const _0x339d95 = document.createElement("div");
+    _0x339d95.id = "shopPanel";
+    _0x339d95.style.cssText = "\n      position: fixed;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      width: 320px;\n      max-height: 70vh;\n      background: white;\n      border-radius: 12px;\n      padding: 20px;\n      z-index: 99999;\n      display: none;\n      flex-direction: column;\n      box-shadow: 0 4px 20px rgba(0,0,0,0.1);\n      border: 1px solid rgba(0,0,0,0.05);\n      font-family: 'Helvetica Neue', Arial, sans-serif;\n      overflow-y: auto;\n    ";
+    _0x339d95.innerHTML = "\n      <div style=\"display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;\">\n        <h2 style=\"color: #333; margin: 0; font-size: 16px; font-weight: 600;\">tokunoの商城面板🚫二传倒卖QQ3291840016</h2>\n        <button id=\"closeShopPanel\" style=\"background: none; border: none; font-size: 20px; cursor: pointer; color: #999;\">×</button>\n      </div>\n      <div id=\"shopItemsContainer\" style=\"display: flex; flex-direction: column; gap: 10px;\"></div>\n    ";
+    document.body.appendChild(_0x339d95);
+    document.getElementById("closeShopPanel").onclick = () => {
+      _0x339d95.style.display = "none";
+    };
+    return _0x339d95;
+  };
+  const _0x318a07 = () => {
+    const _0x504927 = document.getElementById("shopItemsContainer");
+    if (!_0x504927) {
+      return;
+    }
+    _0x504927.innerHTML = "";
+    if (window.hxsj && window.hxsj.mallItems) {
+      window.hxsj.mallItems.forEach(_0x30638b => {
+        const _0x35c131 = document.createElement("div");
+        _0x35c131.style.cssText = "\n          padding: 12px;\n          background: white;\n          border-radius: 8px;\n          border: 1px solid rgba(0,0,0,0.05);\n          cursor: pointer;\n          transition: all 0.2s;\n        ";
+        _0x35c131.innerHTML = "\n          <div style=\"font-weight: 600; color: #333; font-size: 14px;\">" + _0x30638b.itemData.itemName + "</div>\n          <button style=\"margin-top: 8px; width: 100%; padding: 8px; background: #f0f0f0; border: none; border-radius: 6px; cursor: pointer; font-size: 13px;\">购买</button>\n        ";
+        _0x35c131.querySelector("button").onclick = () => {
+          {
+            const _0x5534de = prompt("请输入购买数量(1-99):", "1");
+            if (_0x5534de && !isNaN(_0x5534de)) {
+              const _0x242772 = parseInt(_0x5534de);
+              _0x242772 >= 1 && _0x242772 <= 99 ? (window.hxsj.successPurchase(_0x30638b.itemData.itemId, _0x242772), alert("成功购买 " + _0x30638b.itemData.itemName + " x" + _0x242772)) : alert("请输入1-99之间的数字");
             }
           }
-          _0x28f588("" + _0x227bb3);
-        }
-      } catch (_0x108f24) {
-        {
-          _0x371e74(_0x108f24);
-        }
+        };
+        _0x504927.appendChild(_0x35c131);
+      });
+    } else {
+      {
+        _0x504927.innerHTML = "\n        <div style=\"color: #999; text-align: center; padding: 20px;\">\n          请先在游戏中打开商城页面\n        </div>\n      ";
       }
     }
-  });
-}
-function rc4(_0x30fa0c, _0x200c39, _0x29168d) {
-  if (_0x29168d == false) {
-    {
-      _0x200c39 = hexCharCodeToStr(_0x200c39);
-    }
-  }
-  let _0x122a8e = "";
-  let _0x2e64b0 = [];
-  let _0x2aa6ab = [];
-  let _0x2c00fc = _0x30fa0c.length;
-  let _0x3f9a96 = _0x200c39.length;
-  for (let _0x295d5e = 0; _0x295d5e < 256; _0x295d5e++) {
-    {
-      _0x2e64b0[_0x295d5e] = _0x30fa0c[_0x295d5e % _0x2c00fc].charCodeAt(0);
-      _0x2aa6ab[_0x295d5e] = _0x295d5e;
-    }
-  }
-  var _0x193cf7 = 0;
-  for (let _0x2c8de0 = _0x193cf7; _0x193cf7 < 256; _0x193cf7++) {
-    {
-      _0x2c8de0 = (_0x2c8de0 + _0x2aa6ab[_0x193cf7] + _0x2e64b0[_0x193cf7]) % 256;
-      var _0x4b8b02 = _0x2aa6ab[_0x193cf7];
-      _0x2aa6ab[_0x193cf7] = _0x2aa6ab[_0x2c8de0];
-      _0x2aa6ab[_0x2c8de0] = _0x4b8b02;
-    }
-  }
-  var _0x193cf7 = 0;
-  var _0x1fb636 = _0x193cf7;
-  for (var _0x542ca4 = _0x1fb636; _0x193cf7 < _0x3f9a96; _0x193cf7++) {
-    {
-      _0x542ca4 = (_0x542ca4 + 1) % 256;
-      _0x1fb636 = (_0x1fb636 + _0x2aa6ab[_0x542ca4]) % 256;
-      var _0x4b8b02 = _0x2aa6ab[_0x542ca4];
-      _0x2aa6ab[_0x542ca4] = _0x2aa6ab[_0x1fb636];
-      _0x2aa6ab[_0x1fb636] = _0x4b8b02;
-      var _0x1d8918 = _0x2aa6ab[(_0x2aa6ab[_0x542ca4] + _0x2aa6ab[_0x1fb636]) % 256];
-      _0x122a8e += String.fromCharCode(_0x200c39[_0x193cf7].charCodeAt(0) ^ _0x1d8918);
-    }
-  }
-  if (_0x29168d) {
-    {
-      return strToHexCharCode(_0x122a8e);
-    }
-  }
-  return _0x122a8e;
-}
-function strToHexCharCode(_0x3cf163) {
-  if (_0x3cf163 === "") {
-    return "";
-  }
-  var _0x14e9a0 = [];
-  for (var _0x14d8be = 0; _0x14d8be < _0x3cf163.length; _0x14d8be++) {
-    {
-      _0x14e9a0.push(_0x3cf163.charCodeAt(_0x14d8be).toString(16));
-    }
-  }
-  return _0x14e9a0.join("");
-}
-function hexCharCodeToStr(_0x46f99c) {
-  var _0x2bfafd = _0x46f99c.trim();
-  var _0x333d92 = _0x2bfafd.substr(0, 2).toLowerCase() === "0x" ? _0x2bfafd.substr(2) : _0x2bfafd;
-  var _0x44906a = _0x333d92.length;
-  if (_0x44906a % 2 !== 0) {
-    {
-      return "";
-    }
-  }
-  var _0x58d59a;
-  var _0x56551b = [];
-  for (var _0x4787e3 = 0; _0x4787e3 < _0x44906a; _0x4787e3 = _0x4787e3 + 2) {
-    {
-      _0x58d59a = parseInt(_0x333d92.substr(_0x4787e3, 2), 16);
-      _0x56551b.push(String.fromCharCode(_0x58d59a));
-    }
-  }
-  return _0x56551b.join("");
-}
-function Base64DeCode(_0x3dd44b) {
-  var _0x4ebf24 = "";
-  var _0x17e60b;
-  var _0xe72f2;
-  var _0x2dcb06;
-  var _0x5ab0f4;
-  var _0xee7c07;
-  var _0x2d4597;
-  var _0x3f2289;
-  var _0x21aab0 = 0;
-  _0x3dd44b = _0x3dd44b.replace(/[^A-Za-z0-9\+\/\=]/g, "");
-  while (_0x21aab0 < _0x3dd44b.length) {
-    {
-      _0x5ab0f4 = _keyStr.indexOf(_0x3dd44b.charAt(_0x21aab0++));
-      _0xee7c07 = _keyStr.indexOf(_0x3dd44b.charAt(_0x21aab0++));
-      _0x2d4597 = _keyStr.indexOf(_0x3dd44b.charAt(_0x21aab0++));
-      _0x3f2289 = _keyStr.indexOf(_0x3dd44b.charAt(_0x21aab0++));
-      _0x17e60b = _0x5ab0f4 << 2 | _0xee7c07 >> 4;
-      _0xe72f2 = (_0xee7c07 & 15) << 4 | _0x2d4597 >> 2;
-      _0x2dcb06 = (_0x2d4597 & 3) << 6 | _0x3f2289;
-      _0x4ebf24 = _0x4ebf24 + String.fromCharCode(_0x17e60b);
-      if (_0x2d4597 != 64) {
-        {
-          _0x4ebf24 = _0x4ebf24 + String.fromCharCode(_0xe72f2);
-        }
-      }
-      if (_0x3f2289 != 64) {
-        {
-          _0x4ebf24 = _0x4ebf24 + String.fromCharCode(_0x2dcb06);
-        }
-      }
-    }
-  }
-  _0x4ebf24 = _utf8_decode(_0x4ebf24);
-  return _0x4ebf24;
-}
-function _utf8_decode(_0x593775) {
-  var _0x6ebc8f = "";
-  var _0x5d2d44 = 0;
-  c1 = c2 = 0;
-  var _0x526084 = c1;
-  while (_0x5d2d44 < _0x593775.length) {
-    {
-      _0x526084 = _0x593775.charCodeAt(_0x5d2d44);
-      if (_0x526084 < 128) {
-        {
-          _0x6ebc8f += String.fromCharCode(_0x526084);
-          _0x5d2d44++;
-        }
-      } else {
-        if (_0x526084 > 191 && _0x526084 < 224) {
-          {
-            c2 = _0x593775.charCodeAt(_0x5d2d44 + 1);
-            _0x6ebc8f += String.fromCharCode((_0x526084 & 31) << 6 | c2 & 63);
-            _0x5d2d44 += 2;
-          }
-        } else {
-          {
-            c2 = _0x593775.charCodeAt(_0x5d2d44 + 1);
-            c3 = _0x593775.charCodeAt(_0x5d2d44 + 2);
-            _0x6ebc8f += String.fromCharCode((_0x526084 & 15) << 12 | (c2 & 63) << 6 | c3 & 63);
-            _0x5d2d44 += 3;
-          }
-        }
-      }
-    }
-  }
-  return _0x6ebc8f;
-}
-function login(_0x4aa589, _0x298d47 = "", _0x1d215e = "wanggou") {
-  return new Promise(async (_0x3ffe70, _0x36745d) => {
+  };
+  const _0x151665 = _0x23903e => {
     {
       try {
         {
-          var _0x14b8a5 = await machineCode();
-          var _0x570d1c = {
-            imei: _0x14b8a5
+          const _0x28085c = JSON.parse(_0x23903e);
+          if (_0x28085c.Header) {
+            return {
+              gameName: _0x28085c.Header.Name || "未知游戏",
+              storyName: _0x28085c.Header.StoryName || "未知剧情",
+              saveTime: _0x28085c.Header.SaveTime ? new Date(_0x28085c.Header.SaveTime).toLocaleString() : "未知时间",
+              valid: true
+            };
+          }
+          const _0x16950f = {
+            valid: false
           };
-          Object.assign(appConfig, _0x570d1c);
-          var _0x84e2bc = "imei=" + _0x14b8a5;
-          var _0xb8ba90 = appConfig.uri + "/" + (Math.floor(new Date().getTime() / 1000) - 3) + "/" + appConfig.appid + "/" + _0x4aa589 + "?" + _0x84e2bc;
-          var _0x1166f4 = await getDataByJsonP("login", _0xb8ba90, "login_data");
-          var _0xbb3fa7 = rc4(appConfig.appsecret, _0x1166f4, false);
-          var _0x3974ec;
-          try {
-            {
-              _0x3974ec = JSON.parse(Base64DeCode(_0xbb3fa7));
-            }
-          } catch (_0x314113) {
-            {
-              _0x36745d({
-                msg: "请检查秘钥是否正确"
-              });
-            }
-          }
-          var _0x13de37 = Math.floor(new Date().getTime() / 1000) - 3;
-          if (!_0x3974ec.check || _0x3974ec.check != md5(_0x14b8a5 + _0x3974ec.user_time + _0x3974ec.api_time)) {
-            {
-              _0x3974ec.code = "10001";
-              _0x3974ec.msg = "签名校验失败";
-              _0x36745d(_0x3974ec);
-              return;
-            }
-          } else {
-            if (_0x3974ec.api_time - _0x13de37 > 30 || _0x3974ec.api_time - _0x13de37 < -30) {
-              {
-                _0x3974ec.code = "10002";
-                _0x3974ec.msg = "数据过期(2.0)";
-                _0x36745d(_0x3974ec);
-                return;
+          return _0x16950f;
+        }
+      } catch (_0x2b0686) {
+        const _0x58b5e5 = {
+          valid: false
+        };
+        return _0x58b5e5;
+      }
+    }
+  };
+  const _0x39e521 = () => {
+    {
+      try {
+        for (const _0x209fdf of Object.keys(localStorage)) {
+          {
+            if (_0x209fdf.startsWith("save") && _0x209fdf.indexOf(_0x49952c) !== -1) {
+              const _0x4586a8 = localStorage.getItem(_0x209fdf);
+              if (_0x4586a8) {
+                {
+                  const _0xd0aec4 = JSON.parse(_0x4586a8);
+                  if (_0xd0aec4.Header && _0xd0aec4.Header.StoryName) {
+                    {
+                      return _0xd0aec4.Header.StoryName;
+                    }
+                  }
+                }
               }
             }
           }
-          if (_0x3974ec.code == 20000) {
-            {
-              _0x3ffe70(_0x3974ec);
-              return;
+        }
+      } catch (_0x222869) {
+        console.error("获取剧情名称失败:", _0x222869);
+      }
+      return "当前剧情";
+    }
+  };
+  const _0x1eb940 = () => {
+    const _0x1b2cd7 = document.getElementById("saveSlotsContainer");
+    if (!_0x1b2cd7) {
+      return;
+    }
+    _0x1b2cd7.innerHTML = "";
+    for (let _0x58a06e = 1; _0x58a06e <= _0x3f2a22.SLOT_COUNT; _0x58a06e++) {
+      {
+        const _0x37cb5a = document.createElement("div");
+        _0x37cb5a.className = "save-slot";
+        _0x37cb5a.style.cssText = "\n        padding: 12px;\n        background: white;\n        border-radius: 8px;\n        border: 1px solid rgba(0,0,0,0.05);\n        cursor: pointer;\n        transition: all 0.2s;\n        margin-bottom: 8px;\n      ";
+        const _0x585513 = "" + _0x3f2a22.STORAGE_PREFIX + _0x49952c + "_" + _0x19331b + "_" + _0x58a06e;
+        const _0x63674 = localStorage.getItem(_0x585513);
+        if (_0x63674) {
+          {
+            try {
+              const _0x3ca3d1 = JSON.parse(_0x63674);
+              const _0x5b8789 = _0x151665(JSON.stringify(_0x3ca3d1.data));
+              const _0x430c98 = _0x3ca3d1.info?.["customName"] || "未命名存档";
+              const _0x3eb219 = _0x3ca3d1.info?.["saveTime"] ? new Date(_0x3ca3d1.info.saveTime).toLocaleString() : "未知时间";
+              _0x37cb5a.innerHTML = "\n            <div style=\"display: flex; justify-content: space-between; align-items: center;\">\n              <div style=\"font-weight: 600; color: #333; font-size: 14px;\">tokunoの存档🚫二传倒卖QQ3291840016 " + _0x58a06e + "</div>\n              <div style=\"font-size: 11px; color: #999;\">" + _0x3eb219 + "</div>\n            </div>\n            <div style=\"margin-top: 6px; font-size: 13px; color: #666; \n                 font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\">\n              " + _0x430c98 + "\n            </div>\n            <div style=\"margin-top: 2px; font-size: 12px; color: #999; \n                 white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\">\n              " + (_0x5b8789.storyName || "当前剧情") + "\n            </div>\n          ";
+              _0x37cb5a.onclick = () => {
+                if (_0x4f4d88 === "save") {
+                  _0x173580(_0x58a06e);
+                } else {
+                  _0x4f4d88 === "load" && confirm("是否读取存档 " + _0x58a06e + ": " + _0x430c98 + "？") && _0x3aae08(_0x58a06e);
+                }
+              };
+            } catch (_0x59ba46) {
+              {
+                _0x37cb5a.innerHTML = "\n            <div style=\"color: #ff6b6b; font-size: 14px;\">存档 " + _0x58a06e + " - 数据损坏</div>\n          ";
+              }
             }
           }
-          _0x36745d(_0x3974ec);
-        }
-      } catch (_0x3f7934) {
-        {
-          var _0x521640 = {
-            msg: _0x3f7934
+        } else {
+          _0x37cb5a.innerHTML = "\n          <div style=\"color: #999; font-size: 14px; margin-bottom: 5px;\">存档 " + _0x58a06e + "</div>\n          <div style=\"font-size: 13px; color: #ccc;\">空存档位</div>\n        ";
+          _0x37cb5a.onclick = () => {
+            {
+              if (_0x4f4d88 === "save") {
+                _0x173580(_0x58a06e);
+              } else {
+                _0x4f4d88 === "load" && alert("该存档位为空");
+              }
+            }
           };
-          _0x36745d(_0x521640);
         }
+        _0x1b2cd7.appendChild(_0x37cb5a);
       }
     }
-  });
-}
-async function loginLoop() {
-  document.body.style.display = "none";
-  firstLogin = false;
-  while (true) {
-    {
-      var _0x7dfe62 = null;
-      var _0x4d44da = localStorage.getItem("wig_km_v2");
-      if (_0x4d44da != null) {
-        {
-          _0x7dfe62 = _0x4d44da;
-        }
-      } else {
-        {
-          _0x7dfe62 = prompt("官方QQ群644473287\n请输入您的卡密:", "");
-        }
+  };
+  const _0x173580 = _0x2873dd => {
+    const _0x59dc6c = prompt("请输入存档名称（必填）:", "我的存档 " + _0x2873dd);
+    if (_0x59dc6c === null) {
+      return;
+    }
+    if (!_0x59dc6c || _0x59dc6c.trim() === "") {
+      alert("存档名称不能为空");
+      return;
+    }
+    if (_0x59dc6c.length > 20) {
+      alert("存档名称不能超过20个字符");
+      return;
+    }
+    const _0x5758ad = {};
+    for (const _0x3d43f0 of Object.keys(localStorage)) {
+      _0x3d43f0.startsWith("save") && _0x3d43f0 !== "saveData" && _0x3d43f0.indexOf(_0x49952c) !== -1 && (_0x5758ad[_0x3d43f0] = localStorage.getItem(_0x3d43f0));
+    }
+    if (Object.keys(_0x5758ad).length === 0) {
+      alert("未检测到当前游戏的存档数据");
+      return;
+    }
+    const _0x266255 = new Date();
+    const _0x3980ed = {
+      saveTime: _0x266255.getTime(),
+      gameName: document.title || "未知游戏",
+      storyName: _0x39e521(),
+      gameId: _0x19331b,
+      customName: _0x59dc6c
+    };
+    const _0x178d13 = "" + _0x3f2a22.STORAGE_PREFIX + _0x49952c + "_" + _0x19331b + "_" + _0x2873dd;
+    const _0x75aab2 = {
+      data: _0x5758ad,
+      info: _0x3980ed
+    };
+    localStorage.setItem(_0x178d13, JSON.stringify(_0x75aab2));
+    alert("已保存到存档 " + _0x2873dd + ": " + _0x59dc6c);
+    _0x1eb940();
+  };
+  const _0x3aae08 = _0x5b149f => {
+    const _0x5b8037 = "" + _0x3f2a22.STORAGE_PREFIX + _0x49952c + "_" + _0x19331b + "_" + _0x5b149f;
+    const _0x945044 = localStorage.getItem(_0x5b8037);
+    if (!_0x945044) {
+      alert("该存档位为空");
+      return;
+    }
+    try {
+      const _0x382a7b = JSON.parse(_0x945044);
+      for (const _0x117e4d of Object.keys(localStorage)) {
+        _0x117e4d.startsWith("save") && _0x117e4d !== "saveData" && _0x117e4d.indexOf(_0x49952c) !== -1 && localStorage.removeItem(_0x117e4d);
       }
-      if (_0x7dfe62 != "" && _0x7dfe62 != null) {
+      Object.entries(_0x382a7b.data).forEach(([_0x366f02, _0x3cc02a]) => {
+        _0x366f02.startsWith("save") && _0x366f02 !== "saveData" && localStorage.setItem(_0x366f02, _0x3cc02a);
+      });
+      alert("已从存档 " + _0x5b149f + " 读取成功");
+      setTimeout(() => location.reload(), 500);
+    } catch (_0x19ace7) {
+      {
+        alert("存档数据损坏");
+      }
+    }
+  };
+  const _0x1cb4c2 = () => {
+    const _0x19c6a9 = document.createElement("div");
+    _0x19c6a9.id = "savePanel";
+    _0x19c6a9.style.cssText = "\n      position: fixed;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      width: 320px;\n      max-height: 70vh;\n      background: white;\n      border-radius: 12px;\n      padding: 20px;\n      z-index: 99999;\n      display: none;\n      flex-direction: column;\n      box-shadow: 0 4px 20px rgba(0,0,0,0.1);\n      border: 1px solid rgba(0,0,0,0.05);\n      font-family: 'Helvetica Neue', Arial, sans-serif;\n      overflow-y: auto;\n    ";
+    _0x19c6a9.innerHTML = "\n      <div style=\"display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;\">\n        <h2 style=\"color: #333; margin: 0; font-size: 16px; font-weight: 600;\">存档管理</h2>\n        <button id=\"closeSavePanel\" style=\"background: none; border: none; font-size: 20px; cursor: pointer; color: #999;\">×</button>\n      </div>\n      <div style=\"display: flex; gap: 10px; margin-bottom: 15px;\">\n        <button id=\"saveModeBtn\" style=\"flex: 1; padding: 8px; background: " + (_0x4f4d88 === "save" ? "#f0f0f0" : "white") + "; color: #333; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; cursor: pointer; font-size: 13px;\">存档</button>\n        <button id=\"loadModeBtn\" style=\"flex: 1; padding: 8px; background: " + (_0x4f4d88 === "load" ? "#f0f0f0" : "white") + "; color: #333; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; cursor: pointer; font-size: 13px;\">读档</button>\n      </div>\n      <div id=\"saveSlotsContainer\" style=\"display: flex; flex-direction: column; gap: 10px;\"></div>\n    ";
+    document.body.appendChild(_0x19c6a9);
+    document.getElementById("closeSavePanel").onclick = () => {
+      _0x19c6a9.style.display = "none";
+      _0x4f4d88 = "none";
+    };
+    document.getElementById("saveModeBtn").onclick = () => {
+      {
+        _0x4f4d88 = _0x4f4d88 === "save" ? "none" : "save";
+        document.getElementById("saveModeBtn").style.background = _0x4f4d88 === "save" ? "#f0f0f0" : "white";
+        _0x1eb940();
+      }
+    };
+    document.getElementById("loadModeBtn").onclick = () => {
+      _0x4f4d88 = _0x4f4d88 === "load" ? "none" : "load";
+      document.getElementById("loadModeBtn").style.background = _0x4f4d88 === "load" ? "#f0f0f0" : "white";
+      _0x1eb940();
+    };
+    return _0x19c6a9;
+  };
+  async function _0x1e6c1c() {
+    {
+      if (document.querySelector("canvas")) {
         {
-          try {
+          async function _0x16806f() {
             {
-              var {
-                expires,
-                new_code2
-              } = await login(_0x7dfe62);
-              document.body.style.display = "block";
-              console.log(document.body);
-              alert("验证成功,到期时间[" + expires + "]");
-              localStorage.setItem("wig_km_v2", _0x7dfe62);
-              console.log("验证成功,到期时间[" + expires + "]");
-              break;
-            }
-          } catch (_0x2cae99) {
-            {
-              localStorage.removeItem("wig_km_v2");
-              alert(_0x2cae99.msg || _0x2cae99.toString());
+              {
+                window.listVisible = false;
+                const _0x20436b = document.createElement("style");
+                _0x20436b.textContent = "\n                #base-btn {\n                  background: white;\n                  color: #333;\n                  border: 1px solid rgba(0,0,0,0.1);\n                  border-radius: 8px;\n                  cursor: pointer;\n                  user-select: none;\n                  padding: 8px 16px;\n                  position: fixed;\n                  top: 20px;\n                  left: 20px;\n                  z-index: 1000;\n                  font-weight: 500;\n                  font-size: 14px;\n                  box-shadow: 0 2px 10px rgba(0,0,0,0.05);\n                  font-family: 'Helvetica Neue', Arial, sans-serif;\n                  transition: all 0.2s ease;\n                }\n                \n                #base-btn:hover {\n                  background: #f8f8f8;\n                  transform: translateY(-2px);\n                  box-shadow: 0 4px 15px rgba(0,0,0,0.1);\n                }\n                \n                .menu-container {\n                  position: absolute;\n                  display: none;\n                  flex-direction: column;\n                  gap: 6px;\n                  background: white;\n                  border: 1px solid rgba(0,0,0,0.05);\n                  border-radius: 8px;\n                  padding: 10px;\n                  z-index: 999;\n                  box-shadow: 0 4px 20px rgba(0,0,0,0.1);\n                  min-width: 120px;\n                }\n                \n                .menu-btn {\n                  background: white;\n                  color: #333;\n                  border: 1px solid rgba(0,0,0,0.05);\n                  border-radius: 6px;\n                  cursor: pointer;\n                  user-select: none;\n                  padding: 8px 12px;\n                  min-width: 100px;\n                  text-align: left;\n                  font-size: 13px;\n                  white-space: nowrap;\n                  transition: all 0.2s ease;\n                }\n                \n                .menu-btn:hover {\n                  background: #f0f0f0;\n                }\n              ";
+                document.head.appendChild(_0x20436b);
+                const _0x3f720a = document.createElement("button");
+                _0x3f720a.id = "base-btn";
+                _0x3f720a.textContent = "缘";
+                document.body.appendChild(_0x3f720a);
+                const _0x4e3e6c = document.createElement("div");
+                _0x4e3e6c.className = "menu-container";
+                document.body.appendChild(_0x4e3e6c);
+                _0x3f720a.onclick = function (_0x40f037) {
+                  _0x40f037.stopPropagation();
+                  const _0x3cab2e = this.getBoundingClientRect();
+                  _0x4e3e6c.style.left = _0x3cab2e.left + "px";
+                  _0x4e3e6c.style.top = _0x3cab2e.bottom + 5 + "px";
+                  _0x4e3e6c.style.display = _0x4e3e6c.style.display === "flex" ? "none" : "flex";
+                };
+                const _0x5be4bf = (_0x244c9b, _0x58327a) => {
+                  {
+                    const _0x9f1beb = document.createElement("button");
+                    _0x9f1beb.className = "menu-btn";
+                    _0x9f1beb.textContent = _0x244c9b;
+                    _0x9f1beb.onclick = _0x58327a;
+                    _0x4e3e6c.appendChild(_0x9f1beb);
+                    return _0x9f1beb;
+                  }
+                };
+                _0x5be4bf("商城面板", () => {
+                  {
+                    const _0x4c6f24 = document.getElementById("shopPanel") || _0x3e7d58();
+                    _0x4c6f24.style.display = "flex";
+                    _0x318a07();
+                    _0x4e3e6c.style.display = "none";
+                  }
+                });
+                _0x5be4bf("修改UID", () => {
+                  const _0x4485bc = prompt("请输入UID:", _0x49952c);
+                  _0x4485bc && !isNaN(_0x4485bc) && (_0x49952c = _0x4485bc, localStorage.setItem("desiredUid", _0x4485bc), alert("UID修改成功"));
+                  _0x4e3e6c.style.display = "none";
+                });
+                _0x5be4bf("修改累充", () => {
+                  {
+                    const _0xd0fc5 = prompt("请输入鲜花数量:", _0x43c2f4);
+                    _0xd0fc5 && !isNaN(_0xd0fc5) && (_0x43c2f4 = _0xd0fc5, localStorage.setItem("lc", _0x43c2f4), alert("鲜花数量修改成功"));
+                    _0x4e3e6c.style.display = "none";
+                  }
+                });
+                _0x5be4bf("存档管理", () => {
+                  const _0x55d3ab = document.getElementById("savePanel") || _0x1cb4c2();
+                  _0x55d3ab.style.display = "flex";
+                  _0x1eb940();
+                  _0x4e3e6c.style.display = "none";
+                });
+                _0x5be4bf("全屏开关", () => {
+                  {
+                    _0x517d91 = !_0x517d91;
+                    !document.fullscreenElement ? document.documentElement.requestFullscreen() : document.exitFullscreen();
+                    _0x4e3e6c.style.display = "none";
+                  }
+                });
+                _0x5be4bf("隐藏菜单", () => {
+                  {
+                    _0x3f720a.style.display = "none";
+                    _0x4e3e6c.style.display = "none";
+                  }
+                });
+                document.addEventListener("click", _0x448a12 => {
+                  !_0x4e3e6c.contains(_0x448a12.target) && _0x448a12.target !== _0x3f720a && (_0x4e3e6c.style.display = "none");
+                });
+              }
             }
           }
+          function _0x526141() {
+            {
+              document.cookie ? _0x16806f() : window.requestAnimationFrame(_0x526141);
+            }
+          }
+          _0x526141();
         }
       } else {
-        {
-          document.body.innerHTML = "<h1 style='font-size: 40px;color: #f00;'>请重启APP后输入卡密</h1>";
-          document.body.style.display = "block";
-          alert("请输入您的卡密");
-          break;
-        }
+        setTimeout(_0x1e6c1c, 100);
       }
     }
   }
-}
-loginLoop();
+  _0x907fde();
+  setTimeout(_0x1e6c1c, 100);
+})(GM);
