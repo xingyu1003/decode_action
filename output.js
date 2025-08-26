@@ -1,928 +1,17520 @@
-//Mon Aug 18 2025 08:44:30 GMT+0000 (Coordinated Universal Time)
+//Tue Aug 26 2025 08:53:59 GMT+0000 (Coordinated Universal Time)
 //Base:<url id="cv1cref6o68qmpt26ol0" type="url" status="parsed" title="GitHub - echo094/decode-js: JS混淆代码的AST分析工具 AST analysis tool for obfuscated JS code" wc="2165">https://github.com/echo094/decode-js</url>
 //Modify:<url id="cv1cref6o68qmpt26olg" type="url" status="parsed" title="GitHub - smallfawn/decode_action: 世界上本来不存在加密，加密的人多了，也便成就了解密" wc="741">https://github.com/smallfawn/decode_action</url>
-const _0x1e433c = {
-  SLOT_COUNT: 20,
-  DEFAULT_UID: "1",
-  STORAGE_PREFIX: "cg_save_",
-  GAME_ID_UNKNOWN: "unknown",
-  API_URL: "https://c.66rpg.com/cloud/v4/index/cloud_load"
+var $jscomp = {
+  scope: {}
 };
-let _0x151067 = localStorage.getItem("desiredUid") || _0x1e433c.DEFAULT_UID;
-let _0x49520d = localStorage.getItem("lc") || "100";
-let _0x5d142b = _0x3fbf8c();
-let _0x3c5540 = "none";
-let _0x4fb86a = false;
-let _0x36cca6 = 0;
-let _0x144483 = false;
-let _0x33677d = [];
-let _0x517e44 = null;
-function _0x50fcf6() {
-  let _0x56a8e2 = {
-    msg: "ok",
-    status: 1,
-    data: {
-      last_save_time: Math.floor(Date.now() / 1000),
-      cloud_data: ""
+if ("function" == typeof Object.defineProperties) {
+  $jscomp.defineProperty = Object.defineProperty;
+} else {
+  $jscomp.defineProperty = function (e, d, c) {
+    if (c.get || c.set) {
+      throw new TypeError("ES3 does not support getters and setters.");
+    }
+    if (e != Array.prototype && e != Object.prototype) {
+      e[d] = c.value;
     }
   };
-  if (!_0x144483) {
-    _0x144483 = true;
-    return _0x56a8e2;
+}
+$jscomp.getGlobal = function (e) {
+  return "undefined" != typeof window && window === e ? e : "undefined" != typeof global ? global : e;
+};
+$jscomp.global = $jscomp.getGlobal(this);
+$jscomp.polyfill = function (e, d, c, a) {
+  if (d) {
+    c = $jscomp.global;
+    e = e.split(".");
+    for (a = 0; a < e.length - 1; a++) {
+      var b = e[a];
+      b in c || (c[b] = {});
+      c = c[b];
+    }
+    e = e[e.length - 1];
+    a = c[e];
+    d = d(a);
+    if (d != a && null != d) {
+      $jscomp.defineProperty(c, e, {
+        configurable: !0,
+        writable: !0,
+        value: d
+      });
+    }
   }
-  let _0x2113dc = {};
-  const _0x27c183 = "" + _0x1e433c.STORAGE_PREFIX + _0x151067 + "_" + _0x5d142b + "_";
-  const _0x2fde31 = localStorage.getItem(_0x27c183);
-  let _0x535ca1 = false;
-  let _0x31f315 = 1;
-  for (const _0x3803f0 of Object.keys(localStorage)) {
-    {
-      if (_0x3803f0.startsWith(_0x27c183)) {
-        _0x535ca1 = true;
-        let _0x2aa4ce = localStorage.getItem(_0x3803f0);
-        let _0x230b3d = null;
-        try {
-          _0x230b3d = JSON.parse(_0x2aa4ce);
-        } catch (_0x139bcb) {
-          _0x1571ce("出出错了+e");
+};
+$jscomp.polyfill("Object.setPrototypeOf", function (e) {
+  return e ? e : "object" != typeof "".__proto__ ? null : function (d, c) {
+    d.__proto__ = c;
+    if (d.__proto__ !== c) {
+      throw new TypeError(d + " is not extensible");
+    }
+    return d;
+  };
+}, "es6", "es5");
+$jscomp.checkStringArgs = function (e, d, c) {
+  if (null == e) {
+    throw new TypeError("The 'this' value for String.prototype." + c + " must not be null or undefined");
+  }
+  if (d instanceof RegExp) {
+    throw new TypeError("First argument to String.prototype." + c + " must not be a regular expression");
+  }
+  return e + "";
+};
+$jscomp.polyfill("String.prototype.includes", function (e) {
+  return e ? e : function (d, c) {
+    return -1 !== $jscomp.checkStringArgs(this, d, "includes").indexOf(d, c || 0);
+  };
+}, "es6-impl", "es3");
+$jscomp.polyfill("String.prototype.endsWith", function (e) {
+  return e ? e : function (d, c) {
+    var a = $jscomp.checkStringArgs(this, d, "endsWith");
+    d += "";
+    if (0 === c) {
+      c = a.length;
+    }
+    c = Math.max(0, Math.min(c | 0, a.length));
+    for (var b = d.length; 0 < b && 0 < c;) if (a[--c] != d[--b]) {
+      return !1;
+    }
+    return 0 >= b;
+  };
+}, "es6-impl", "es3");
+$jscomp.findInternal = function (e, d, c) {
+  if (e instanceof String) {
+    e = String(e);
+  }
+  for (var a = e.length, b = 0; b < a; b++) {
+    var f = e[b];
+    if (d.call(c, f, b, e)) {
+      return {
+        i: b,
+        v: f
+      };
+    }
+  }
+  return {
+    i: -1,
+    v: 0
+  };
+};
+$jscomp.polyfill("Array.prototype.find", function (e) {
+  return e ? e : function (d, c) {
+    return $jscomp.findInternal(this, d, c).v;
+  };
+}, "es6-impl", "es3");
+$jscomp.owns = function (e, d) {
+  return Object.prototype.hasOwnProperty.call(e, d);
+};
+$jscomp.polyfill("Object.assign", function (e) {
+  return e ? e : function (d, c) {
+    for (var a = 1; a < arguments.length; a++) {
+      var b = arguments[a];
+      if (b) {
+        for (var f in b) if ($jscomp.owns(b, f)) {
+          d[f] = b[f];
         }
-        if (_0x230b3d && _0x230b3d.data) {
-          for (const _0x26d7b4 of Object.keys(_0x230b3d.data)) {
+      }
+    }
+    return d;
+  };
+}, "es6-impl", "es3");
+$jscomp.polyfill("Array.prototype.findIndex", function (e) {
+  return e ? e : function (d, c) {
+    return $jscomp.findInternal(this, d, c).i;
+  };
+}, "es6-impl", "es3");
+$jscomp.polyfill("Number.isNaN", function (e) {
+  return e ? e : function (d) {
+    return "number" === typeof d && isNaN(d);
+  };
+}, "es6-impl", "es3");
+$jscomp.SYMBOL_PREFIX = "jscomp_symbol_";
+$jscomp.initSymbol = function () {
+  $jscomp.initSymbol = function () {};
+  $jscomp.global.Symbol || ($jscomp.global.Symbol = $jscomp.Symbol);
+};
+$jscomp.symbolCounter_ = 0;
+$jscomp.Symbol = function (e) {
+  return $jscomp.SYMBOL_PREFIX + (e || "") + $jscomp.symbolCounter_++;
+};
+$jscomp.initSymbolIterator = function () {
+  $jscomp.initSymbol();
+  var e = $jscomp.global.Symbol.iterator;
+  e || (e = $jscomp.global.Symbol.iterator = $jscomp.global.Symbol("iterator"));
+  if ("function" != typeof Array.prototype[e]) {
+    $jscomp.defineProperty(Array.prototype, e, {
+      configurable: !0,
+      writable: !0,
+      value: function () {
+        return $jscomp.arrayIterator(this);
+      }
+    });
+  }
+  $jscomp.initSymbolIterator = function () {};
+};
+$jscomp.arrayIterator = function (e) {
+  var d = 0;
+  return $jscomp.iteratorPrototype(function () {
+    return d < e.length ? {
+      done: !1,
+      value: e[d++]
+    } : {
+      done: !0
+    };
+  });
+};
+$jscomp.iteratorPrototype = function (e) {
+  $jscomp.initSymbolIterator();
+  e = {
+    next: e
+  };
+  e[$jscomp.global.Symbol.iterator] = function () {
+    return this;
+  };
+  return e;
+};
+$jscomp.array = $jscomp.array || {};
+$jscomp.iteratorFromArray = function (e, d) {
+  $jscomp.initSymbolIterator();
+  if (e instanceof String) {
+    e += "";
+  }
+  var c = 0,
+    a = {
+      next: function () {
+        if (c < e.length) {
+          var b = c++;
+          return {
+            value: d(b, e[b]),
+            done: !1
+          };
+        }
+        a.next = function () {
+          return {
+            done: !0,
+            value: 0
+          };
+        };
+        return a.next();
+      }
+    };
+  a[Symbol.iterator] = function () {
+    return a;
+  };
+  return a;
+};
+$jscomp.polyfill("Array.prototype.keys", function (e) {
+  return e ? e : function () {
+    return $jscomp.iteratorFromArray(this, function (d) {
+      return d;
+    });
+  };
+}, "es6-impl", "es3");
+$jscomp.polyfill("String.prototype.startsWith", function (e) {
+  return e ? e : function (d, c) {
+    var a = $jscomp.checkStringArgs(this, d, "startsWith");
+    d += "";
+    var b = a.length,
+      f = d.length;
+    c = Math.max(0, Math.min(c | 0, a.length));
+    for (var k = 0; k < f && c < b;) if (a[c++] != d[k++]) {
+      return !1;
+    }
+    return k >= f;
+  };
+}, "es6-impl", "es3");
+var ImageCornerInfo = function () {
+    function e() {}
+    e.prototype.parseCornerInfo = function (d, c) {
+      var a = this;
+      if (0 != d && 0 != Config.cornerInfoTemplate) {
+        var b = new CornerInfo();
+        b.leftTop = [];
+        b.rightTop = [];
+        b.leftBottom = [];
+        b.rightBottom = [];
+        var f = new CornerInfo(),
+          f = new CornerInfoTemplate();
+        if (Environment.isDesktop || Environment.isPad) {
+          switch (f.PC = Config.cornerInfoTemplate.PC, c.modality) {
+            case "CT":
+              {
+                f = f.PC.CT;
+                break;
+              }
+            case "CR":
+              {}
+            case "DR":
+              {}
+            case "DX":
+              {
+                f = f.PC.DR;
+                break;
+              }
+            case "MG":
+              {
+                f = f.PC.MG;
+                break;
+              }
+            case "MR":
+              {
+                f = f.PC.MR;
+                break;
+              }
+            default:
+              {
+                f = f.PC.default;
+              }
+          }
+        } else {
+          switch (f.PHONE = Config.cornerInfoTemplate.PHONE, c.modality) {
+            case "CT":
+              {
+                f = f.PHONE.CT;
+                break;
+              }
+            case "MR":
+              {
+                f = f.PHONE.MR;
+                break;
+              }
+            default:
+              {
+                f = f.PHONE.default;
+              }
+          }
+        }
+        if (0 != f.leftTop && 0 < f.leftTop.length) {
+          f.leftTop.forEach(function (f) {
+            b.leftTop.push(a.parseCornerInfoItem(f, d, c));
+          });
+        }
+        if (0 != f.rightTop && 0 < f.rightTop.length) {
+          f.rightTop.forEach(function (f) {
+            b.rightTop.push(a.parseCornerInfoItem(f, d, c));
+          });
+        }
+        if (0 != f.leftBottom && 0 < f.leftBottom.length) {
+          f.leftBottom.forEach(function (f) {
+            b.leftBottom.push(a.parseCornerInfoItem(f, d, c));
+          });
+        }
+        if (0 != f.rightBottom && 0 < f.rightBottom.length) {
+          f.rightBottom.forEach(function (f) {
+            b.rightBottom.push(a.parseCornerInfoItem(f, d, c));
+          });
+        }
+        return b;
+      }
+    };
+    e.prototype.parseCornerInfoItem = function (d, c, a) {
+      var b = null != c.series ? c.series.study : null;
+      d = d.replace("{institution_name}", a.institutionName);
+      d = d.replace("{patient_id}", a.patientId);
+      d = d.replace("{patient_name}", a.patientName);
+      d = d.replace("{patient_age}", 0 != a.patientAge ? a.patientAge : b.patientAge + b.patientAgeUnit);
+      d = d.replace("{patient_sex}", a.patientSex);
+      d = d.replace("{patient_birthday}", 0 != a.patientBirthDate ? a.patientBirthDate : null != b ? b.patientBirthday : "");
+      d = d.replace("{acquisition_date}", a.acquisitionDate);
+      d = d.replace("{acquisition_time}", a.acquisitionTime);
+      d = d.replace("{accession_number}", a.accessionNumber);
+      d = d.replace("{planes_in_acquisition}", 0 != a.planesInAcquisition ? a.planesInAcquisition : "");
+      d = d.replace("{study_description}", 0 != a.studyDescription ? a.studyDescription : "");
+      d = d.replace("{series_description}", 0 != a.seriesDescription ? a.seriesDescription : "");
+      d = d.replace("{instance_number}", a.instanceNumber);
+      d = d.replace("{series_number}", a.seriesNumber);
+      d = d.replace("{patient_position}", a.patientPosition);
+      d = d.replace("{slice_location}", 0 != a.sliceLocation && "NaN" != a.sliceLocation ? a.sliceLocation : "");
+      d = d.replace("{view_position}", 0 != a.viewPosition ? a.viewPosition : "");
+      d = d.replace("{window_width}", a.windowWidth);
+      d = d.replace("{window_center}", a.windowCenter);
+      d = d.replace("{modality}", a.modality);
+      d = d.replace("{manufacturer}", a.manufacturer);
+      d = d.replace("{manufacturer_model}", a.manufacturerModel);
+      d = d.replace("{kvp}", 0 != a.kvp && "NaN" != a.kvp ? a.kvp : "");
+      d = d.replace("{exposure}", 0 != a.exposure ? a.exposure : "");
+      d = d.replace("{zoom_factor}", 0 != a.zoomFactor && "NaN" != a.zoomFactor ? a.zoomFactor : "");
+      d = d.replace("{slice_thickness}", 0 != a.sliceThickness && "NaN" != a.sliceThickness ? a.sliceThickness : "");
+      d = d.replace("{field_of_view_dimensions}", 0 != a.fieldOfViewDimensions ? a.fieldOfViewDimensions : "");
+      d = d.replace("{data_collection_diameter}", 0 != a.dataCollectionDiameter && "NaN" != a.dataCollectionDiameter ? a.dataCollectionDiameter : "");
+      d = d.replace("{detector_id}", 0 != a.detectorId ? a.detectorId : "");
+      d = d.replace("{relative_xray_exposure}", 0 != a.relativeXrayExposure ? a.relativeXrayExposure : "");
+      d = d.replace("{echo_numbers}", 0 != a.echoNumbers ? a.echoNumbers : "");
+      d = d.replace("{image_position_patient}", "NaN" != a.imagePositionPatient ? a.imagePositionPatient : "");
+      d = d.replace("{echo_train_length}", 0 != a.echoTrainLength ? a.echoTrainLength : "");
+      d = d.replace("{flip_angle}", 0 != a.flipAngle && "NaN" != a.flipAngle ? a.flipAngle : "");
+      d = d.replace("{number_of_averages}", 0 != a.numberOfAverages && "NaN" != a.numberOfAverages ? a.numberOfAverages : "");
+      d = d.replace("{estimated_radiographic_magnification_factor}", 0 != a.estimatedRadiographicMagnificationFactor && "NaN" != a.estimatedRadiographicMagnificationFactor ? a.estimatedRadiographicMagnificationFactor : "");
+      d = d.replace("{presentation_lut_shape}", 0 != a.presentationLutShape ? a.presentationLutShape : "");
+      d = d.replace("{image_type}", a.imageType);
+      d = d.replace("{xray_tube_current}", a.xrayTubeCurrent);
+      d = d.replace("{compression_force}", 0 != a.compressionForce && "NaN" != a.compressionForce ? a.compressionForce : "");
+      d = d.replace("{filter_material}", 0 != a.filterMaterial ? a.filterMaterial : "");
+      d = d.replace("{body_part_thickness}", 0 != a.bodyPartThickness && "NaN" != a.bodyPartThickness ? a.bodyPartThickness : "");
+      d = d.replace("{positioner_primary_angle}", 0 != a.positionerPrimaryAngle ? a.positionerPrimaryAngle : "");
+      d = d.replace("{rows}", a.rows);
+      d = d.replace("{columns}", a.columns);
+      d = d.replace("{patient_gender}", null != b ? b.patientGender : "");
+      d = d.replace("{study_time}", null != b ? b.studyTime : "");
+      c = c.series;
+      d = d.replace("{series_index}", (null != c ? c.seriesNumber : "").toString());
+      d = d.replace("{image_total}", null != c ? c.images.length.toString() : "");
+      return d = d.replace("{image_index}", a.instanceNumber);
+    };
+    e.prototype.getImageCornerInfo = function (d) {
+      var c = d.data.string("x00080005"),
+        a = new e();
+      a.patientName = d.data.string("x00100010");
+      if (window.TextDecoder) {
+        var b = d.data.elements.x00100010;
+        if (b) {
+          b = d.data.byteArray.subarray(b.dataOffset, b.dataOffset + b.length);
+          0 == c || "" == c ? a.patientName = new TextDecoder("gbk").decode(b) : "ISO_IR 192" == c ? a.patientName = new TextDecoder("utf-8").decode(b) : "GB18030" == c ? a.patientName = new TextDecoder("gbk").decode(b) : "ISO_IR 100" == c && (a.patientName = new TextDecoder("gbk").decode(b));
+        }
+      }
+      if (0 != d.data.string("x00101010")) {
+        var b = parseInt(d.data.string("x00101010").substr(0, 3)),
+          f = d.data.string("x00101010").substr(d.data.string("x00101010").length - 1, 1);
+        "Y" == f ? a.patientAge = "".concat(b, " \u5c81") : "M" == f ? a.patientAge = "".concat(b, " \u6708") : "W" == f ? a.patientAge = "".concat(b, " \u5468") : "D" == f && (a.patientAge = "".concat(b, " \u5929"));
+      }
+      b = d.data.string("x00100040");
+      "F" == b ? a.patientSex = "\u5973" : "M" == b ? a.patientSex = "\u7537" : a.patientSex = "\u672a\u77e5";
+      b = d.data.string("x00100020");
+      if (0 == b) {
+        b = "";
+      }
+      a.patientId = b;
+      a.instanceNumber = d.data.string("x00200013");
+      a.sliceLocation = Number(d.data.string("x00201041")).toFixed(2);
+      b = d.data.string("x00080050");
+      0 != b ? a.accessionNumber = b : a.accessionNumber = "";
+      a.patientPosition = d.data.string("x00185100");
+      a.studyDescription = d.data.string("x00081030");
+      a.seriesDescription = d.data.string("x0008103E");
+      a.manufacturer = d.data.string("x00080070");
+      a.manufacturerModel = d.data.string("x00081090");
+      a.modality = d.data.string("x00080060");
+      a.kvp = Number(d.data.string("x00180060")).toFixed(2);
+      a.exposure = d.data.string("x00181152");
+      a.dataCollectionDiameter = Number(d.data.string("x00180090")).toFixed(2);
+      a.fieldOfViewDimensions = d.data.string("x00181149");
+      a.sliceThickness = Number(d.data.string("x00180050")).toFixed(2);
+      a.windowCenter = d.data.string("x00281050");
+      a.windowWidth = d.data.string("x00281051");
+      b = d.data.string("x00080080");
+      if (0 == b) {
+        b = "";
+      }
+      a.institutionName = b;
+      if (window.TextDecoder && (b = d.data.elements.x00080080)) {
+        b = d.data.byteArray.subarray(b.dataOffset, b.dataOffset + b.length);
+        0 == c || "" == c ? a.institutionName = new TextDecoder("gbk").decode(b) : "ISO_IR 192" == c ? a.institutionName = new TextDecoder("utf-8").decode(b) : "GB18030" == c ? a.institutionName = new TextDecoder("gbk").decode(b) : "ISO_IR 100" == c && (a.institutionName = new TextDecoder("gbk").decode(b));
+      }
+      if (0 != d.data.string("x00200032")) {
+        var k = [];
+        d.data.string("x00200032").split("\\").forEach(function (a) {
+          k.push(Number(a).toFixed(2));
+        });
+        b = k.join("\\");
+        a.imagePositionPatient = b;
+      }
+      a.echoTrainLength = d.data.string("x00180091");
+      a.flipAngle = Number(d.data.string("x00181314")).toFixed(2);
+      a.numberOfAverages = Number(d.data.string("x00180083")).toFixed(2);
+      a.planesInAcquisition = d.data.string("x00189410");
+      a.echoNumbers = d.data.string("x00180086");
+      a.viewPosition = d.data.string("x00185101");
+      if (window.TextDecoder && (b = d.data.elements.x00185101)) {
+        b = d.data.byteArray.subarray(b.dataOffset, b.dataOffset + b.length);
+        0 == c || "" == c ? a.viewPosition = new TextDecoder("gbk").decode(b) : "ISO_IR 192" == c ? a.viewPosition = new TextDecoder("utf-8").decode(b) : "GB18030" == c ? a.viewPosition = new TextDecoder("gbk").decode(b) : "ISO_IR 100" == c && (a.viewPosition = new TextDecoder("gbk").decode(b));
+      }
+      a.detectorId = d.data.string("x0018700A");
+      a.relativeXrayExposure = d.data.string("x00181405");
+      a.estimatedRadiographicMagnificationFactor = Number(d.data.string("x00181114")).toFixed(2);
+      a.presentationLutShape = d.data.string("x20500020");
+      a.imageType = d.data.string("x00080008");
+      a.compressionForce = Number(d.data.string("x001811A2")).toFixed(2);
+      a.filterMaterial = d.data.string("x00187050");
+      a.bodyPartThickness = Number(d.data.string("x001811A0")).toFixed(2);
+      a.positionerPrimaryAngle = d.data.string("x00181510");
+      a.xrayTubeCurrent = d.data.string("x00181151");
+      a.rows = d.data.string("x00280010");
+      a.columns = d.data.string("x00280011");
+      c = d.data.string("x00080022");
+      if (0 != c && "" != c) {
+        a.acquisitionDate = c.substring(0, 4) + "-" + parseInt(c.substring(4, 6)) + "-" + parseInt(c.substring(6, 8));
+      }
+      b = d.data.string("x00080032");
+      if (0 != b && "" != b) {
+        b = b.split(".")[0];
+        3 >= b.length ? a.acquisitionTime = "" : (d = b.substring(0, 2), c = b.substring(2, 4), b = b.substring(4, 6), a.acquisitionTime = d + ":" + c + ":" + ("" != b ? b : "00"));
+      }
+      return a;
+    };
+    return e;
+  }(),
+  CornerInfo = function () {
+    return function () {};
+  }(),
+  CornerInfoTemplate = function () {
+    return function () {};
+  }();
+var __extends = this && this.__extends || function () {
+    var e = function (d, c) {
+      e = Object.setPrototypeOf || {
+        __proto__: []
+      } instanceof Array && function (a, b) {
+        a.__proto__ = b;
+      } || function (a, b) {
+        for (var f in b) if (Object.prototype.hasOwnProperty.call(b, f)) {
+          a[f] = b[f];
+        }
+      };
+      return e(d, c);
+    };
+    return function (d, c) {
+      function a() {
+        this.constructor = d;
+      }
+      if ("function" !== typeof c && null !== c) {
+        throw new TypeError("Class extends value " + String(c) + " is not a constructor or null");
+      }
+      e(d, c);
+      null === c ? d.prototype = Object.create(c) : d.prototype = (a.prototype = c.prototype, new a());
+    };
+  }(),
+  ResponseBase = function () {
+    return function () {};
+  }(),
+  RespStudyInfo = function (e) {
+    function d() {
+      return null !== e && e.apply(this, arguments) || this;
+    }
+    __extends(d, e);
+    return d;
+  }(ResponseBase),
+  RespImageInfo = function (e) {
+    function d() {
+      return null !== e && e.apply(this, arguments) || this;
+    }
+    __extends(d, e);
+    return d;
+  }(ResponseBase),
+  RespApplyInfo = function (e) {
+    function d() {
+      return null !== e && e.apply(this, arguments) || this;
+    }
+    __extends(d, e);
+    return d;
+  }(ResponseBase),
+  RespStudyHistory = function (e) {
+    function d() {
+      return null !== e && e.apply(this, arguments) || this;
+    }
+    __extends(d, e);
+    return d;
+  }(ResponseBase),
+  RespDownloadImageInfo = function (e) {
+    function d() {
+      var c = null !== e && e.apply(this, arguments) || this;
+      c.taskCompleted = !1;
+      return c;
+    }
+    __extends(d, e);
+    return d;
+  }(ResponseBase);
+var __values = this && this.__values || function (e) {
+    var d = "function" === typeof Symbol && Symbol.iterator,
+      c = d && e[d],
+      a = 0;
+    if (c) {
+      return c.call(e);
+    }
+    if (e && "number" === typeof e.length) {
+      return {
+        next: function () {
+          if (e && a >= e.length) {
+            e = 0;
+          }
+          return {
+            value: e && e[a++],
+            done: !e
+          };
+        }
+      };
+    }
+    throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+  },
+  StudyInfo = function () {
+    function e() {
+      this.efilm = !1;
+    }
+    e.prototype.getSeriesByNumber = function (d) {
+      var c, a;
+      if (this.series) {
+        try {
+          for (var b = __values(this.series), f = b.next(); !f.done; f = b.next()) {
+            var k = f.value;
+            if (k.seriesNumber == d) {
+              return k;
+            }
+          }
+        } catch (h) {
+          c = {
+            error: h
+          };
+        } finally {
+          try {
+            if (f && !f.done && (a = b.return)) {
+              a.call(b);
+            }
+          } finally {
+            if (c) {
+              throw c.error;
+            }
+          }
+        }
+      }
+      return null;
+    };
+    e.prototype.sortBySeriesNumber = function () {
+      this.series.sort(function (c, a) {
+        return null == c.seriesNumber ? 1 : null == a.seriesNumber ? -1 : c.seriesNumber - a.seriesNumber;
+      });
+      for (var d = 0; d < this.series.length; d++) this.series[d].index = d;
+    };
+    return e;
+  }(),
+  SeriesInfo = function () {
+    return function () {
+      this.state = new SeriesState();
+      this.pacsFAS = !1;
+    };
+  }(),
+  ImageInfo = function () {
+    return function () {
+      this.isAVI = !1;
+    };
+  }(),
+  SeriesState = function () {
+    return function () {
+      this.invert = !1;
+    };
+  }();
+var RisStudyInfo = function () {
+  return function () {};
+}();
+var __values = this && this.__values || function (e) {
+    var d = "function" === typeof Symbol && Symbol.iterator,
+      c = d && e[d],
+      a = 0;
+    if (c) {
+      return c.call(e);
+    }
+    if (e && "number" === typeof e.length) {
+      return {
+        next: function () {
+          if (e && a >= e.length) {
+            e = 0;
+          }
+          return {
+            value: e && e[a++],
+            done: !e
+          };
+        }
+      };
+    }
+    throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+  },
+  UrlHelper = function () {
+    function e() {}
+    e.parse = function (d) {
+      return (d = location.search.match(new RegExp("[?&]" + d + "=([^&]*)(&?)", "i"))) ? d[1] : "";
+    };
+    Object.defineProperty(e, "serverUrl", {
+      get: function () {
+        var d;
+        d = url("protocol");
+        var c = url("hostname"),
+          a = url("port");
+        "80" == a ? d = d + "://" + c + "/" : d = d + "://" + c + ":" + a + "/";
+        if (0 != Config.serverUrl && "" != Config.serverUrl) {
+          0 == Config.serverUrl.toLowerCase().indexOf("http") ? Config.serverUrl.lastIndexOf("/") == Config.serverUrl.length - 1 ? d = Config.serverUrl : d = Config.serverUrl + "/" : d = d + (Config.serverUrl + "/");
+        }
+        return d;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    e.reqUrl = function (d) {
+      return 0 == d.indexOf("/") ? e.serverUrl + d.substr(1) : e.serverUrl + d;
+    };
+    e.getPagePath = function (d) {
+      var c = location.pathname.substr(0, location.pathname.lastIndexOf("/"));
+      return location.origin + c + "/" + d;
+    };
+    e.normalizeUrl = function (d) {
+      if (0 != d && "" != d) {
+        d.lastIndexOf("/") < d.length - 1 && (d += "/");
+        0 > d.toLowerCase().indexOf("http:") && 0 > d.toLowerCase().indexOf("https:") && (d = location.protocol + "//" + d);
+        return d;
+      }
+    };
+    return e;
+  }(),
+  Config = function () {
+    function e() {}
+    Object.defineProperty(e, "serverUrl", {
+      get: function () {
+        if ("undefined" != typeof SERVER_URL) {
+          return SERVER_URL;
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "reportServerUrl", {
+      get: function () {
+        if ("undefined" != typeof REPORT_SERVER_URL) {
+          return REPORT_SERVER_URL;
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "nodeJsServerUrl", {
+      get: function () {
+        if ("undefined" != typeof nodeJsServerUrl) {
+          return nodeJsServerUrl;
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "studyHistoryUrl", {
+      get: function () {
+        if ("undefined" != typeof STUDY_HISTORY_URL) {
+          return STUDY_HISTORY_URL;
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "studyHistory", {
+      get: function () {
+        return "undefined" == typeof HIDE_HISTORY ? !1 : HIDE_HISTORY;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "syncServerUrl", {
+      get: function () {
+        if ("undefined" != typeof SYNC_SERVER_URL) {
+          return SYNC_SERVER_URL;
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "allowExportImage", {
+      get: function () {
+        return "undefined" == typeof ALLOW_EXPORT_IMAGE ? !1 : ALLOW_EXPORT_IMAGE;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "hideReport", {
+      get: function () {
+        return "undefined" == typeof HIDE_REPORT ? !1 : HIDE_REPORT;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    e.getPacsFasServerUrl = function () {
+      var d, c;
+      if ("undefined" != typeof PACSFAS_URL_MAP) {
+        var a = location.origin;
+        try {
+          for (var b = __values(PACSFAS_URL_MAP), f = b.next(); !f.done; f = b.next()) {
+            var k = f.value;
+            if (0 <= a.indexOf(k.accessUrl)) {
+              return UrlHelper.normalizeUrl(k.pacsFasUrl);
+            }
+          }
+        } catch (h) {
+          d = {
+            error: h
+          };
+        } finally {
+          try {
+            if (f && !f.done && (c = b.return)) {
+              c.call(b);
+            }
+          } finally {
+            if (d) {
+              throw d.error;
+            }
+          }
+        }
+      }
+    };
+    Object.defineProperty(e, "cornerInfoTemplate", {
+      get: function () {
+        if ("undefined" != typeof OVERLAY) {
+          return OVERLAY;
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "presetWwwl", {
+      get: function () {
+        if ("undefined" != typeof PRESET_WWWL) {
+          return PRESET_WWWL;
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "tagName", {
+      get: function () {
+        if ("undefined" != typeof TAG_NAME) {
+          return TAG_NAME;
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "serviceType", {
+      get: function () {
+        return "undefined" != typeof SERVICE_TYPE && 0 != SERVICE_TYPE && "" != SERVICE_TYPE ? SERVICE_TYPE : "node";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "layout3d", {
+      get: function () {
+        var d, c, a, b, f, k, h, e, l, n;
+        if ("undefined" != typeof LAYOUT3D) {
+          var m = [];
+          try {
+            for (var p = __values(LAYOUT3D), q = p.next(); !q.done; q = p.next()) {
+              var r = q.value,
+                t = new Layout3dModel();
+              t.name = r.name;
+              if (0 < r.screen.indexOf("landscape")) {
+                t.forLandscape = !0;
+              }
+              if (0 < r.screen.indexOf("portrait")) {
+                t.forPortrait = !0;
+              }
+              if (r.rows) {
+                t.rows = [];
+                try {
+                  for (var v = (a = 0, __values(r.rows)), u = v.next(); !u.done; u = v.next()) {
+                    var w = u.value,
+                      x = new Layout3dRow();
+                    if (w.height) {
+                      x.height = w.height;
+                    }
+                    if (w.cells) {
+                      x.cells = [];
+                      try {
+                        for (var y = (f = 0, __values(w.cells)), z = y.next(); !z.done; z = y.next()) {
+                          var C = z.value,
+                            E = new Layout3dCell();
+                          E.engine = Engine3d.get(C.engine);
+                          x.cells.push(E);
+                        }
+                      } catch (A) {
+                        f = {
+                          error: A
+                        };
+                      } finally {
+                        try {
+                          if (z && !z.done && (k = y.return)) {
+                            k.call(y);
+                          }
+                        } finally {
+                          if (f) {
+                            throw f.error;
+                          }
+                        }
+                      }
+                    }
+                    t.rows.push(x);
+                  }
+                } catch (A) {
+                  a = {
+                    error: A
+                  };
+                } finally {
+                  try {
+                    if (u && !u.done && (b = v.return)) {
+                      b.call(v);
+                    }
+                  } finally {
+                    if (a) {
+                      throw a.error;
+                    }
+                  }
+                }
+              }
+              if (r.cols) {
+                t.cols = [];
+                try {
+                  for (var F = (h = 0, __values(r.cols)), D = F.next(); !D.done; D = F.next()) {
+                    var G = D.value,
+                      B = new Layout3dCol();
+                    if (G.width) {
+                      B.width = G.width;
+                    }
+                    if (G.cells) {
+                      B.cells = [];
+                      try {
+                        for (var I = (l = 0, __values(G.cells)), H = I.next(); !H.done; H = I.next()) {
+                          C = H.value;
+                          E = new Layout3dCell();
+                          E.engine = Engine3d.get(C.engine);
+                          B.cells.push(E);
+                        }
+                      } catch (A) {
+                        l = {
+                          error: A
+                        };
+                      } finally {
+                        try {
+                          if (H && !H.done && (n = I.return)) {
+                            n.call(I);
+                          }
+                        } finally {
+                          if (l) {
+                            throw l.error;
+                          }
+                        }
+                      }
+                    }
+                    t.cols.push(B);
+                  }
+                } catch (A) {
+                  h = {
+                    error: A
+                  };
+                } finally {
+                  try {
+                    if (D && !D.done && (e = F.return)) {
+                      e.call(F);
+                    }
+                  } finally {
+                    if (h) {
+                      throw h.error;
+                    }
+                  }
+                }
+              }
+              if (r.cell) {
+                t.cell = new Layout3dCell();
+                t.cell.engine = Engine3d.get(r.cell.engine);
+              }
+              m.push(t);
+            }
+          } catch (A) {
+            d = {
+              error: A
+            };
+          } finally {
+            try {
+              if (q && !q.done && (c = p.return)) {
+                c.call(p);
+              }
+            } finally {
+              if (d) {
+                throw d.error;
+              }
+            }
+          }
+          return m;
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    return e;
+  }(),
+  Environment = function () {
+    function e() {}
+    Object.defineProperty(e, "isAndroidPhone", {
+      get: function () {
+        return device.androidPhone();
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "isIPhone", {
+      get: function () {
+        return device.iphone();
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "isPhone", {
+      get: function () {
+        return device.androidPhone() || device.iphone();
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "isMobile", {
+      get: function () {
+        return device.mobile();
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "isPad", {
+      get: function () {
+        return device.tablet();
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "isDesktop", {
+      get: function () {
+        return device.desktop();
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "isIPhoneMicroMessenger", {
+      get: function () {
+        return navigator.userAgent.includes("iPhone") && navigator.userAgent.includes("MicroMessenger") ? !0 : !1;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "isLandscape", {
+      get: function () {
+        return device.landscape();
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "isPortrait", {
+      get: function () {
+        return device.portrait();
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "indexedDB", {
+      get: function () {
+        return window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB ? !0 : !1;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "networkType", {
+      get: function () {
+        var d = navigator.userAgent,
+          d = d.match(/NetType\/\w+/) ? d.match(/NetType\/\w+/)[0] : "NetType/other",
+          d = d.toLowerCase().replace("nettype/", "");
+        switch (d) {
+          case "wifi":
             {
-              _0x1571ce(JSON.parse(_0x230b3d.data[_0x26d7b4]).Header.Name);
-              _0x1571ce(document.title);
-              if (_0x26d7b4.includes(_0x230b3d.info.cookieid)) {
-                _0x2113dc[_0x31f315] = JSON.parse(_0x230b3d.data[_0x26d7b4]);
-                _0x31f315++;
+              d = "wifi";
+              break;
+            }
+          case "4g":
+            {
+              d = "4g";
+              break;
+            }
+          case "3g":
+            {
+              d = "3g";
+              break;
+            }
+          case "3gnet":
+            {
+              d = "3g";
+              break;
+            }
+          case "2g":
+            {
+              d = "2g";
+              break;
+            }
+          default:
+            {
+              d = "other";
+            }
+        }
+        return d;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "connectionType", {
+      get: function () {
+        var d = navigator.connection || navigator.mozConnection || navigator.webkitConnection || {
+            type: "unknown"
+          },
+          c = "unknown ethernet wifi 2g 3g 4g none".split(" "),
+          c = "number" == typeof d.type ? c[d.type] : d.type;
+        if (0 == c && "number" == typeof d.bandwidth) {
+          10 < d.bandwidth ? c = "wifi" : 2 < d.bandwidth ? c = "3g" : 0 < d.bandwidth ? c = "2g" : 0 == d.bandwidth ? c = "none" : c = "unknown";
+        }
+        return c;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    return e;
+  }(),
+  Progress = function () {
+    function e() {}
+    e.start = function () {
+      NProgress.start();
+    };
+    e.done = function () {
+      NProgress.done();
+    };
+    e.setPercent = function (d) {
+      NProgress.set(d);
+    };
+    e.increment = function (d) {
+      d ? NProgress.inc(d) : NProgress.inc();
+    };
+    return e;
+  }(),
+  ActionTag = function () {
+    function e() {}
+    Object.defineProperty(e, "none", {
+      get: function () {
+        return "";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "wwwl", {
+      get: function () {
+        return "ww-wl";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "pan", {
+      get: function () {
+        return "pan";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "zoom", {
+      get: function () {
+        return "zoom";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "magnifier", {
+      get: function () {
+        return "magnifier";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "ctValue", {
+      get: function () {
+        return "ct-value";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "annoArrow", {
+      get: function () {
+        return "anno-arrow";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "annoText", {
+      get: function () {
+        return "anno-text";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "annoLength", {
+      get: function () {
+        return "anno-length";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "annoEllipse", {
+      get: function () {
+        return "anno-ellipse";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "annoRectangle", {
+      get: function () {
+        return "anno-rectangle";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "annoPolygon", {
+      get: function () {
+        return "anno-polygon";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "annoAngle", {
+      get: function () {
+        return "anno-angle";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "annoCobbAngle", {
+      get: function () {
+        return "anno-cobb-angle";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "annoDeleteAll", {
+      get: function () {
+        return "anno-delete-all";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "annoDeleteSelected", {
+      get: function () {
+        return "anno-delete-selected";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    return e;
+  }(),
+  UIEventType = function () {
+    function e() {}
+    Object.defineProperty(e, "mouseDown", {
+      get: function () {
+        return "mousedown";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "mouseUp", {
+      get: function () {
+        return "mouseup";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "mouseMove", {
+      get: function () {
+        return "mousemove";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "mouseWheel", {
+      get: function () {
+        return "mousewheel";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "touchStart", {
+      get: function () {
+        return "touchstart";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "touchEnd", {
+      get: function () {
+        return "touchend";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "touchMove", {
+      get: function () {
+        return "touchmove";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "touchCancel", {
+      get: function () {
+        return "touchcancel";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "pinchStart", {
+      get: function () {
+        return "pinchstart";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "pinchEnd", {
+      get: function () {
+        return "pinchend";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "pinchMove", {
+      get: function () {
+        return "pinchmove";
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    return e;
+  }(),
+  UIEventParam = function () {
+    return function () {};
+  }(),
+  UUID = function () {
+    function e() {}
+    e.random = function () {
+      return this.S4() + this.S4() + "-" + this.S4() + "-" + this.S4() + "-" + this.S4() + "-" + this.S4() + this.S4() + this.S4();
+    };
+    e.S4 = function () {
+      return (65536 * (1 + Math.random()) | 0).toString(16).substring(1);
+    };
+    return e;
+  }(),
+  Utils = function () {
+    function e() {}
+    e.vmin2px = function (d) {
+      return window.innerWidth < window.innerHeight ? Math.round(d * window.innerWidth / 100) : Math.round(d * window.innerHeight / 100);
+    };
+    e.px2vmin = function (d) {
+      return (window.innerWidth < window.innerHeight ? d / (window.innerWidth / 100) : d / (window.innerHeight / 100)) + "vmin";
+    };
+    e.vmax2px = function (d) {
+      return window.innerWidth < window.innerHeight ? Math.round(d * window.innerHeight / 100) : Math.round(d * window.innerWidth / 100);
+    };
+    e.addCssByLink = function (d) {
+      var c = document.createElement("link");
+      c.setAttribute("href", d);
+      c.setAttribute("rel", "stylesheet");
+      c.setAttribute("type", "text/css");
+      d = document.getElementsByTagName("head");
+      d.length ? d[0].appendChild(c) : document.documentElement.appendChild(c);
+    };
+    e.vibrate = function () {
+      if (navigator.vibrate) {
+        navigator.vibrate(30);
+      }
+    };
+    e.downLoadUrl = function (d, c) {
+      var a = document.createElement("a");
+      a.target = "_blank";
+      a.href = d;
+      a.download = c || "";
+      c = document.createEvent("MouseEvents");
+      c.initMouseEvent("click", !0, !1, window, 0, 0, 0, 0, 0, !1, !1, !1, !1, 0, null);
+      a.dispatchEvent(c);
+      a.remove();
+      URL.revokeObjectURL(d);
+    };
+    e.createWorker = function (d) {
+      d = d.toString().trim().match(/^function\s*\w*\s*\([\w\s,]*\)\s*{([\w\W]*?)}$/)[1];
+      d = new Blob([d], {
+        type: "text/javascript"
+      });
+      d = URL.createObjectURL(d);
+      return new Worker(d);
+    };
+    e.existCornerstoneCache = function (d) {
+      return 0 != d.cornerstoneImageId && "" != d.cornerstoneImageId && (d = cornerstone.imageCache.imageCache[d.cornerstoneImageId], 0 != d && 0 != d.image) ? !0 : !1;
+    };
+    e.formatWebDate = function (d) {
+      d = d.replace(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/, "$1-$2-$3 $4:$5:$6");
+      if (0 <= d.indexOf(".")) {
+        d = d.substr(0, d.indexOf("."));
+      }
+      return d;
+    };
+    e.formatDicomDate = function (d) {
+      d = d.replace(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/, "$1-$2-$3 $4:$5:$6");
+      if (0 <= d.indexOf(".")) {
+        d = d.substr(0, d.indexOf("."));
+      }
+      return d;
+    };
+    return e;
+  }();
+var MsgBox = function () {
+  function e() {}
+  e.error = function (d) {
+    new Noty({
+      text: d,
+      layout: "topCenter",
+      type: "error",
+      theme: "metroui",
+      timeout: 3E3
+    }).show();
+  };
+  e.warning = function (d) {
+    new Noty({
+      text: d,
+      layout: "topCenter",
+      type: "warning",
+      theme: "metroui",
+      timeout: 3E3
+    }).show();
+  };
+  e.success = function (d) {
+    new Noty({
+      text: d,
+      layout: "topCenter",
+      type: "success",
+      theme: "metroui",
+      timeout: 3E3
+    }).show();
+  };
+  e.info = function (d) {
+    new Noty({
+      text: d,
+      layout: "topCenter",
+      type: "info",
+      theme: "metroui",
+      timeout: 3E3
+    }).show();
+  };
+  e.alert = function (d) {
+    new Noty({
+      text: d,
+      layout: "topCenter",
+      type: "alert",
+      theme: "metroui"
+    }).show();
+  };
+  e.errorAlert = function (d) {
+    new Noty({
+      text: d,
+      layout: "topCenter",
+      type: "error",
+      theme: "metroui"
+    }).show();
+  };
+  e.warningAlert = function (d) {
+    new Noty({
+      text: d,
+      layout: "topCenter",
+      type: "warning",
+      theme: "metroui"
+    }).show();
+  };
+  e.successAlert = function (d) {
+    new Noty({
+      text: d,
+      layout: "topCenter",
+      type: "success",
+      theme: "metroui"
+    }).show();
+  };
+  e.infoAlert = function (d) {
+    new Noty({
+      text: d,
+      layout: "topCenter",
+      type: "info",
+      theme: "metroui"
+    }).show();
+  };
+  e.confirm = function (d) {
+    var c = new Noty({
+      text: d,
+      layout: "topCenter",
+      type: "alert",
+      theme: "metroui",
+      buttons: [Noty.button("\u786e\u5b9a", "btn btn-primary", function () {
+        console.log("button 1 clicked");
+      }, {
+        id: "button1",
+        "data-status": "ok"
+      }), Noty.button("\u53d6\u6d88", "btn btn-default", function () {
+        console.log("button 2 clicked");
+        c.close();
+      })]
+    });
+    c.show();
+  };
+  return e;
+}();
+var __values = this && this.__values || function (e) {
+    var d = "function" === typeof Symbol && Symbol.iterator,
+      c = d && e[d],
+      a = 0;
+    if (c) {
+      return c.call(e);
+    }
+    if (e && "number" === typeof e.length) {
+      return {
+        next: function () {
+          if (e && a >= e.length) {
+            e = 0;
+          }
+          return {
+            value: e && e[a++],
+            done: !e
+          };
+        }
+      };
+    }
+    throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+  },
+  MessageProxy = function () {
+    function e() {}
+    e.get = function (d, c) {
+      e.request(d, {
+        method: "GET"
+      }, c);
+    };
+    e.post = function (d, c, a) {
+      var b = new Date().getTime(),
+        f = {
+          method: "POST"
+        };
+      if (c) {
+        "java" == Config.serviceType ? f.body = c : f.body = JSON.stringify(c);
+      }
+      "groovy" == Config.serviceType ? f.headers = new Headers({
+        "Content-Type": "application/json",
+        Context_Api_Time: b.toString(),
+        Context_Api_Sign: md5(b + ".&%213324dsf&%%$$#@")
+      }) : "node" == Config.serviceType && (f.headers = new Headers({
+        "Content-Type": "application/json"
+      }));
+      e.request(d, f, a);
+    };
+    e.request = function (d, c, a) {
+      var b = new ResponseBase();
+      b.hasError = !1;
+      b.errorText = "";
+      fetch(d, c).then(function (f) {
+        f.ok ? f.json().then(function (f) {
+          b.data = f;
+          if (null != a) {
+            a(b);
+          }
+        }) : (b.hasError = !0, 404 == f.status ? b.errorText = "\u8bf7\u6c42\u7684 URL \u4e0d\u5b58\u5728\uff1a".concat(f.url) : b.errorText = "\u9519\u8bef\uff1a".concat(f.status, " ").concat(f.url), null != a && a(b));
+      }).catch(function (f) {
+        b.hasError = !0;
+        b.errorText = f;
+        if (null != a) {
+          a(b);
+        }
+      });
+    };
+    e.getTemplate = function (d, c) {
+      var a = new ResponseBase();
+      a.hasError = !1;
+      a.errorText = "";
+      fetch(d, {
+        method: "GET"
+      }).then(function (b) {
+        b.ok ? b.text().then(function (b) {
+          a.data = b;
+          if (null != c) {
+            c(a);
+          }
+        }) : (a.hasError = !0, 404 == b.status ? a.errorText = "\u8bf7\u6c42\u7684 URL \u4e0d\u5b58\u5728\uff1a".concat(b.url) : a.errorText = "\u9519\u8bef\uff1a".concat(b.status, " ").concat(b.url), null != c && c(a));
+      }).catch(function (b) {
+        a.hasError = !0;
+        a.errorText = b;
+        if (null != c) {
+          c(a);
+        }
+      });
+    };
+    e.getImageAsBlob = function (d, c) {
+      var a = new ResponseBase();
+      a.hasError = !1;
+      a.errorText = "";
+      fetch(d, {
+        method: "GET"
+      }).then(function (b) {
+        b.ok ? b.blob().then(function (b) {
+          a.data = b;
+          if (null != c) {
+            c(a);
+          }
+        }) : (a.hasError = !0, 404 == b.status ? a.errorText = "\u8bf7\u6c42\u7684 URL \u4e0d\u5b58\u5728\uff1a".concat(b.url) : a.errorText = "\u9519\u8bef\uff1a".concat(b.status, " ").concat(b.url), null != c && c(a));
+      }).catch(function (b) {
+        a.hasError = !0;
+        a.errorText = b;
+        if (null != c) {
+          c(a);
+        }
+      });
+    };
+    e.downloadImageFromFAS = function (d, c) {
+      var a = new RespDownloadImageInfo();
+      a.hasError = !1;
+      a.errorText = "";
+      a.imageInfo = d;
+      JSZipUtils.getBinaryContent(d.imageUrl, function (b, f) {
+        b ? (a.hasError = !0, c && c(a)) : (b = new Uint8Array(f), "PK" === String.fromCharCode(b[0], b[1]) ? JSZip.loadAsync(f).then(function (b) {
+          b.forEach(function (b, f) {
+            f.name.endsWith(".avi") ? (a.hasError = !0, a.errorText = "avi", c && c(a)) : f.async("uint8array").then(function (b) {
+              a.data = b;
+              a.fileName = f.name;
+              "DICM" === String.fromCharCode(b[128], b[129], b[130], b[131]) ? a.imageInfo.isDicom = !0 : a.imageInfo.isDicom = !1;
+              if (c) {
+                c(a);
+              }
+            });
+          });
+        }) : (a.data = f, "DICM" === String.fromCharCode(f[128], f[129], f[130], f[131]) ? a.imageInfo.isDicom = !0 : a.imageInfo.isDicom = !1, c && c(a)));
+      });
+    };
+    e.queryStudyInfoByRisID = function (d, c) {
+      var a = this,
+        b = new RespStudyInfo();
+      b.hasError = !1;
+      b.errorText = "";
+      b.studyId = d;
+      var f = this,
+        k = UrlHelper.reqUrl("".concat(e.sqlFolder, "/pacs.queryStudyInfoByRisID"));
+      if ("java" == Config.serviceType) {
+        k = UrlHelper.reqUrl("".concat(e.queryPath, "/pacs.queryStudyInfoByRisID/execute.json"));
+      } else {
+        if (0 != Config.serverUrl && (Config.serverUrl.endsWith("cloudfilm") || Config.serverUrl.endsWith("cloudfilm/")) && (k = UrlHelper.reqUrl("film.queryStudyInfoByRisID"), 0 == e.hospitalId || "" == e.hospitalId)) {
+          b.hasError = !0;
+          b.errorText = "\u5185\u90e8\u9519\u8bef\uff1a\u65e0\u6548\u7684 hospitalId";
+          c(b);
+          return;
+        }
+      }
+      var h = {
+        hospitalId: e.hospitalId,
+        studyUid: d
+      };
+      if ("java" == Config.serviceType) {
+        h = new FormData();
+        h.append("studyUid", d);
+      }
+      e.post(k, h, function (k) {
+        if (null != c) {
+          b.hasError = k.hasError;
+          b.errorText = k.errorText;
+          0 == b.hasError && (0 != k.data.code ? "200" != k.data.code ? (b.hasError = !0, b.errorText = k.data.message) : b.studyInfo = a.parseStudyInfoForGroovy(k.data.result) : 0 != k.data.result && "success" != k.data.result ? (b.hasError = !0, b.errorText = k.data.message) : b.studyInfo = f.parseStudyGroup(k.data.data));
+          c(b);
+        }
+      });
+    };
+    e.parseStudyInfoForGroovy = function (d) {
+      var c, a;
+      if (null == d) {
+        return null;
+      }
+      var b = [];
+      if (null != d.pacsStudies && 0 < d.pacsStudies.length) {
+        try {
+          for (var f = __values(d.pacsStudies), k = f.next(); !k.done; k = f.next()) {
+            var h = k.value,
+              e = new StudyInfo();
+            e.risStudyUid = d.risStudyId;
+            e.studyUid = h.pacsStudyId;
+            e.studyTime = d.studyTime;
+            e.modality = d.deviceType;
+            e.hospitalName = d.execHospitalName;
+            e.patientName = d.patientName;
+            e.patientGender = d.patientGender;
+            e.patientAge = d.patientAge;
+            e.patientAgeUnit = d.patientAgeUnit;
+            e.pacsFasUrl = d.pacsFasUrl;
+            e.storageId = h.storageId;
+            if (0 != h.storageId && "" != h.storageId) {
+              0 == e.pacsFasUrl.endsWith("/") && (e.pacsFasUrl += "/");
+              e.pacsFasUrl += h.storageId + "/";
+            }
+            if (null != h.series && 0 < h.series.length) {
+              e.series = [];
+              for (var l = 0; l < h.series.length; l++) if (0 != h.series[l].seriesUid) {
+                var n = new SeriesInfo();
+                n.study = e;
+                n.index = l;
+                n.seriesUid = h.series[l].seriesUid;
+                n.seriesNumber = h.series[l].seriesNumber;
+                n.seriesDesc = h.series[l].seriesDescription;
+                n.imageTotal = h.series[l].imageCount;
+                e.series.push(n);
+              }
+              e.sortBySeriesNumber();
+            }
+            b.push(e);
+          }
+        } catch (m) {
+          c = {
+            error: m
+          };
+        } finally {
+          try {
+            if (k && !k.done && (a = f.return)) {
+              a.call(f);
+            }
+          } finally {
+            if (c) {
+              throw c.error;
+            }
+          }
+        }
+      } else {
+        e = new StudyInfo();
+        e.risStudyUid = d.risStudyId;
+        e.studyUid = d.risStudyId;
+        e.studyTime = d.studyTime;
+        e.modality = d.deviceType;
+        e.hospitalName = d.execHospitalName;
+        e.patientName = d.patientName;
+        e.patientGender = d.patientGender;
+        e.patientAge = d.patientAge;
+        e.patientAgeUnit = d.patientAgeUnit;
+        e.pacsFasUrl = d.pacsFasUrl;
+        0 != d.rptStorageId && "" != d.rptStorageId && (e.storageId = d.rptStorageId, e.rptStorageId = d.rptStorageId, 0 == e.pacsFasUrl.endsWith("/") && (e.pacsFasUrl += "/"), e.pacsFasUrl += e.storageId + "/");
+        0 != d.sysType && "" != d.sysType && (e.sysType = d.sysType);
+        0 != d.efilm && "1" == d.efilm && (e.efilm = !0);
+        b.push(e);
+      }
+      return b;
+    };
+    e.parseStudyGroup = function (d) {
+      var c = this,
+        a = [],
+        b = [];
+      d.forEach(function (a) {
+        b.includes(a.pacs_study_uid) || b.push(a.pacs_study_uid);
+      });
+      b.forEach(function (b) {
+        var f = d.filter(function (a) {
+          return a.pacs_study_uid == b;
+        });
+        a.push(c.parseStudyInfo(f));
+      });
+      return a;
+    };
+    e.parseStudyInfo = function (d) {
+      if (0 != d && 0 != d.length) {
+        var c = new StudyInfo(),
+          a = d[0];
+        c.risStudyUid = a.studyinfo_uid;
+        c.studyUid = a.pacs_study_uid;
+        if (0 != a.study_id) {
+          c.studyId = a.study_id;
+        }
+        if (0 != a.study_time) {
+          try {
+            c.studyTime = this.getDateString(a.study_time);
+          } catch (f) {
+            console.error("study_time \u89e3\u6790\u9519\u8bef");
+          }
+        }
+        if (0 != a.modality) {
+          c.modality = a.modality;
+        }
+        if (0 != a.patient_name) {
+          c.patientName = a.patient_name;
+        }
+        0 != c.patientName && "" != c.patientName || 0 == a.patient_en_name || (c.patientName = a.patient_en_name);
+        if (0 != a.patient_gender) {
+          c.patientGender = a.patient_gender;
+        }
+        0 != a.patient_age ? c.patientAge = a.patient_age : c.patientAge = "";
+        0 != a.patient_age_unit ? c.patientAgeUnit = a.patient_age_unit : c.patientAgeUnit = "";
+        0 != a.hospital_name ? c.hospitalName = a.hospital_name : c.hospitalName = "";
+        if (0 != a.storage_uid) {
+          c.storageUid = a.storage_uid;
+        }
+        if (0 != a.ip) {
+          c.storageIp = a.ip;
+        }
+        if (0 != a.port) {
+          c.storagePort = a.port;
+        }
+        0 != a.protocol && "" != a.protocol ? c.storageProtocol = a.protocol : c.storageProtocol = "http";
+        if (0 != a.prefix) {
+          c.storagePrefix = a.prefix;
+        }
+        if (0 != a.patient_birthday) {
+          c.patientBirthday = a.patient_birthday;
+        }
+        if (0 != a.patient_id) {
+          c.patientId = a.patient_id;
+        }
+        if (0 != a.sys_type) {
+          c.sysType = a.sys_type.toLowerCase().trim();
+        }
+        if (0 != a.patient_master_index) {
+          c.patientMasterIndex = a.patient_master_index;
+        }
+        c.series = [];
+        for (a = 0; a < d.length; a++) if (0 != d[a].series_uid) {
+          var b = new SeriesInfo();
+          b.study = c;
+          b.index = a;
+          b.seriesUid = d[a].series_uid;
+          b.seriesNumber = d[a].series_number;
+          b.seriesDesc = d[a].series_description;
+          b.imageTotal = d[a].image_count;
+          c.series.push(b);
+        }
+        c.sortBySeriesNumber();
+        return c;
+      }
+    };
+    e.queryReportInfoByRisID = function (d, c) {
+      var a = new RespStudyHistory();
+      a.hasError = !1;
+      a.errorText = "";
+      var b = this,
+        f = UrlHelper.reqUrl("".concat(e.sqlFolder, "/pacs.queryReportInfoByRisID/execute.json")),
+        k = new FormData();
+      k.append("studyUid", d);
+      e.post(f, k, function (f) {
+        a.hasError = f.hasError;
+        a.errorText = f.errorText;
+        f.data ? "success" != f.data.result && (a.hasError = !0, a.errorText = f.data.message) : (a.hasError = !0, a.errorText = "\u65e0\u6570\u636e\u8fd4\u56de");
+        if (null != c) {
+          0 == a.hasError && (a.studies = b.parseRrepStudyData(f.data.data));
+          c(a);
+        }
+      });
+    };
+    e.parseRrepStudyData = function (d) {
+      var c = [];
+      if (null == d || 0 == d.length) {
+        return c;
+      }
+      d.forEach(function (a) {
+        var b = new RisStudyInfo();
+        b.confirmedFinishTime = a.confirmed_finish_time;
+        b.confirmedDoctorName = a.confirmed_doctor_name;
+        b.reportDescription = a.report_desc;
+        b.reportDiagnose = a.report_diagnose;
+        b.clinicalDiagnose = a.clinical_diagnose;
+        b.studyStatus = a.study_status;
+        b.studyDoctorName = a.study_doctor_name;
+        c.push(b);
+      });
+      return c;
+    };
+    e.queryHistoryInfoByMasterId = function (d, c) {
+      var a = new ResponseBase();
+      a.hasError = !1;
+      a.errorText = "";
+      var b = UrlHelper.reqUrl("".concat(e.sqlFolder, "/pacs.queryHistoryInfoByMasterId/execute.json")),
+        f = new FormData();
+      f.append("patientMasterId", d);
+      e.post(b, f, function (b) {
+        a.hasError = b.hasError;
+        a.errorText = b.errorText;
+        b.data ? "success" != b.data.result && (a.hasError = !0, a.errorText = b.data.message) : (a.hasError = !0, a.errorText = "\u65e0\u6570\u636e\u8fd4\u56de");
+        if (null != c) {
+          0 == a.hasError && (a.data = b.data.data);
+          c(a);
+        }
+      });
+    };
+    e.queryImageInfoFromFAS = function (d, c) {
+      var a = new RespImageInfo();
+      a.hasError = !1;
+      a.errorText = "";
+      var b = this;
+      e.get(d, function (f) {
+        if (null != c) {
+          a.hasError = f.hasError;
+          a.errorText = f.errorText;
+          0 == a.hasError && (a.studyInfo = b.parseImageInfo(f.data));
+          c(a);
+        }
+      });
+    };
+    e.parseImageInfo = function (d) {
+      if (0 != d && 0 != d.length) {
+        var c = new StudyInfo();
+        c.studyUid = d.studyuid;
+        c.series = [];
+        if (0 != d.series && 0 < d.series.length) {
+          d.series.forEach(function (a) {
+            var b = new SeriesInfo();
+            b.seriesUid = a.seriesuid;
+            c.series.push(b);
+            if (0 != a.objects && 0 < a.objects.length) {
+              b.images = [];
+              for (var f = 0; f < a.objects.length; f++) {
+                var k = new ImageInfo();
+                k.index = f;
+                k.instanceNumber = a.objects[f].meta.instancenumber;
+                k.imageId = a.objects[f].objectid;
+                k.fileSize = parseInt(a.objects[f].filesize);
+                if (a.objects[f].objectlocation) {
+                  k.location = a.objects[f].objectlocation;
+                }
+                b.images.push(k);
+              }
+            }
+          });
+        }
+        return c;
+      }
+    };
+    e.queryApplyInfoById = function (d, c) {
+      var a = new RespApplyInfo();
+      a.hasError = !1;
+      a.errorText = "";
+      var b = UrlHelper.reqUrl("".concat(e.sqlFolder, "/pacs.queryApplyInfoById"));
+      d = JSON.stringify({
+        hisApplyId: d
+      });
+      e.post(b, d, function (b) {
+        a.hasError = b.hasError;
+        a.errorText = b.errorText;
+        0 != b.data.code ? "200" != b.data.code && (a.hasError = !0, a.errorText = b.data.message) : "success" != b.data.result && (a.hasError = !0, a.errorText = b.data.message);
+        if (null != c) {
+          0 == a.hasError && (b = b.data.data || b.data.result, 0 == b || 0 == b.lenght ? (a.hasError = !0, a.errorText = "\u6ca1\u6709\u67e5\u8be2\u5230\u7533\u8bf7\u5355\u4fe1\u606f\u3002") : a.risStudyId = b[0].studyinfo_uid);
+          c(a);
+        }
+      }, "application/json");
+    };
+    e.getDateString = function (d) {
+      d = d.replace(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/, "$1-$2-$3 $4:$5:$6");
+      if (0 <= d.indexOf(".")) {
+        d = d.substr(0, d.indexOf("."));
+      }
+      return d;
+    };
+    e.sqlFolder = "imageapi";
+    e.queryPath = "qry";
+    e.insertPath = "add";
+    e.updatePath = "mdf";
+    e.deletePath = "rmv";
+    e.hospitalId = "";
+    return e;
+  }();
+function thunkify(e) {
+  return function () {
+    for (var d = Array(arguments.length), c = this, a = 0; a < d.length; ++a) d[a] = arguments[a];
+    return function (a) {
+      var b;
+      d.push(function () {
+        b || (b = !0, a.apply(null, arguments));
+      });
+      try {
+        e.apply(c, d);
+      } catch (k) {
+        a(k);
+      }
+    };
+  };
+}
+;
+function MouseCapture(e, d) {
+  var c = document,
+    a = {},
+    b = function (b) {
+      var f;
+      if (e.move) {
+        f = function (b) {
+          e.move.call(d, b, a);
+        };
+        c.addEventListener("mousemove", f);
+      }
+      var h,
+        g = function () {
+          if (e.move) {
+            c.removeEventListener("mousemove", f);
+          }
+          c.removeEventListener("mouseup", h);
+        };
+      e.up ? h = function (b) {
+        g();
+        return e.up.call(d, b, a);
+      } : h = g;
+      c.addEventListener("mouseup", h);
+      return e.down.call(d, b, a);
+    };
+  d.addEventListener("mousedown", b);
+  return b;
+}
+;
+this.onmessage = function (e) {
+  if (0 != e.data.imageId && 0 != e.data.imageFile) {
+    e = e.data;
+    StoreManager.saveImage(e.imageId, e.imageFile).then(function () {}).catch(function (d) {
+      console.log("\u4fdd\u5b58\u56fe\u50cf\u5931\u8d25\uff1a" + d.message);
+    });
+  }
+};
+var StoreManager = function () {
+    function e() {}
+    e.getImage = function (d) {
+      var c = this;
+      return new Promise(function (a, b) {
+        if (0 != d) {
+          c.openImageDB().then(function (b) {
+            try {
+              var f = b.transaction([c._imageStoreName], "readwrite").objectStore(c._imageStoreName),
+                h = f.get(d.imageId);
+              h.onerror = function () {
+                console.error("\u5185\u90e8\u9519\u8bef\uff1aStoreManager get image fail");
+              };
+              h.onsuccess = function (b) {
+                b = b.target.result;
+                var k = new CacheImageInfo();
+                k.imageInfo = d;
+                if (b) {
+                  k.imageFile = b.file;
+                  k.size = b.size;
+                }
+                a(k);
+                if (0 != b && b.date != c.getToday()) {
+                  b.date = c.getToday();
+                  h = f.put(b);
+                }
+              };
+            } catch (g) {
+              console.error("\u5185\u90e8\u9519\u8bef\uff1aStoreManager get image fail", g);
+              b = new CacheImageInfo();
+              b.imageInfo = d;
+              b.error = g;
+              a(b);
+            }
+          }).catch(function (b) {
+            console.error("\u5185\u90e8\u9519\u8bef\uff1aStoreManager get image fail", b);
+            var f = new CacheImageInfo();
+            f.imageInfo = d;
+            f.error = b;
+            a(f);
+          });
+        }
+      });
+    };
+    e.saveImage = function (d, c) {
+      var a = new StoreImage();
+      a.id = d;
+      a.file = c;
+      a.size = c.size;
+      a.date = this.getToday();
+      var b = this;
+      return new Promise(function (f, c) {
+        b.openImageDB().then(function (k) {
+          try {
+            var d = k.transaction([b._imageStoreName], "readwrite");
+            d.onerror = function () {};
+            d.oncomplete = function () {
+              f("success");
+            };
+            var h = d.objectStore(b._imageStoreName).add(a);
+            h.onerror = function (a) {};
+            h.onsuccess = function (a) {
+              f("success");
+            };
+          } catch (n) {
+            c(Error("\u5185\u90e8\u9519\u8bef\uff1a" + n));
+          }
+        }).catch(function (a) {
+          c(a);
+        });
+      });
+    };
+    e.deleteImage = function (d) {
+      var c = this;
+      this.openImageDB().then(function (a) {
+        try {
+          var b = a.transaction([c._imageStoreName], "readwrite");
+          b.onerror = function () {};
+          var f = b.objectStore(c._imageStoreName).delete(d);
+          f.onerror = function (a) {};
+          f.onsuccess = function (a) {};
+        } catch (k) {}
+      }).catch(function (a) {});
+    };
+    e.getThumb = function (d) {
+      var c = this;
+      return new Promise(function (a, b) {
+        if (0 != d && "" != d) {
+          c.openImageDB().then(function (f) {
+            try {
+              var k = f.transaction([c._thumbStoreName], "readwrite").objectStore(c._thumbStoreName),
+                h = k.get(d);
+              h.onerror = function () {
+                b(Error("\u5185\u90e8\u9519\u8bef\uff1aget thumbnail fail"));
+              };
+              h.onsuccess = function (b) {
+                b = b.target.result;
+                var f = new StoreImage();
+                f.id = d;
+                if (b) {
+                  f = b;
+                }
+                a(f);
+                if (0 != b && b.date != c.getToday()) {
+                  b.date = c.getToday();
+                  h = k.put(b);
+                }
+              };
+            } catch (g) {
+              b(Error("\u5185\u90e8\u9519\u8bef\uff1a" + g));
+            }
+          }).catch(function (a) {
+            b(a);
+          });
+        }
+      });
+    };
+    e.saveThumb = function (d, c) {
+      var a = new StoreImage();
+      a.id = d;
+      a.file = c;
+      a.date = this.getToday();
+      var b = this;
+      return new Promise(function (f, c) {
+        b.openImageDB().then(function (k) {
+          try {
+            var d = k.transaction([b._thumbStoreName], "readwrite");
+            d.onerror = function () {
+              c(Error("\u5185\u90e8\u9519\u8bef\uff1atransaction error"));
+            };
+            d.oncomplete = function () {
+              f("success");
+            };
+            var h = d.objectStore(b._thumbStoreName).add(a);
+            h.onerror = function (a) {
+              if (a.target.error && "ConstraintError" != a.target.error.name) {
+                c(Error("\u5185\u90e8\u9519\u8bef\uff1aadd thumbnail fail - " + a.target.error.message));
+              }
+            };
+            h.onsuccess = function (a) {
+              f("success");
+            };
+          } catch (n) {
+            c(Error("\u5185\u90e8\u9519\u8bef\uff1aadd thumbnail fail - " + n));
+          }
+        }).catch(function (a) {
+          c(a);
+        });
+      });
+    };
+    e.openImageDB = function () {
+      var d = this;
+      return new Promise(function (c, a) {
+        var b = indexedDB.open(d._dbName);
+        b.onerror = function () {
+          console.error("\u5185\u90e8\u9519\u8bef\uff1aOpen DB '".concat(d._dbName, "' fail"));
+          a(Error("\u5185\u90e8\u9519\u8bef\uff1aOpen DB '".concat(d._dbName, "' fail")));
+        };
+        b.onsuccess = function (a) {
+          c(a.target.result);
+        };
+        b.onupgradeneeded = function (b) {
+          b = b.target.result;
+          try {
+            b.createObjectStore(d._imageStoreName, {
+              keyPath: "id"
+            });
+            b.createObjectStore(d._thumbStoreName, {
+              keyPath: "id"
+            });
+            b.createObjectStore("work", {
+              autoIncrement: !0
+            });
+          } catch (k) {
+            a(Error("\u5185\u90e8\u9519\u8bef\uff1a" + k));
+          }
+        };
+      });
+    };
+    e.getToday = function () {
+      var d = new Date(),
+        c = d.getFullYear(),
+        a = d.getMonth() + 1,
+        d = d.getDate();
+      return "".concat(c, "-").concat(a, "-").concat(d);
+    };
+    e._dbName = "ImageDB";
+    e._imageStoreName = "images";
+    e._thumbStoreName = "thumbs";
+    return e;
+  }(),
+  StoreImage = function () {
+    return function () {};
+  }(),
+  CacheImageInfo = function () {
+    return function () {};
+  }();
+var __generator = this && this.__generator || function (e, d) {
+    function c(b) {
+      return function (f) {
+        return a([b, f]);
+      };
+    }
+    function a(a) {
+      if (f) {
+        throw new TypeError("Generator is already executing.");
+      }
+      for (; b;) try {
+        f = 1;
+        if (k && (a[0] & 2 ? h = k["return"] : a[0] ? h = k["throw"] || ((h = k["return"]) && h.call(k), 0) : h = k.next) && !(h = h.call(k, a[1])).done) {
+          return h;
+        }
+        k = 0;
+        if (h) {
+          a = [a[0] & 2, h.value];
+        }
+        switch (a[0]) {
+          case 0:
+            {}
+          case 1:
+            {
+              h = a;
+              break;
+            }
+          case 4:
+            {
+              b.label++;
+              return {
+                value: a[1],
+                done: !1
+              };
+            }
+          case 5:
+            {
+              b.label++;
+              k = a[1];
+              a = [0];
+              continue;
+            }
+          case 7:
+            {
+              a = b.ops.pop();
+              b.trys.pop();
+              continue;
+            }
+          default:
+            {
+              if (!(h = b.trys, h = 0 < h.length && h[h.length - 1]) && (6 === a[0] || 2 === a[0])) {
+                b = 0;
+                continue;
+              }
+              if (3 === a[0] && (!h || a[1] > h[0] && a[1] < h[3])) {
+                b.label = a[1];
+              } else {
+                if (6 === a[0] && b.label < h[1]) {
+                  b.label = h[1];
+                  h = a;
+                } else {
+                  if (h && b.label < h[2]) {
+                    b.label = h[2];
+                    b.ops.push(a);
+                  } else {
+                    if (h[2]) {
+                      b.ops.pop();
+                    }
+                    b.trys.pop();
+                    continue;
+                  }
+                }
+              }
+            }
+        }
+        a = d.call(e, b);
+      } catch (n) {
+        a = [6, n];
+        k = 0;
+      } finally {
+        f = h = 0;
+      }
+      if (a[0] & 5) {
+        throw a[1];
+      }
+      return {
+        value: a[0] ? a[1] : 0,
+        done: !0
+      };
+    }
+    var b = {
+        label: 0,
+        sent: function () {
+          if (h[0] & 1) {
+            throw h[1];
+          }
+          return h[1];
+        },
+        trys: [],
+        ops: []
+      },
+      f,
+      k,
+      h,
+      g;
+    g = {
+      next: c(0),
+      "throw": c(1),
+      "return": c(2)
+    };
+    "function" === typeof Symbol && (g[Symbol.iterator] = function () {
+      return this;
+    });
+    return g;
+  },
+  __values = this && this.__values || function (e) {
+    var d = "function" === typeof Symbol && Symbol.iterator,
+      c = d && e[d],
+      a = 0;
+    if (c) {
+      return c.call(e);
+    }
+    if (e && "number" === typeof e.length) {
+      return {
+        next: function () {
+          if (e && a >= e.length) {
+            e = 0;
+          }
+          return {
+            value: e && e[a++],
+            done: !e
+          };
+        }
+      };
+    }
+    throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+  },
+  DownloadManager = function () {
+    function e() {
+      this._taskId = 0;
+      this._taskPool = [];
+      this._waitingTask = [];
+      this._max_download_worker_num = 10;
+      this._freeDownloadWorkerPool = [];
+      this._busyDownloadWorkerPool = [];
+      this._waitingDownloadImages = [];
+      this._currentDownloadGroup = 0;
+      this._cacheWorker = this.newImageSaveWorker();
+    }
+    e.prototype.download = function (d, c, a) {
+      var b, f, k, h;
+      if (0 == this._freeDownloadWorkerPool.length) {
+        if (this._freeDownloadWorkerPool.length + this._busyDownloadWorkerPool.length == this._max_download_worker_num) {
+          this.addToWaiting(c);
+        } else {
+          d = [];
+          try {
+            for (var e = __values(c), l = e.next(); !l.done; l = e.next()) {
+              var n = l.value;
+              if (this._freeDownloadWorkerPool.length + this._busyDownloadWorkerPool.length == this._max_download_worker_num) {
+                d.push(n);
+              } else {
+                var m = this.newImageDownloadWorker();
+                m.postMessage(n);
+                this._busyDownloadWorkerPool.push(m);
+              }
+            }
+          } catch (r) {
+            b = {
+              error: r
+            };
+          } finally {
+            try {
+              if (l && !l.done && (f = e.return)) {
+                f.call(e);
+              }
+            } finally {
+              if (b) {
+                throw b.error;
+              }
+            }
+          }
+          if (0 < d.length) {
+            this.addToWaiting(d);
+          }
+        }
+      } else {
+        d = [];
+        try {
+          for (var p = __values(c), q = p.next(); !q.done; q = p.next()) {
+            n = q.value;
+            0 < this._freeDownloadWorkerPool.length ? (m = this._freeDownloadWorkerPool.shift(), m.postMessage(n), this._busyDownloadWorkerPool.push(m)) : this._freeDownloadWorkerPool.length + this._busyDownloadWorkerPool.length == this._max_download_worker_num ? d.push(n) : (m = this.newImageDownloadWorker(), m.postMessage(n), this._busyDownloadWorkerPool.push(m));
+          }
+        } catch (r) {
+          k = {
+            error: r
+          };
+        } finally {
+          try {
+            if (q && !q.done && (h = p.return)) {
+              h.call(p);
+            }
+          } finally {
+            if (k) {
+              throw k.error;
+            }
+          }
+        }
+        if (0 < d.length) {
+          this.addToWaiting(d);
+        }
+      }
+    };
+    e.prototype.newImageDownloadWorker = function () {
+      var d = this,
+        c = new Worker("./js/DownloadWorker.js");
+      c.onmessage = function (a) {
+        if (0 < d._waitingDownloadImages.length) {
+          d._currentDownloadGroup >= d._waitingDownloadImages.length && (d._currentDownloadGroup = 0);
+          if (0 < d._waitingDownloadImages[d._currentDownloadGroup].length) {
+            var b = d._waitingDownloadImages[d._currentDownloadGroup].shift();
+            c.postMessage(b);
+            if (0 == d._waitingDownloadImages[d._currentDownloadGroup].length) {
+              d._waitingDownloadImages.splice(d._currentDownloadGroup, 1);
+            }
+            d._currentDownloadGroup += 1;
+            if (d._currentDownloadGroup >= d._waitingDownloadImages.length) {
+              d._currentDownloadGroup = 0;
+            }
+          } else {
+            d._waitingDownloadImages.splice(d._currentDownloadGroup, 1);
+          }
+        } else {
+          b = d._busyDownloadWorkerPool.indexOf(c);
+          d._busyDownloadWorkerPool.splice(b, 1);
+          d._freeDownloadWorkerPool.push(c);
+        }
+        b = new RespDownloadImageInfo();
+        b.hasError = !1;
+        b.errorText = "";
+        b.imageInfo = a.data.imageInfo;
+        0 != a.data.error ? (b.hasError = !0, b.errorText = a.data.error) : (b.data = a.data.data, b.fileName = a.data.fileName, b.imageInfo.isDicom = a.data.imageInfo.isDicom, b.imageFile = new Blob([b.data], {
+          type: "application/octet-stream"
+        }), 0 == a.data.imageInfo.isAVI && d._cacheWorker && d._cacheWorker.postMessage({
+          imageId: b.imageInfo.imageId,
+          imageFile: b.imageFile
+        }));
+        if (d.imageDownloaded) {
+          d.imageDownloaded(b);
+        }
+      };
+      return c;
+    };
+    e.prototype.newImageSaveWorker = function () {
+      var d = Utils.createWorker(ImageSaveWorker);
+      d.onmessage = function (c) {
+        if (0 != c.data.error && "success" != c.data.error) {
+          console.log(c.data);
+        }
+      };
+      return d;
+    };
+    e.prototype.addToWaiting = function (d) {
+      var c,
+        a,
+        b,
+        f,
+        k,
+        h,
+        e = [],
+        l = !1;
+      try {
+        for (var n = __values(d), m = n.next(); !m.done; m = n.next()) {
+          var p = m.value,
+            l = !1;
+          try {
+            for (var q = (b = 0, __values(this._waitingDownloadImages)), r = q.next(); !r.done; r = q.next()) {
+              var t = r.value;
+              try {
+                for (var v = (k = 0, __values(t)), u = v.next(); !u.done; u = v.next()) if (p.imageId == u.value.imageId) {
+                  l = !0;
+                }
+              } catch (w) {
+                k = {
+                  error: w
+                };
+              } finally {
+                try {
+                  if (u && !u.done && (h = v.return)) {
+                    h.call(v);
+                  }
+                } finally {
+                  if (k) {
+                    throw k.error;
+                  }
+                }
+              }
+            }
+          } catch (w) {
+            b = {
+              error: w
+            };
+          } finally {
+            try {
+              if (r && !r.done && (f = q.return)) {
+                f.call(q);
+              }
+            } finally {
+              if (b) {
+                throw b.error;
+              }
+            }
+          }
+          if (0 == l) {
+            e.push(p);
+          }
+        }
+      } catch (w) {
+        c = {
+          error: w
+        };
+      } finally {
+        try {
+          if (m && !m.done && (a = n.return)) {
+            a.call(n);
+          }
+        } finally {
+          if (c) {
+            throw c.error;
+          }
+        }
+      }
+      if (0 < e.length) {
+        this._waitingDownloadImages.unshift(e);
+        this._currentDownloadGroup = 0;
+      }
+    };
+    e.prototype.startTask = function (d, c, a, b) {
+      var f, k, h, e, l, n;
+      try {
+        for (var m = __values(this._taskPool), p = m.next(); !p.done; p = m.next()) {
+          var q = p.value;
+          if (q.isDownloading && q.queueId == c && q.level >= a) {
+            q.cancel();
+          }
+        }
+      } catch (x) {
+        f = {
+          error: x
+        };
+      } finally {
+        try {
+          if (p && !p.done && (k = m.return)) {
+            k.call(m);
+          }
+        } finally {
+          if (f) {
+            throw f.error;
+          }
+        }
+      }
+      f = this.getNewTask();
+      f.taskId = this._taskId++;
+      f.queueId = c;
+      f.level = a;
+      f.needCache = b;
+      try {
+        for (var r = __values(d), t = r.next(); !t.done; t = r.next()) {
+          var v = t.value;
+          if (0 == this.contains(v.imageId)) {
+            f.add(v);
+          }
+        }
+      } catch (x) {
+        h = {
+          error: x
+        };
+      } finally {
+        try {
+          if (t && !t.done && (e = r.return)) {
+            e.call(r);
+          }
+        } finally {
+          if (h) {
+            throw h.error;
+          }
+        }
+      }
+      d = !1;
+      try {
+        for (var u = __values(this._taskPool), w = u.next(); !w.done; w = u.next()) if (q = w.value, q.isDownloading && q.level < a) {
+          d = !0;
+          break;
+        }
+      } catch (x) {
+        l = {
+          error: x
+        };
+      } finally {
+        try {
+          if (w && !w.done && (n = u.return)) {
+            n.call(u);
+          }
+        } finally {
+          if (l) {
+            throw l.error;
+          }
+        }
+      }
+      d ? this._waitingTask.push(f) : f.start();
+    };
+    e.prototype.contains = function (d) {
+      var c, a;
+      try {
+        for (var b = __values(this._taskPool), f = b.next(); !f.done; f = b.next()) {
+          var k = f.value;
+          if (!k.isCancelling && !k.isCancelled && k.contains(d)) {
+            return !0;
+          }
+        }
+      } catch (h) {
+        c = {
+          error: h
+        };
+      } finally {
+        try {
+          if (f && !f.done && (a = b.return)) {
+            a.call(b);
+          }
+        } finally {
+          if (c) {
+            throw c.error;
+          }
+        }
+      }
+      return !1;
+    };
+    e.prototype.onImageDownloaded = function (d, c) {
+      0 == c.hasError && 0 != c.data ? (d = new Blob([c.data], {
+        type: "application/octet-stream"
+      }), c.imageFile = d, this.imageDownloaded && this.imageDownloaded(c), this._cacheWorker.postMessage({
+        imageId: c.imageInfo.imageId,
+        imageFile: c.imageFile
+      })) : this.imageDownloaded && this.imageDownloaded(c);
+    };
+    e.prototype.onTaskCompleted = function (d, c, a) {
+      var b,
+        f,
+        k = !0;
+      try {
+        for (var h = __values(this._taskPool), e = h.next(); !e.done; e = h.next()) {
+          var l = e.value;
+          if (l.isDownloading || l.isCancelling) {
+            k = !1;
+            break;
+          }
+        }
+      } catch (n) {
+        b = {
+          error: n
+        };
+      } finally {
+        try {
+          if (e && !e.done && (f = h.return)) {
+            f.call(h);
+          }
+        } finally {
+          if (b) {
+            throw b.error;
+          }
+        }
+      }
+      if (k && this.taskCompleted) {
+        this.taskCompleted(d, c, a);
+      }
+      do if (0 < this._waitingTask.length) {
+        if (this._waitingTask[0].isDone || this._waitingTask[0].isCancelled || this._waitingTask[0].isCancelling) {
+          this._waitingTask.shift();
+        } else {
+          if (this._waitingTask[0].isDownloading) {
+            break;
+          }
+          if (this._waitingTask[0].isIdle) {
+            this._waitingTask[0].start();
+            break;
+          }
+        }
+      } while (0 < this._waitingTask.length);
+    };
+    e.prototype.getNewTask = function () {
+      var d,
+        c,
+        a = this,
+        b;
+      if (0 == this._taskPool.length) {
+        b = new DownloadTask();
+        b.imageDownloaded = function (f) {
+          a.onImageDownloaded(b, f);
+        };
+        b.taskCompleted = function (b, f, c) {
+          a.onTaskCompleted(b, f, c);
+        };
+        this._taskPool.push(b);
+      } else {
+        try {
+          for (var f = __values(this._taskPool), k = f.next(); !k.done; k = f.next()) {
+            var h = k.value;
+            if (h.isIdle || h.isDone || h.isCancelled) {
+              b = h;
+              b.reset();
+              break;
+            }
+          }
+        } catch (g) {
+          d = {
+            error: g
+          };
+        } finally {
+          try {
+            if (k && !k.done && (c = f.return)) {
+              c.call(f);
+            }
+          } finally {
+            if (d) {
+              throw d.error;
+            }
+          }
+        }
+        if (null == b) {
+          b = new DownloadTask();
+          b.imageDownloaded = function (f) {
+            a.onImageDownloaded(b, f);
+          };
+          b.taskCompleted = function (b, f, c) {
+            a.onTaskCompleted(b, f, c);
+          };
+          this._taskPool.push(b);
+        }
+      }
+      return b;
+    };
+    return e;
+  }();
+function ImageSaveWorker() {
+  function e() {
+    return new Promise(function (c, a) {
+      var b = indexedDB.open("ImageDB");
+      b.onerror = function () {
+        console.error("\u5185\u90e8\u9519\u8bef\uff1aOpen DB '".concat("ImageDB", "' fail"));
+        a(Error("\u5185\u90e8\u9519\u8bef\uff1aOpen DB '".concat("ImageDB", "' fail")));
+      };
+      b.onsuccess = function (a) {
+        c(a.target.result);
+      };
+      b.onupgradeneeded = function (b) {
+        b = b.target.result;
+        try {
+          b.createObjectStore("images", {
+            keyPath: "id"
+          });
+          b.createObjectStore("thumbs", {
+            keyPath: "id"
+          });
+          b.createObjectStore("work", {
+            autoIncrement: !0
+          });
+        } catch (k) {
+          a(Error("\u5185\u90e8\u9519\u8bef\uff1a" + k));
+        }
+      };
+    });
+  }
+  function d(c) {
+    var a = {
+        id: c.imageId,
+        file: c.imageFile,
+        size: c.imageFile.size,
+        time: Date.now()
+      },
+      b = new (function () {
+        return function () {};
+      }())();
+    b.imageId = a.id;
+    e().then(function (f) {
+      try {
+        var c = f.transaction(["images"], "readwrite");
+        c.onerror = function () {
+          b.error = "save image error\uff1atransaction error";
+          postMessage(b);
+        };
+        c.oncomplete = function () {};
+        var d = c.objectStore("images").add(a);
+        d.onerror = function (a) {
+          a.target.error && "ConstraintError" != a.target.error.name ? b.error = "save image fail: " + a.target.error.message : b.error = "save image fail";
+          postMessage(b);
+        };
+        d.onsuccess = function (a) {
+          b.error = "success";
+          postMessage(b);
+        };
+      } catch (g) {
+        b.error = "\u672a\u77e5\u9519\u8bef\uff1asave image fail";
+        postMessage(b);
+      }
+    }).catch(function (a) {
+      b.error = a;
+      postMessage(b);
+    });
+  }
+  onmessage = function (c) {
+    d(c.data);
+  };
+}
+var DownloadStatus;
+(function (e) {
+  e[e.Idle = 0] = "Idle";
+  e[e.Downloading = 1] = "Downloading";
+  e[e.Cancelling = 2] = "Cancelling";
+  e[e.Cancelled = 3] = "Cancelled";
+  e[e.Done = 4] = "Done";
+})(DownloadStatus || (DownloadStatus = {}));
+var DownloadTask = function () {
+    function e(d) {
+      if (0 === d) {
+        d = 1;
+      }
+      this.queueId = -1;
+      this.level = 1;
+      this.needCache = !1;
+      this._status = DownloadStatus.Idle;
+      this._images = [];
+      this._downloadImageThunk = thunkify(MessageProxy.downloadImageFromFAS);
+      this.level = d;
+    }
+    Object.defineProperty(e.prototype, "isIdle", {
+      get: function () {
+        return this._status == DownloadStatus.Idle ? !0 : !1;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e.prototype, "isDownloading", {
+      get: function () {
+        return this._status == DownloadStatus.Downloading ? !0 : !1;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e.prototype, "isCancelling", {
+      get: function () {
+        return this._status == DownloadStatus.Cancelling ? !0 : !1;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e.prototype, "isCancelled", {
+      get: function () {
+        return this._status == DownloadStatus.Cancelled ? !0 : !1;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e.prototype, "isDone", {
+      get: function () {
+        return this._status == DownloadStatus.Done ? !0 : !1;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    e.prototype.add = function (d) {
+      this._images.push(d);
+    };
+    e.prototype.start = function () {
+      if (!(this.isCancelling || this.isCancelled || this.isDone) && 0 != this._images.length) {
+        this._status = DownloadStatus.Downloading;
+        var d = this.downloadGenerator();
+        this.download(d);
+      }
+    };
+    e.prototype.download = function (d) {
+      var c = this,
+        a = d.next();
+      a.value ? a.value(function (a) {
+        if (c.imageDownloaded) {
+          c.imageDownloaded(a);
+        }
+        c._status == DownloadStatus.Cancelling ? (c._status = DownloadStatus.Cancelled, c.taskCompleted && c.taskCompleted(!0, c.needCache, a.imageInfo)) : c.download(d);
+      }) : a.done && (this._status = DownloadStatus.Done, this.taskCompleted && this.taskCompleted(!1, this.needCache, this._images[this._images.length - 1]));
+    };
+    e.prototype.downloadGenerator = function () {
+      var d, c, a, b, f, k;
+      return __generator(this, function (h) {
+        switch (h.label) {
+          case 0:
+            {
+              h.trys.push([0, 5, 6, 7]);
+              d = __values(this._images);
+              c = d.next();
+              h.label = 1;
+            }
+          case 1:
+            {
+              if (c.done) {
+                return [3, 4];
+              }
+              a = c.value;
+              return [4, this._downloadImageThunk(a)];
+            }
+          case 2:
+            {
+              h.sent();
+              h.label = 3;
+            }
+          case 3:
+            {
+              c = d.next();
+              return [3, 1];
+            }
+          case 4:
+            {
+              return [3, 7];
+            }
+          case 5:
+            {
+              b = h.sent();
+              f = {
+                error: b
+              };
+              return [3, 7];
+            }
+          case 6:
+            {
+              try {
+                if (c && !c.done && (k = d.return)) {
+                  k.call(d);
+                }
+              } finally {
+                if (f) {
+                  throw f.error;
+                }
+              }
+              return [7];
+            }
+          case 7:
+            {
+              return [2];
+            }
+        }
+      });
+    };
+    e.prototype.contains = function (d) {
+      for (var c = 0; c < this._images.length; c++) {
+        if (this._images[c].imageId == d && 0 != this._images[c].cornerstoneImageId) {
+          return !0;
+        }
+        if (this._images[c].imageId == d && 0 == this._images[c].cornerstoneImageId) {
+          this._images.splice(c, 1);
+          break;
+        }
+      }
+      return !1;
+    };
+    e.prototype.cancel = function () {
+      if (0 != this.isDownloading) {
+        this._status = DownloadStatus.Cancelling;
+      }
+    };
+    e.prototype.reset = function () {
+      this._images = [];
+      this._status = DownloadStatus.Idle;
+    };
+    return e;
+  }(),
+  CacheTask = function () {
+    function e() {
+      this._images = [];
+      this._isCancelled = this._isWorking = !1;
+    }
+    Object.defineProperty(e.prototype, "isWorking", {
+      get: function () {
+        return this._isWorking;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    e.prototype.add = function (d) {
+      this._images.push(d);
+    };
+    e.prototype.retrieve = function (d, c) {
+      var a, b;
+      this.retrieveCallback = c;
+      this._isWorking = !0;
+      this._isCancelled = !1;
+      this._images = [];
+      try {
+        for (var f = __values(d), k = f.next(); !k.done; k = f.next()) this._images.push(k.value);
+      } catch (h) {
+        a = {
+          error: h
+        };
+      } finally {
+        try {
+          if (k && !k.done && (b = f.return)) {
+            b.call(f);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+      this.start();
+    };
+    e.prototype.deleteImage = function (d) {
+      StoreManager.deleteImage(d);
+    };
+    e.prototype.start = function () {
+      if (0 != this._images.length) {
+        var d = this.readGenerator();
+        this.read(d);
+      }
+    };
+    e.prototype.read = function (d) {
+      var c = this,
+        a = d.next();
+      a.value ? a.value.then(function (a) {
+        var b = new RespDownloadImageInfo();
+        b.hasError = !1;
+        b.errorText = "";
+        b.imageInfo = a.imageInfo;
+        b.imageFile = a.imageFile;
+        if (0 != a.size && 0 != a.imageFile && a.size != a.imageFile.size) {
+          console.log("read cache image error: size no equal");
+          alert("image size: ".concat(a.size, " != ").concat(a.imageFile.size));
+        }
+        if (a.imageFile) {
+          var k = new FileReader();
+          k.onload = function () {
+            var a = new Uint8Array(k.result);
+            "DICM" === String.fromCharCode(a[128], a[129], a[130], a[131]) ? b.imageInfo.isDicom = !0 : b.imageInfo.isDicom = !1;
+            if (c.imageRetrieved) {
+              c.imageRetrieved(b);
+            }
+            if (c.retrieveCallback) {
+              c.retrieveCallback(b);
+            }
+            1 == c._isCancelled ? (c._isWorking = !1, c.taskCompleted && c.taskCompleted(), c.retrieveCallback && (a = new RespDownloadImageInfo(), a.taskCompleted = !0, c.retrieveCallback(a))) : c.read(d);
+          };
+          k.readAsArrayBuffer(a.imageFile);
+        } else {
+          c.imageRetrieved && c.imageRetrieved(b);
+          c.retrieveCallback && c.retrieveCallback(b);
+          1 == c._isCancelled ? (c._isWorking = !1, c.taskCompleted && c.taskCompleted(), c.retrieveCallback && (a = new RespDownloadImageInfo(), a.taskCompleted = !0, c.retrieveCallback(a))) : c.read(d);
+        }
+      }).catch(function (a) {
+        var b = new RespDownloadImageInfo();
+        b.hasError = !0;
+        b.errorText = a.message;
+        if (c.imageRetrieved) {
+          c.imageRetrieved(b);
+        }
+        if (c.retrieveCallback) {
+          c.retrieveCallback(b);
+        }
+      }) : a.done && (this._isWorking = !1, this.taskCompleted && this.taskCompleted(), this.retrieveCallback && (a = new RespDownloadImageInfo(), a.taskCompleted = !0, this.retrieveCallback(a)));
+    };
+    e.prototype.readGenerator = function () {
+      var d, c, a, b, f, k;
+      return __generator(this, function (h) {
+        switch (h.label) {
+          case 0:
+            {
+              h.trys.push([0, 5, 6, 7]);
+              d = __values(this._images);
+              c = d.next();
+              h.label = 1;
+            }
+          case 1:
+            {
+              if (c.done) {
+                return [3, 4];
+              }
+              a = c.value;
+              return [4, StoreManager.getImage(a)];
+            }
+          case 2:
+            {
+              h.sent();
+              h.label = 3;
+            }
+          case 3:
+            {
+              c = d.next();
+              return [3, 1];
+            }
+          case 4:
+            {
+              return [3, 7];
+            }
+          case 5:
+            {
+              b = h.sent();
+              f = {
+                error: b
+              };
+              return [3, 7];
+            }
+          case 6:
+            {
+              try {
+                if (c && !c.done && (k = d.return)) {
+                  k.call(d);
+                }
+              } finally {
+                if (f) {
+                  throw f.error;
+                }
+              }
+              return [7];
+            }
+          case 7:
+            {
+              return [2];
+            }
+        }
+      });
+    };
+    e.prototype.cancel = function () {
+      this._isCancelled = !0;
+    };
+    return e;
+  }();
+var Layout3dModel = function () {
+    function e() {
+      this.forPortrait = this.forLandscape = !1;
+    }
+    Object.defineProperty(e, "MPR_Horz", {
+      get: function () {
+        var d = new e();
+        d.name = "MPR";
+        d.forLandscape = !0;
+        d.forPortrait = !1;
+        d.cols = [];
+        var c = new Layout3dCol();
+        c.width = "66.6%";
+        c.cells = [];
+        c.cells.push(new Layout3dCell());
+        c.cells[0].engine = Engine3d.transverse;
+        d.cols.push(c);
+        c = new Layout3dCol();
+        c.width = "33.4%";
+        c.cells = [];
+        c.cells.push(new Layout3dCell());
+        c.cells[0].engine = Engine3d.coronal;
+        c.cells.push(new Layout3dCell());
+        c.cells[1].engine = Engine3d.sagittal;
+        d.cols.push(c);
+        return d;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "MPR_Vert", {
+      get: function () {
+        var d = new e();
+        d.name = "MPR";
+        d.forLandscape = !0;
+        d.forPortrait = !1;
+        d.rows = [];
+        var c = new Layout3dRow();
+        c.height = "66.6%";
+        c.cells = [];
+        c.cells.push(new Layout3dCell());
+        c.cells[0].engine = Engine3d.transverse;
+        d.rows.push(c);
+        c = new Layout3dRow();
+        c.height = "33.4%";
+        c.cells = [];
+        c.cells.push(new Layout3dCell());
+        c.cells[0].engine = Engine3d.coronal;
+        c.cells.push(new Layout3dCell());
+        c.cells[1].engine = Engine3d.sagittal;
+        d.rows.push(c);
+        return d;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "OPR_Horz", {
+      get: function () {
+        var d = new e();
+        d.name = "OPR";
+        d.forLandscape = !0;
+        d.forPortrait = !1;
+        d.cols = [];
+        var c = new Layout3dCol();
+        c.width = "66.6%";
+        c.cells = [];
+        c.cells.push(new Layout3dCell());
+        c.cells[0].engine = Engine3d.oblique;
+        d.cols.push(c);
+        c = new Layout3dCol();
+        c.width = "33.4%";
+        c.cells = [];
+        c.cells.push(new Layout3dCell());
+        c.cells[0].engine = Engine3d.coronal;
+        c.cells.push(new Layout3dCell());
+        c.cells[1].engine = Engine3d.sagittal;
+        d.cols.push(c);
+        return d;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "OPR_Vert", {
+      get: function () {
+        var d = new e();
+        d.name = "OPR";
+        d.forLandscape = !0;
+        d.forPortrait = !1;
+        d.rows = [];
+        var c = new Layout3dRow();
+        c.height = "66.6%";
+        c.cells = [];
+        c.cells.push(new Layout3dCell());
+        c.cells[0].engine = Engine3d.oblique;
+        d.rows.push(c);
+        c = new Layout3dRow();
+        c.height = "33.4%";
+        c.cells = [];
+        c.cells.push(new Layout3dCell());
+        c.cells[0].engine = Engine3d.coronal;
+        c.cells.push(new Layout3dCell());
+        c.cells[1].engine = Engine3d.sagittal;
+        d.rows.push(c);
+        return d;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "MPR_VR", {
+      get: function () {
+        var d = new e();
+        d.name = "MPR_VR";
+        d.forLandscape = !0;
+        d.forPortrait = !0;
+        d.rows = [];
+        var c = new Layout3dRow();
+        c.height = "50%";
+        c.cells = [];
+        c.cells.push(new Layout3dCell());
+        c.cells[0].engine = Engine3d.transverse;
+        c.cells.push(new Layout3dCell());
+        c.cells[1].engine = Engine3d.coronal;
+        d.rows.push(c);
+        c = new Layout3dRow();
+        c.height = "50%";
+        c.cells = [];
+        c.cells.push(new Layout3dCell());
+        c.cells[0].engine = Engine3d.sagittal;
+        c.cells.push(new Layout3dCell());
+        c.cells[1].engine = Engine3d.VR;
+        d.rows.push(c);
+        return d;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "VR_MPR_Horz", {
+      get: function () {
+        var d = new e();
+        d.name = "VR";
+        d.forLandscape = !0;
+        d.forPortrait = !1;
+        d.cols = [];
+        var c = new Layout3dCol();
+        c.width = "66.6%";
+        c.cells = [];
+        c.cells.push(new Layout3dCell());
+        c.cells[0].engine = Engine3d.VR;
+        d.cols.push(c);
+        c = new Layout3dCol();
+        c.width = "33.4%";
+        c.cells = [];
+        c.cells.push(new Layout3dCell());
+        c.cells[0].engine = Engine3d.transverse;
+        c.cells.push(new Layout3dCell());
+        c.cells[1].engine = Engine3d.coronal;
+        c.cells.push(new Layout3dCell());
+        c.cells[2].engine = Engine3d.sagittal;
+        d.cols.push(c);
+        return d;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(e, "VR_MPR_Vert", {
+      get: function () {
+        var d = new e();
+        d.name = "VR";
+        d.forLandscape = !0;
+        d.forPortrait = !1;
+        d.rows = [];
+        var c = new Layout3dRow();
+        c.height = "66.6%";
+        c.cells = [];
+        c.cells.push(new Layout3dCell());
+        c.cells[0].engine = Engine3d.VR;
+        d.rows.push(c);
+        c = new Layout3dRow();
+        c.height = "33.4%";
+        c.cells = [];
+        c.cells.push(new Layout3dCell());
+        c.cells[0].engine = Engine3d.transverse;
+        c.cells.push(new Layout3dCell());
+        c.cells[1].engine = Engine3d.coronal;
+        c.cells.push(new Layout3dCell());
+        c.cells[2].engine = Engine3d.sagittal;
+        d.rows.push(c);
+        return d;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    return e;
+  }(),
+  Layout3dRow = function () {
+    return function () {};
+  }(),
+  Layout3dCol = function () {
+    return function () {};
+  }(),
+  Layout3dCell = function () {
+    return function () {};
+  }(),
+  Engine3dName = function () {
+    return function () {};
+  }(),
+  Engine3d = function () {
+    function e() {}
+    e.get = function (d) {
+      if (d == e.transverse.name) {
+        return e.transverse;
+      }
+      if (d == e.coronal.name) {
+        return e.coronal;
+      }
+      if (d == e.sagittal.name) {
+        return e.sagittal;
+      }
+      if (d == e.oblique.name) {
+        return e.oblique;
+      }
+      if (d == e.VR.name) {
+        return e.VR;
+      }
+      if (d == e.D2.name) {
+        return e.D2;
+      }
+    };
+    e.transverse = {
+      name: "Transverse",
+      shortName: "T"
+    };
+    e.coronal = {
+      name: "Coronal",
+      shortName: "C"
+    };
+    e.sagittal = {
+      name: "Sagittal",
+      shortName: "S"
+    };
+    e.oblique = {
+      name: "Oblique",
+      shortName: "O"
+    };
+    e.VR = {
+      name: "VR",
+      shortName: "VR"
+    };
+    e.D2 = {
+      name: "2D",
+      shortName: "2D"
+    };
+    return e;
+  }();
+var __values = this && this.__values || function (e) {
+    var d = "function" === typeof Symbol && Symbol.iterator,
+      c = d && e[d],
+      a = 0;
+    if (c) {
+      return c.call(e);
+    }
+    if (e && "number" === typeof e.length) {
+      return {
+        next: function () {
+          if (e && a >= e.length) {
+            e = 0;
+          }
+          return {
+            value: e && e[a++],
+            done: !e
+          };
+        }
+      };
+    }
+    throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+  },
+  Global = function () {
+    function e() {}
+    e.getStudyInfo = function (d, c) {
+      MessageProxy.queryStudyInfoByRisID(d, function (a) {
+        var b, f;
+        if (a.hasError) {
+          MsgBox.error("\u83b7\u53d6\u68c0\u67e5\u4fe1\u606f\u5931\u8d25\uff1a" + a.errorText);
+        } else {
+          if (0 == a.studyInfo || 0 == a.studyInfo.length) {
+            MsgBox.error("\u83b7\u53d6\u68c0\u67e5\u4fe1\u606f\u5931\u8d25\uff1a\u67e5\u8be2\u5230 0 \u6761\u8bb0\u5f55\u3002");
+          } else {
+            try {
+              for (var k = __values(a.studyInfo), d = k.next(); !d.done; d = k.next()) e.studies.push(d.value);
+            } catch (g) {
+              b = {
+                error: g
+              };
+            } finally {
+              try {
+                if (d && !d.done && (f = k.return)) {
+                  f.call(k);
+                }
+              } finally {
+                if (b) {
+                  throw b.error;
+                }
+              }
+            }
+          }
+        }
+        if (c) {
+          c(a);
+        }
+      });
+    };
+    e.getImageInfo = function (d, c) {
+      if (0 == e.studies.length) {
+        MsgBox.error("\u8bf7\u5148\u83b7\u53d6\u68c0\u67e5\u4fe1\u606f\u3002");
+        c && c();
+      } else {
+        var a = e.studies.find(function (a) {
+          return a.studyId == d || a.studyUid == d || a.risStudyUid == d;
+        });
+        if (null == a) {
+          MsgBox.error("\u6ca1\u6709\u627e\u5230\u8be5\u68c0\u67e5\u4fe1\u606f\uff1a" + d);
+          c && c();
+        } else {
+          var b = a.pacsFasUrl;
+          if (0 == b || "" == b) {
+            var f = "http";
+            if (0 != a.storageProtocol && "" != a.storageProtocol) {
+              f = a.storageProtocol;
+            }
+            f = f + "://" + a.storageIp;
+            0 != a.storagePort ? f = f + (":" + a.storagePort + "/") : f = f + "/";
+            if (0 != a.storagePrefix && "" != a.storagePrefix) {
+              f += a.storagePrefix + "/";
+            }
+            b = f;
+          }
+          f = Config.getPacsFasServerUrl();
+          if (0 != f && "" != f) {
+            b = f;
+          }
+          MessageProxy.queryImageInfoFromFAS(b + "getstudyobjects.do?studyuid=" + a.studyUid + "&category=img&withmeta=1", function (f) {
+            var d, k, e, n;
+            if (f.hasError) {
+              MsgBox.error("\u83b7\u53d6\u56fe\u50cf\u4fe1\u606f\u5931\u8d25\uff1a" + f.errorText);
+              c && c();
+            } else {
+              if (0 == f.studyInfo || 0 == f.studyInfo.series || 0 == f.studyInfo.series.length) {
+                MsgBox.error("\u83b7\u53d6\u56fe\u50cf\u4fe1\u606f\u5931\u8d25\uff1a\u6ca1\u6709\u83b7\u53d6\u5230\u5e8f\u5217\u4fe1\u606f\u3002");
+                c && c();
+              } else {
+                if ("uis" == a.sysType || "pis" == a.sysType || "CT" == a.modality && (null == a.series || 0 == a.series.length)) {
+                  for (var m = [], p = 0; p < f.studyInfo.series.length; p++) {
+                    var q = f.studyInfo.series[p],
+                      r = new SeriesInfo();
+                    r.study = a;
+                    r.index = p;
+                    r.seriesDesc = "";
+                    r.seriesNumber = p + 1;
+                    r.seriesUid = q.seriesUid;
+                    r.imageTotal = q.images.length;
+                    r.pacsFAS = !0;
+                    m.push(r);
+                  }
+                  a.series = m;
+                }
+                if ("MR" == a.modality || "PR,MR" == a.modality || "CT,SR" == a.modality || a.series.length != f.studyInfo.series.length) {
+                  m = function (b) {
+                    var c = a.series[b];
+                    if (null == f.studyInfo.series.find(function (a) {
+                      return a.seriesUid == c.seriesUid;
+                    })) {
+                      a.series.splice(b, 1);
+                    }
+                  };
+                  for (p = a.series.length - 1; 0 <= p; p--) m(p);
+                  for (p = 0; p < a.series.length; p++) a.series[p].index = p;
+                }
+                m = function (f) {
+                  var c = a.series.find(function (a) {
+                    return a.seriesUid == f.seriesUid;
+                  });
+                  if (null == c) {
+                    return "continue";
+                  }
+                  c.pacsFAS = !0;
+                  c.images = f.images;
+                  if (0 != c.images && 0 < c.images.length) {
+                    c.images.forEach(function (a) {
+                      a.series = c;
+                      a.imageUrl = "".concat(b, "getobject.do?objectuid=").concat(a.imageId);
+                      a.jpgUrl = "".concat(b, "getthumbnail.do?objectuid=").concat(a.imageId);
+                      if (a.location) {
+                        a.imageUrl += "&objectlocation=".concat(a.location);
+                        a.jpgUrl += "&objectlocation=".concat(a.location);
+                      }
+                    });
+                    c.thumbnailUrl = "".concat(b, "getthumbnail.do?objectuid=").concat(c.images[0].imageId);
+                    c.images[0].location && (c.thumbnailUrl += "&objectlocation=".concat(c.images[0].location));
+                  }
+                };
+                try {
+                  for (var t = __values(f.studyInfo.series), v = t.next(); !v.done; v = t.next()) {
+                    q = v.value;
+                    m(q);
+                  }
+                } catch (z) {
+                  d = {
+                    error: z
+                  };
+                } finally {
+                  try {
+                    if (v && !v.done && (k = t.return)) {
+                      k.call(t);
+                    }
+                  } finally {
+                    if (d) {
+                      throw d.error;
+                    }
+                  }
+                }
+                if (("DX" == a.modality || "DR" == a.modality || "CR" == a.modality) && 0 < a.series.length) {
+                  m = [];
+                  d = 0;
+                  try {
+                    for (var u = __values(a.series), w = u.next(); !w.done; w = u.next()) for (var x = w.value, p = 0; p < x.images.length; p++) {
+                      var y = x.images[p],
+                        r = new SeriesInfo();
+                      r.study = a;
+                      r.index = d;
+                      r.seriesDesc = x.seriesDesc;
+                      r.seriesNumber = p + 1;
+                      r.seriesUid = x.seriesUid + "_" + (p + 1);
+                      r.imageTotal = 1;
+                      r.thumbnailUrl = y.jpgUrl;
+                      r.images = [];
+                      y.index = 0;
+                      y.series = r;
+                      r.images.push(y);
+                      r.pacsFAS = !0;
+                      m.push(r);
+                      d += 1;
+                    }
+                  } catch (z) {
+                    e = {
+                      error: z
+                    };
+                  } finally {
+                    try {
+                      if (w && !w.done && (n = u.return)) {
+                        n.call(u);
+                      }
+                    } finally {
+                      if (e) {
+                        throw e.error;
+                      }
+                    }
+                  }
+                  a.series = m;
+                }
+                if (c) {
+                  c(a);
+                }
+              }
+            }
+          });
+        }
+      }
+    };
+    e.getPacsFasUrl = function (d) {
+      if (0 == e.studies.length) {
+        MsgBox.error("\u8bf7\u5148\u83b7\u53d6\u68c0\u67e5\u4fe1\u606f\u3002");
+      } else {
+        var c = e.studies.find(function (a) {
+          return a.studyId == d || a.studyUid == d || a.risStudyUid == d;
+        });
+        if (null == c) {
+          MsgBox.error("\u6ca1\u6709\u627e\u5230\u8be5\u68c0\u67e5\u4fe1\u606f\uff1a" + d);
+        } else {
+          var a = c.pacsFasUrl;
+          if (0 == a || "" == a) {
+            a = "http";
+            0 != c.storageProtocol && "" != c.storageProtocol && (a = c.storageProtocol);
+            a = a + "://" + c.storageIp;
+            0 != c.storagePort ? a = a + (":" + c.storagePort + "/") : a = a + "/";
+            0 != c.storagePrefix && "" != c.storagePrefix && (a += c.storagePrefix + "/");
+          }
+          c = Config.getPacsFasServerUrl();
+          if (0 != c && "" != c) {
+            a = c;
+          }
+          return a;
+        }
+      }
+    };
+    e.downloadImages = function (d, c, a) {
+      if (0 === a) {
+        a = !1;
+      }
+      if (null == e._downloadManager) {
+        e._downloadManager = new DownloadManager();
+        e._downloadManager.imageDownloaded = function (a) {
+          if (e.imageDownloaded) {
+            e.imageDownloaded(a);
+          }
+        };
+      }
+      e._downloadManager.download(d, c, a);
+    };
+    e.downloadImage = function (d, c) {
+      return new Promise(function (a) {
+        var b = new DownloadManager();
+        b.imageDownloaded = function (b) {
+          a(b);
+        };
+        b.download(d, [c]);
+      });
+    };
+    e.getCachedImages = function (d, c, a) {
+      d = new CacheTask();
+      d.imageRetrieved = function (b) {
+        if (a) {
+          a(b);
+        }
+      };
+      d.taskCompleted = function () {
+        if (a) {
+          var b = new RespDownloadImageInfo();
+          b.taskCompleted = !0;
+          a(b);
+        }
+      };
+      d.retrieve(c);
+    };
+    e.actionTag = ActionTag.none;
+    e.compareFlag = !1;
+    e.studies = [];
+    e.events = {
+      startPlay: "startPlay",
+      stopPlay: "stopPlay",
+      contextMenu: {
+        eventName: "customContextMenu",
+        saveAsJpg: "saveAsJpg",
+        saveAsDicom: "saveAsDicom",
+        exportSeriesDicom: "exportSeriesDicom"
+      }
+    };
+    e.theme = {
+      themeColor: "#3484FF",
+      annoColor: "#3484FF",
+      annoActiveColor: "#FF3434"
+    };
+    return e;
+  }();
+var TAG_NAME = {
+  x00000000: "CommandGroupLength",
+  x00000001: "ACR_NEMA_CommandGroupLengthToEnd",
+  x00000002: "AffectedSOPClassUID",
+  x00000003: "RequestedSOPClassUID",
+  x00000010: "ACR_NEMA_CommandRecognitionCode",
+  x00000100: "CommandField",
+  x00000110: "MessageID",
+  x00000120: "MessageIDBeingRespondedTo",
+  x00000200: "ACR_NEMA_Initiator",
+  x00000300: "ACR_NEMA_Receiver",
+  x00000400: "ACR_NEMA_FindLocation",
+  x00000600: "MoveDestination",
+  x00000700: "Priority",
+  x00000800: "DataSetType",
+  x00000850: "ACR_NEMA_NumberOfMatches",
+  x00000860: "ACR_NEMA_ResponseSequenceNumber",
+  x00000900: "Status",
+  x00000901: "OffendingElement",
+  x00000902: "ErrorComment",
+  x00000903: "ErrorID",
+  x00001000: "AffectedSOPInstanceUID",
+  x00001001: "RequestedSOPInstanceUID",
+  x00001002: "EventTypeID",
+  x00001005: "AttributeIdentifierList",
+  x00001008: "ActionTypeID",
+  x00001020: "NumberOfRemainingSuboperations",
+  x00001021: "NumberOfCompletedSuboperations",
+  x00001022: "NumberOfFailedSuboperations",
+  x00001023: "NumberOfWarningSuboperations",
+  x00001030: "MoveOriginatorApplicationEntityTitle",
+  x00001031: "MoveOriginatorMessageID",
+  x00004000: "ACR_NEMA_DialogReceiver",
+  x00004010: "ACR_NEMA_TerminalType",
+  x00005010: "ACR_NEMA_MessageSetID",
+  x00005020: "ACR_NEMA_EndMessageSet",
+  x00005110: "ACR_NEMA_DisplayFormat",
+  x00005120: "ACR_NEMA_PagePositionID",
+  x00005130: "ACR_NEMA_TextFormatID",
+  x00005140: "ACR_NEMA_NormalReverse",
+  x00005150: "ACR_NEMA_AddGrayScale",
+  x00005160: "ACR_NEMA_Borders",
+  x00005170: "ACR_NEMA_Copies",
+  x00005180: "ACR_NEMA_OldMagnificationType",
+  x00005190: "ACR_NEMA_Erase",
+  x000051a0: "ACR_NEMA_Print",
+  x000051b0: "ACR_NEMA_Overlays",
+  x00020000: "MetaElementGroupLength",
+  x00020001: "FileMetaInformationVersion",
+  x00020002: "MediaStorageSOPClassUID",
+  x00020003: "MediaStorageSOPInstanceUID",
+  x00020010: "TransferSyntaxUID",
+  x00020012: "ImplementationClassUID",
+  x00020013: "ImplementationVersionName",
+  x00020016: "SourceApplicationEntityTitle",
+  x00020100: "PrivateInformationCreatorUID",
+  x00020102: "PrivateInformation",
+  x00040000: "FileSetGroupLength",
+  x00041130: "FileSetID",
+  x00041141: "FileSetDescriptorFileID",
+  x00041142: "SpecificCharacterSetOfFileSetDescriptorFile",
+  x00041200: "OffsetOfTheFirstDirectoryRecordOfTheRootDirectoryEntity",
+  x00041202: "OffsetOfTheLastDirectoryRecordOfTheRootDirectoryEntity",
+  x00041212: "FileSetConsistencyFlag",
+  x00041220: "DirectoryRecordSequence",
+  x00041400: "OffsetOfTheNextDirectoryRecord",
+  x00041410: "RecordInUseFlag",
+  x00041420: "OffsetOfReferencedLowerLevelDirectoryEntity",
+  x00041430: "DirectoryRecordType",
+  x00041432: "PrivateRecordUID",
+  x00041500: "ReferencedFileID",
+  x00041504: "MRDRDirectoryRecordOffset",
+  x00041510: "ReferencedSOPClassUIDInFile",
+  x00041511: "ReferencedSOPInstanceUIDInFile",
+  x00041512: "ReferencedTransferSyntaxUIDInFile",
+  x00041600: "NumberOfReferences",
+  x00080000: "IdentifyingGroupLength",
+  x00080001: "ACR_NEMA_IdentifyingGroupLengthToEnd",
+  x00080005: "SpecificCharacterSet",
+  x00080008: "ImageType",
+  x00080010: "ACR_NEMA_RecognitionCode",
+  x00080012: "InstanceCreationDate",
+  x00080013: "InstanceCreationTime",
+  x00080014: "InstanceCreatorUID",
+  x00080016: "SOPClassUID",
+  x00080018: "SOPInstanceUID",
+  x00080020: "StudyDate",
+  x00080021: "SeriesDate",
+  x00080022: "AcquisitionDate",
+  x00080023: "ContentDate",
+  x00080024: "OverlayDate",
+  x00080025: "CurveDate",
+  x0008002a: "AcquisitionDatetime",
+  x00080030: "StudyTime",
+  x00080031: "SeriesTime",
+  x00080032: "AcquisitionTime",
+  x00080033: "ContentTime",
+  x00080034: "OverlayTime",
+  x00080035: "CurveTime",
+  x00080040: "ACR_NEMA_OldDataSetType",
+  x00080041: "ACR_NEMA_DataSetSubtype",
+  x00080042: "NuclearMedicineSeriesType",
+  x00080050: "AccessionNumber",
+  x00080052: "QueryRetrieveLevel",
+  x00080054: "RetrieveAETitle",
+  x00080056: "InstanceAvailability",
+  x00080058: "FailedSOPInstanceUIDList",
+  x00080060: "Modality",
+  x00080061: "ModalitiesInStudy",
+  x00080064: "ConversionType",
+  x00080068: "PresentationIntentType",
+  x00080070: "Manufacturer",
+  x00080080: "InstitutionName",
+  x00080081: "InstitutionAddress",
+  x00080082: "InstitutionCodeSequence",
+  x00080090: "ReferringPhysiciansName",
+  x00080092: "ReferringPhysiciansAddress",
+  x00080094: "ReferringPhysiciansTelephoneNumbers",
+  x00080096: "ReferringPhysicianIdentificationSequence",
+  x00080100: "CodeValue",
+  x00080102: "CodingSchemeDesignator",
+  x00080103: "CodingSchemeVersion",
+  x00080104: "CodeMeaning",
+  x00080105: "MappingResource",
+  x00080106: "ContextGroupVersion",
+  x00080107: "ContextGroupLocalVersion",
+  x0008010b: "CodeSetExtensionFlag",
+  x0008010c: "PrivateCodingSchemeCreatorUID",
+  x0008010d: "CodeSetExtensionCreatorUID",
+  x0008010f: "ContextIdentifier",
+  x00080201: "TimezoneOffsetFromUTC",
+  x00081000: "ACR_NEMA_NetworkID",
+  x00081010: "StationName",
+  x00081030: "StudyDescription",
+  x00081032: "ProcedureCodeSequence",
+  x0008103e: "SeriesDescription",
+  x00081040: "InstitutionalDepartmentName",
+  x00081048: "PhysiciansOfRecord",
+  x00081049: "PhysiciansOfRecordIdentificationSequence",
+  x00081050: "PerformingPhysiciansName",
+  x00081052: "PerformingPhysicianIdentificationSequence",
+  x00081060: "NameOfPhysiciansReadingStudy",
+  x00081062: "PhysiciansReadingStudyIdentificationSequence",
+  x00081070: "OperatorsName",
+  x00081072: "OperatorIdentificationSequence",
+  x00081080: "AdmittingDiagnosesDescription",
+  x00081084: "AdmittingDiagnosesCodeSequence",
+  x00081090: "ManufacturersModelName",
+  x00081100: "ReferencedResultsSequence",
+  x00081110: "ReferencedStudySequence",
+  x00081111: "ReferencedPerformedProcedureStepSequence",
+  x00081115: "ReferencedSeriesSequence",
+  x00081120: "ReferencedPatientSequence",
+  x00081125: "ReferencedVisitSequence",
+  x00081130: "ReferencedOverlaySequence",
+  x0008113a: "ReferencedWaveformSequence",
+  x00081140: "ReferencedImageSequence",
+  x00081145: "ReferencedCurveSequence",
+  x0008114a: "ReferencedInstanceSequence",
+  x00081150: "ReferencedSOPClassUID",
+  x00081155: "ReferencedSOPInstanceUID",
+  x0008115a: "SOPClassesSupported",
+  x00081160: "ReferencedFrameNumber",
+  x00081195: "TransactionUID",
+  x00081197: "FailureReason",
+  x00081198: "FailedSOPSequence",
+  x00081199: "ReferencedSOPSequence",
+  x00082110: "RETIRED_LossyImageCompression",
+  x00082111: "DerivationDescription",
+  x00082112: "SourceImageSequence",
+  x00082120: "StageName",
+  x00082122: "StageNumber",
+  x00082124: "NumberOfStages",
+  x00082127: "ViewName",
+  x00082128: "ViewNumber",
+  x00082129: "NumberOfEventTimers",
+  x0008212a: "NumberOfViewsInStage",
+  x00082130: "EventElapsedTimes",
+  x00082132: "EventTimerNames",
+  x00082142: "StartTrim",
+  x00082143: "StopTrim",
+  x00082144: "RecommendedDisplayFrameRate",
+  x00082200: "TransducerPosition",
+  x00082204: "TransducerOrientation",
+  x00082208: "AnatomicStructure",
+  x00082218: "AnatomicRegionSequence",
+  x00082220: "AnatomicRegionModifierSequence",
+  x00082228: "PrimaryAnatomicStructureSequence",
+  x00082229: "AnatomicStructureSpaceOrRegionSequence",
+  x00082230: "PrimaryAnatomicStructureModifierSequence",
+  x00082240: "TransducerPositionSequence",
+  x00082242: "TransducerPositionModifierSequence",
+  x00082244: "TransducerOrientationSequence",
+  x00082246: "TransducerOrientationModifierSequence",
+  x00084000: "ACR_NEMA_IdentifyingComments",
+  x00089007: "FrameType",
+  x00089092: "ReferringImageEvidenceSequence",
+  x00089121: "ReferencedRawDataSequence",
+  x00089123: "CreatorVersionUID",
+  x00089124: "DerivationImageSequence",
+  x00089154: "SourceImageEvidenceSequence",
+  x00089205: "PixelPresentation",
+  x00089206: "VolumetricProperties",
+  x00089207: "VolumeBasedCalculationTechnique",
+  x00089208: "ComplexImageComponent",
+  x00089209: "AcquisitionContrast",
+  x00089215: "DerivationCodeSequence",
+  x00089237: "ReferencedGrayscalePresentationStateSequence",
+  x00100000: "PatientGroupLength",
+  x00100010: "PatientsName",
+  x00100020: "PatientID",
+  x00100021: "IssuerOfPatientID",
+  x00100030: "PatientsBirthDate",
+  x00100032: "PatientsBirthTime",
+  x00100040: "PatientsSex",
+  x00100050: "PatientsInsurancePlanCodeSequence",
+  x00100101: "PatientsPrimaryLanguageCodeSequence",
+  x00100102: "PatientsPrimaryLanguageCodeModifierSequence",
+  x00101000: "OtherPatientIDs",
+  x00101001: "OtherPatientNames",
+  x00101005: "PatientsBirthName",
+  x00101010: "PatientsAge",
+  x00101020: "PatientsSize",
+  x00101030: "PatientsWeight",
+  x00101040: "PatientsAddress",
+  x00101050: "ACR_NEMA_InsurancePlanIdentification",
+  x00101060: "PatientsMothersBirthName",
+  x00101080: "MilitaryRank",
+  x00101081: "BranchOfService",
+  x00101090: "MedicalRecordLocator",
+  x00102000: "MedicalAlerts",
+  x00102110: "ContrastAllergies",
+  x00102150: "CountryOfResidence",
+  x00102152: "RegionOfResidence",
+  x00102154: "PatientsTelephoneNumbers",
+  x00102160: "EthnicGroup",
+  x00102180: "Occupation",
+  x001021a0: "SmokingStatus",
+  x001021b0: "AdditionalPatientHistory",
+  x001021c0: "PregnancyStatus",
+  x001021d0: "LastMenstrualDate",
+  x001021f0: "PatientsReligiousPreference",
+  x00104000: "PatientComments",
+  x00180000: "AcquisitionGroupLength",
+  x00180010: "ContrastBolusAgent",
+  x00180012: "ContrastBolusAgentSequence",
+  x00180014: "ContrastBolusAdministrationRouteSequence",
+  x00180015: "BodyPartExamined",
+  x00180020: "ScanningSequence",
+  x00180021: "SequenceVariant",
+  x00180022: "ScanOptions",
+  x00180023: "MRAcquisitionType",
+  x00180024: "SequenceName",
+  x00180025: "AngioFlag",
+  x00180026: "InterventionDrugInformationSequence",
+  x00180027: "InterventionDrugStopTime",
+  x00180028: "InterventionDrugDose",
+  x00180029: "InterventionDrugCodeSequence",
+  x0018002a: "AdditionalDrugSequence",
+  x00180030: "Radionuclide",
+  x00180031: "Radiopharmaceutical",
+  x00180032: "EnergyWindowCenterline",
+  x00180033: "EnergyWindowTotalWidth",
+  x00180034: "InterventionDrugName",
+  x00180035: "InterventionDrugStartTime",
+  x00180036: "InterventionalTherapySequence",
+  x00180037: "RETIRED_TherapyType",
+  x00180038: "InterventionalStatus",
+  x00180039: "TherapyDescription",
+  x00180040: "CineRate",
+  x00180050: "SliceThickness",
+  x00180060: "KVP",
+  x00180070: "CountsAccumulated",
+  x00180071: "AcquisitionTerminationCondition",
+  x00180072: "EffectiveSeriesDuration",
+  x00180073: "AcquisitionStartCondition",
+  x00180074: "AcquisitionStartConditionData",
+  x00180075: "AcquisitionTerminationConditionData",
+  x00180080: "RepetitionTime",
+  x00180081: "EchoTime",
+  x00180082: "InversionTime",
+  x00180083: "NumberOfAverages",
+  x00180084: "ImagingFrequency",
+  x00180085: "ImagedNucleus",
+  x00180086: "EchoNumbers",
+  x00180087: "MagneticFieldStrength",
+  x00180088: "SpacingBetweenSlices",
+  x00180089: "NumberOfPhaseEncodingSteps",
+  x00180090: "DataCollectionDiameter",
+  x00180091: "EchoTrainLength",
+  x00180093: "PercentSampling",
+  x00180094: "PercentPhaseFieldOfView",
+  x00180095: "PixelBandwidth",
+  x00181000: "DeviceSeriesNumber",
+  x00181004: "PlateID",
+  x00181010: "SecondaryCaptureDeviceID",
+  x00181011: "HardcopyCreationDeviceID",
+  x00181012: "DateOfSecondaryCapture",
+  x00181014: "TimeOfSecondaryCapture",
+  x00181016: "SecondaryCaptureDeviceManufacturer",
+  x00181017: "HardcopyDeviceManufacturer",
+  x00181018: "SecondaryCaptureDeviceManufacturersModelName",
+  x00181019: "SecondaryCaptureDeviceSoftwareVersions",
+  x0018101a: "HardcopyDeviceSoftwareVersion",
+  x0018101b: "HardcopyDeviceManufacturersModelName",
+  x00181020: "SoftwareVersions",
+  x00181022: "VideoImageFormatAcquired",
+  x00181023: "DigitalImageFormatAcquired",
+  x00181030: "ProtocolName",
+  x00181040: "ContrastBolusRoute",
+  x00181041: "ContrastBolusVolume",
+  x00181042: "ContrastBolusStartTime",
+  x00181043: "ContrastBolusStopTime",
+  x00181044: "ContrastBolusTotalDose",
+  x00181045: "SyringeCounts",
+  x00181046: "ContrastFlowRates",
+  x00181047: "ContrastFlowDurations",
+  x00181048: "ContrastBolusIngredient",
+  x00181049: "ContrastBolusIngredientConcentration",
+  x00181050: "SpatialResolution",
+  x00181060: "TriggerTime",
+  x00181061: "TriggerSourceOrType",
+  x00181062: "NominalInterval",
+  x00181063: "FrameTime",
+  x00181064: "FramingType",
+  x00181065: "FrameTimeVector",
+  x00181066: "FrameDelay",
+  x00181067: "ImageTriggerDelay",
+  x00181068: "MultiplexGroupTimeOffset",
+  x00181069: "TriggerTimeOffset",
+  x0018106a: "SynchronizationTrigger",
+  x0018106c: "SynchronizationChannel",
+  x0018106e: "TriggerSamplePosition",
+  x00181070: "RadiopharmaceuticalRoute",
+  x00181071: "RadiopharmaceuticalVolume",
+  x00181072: "RadiopharmaceuticalStartTime",
+  x00181073: "RadiopharmaceuticalStopTime",
+  x00181074: "RadionuclideTotalDose",
+  x00181075: "RadionuclideHalfLife",
+  x00181076: "RadionuclidePositronFraction",
+  x00181077: "RadiopharmaceuticalSpecificActivity",
+  x00181080: "BeatRejectionFlag",
+  x00181081: "LowRRValue",
+  x00181082: "HighRRValue",
+  x00181083: "IntervalsAcquired",
+  x00181084: "IntervalsRejected",
+  x00181085: "PVCRejection",
+  x00181086: "SkipBeats",
+  x00181088: "HeartRate",
+  x00181090: "CardiacNumberOfImages",
+  x00181094: "TriggerWindow",
+  x00181100: "ReconstructionDiameter",
+  x00181110: "DistanceSourceToDetector",
+  x00181111: "DistanceSourceToPatient",
+  x00181114: "EstimatedRadiographicMagnificationFactor",
+  x00181120: "GantryDetectorTilt",
+  x00181121: "GantryDetectorSlew",
+  x00181130: "TableHeight",
+  x00181131: "TableTraverse",
+  x00181134: "TableMotion",
+  x00181135: "TableVerticalIncrement",
+  x00181136: "TableLateralIncrement",
+  x00181137: "TableLongitudinalIncrement",
+  x00181138: "TableAngle",
+  x0018113a: "TableType",
+  x00181140: "RotationDirection",
+  x00181141: "AngularPosition",
+  x00181142: "RadialPosition",
+  x00181143: "ScanArc",
+  x00181144: "AngularStep",
+  x00181145: "CenterOfRotationOffset",
+  x00181146: "RotationOffset",
+  x00181147: "FieldOfViewShape",
+  x00181149: "FieldOfViewDimensions",
+  x00181150: "ExposureTime",
+  x00181151: "XRayTubeCurrent",
+  x00181152: "Exposure",
+  x00181153: "ExposureInMicroAs",
+  x00181154: "AveragePulseWidth",
+  x00181155: "RadiationSetting",
+  x00181156: "RectificationType",
+  x0018115a: "RadiationMode",
+  x0018115e: "ImageAreaDoseProduct",
+  x00181160: "FilterType",
+  x00181161: "TypeOfFilters",
+  x00181162: "IntensifierSize",
+  x00181164: "ImagerPixelSpacing",
+  x00181166: "Grid",
+  x00181170: "GeneratorPower",
+  x00181180: "CollimatorGridName",
+  x00181181: "CollimatorType",
+  x00181182: "FocalDistance",
+  x00181183: "XFocusCenter",
+  x00181184: "YFocusCenter",
+  x00181190: "FocalSpots",
+  x00181191: "AnodeTargetMaterial",
+  x001811a0: "BodyPartThickness",
+  x001811a2: "CompressionForce",
+  x00181200: "DateOfLastCalibration",
+  x00181201: "TimeOfLastCalibration",
+  x00181210: "ConvolutionKernel",
+  x00181240: "ACR_NEMA_UpperLowerPixelValues",
+  x00181242: "ActualFrameDuration",
+  x00181243: "CountRate",
+  x00181244: "PreferredPlaybackSequencing",
+  x00181250: "ReceiveCoilName",
+  x00181251: "TransmitCoilName",
+  x00181260: "PlateType",
+  x00181261: "PhosphorType",
+  x00181300: "ScanVelocity",
+  x00181301: "WholeBodyTechnique",
+  x00181302: "ScanLength",
+  x00181310: "AcquisitionMatrix",
+  x00181312: "PhaseEncodingDirection",
+  x00181314: "FlipAngle",
+  x00181315: "VariableFlipAngleFlag",
+  x00181316: "SAR",
+  x00181318: "dBdt",
+  x00181400: "AcquisitionDeviceProcessingDescription",
+  x00181401: "AcquisitionDeviceProcessingCode",
+  x00181402: "CassetteOrientation",
+  x00181403: "CassetteSize",
+  x00181404: "ExposuresOnPlate",
+  x00181405: "RelativeXRayExposure",
+  x00181450: "ColumnAngulation",
+  x00181460: "TomoLayerHeight",
+  x00181470: "TomoAngle",
+  x00181480: "TomoTime",
+  x00181490: "TomoType",
+  x00181491: "TomoClass",
+  x00181495: "NumberOfTomosynthesisSourceImages",
+  x00181500: "PositionerMotion",
+  x00181508: "PositionerType",
+  x00181510: "PositionerPrimaryAngle",
+  x00181511: "PositionerSecondaryAngle",
+  x00181520: "PositionerPrimaryAngleIncrement",
+  x00181521: "PositionerSecondaryAngleIncrement",
+  x00181530: "DetectorPrimaryAngle",
+  x00181531: "DetectorSecondaryAngle",
+  x00181600: "ShutterShape",
+  x00181602: "ShutterLeftVerticalEdge",
+  x00181604: "ShutterRightVerticalEdge",
+  x00181606: "ShutterUpperHorizontalEdge",
+  x00181608: "ShutterLowerHorizontalEdge",
+  x00181610: "CenterOfCircularShutter",
+  x00181612: "RadiusOfCircularShutter",
+  x00181620: "VerticesOfThePolygonalShutter",
+  x00181622: "ShutterPresentationValue",
+  x00181623: "ShutterOverlayGroup",
+  x00181700: "CollimatorShape",
+  x00181702: "CollimatorLeftVerticalEdge",
+  x00181704: "CollimatorRightVerticalEdge",
+  x00181706: "CollimatorUpperHorizontalEdge",
+  x00181708: "CollimatorLowerHorizontalEdge",
+  x00181710: "CenterOfCircularCollimator",
+  x00181712: "RadiusOfCircularCollimator",
+  x00181720: "VerticesOfThePolygonalCollimator",
+  x00181800: "AcquisitionTimeSynchronized",
+  x00181801: "TimeSource",
+  x00181802: "TimeDistributionProtocol",
+  x00182001: "PageNumberVector",
+  x00182002: "FrameLabelVector",
+  x00182003: "FramePrimaryAngleVector",
+  x00182004: "FrameSecondaryAngleVector",
+  x00182005: "SliceLocationVector",
+  x00182006: "DisplayWindowLabelVector",
+  x00182010: "NominalScannedPixelSpacing",
+  x00182020: "DigitizingDeviceTransportDirection",
+  x00182030: "RotationOfScannedFilm",
+  x00183100: "IVUSAcquisition",
+  x00183101: "IVUSPullbackRate",
+  x00183102: "IVUSGatedRate",
+  x00183103: "IVUSPullbackStartFrameNumber",
+  x00183104: "IVUSPullbackStopFrameNumber",
+  x00183105: "LesionNumber",
+  x00184000: "ACR_NEMA_AcquisitionComments",
+  x00185000: "OutputPower",
+  x00185010: "TransducerData",
+  x00185012: "FocusDepth",
+  x00185020: "ProcessingFunction",
+  x00185021: "PostprocessingFunction",
+  x00185022: "MechanicalIndex",
+  x00185024: "ThermalIndex",
+  x00185026: "CranialThermalIndex",
+  x00185027: "SoftTissueThermalIndex",
+  x00185028: "SoftTissueFocusThermalIndex",
+  x00185029: "SoftTissueSurfaceThermalIndex",
+  x00185030: "ACR_NEMA_DynamicRange",
+  x00185040: "ACR_NEMA_TotalGain",
+  x00185050: "DepthOfScanField",
+  x00185100: "PatientPosition",
+  x00185101: "ViewPosition",
+  x00185104: "ProjectionEponymousNameCodeSequence",
+  x00185210: "ImageTransformationMatrix",
+  x00185212: "ImageTranslationVector",
+  x00186000: "Sensitivity",
+  x00186011: "SequenceOfUltrasoundRegions",
+  x00186012: "RegionSpatialFormat",
+  x00186014: "RegionDataType",
+  x00186016: "RegionFlags",
+  x00186018: "RegionLocationMinX0",
+  x0018601a: "RegionLocationMinY0",
+  x0018601c: "RegionLocationMaxX1",
+  x0018601e: "RegionLocationMaxY1",
+  x00186020: "ReferencePixelX0",
+  x00186022: "ReferencePixelY0",
+  x00186024: "PhysicalUnitsXDirection",
+  x00186026: "PhysicalUnitsYDirection",
+  x00186028: "ReferencePixelPhysicalValueX",
+  x0018602a: "ReferencePixelPhysicalValueY",
+  x0018602c: "PhysicalDeltaX",
+  x0018602e: "PhysicalDeltaY",
+  x00186030: "TransducerFrequency",
+  x00186031: "TransducerType",
+  x00186032: "PulseRepetitionFrequency",
+  x00186034: "DopplerCorrectionAngle",
+  x00186036: "SteeringAngle",
+  x00186038: "RETIRED_DopplerSampleVolumeXPosition",
+  x00186039: "DopplerSampleVolumeXPosition",
+  x0018603a: "RETIRED_DopplerSampleVolumeYPosition",
+  x0018603b: "DopplerSampleVolumeYPosition",
+  x0018603c: "RETIRED_TMLinePositionX0",
+  x0018603d: "TMLinePositionX0",
+  x0018603e: "RETIRED_TMLinePositionY0",
+  x0018603f: "TMLinePositionY0",
+  x00186040: "RETIRED_TMLinePositionX1",
+  x00186041: "TMLinePositionX1",
+  x00186042: "RETIRED_TMLinePositionY1",
+  x00186043: "TMLinePositionY1",
+  x00186044: "PixelComponentOrganization",
+  x00186046: "PixelComponentMask",
+  x00186048: "PixelComponentRangeStart",
+  x0018604a: "PixelComponentRangeStop",
+  x0018604c: "PixelComponentPhysicalUnits",
+  x0018604e: "PixelComponentDataType",
+  x00186050: "NumberOfTableBreakPoints",
+  x00186052: "TableOfXBreakPoints",
+  x00186054: "TableOfYBreakPoints",
+  x00186056: "NumberOfTableEntries",
+  x00186058: "TableOfPixelValues",
+  x0018605a: "TableOfParameterValues",
+  x00187000: "DetectorConditionsNominalFlag",
+  x00187001: "DetectorTemperature",
+  x00187004: "DetectorType",
+  x00187005: "DetectorConfiguration",
+  x00187006: "DetectorDescription",
+  x00187008: "DetectorMode",
+  x0018700a: "DetectorID",
+  x0018700c: "DateOfLastDetectorCalibration",
+  x0018700e: "TimeOfLastDetectorCalibration",
+  x00187010: "ExposuresOnDetectorSinceLastCalibration",
+  x00187011: "ExposuresOnDetectorSinceManufactured",
+  x00187012: "DetectorTimeSinceLastExposure",
+  x00187014: "DetectorActiveTime",
+  x00187016: "DetectorActivationOffsetFromExposure",
+  x0018701a: "DetectorBinning",
+  x00187020: "DetectorElementPhysicalSize",
+  x00187022: "DetectorElementSpacing",
+  x00187024: "DetectorActiveShape",
+  x00187026: "DetectorActiveDimensions",
+  x00187028: "DetectorActiveOrigin",
+  x00187030: "FieldOfViewOrigin",
+  x00187032: "FieldOfViewRotation",
+  x00187034: "FieldOfViewHorizontalFlip",
+  x00187040: "GridAbsorbingMaterial",
+  x00187041: "GridSpacingMaterial",
+  x00187042: "GridThickness",
+  x00187044: "GridPitch",
+  x00187046: "GridAspectRatio",
+  x00187048: "GridPeriod",
+  x0018704c: "GridFocalDistance",
+  x00187050: "FilterMaterial",
+  x00187052: "FilterThicknessMinimum",
+  x00187054: "FilterThicknessMaximum",
+  x00187060: "ExposureControlMode",
+  x00187062: "ExposureControlModeDescription",
+  x00187064: "ExposureStatus",
+  x00187065: "PhototimerSetting",
+  x00188150: "ExposureTimeInMicroS",
+  x00188151: "XRayTubeCurrentInMicroA",
+  x00189004: "ContentQualification",
+  x00189005: "PulseSequenceName",
+  x00189006: "MRImagingModifierSequence",
+  x00189008: "EchoPulseSequence",
+  x00189009: "InversionRecovery",
+  x00189010: "FlowCompensation",
+  x00189011: "MultipleSpinEcho",
+  x00189012: "MultiPlanarExcitation",
+  x00189014: "PhaseContrast",
+  x00189015: "TimeOfFlightContrast",
+  x00189016: "Spoiling",
+  x00189017: "SteadyStatePulseSequence",
+  x00189018: "EchoPlanarPulseSequence",
+  x00189019: "TagAngleFirstAxis",
+  x00189020: "MagnetizationTransfer",
+  x00189021: "T2Preparation",
+  x00189022: "BloodSignalNulling",
+  x00189024: "SaturationRecovery",
+  x00189025: "SpectrallySelectedSuppression",
+  x00189026: "SpectrallySelectedExcitation",
+  x00189027: "SpatialPreSaturation",
+  x00189028: "Tagging",
+  x00189029: "OversamplingPhase",
+  x00189030: "TagSpacingFirstDimension",
+  x00189032: "GeometryOfKSpaceTraversal",
+  x00189033: "SegmentedKSpaceTraversal",
+  x00189034: "RectilinearPhaseEncodeReordering",
+  x00189035: "TagThickness",
+  x00189036: "PartialFourierDirection",
+  x00189037: "GatingSynchronizationTechnique",
+  x00189041: "ReceiveCoilManufacturerName",
+  x00189042: "MRReceiveCoilSequence",
+  x00189043: "ReceiveCoilType",
+  x00189044: "QuadratureReceiveCoil",
+  x00189045: "MultiCoilDefinitionSequence",
+  x00189046: "MultiCoilConfiguration",
+  x00189047: "MultiCoilElementName",
+  x00189048: "MultiCoilElementUsed",
+  x00189049: "MRTransmitCoilSequence",
+  x00189050: "TransmitCoilManufacturerName",
+  x00189051: "TransmitCoilType",
+  x00189052: "SpectralWidth",
+  x00189053: "ChemicalShiftReference",
+  x00189054: "VolumeLocalizationTechnique",
+  x00189058: "MRAcquisitionFrequencyEncodingSteps",
+  x00189059: "Decoupling",
+  x00189060: "DecoupledNucleus",
+  x00189061: "DecouplingFrequency",
+  x00189062: "DecouplingMethod",
+  x00189063: "DecouplingChemicalShiftReference",
+  x00189064: "KSpaceFiltering",
+  x00189065: "TimeDomainFiltering",
+  x00189066: "NumberOfZeroFills",
+  x00189067: "BaselineCorrection",
+  x00189070: "CardiacRRIntervalSpecified",
+  x00189073: "AcquisitionDuration",
+  x00189074: "FrameAcquisitionDatetime",
+  x00189075: "DiffusionDirectionality",
+  x00189076: "DiffusionGradientDirectionSequence",
+  x00189077: "ParallelAcquisition",
+  x00189078: "ParallelAcquisitionTechnique",
+  x00189079: "InversionTimes",
+  x00189080: "MetaboliteMapDescription",
+  x00189081: "PartialFourier",
+  x00189082: "EffectiveEchoTime",
+  x00189084: "ChemicalShiftSequence",
+  x00189085: "CardiacSignalSource",
+  x00189087: "DiffusionBValue",
+  x00189089: "DiffusionGradientOrientation",
+  x00189090: "VelocityEncodingDirection",
+  x00189091: "VelocityEncodingMinimumValue",
+  x00189093: "NumberOfKSpaceTrajectories",
+  x00189094: "CoverageOfKSpace",
+  x00189095: "SpectroscopyAcquisitionPhaseRows",
+  x00189096: "ParallelReductionFactorInPlane",
+  x00189098: "TransmitterFrequency",
+  x00189100: "ResonantNucleus",
+  x00189101: "FrequencyCorrection",
+  x00189103: "MRSpectroscopyFOVGeometrySequence",
+  x00189104: "SlabThickness",
+  x00189105: "SlabOrientation",
+  x00189106: "MidSlabPosition",
+  x00189107: "MRSpatialSaturationSequence",
+  x00189112: "MRTimingAndRelatedParametersSequence",
+  x00189114: "MREchoSequence",
+  x00189115: "MRModifierSequence",
+  x00189117: "MRDiffusionSequence",
+  x00189118: "CardiacTriggerSequence",
+  x00189119: "MRAveragesSequence",
+  x00189125: "MRFOVGeometrySequence",
+  x00189126: "VolumeLocalizationSequence",
+  x00189127: "SpectroscopyAcquisitionDataColumns",
+  x00189147: "DiffusionAnisotropyType",
+  x00189151: "FrameReferenceDatetime",
+  x00189152: "MetaboliteMapSequence",
+  x00189155: "ParallelReductionFactorOutOfPlane",
+  x00189159: "SpectroscopyAcquisitionOutOfPlanePhaseSteps",
+  x00189166: "BulkMotionStatus",
+  x00189168: "ParallelReductionFactorSecondInPlane",
+  x00189169: "CardiacBeatRejectionTechnique",
+  x00189170: "RespiratoryMotionCompensation",
+  x00189171: "RespiratorySignalSource",
+  x00189172: "BulkMotionCompensationTechnique",
+  x00189173: "BulkMotionSignal",
+  x00189174: "ApplicableSafetyStandardAgency",
+  x00189175: "ApplicableSafetyStandardVersion",
+  x00189176: "OperationModeSequence",
+  x00189177: "OperatingModeType",
+  x00189178: "OperationMode",
+  x00189179: "SpecificAbsorptionRateDefinition",
+  x00189180: "GradientOutputType",
+  x00189181: "SpecificAbsorptionRateValue",
+  x00189182: "GradientOutput",
+  x00189183: "FlowCompensationDirection",
+  x00189184: "TaggingDelay",
+  x00189195: "ChemicalShiftsMinimumIntegrationLimit",
+  x00189196: "ChemicalShiftsMaximumIntegrationLimit",
+  x00189197: "MRVelocityEncodingSequence",
+  x00189198: "FirstOrderPhaseCorrection",
+  x00189199: "WaterReferencedPhaseCorrection",
+  x00189200: "MRSpectroscopyAcquisitionType",
+  x00189214: "RespiratoryMotionStatus",
+  x00189217: "VelocityEncodingMaximumValue",
+  x00189218: "TagSpacingSecondDimension",
+  x00189219: "TagAngleSecondAxis",
+  x00189220: "FrameAcquisitionDuration",
+  x00189226: "MRImageFrameTypeSequence",
+  x00189227: "MRSpectroscopyFrameTypeSequence",
+  x00189231: "MRAcquisitionPhaseEncodingStepsInPlane",
+  x00189232: "MRAcquisitionPhaseEncodingStepsOutOfPlane",
+  x00189234: "SpectroscopyAcquisitionPhaseColumns",
+  x00189236: "CardiacMotionStatus",
+  x00189239: "SpecificAbsorptionRateSequence",
+  x00200000: "ImageGroupLength",
+  x0020000d: "StudyInstanceUID",
+  x0020000e: "SeriesInstanceUID",
+  x00200010: "StudyID",
+  x00200011: "SeriesNumber",
+  x00200012: "AcquisitionNumber",
+  x00200013: "InstanceNumber",
+  x00200014: "IsotopeNumber",
+  x00200015: "PhaseNumber",
+  x00200016: "IntervalNumber",
+  x00200017: "TimeSlotNumber",
+  x00200018: "AngleNumber",
+  x00200019: "ItemNumber",
+  x00200020: "PatientOrientation",
+  x00200022: "OverlayNumber",
+  x00200024: "CurveNumber",
+  x00200026: "LookupTableNumber",
+  x00200030: "ACR_NEMA_ImagePosition",
+  x00200032: "ImagePositionPatient",
+  x00200035: "ACR_NEMA_ImageOrientation",
+  x00200037: "ImageOrientationPatient",
+  x00200050: "ACR_NEMA_Location",
+  x00200052: "FrameOfReferenceUID",
+  x00200060: "Laterality",
+  x00200062: "ImageLaterality",
+  x00200070: "ACR_NEMA_ImageGeometryType",
+  x00200080: "ACR_NEMA_MaskingImage",
+  x00200100: "TemporalPositionIdentifier",
+  x00200105: "NumberOfTemporalPositions",
+  x00200110: "TemporalResolution",
+  x00200200: "SynchronizationFrameOfReferenceUID",
+  x00201000: "SeriesInStudy",
+  x00201001: "ACR_NEMA_AcquisitionsInSeries",
+  x00201002: "ImagesInAcquisition",
+  x00201003: "ACR_NEMA_ImagesInSeries",
+  x00201004: "AcquisitionsInStudy",
+  x00201005: "ACR_NEMA_ImagesInStudy",
+  x00201020: "ACR_NEMA_Reference",
+  x00201040: "PositionReferenceIndicator",
+  x00201041: "SliceLocation",
+  x00201070: "OtherStudyNumbers",
+  x00201200: "NumberOfPatientRelatedStudies",
+  x00201202: "NumberOfPatientRelatedSeries",
+  x00201204: "NumberOfPatientRelatedInstances",
+  x00201206: "NumberOfStudyRelatedSeries",
+  x00201208: "NumberOfStudyRelatedInstances",
+  x00201209: "NumberOfSeriesRelatedInstances",
+  x00203401: "ACR_NEMA_ModifyingDeviceID",
+  x00203402: "ACR_NEMA_ModifiedImageID",
+  x00203403: "ACR_NEMA_ModifiedImageDate",
+  x00203404: "ACR_NEMA_ModifyingDeviceManufacturer",
+  x00203405: "ACR_NEMA_ModifiedImageTime",
+  x00203406: "ACR_NEMA_ModifiedImageDescription",
+  x00204000: "ImageComments",
+  x00205000: "ACR_NEMA_OriginalImageIdentification",
+  x00205002: "ACR_NEMA_OriginalImageIdentificationNomenclature",
+  x00209056: "StackID",
+  x00209057: "InStackPositionNumber",
+  x00209071: "FrameAnatomySequence",
+  x00209072: "FrameLaterality",
+  x00209111: "FrameContentSequence",
+  x00209113: "PlanePositionSequence",
+  x00209116: "PlaneOrientationSequence",
+  x00209128: "TemporalPositionIndex",
+  x00209153: "TriggerDelayTime",
+  x00209156: "FrameAcquisitionNumber",
+  x00209157: "DimensionIndexValues",
+  x00209158: "FrameComments",
+  x00209161: "ConcatenationUID",
+  x00209162: "InConcatenationNumber",
+  x00209163: "InConcatenationTotalNumber",
+  x00209164: "DimensionOrganizationUID",
+  x00209165: "DimensionIndexPointer",
+  x00209167: "FunctionalGroupSequencePointer",
+  x00209213: "DimensionIndexPrivateCreator",
+  x00209221: "DimensionOrganizationSequence",
+  x00209222: "DimensionSequence",
+  x00209228: "ConcatenationFrameOffsetNumber",
+  x00209238: "FunctionalGroupPrivateCreator",
+  x00280000: "ImagePresentationGroupLength",
+  x00280002: "SamplesPerPixel",
+  x00280004: "PhotometricInterpretation",
+  x00280005: "ACR_NEMA_ImageDimensions",
+  x00280006: "PlanarConfiguration",
+  x00280008: "NumberOfFrames",
+  x00280009: "FrameIncrementPointer",
+  x00280010: "Rows",
+  x00280011: "Columns",
+  x00280012: "Planes",
+  x00280014: "UltrasoundColorDataPresent",
+  x00280030: "PixelSpacing",
+  x00280031: "ZoomFactor",
+  x00280032: "ZoomCenter",
+  x00280034: "PixelAspectRatio",
+  x00280040: "ACR_NEMA_ImageFormat",
+  x00280050: "ACR_NEMA_ManipulatedImage",
+  x00280051: "CorrectedImage",
+  x0028005f: "ACR_NEMA_2C_CompressionRecognitionCode",
+  x00280060: "ACR_NEMA_CompressionCode",
+  x00280061: "ACR_NEMA_2C_CompressionOriginator",
+  x00280062: "ACR_NEMA_2C_CompressionLabel",
+  x00280063: "ACR_NEMA_2C_CompressionDescription",
+  x00280065: "ACR_NEMA_2C_CompressionSequence",
+  x00280066: "ACR_NEMA_2C_CompressionStepPointers",
+  x00280068: "ACR_NEMA_2C_RepeatInterval",
+  x00280069: "ACR_NEMA_2C_BitsGrouped",
+  x00280070: "ACR_NEMA_2C_PerimeterTable",
+  x00280071: "ACR_NEMA_2C_PerimeterValue",
+  x00280080: "ACR_NEMA_2C_PredictorRows",
+  x00280081: "ACR_NEMA_2C_PredictorColumns",
+  x00280082: "ACR_NEMA_2C_PredictorConstants",
+  x00280090: "ACR_NEMA_2C_BlockedPixels",
+  x00280091: "ACR_NEMA_2C_BlockRows",
+  x00280092: "ACR_NEMA_2C_BlockColumns",
+  x00280093: "ACR_NEMA_2C_RowOverlap",
+  x00280094: "ACR_NEMA_2C_ColumnOverlap",
+  x00280100: "BitsAllocated",
+  x00280101: "BitsStored",
+  x00280102: "HighBit",
+  x00280103: "PixelRepresentation",
+  x00280104: "ACR_NEMA_SmallestValidPixelValue",
+  x00280105: "ACR_NEMA_LargestValidPixelValue",
+  x00280106: "SmallestImagePixelValue",
+  x00280107: "LargestImagePixelValue",
+  x00280108: "SmallestPixelValueInSeries",
+  x00280109: "LargestPixelValueInSeries",
+  x00280110: "SmallestImagePixelValueInPlane",
+  x00280111: "LargestImagePixelValueInPlane",
+  x00280120: "PixelPaddingValue",
+  x00280200: "ACR_NEMA_ImageLocation",
+  x00280300: "QualityControlImage",
+  x00280301: "BurnedInAnnotation",
+  x00280400: "ACR_NEMA_2C_TransformLabel",
+  x00280401: "ACR_NEMA_2C_TransformVersionNumber",
+  x00280402: "ACR_NEMA_2C_NumberOfTransformSteps",
+  x00280403: "ACR_NEMA_2C_SequenceOfCompressedData",
+  x00280404: "ACR_NEMA_2C_DetailsOfCoefficients",
+  x00280410: "ACR_NEMA_2C_RowsForNthOrderCoefficients",
+  x00280411: "ACR_NEMA_2C_ColumnsForNthOrderCoefficients",
+  x00280412: "ACR_NEMA_2C_CoefficientCoding",
+  x00280413: "ACR_NEMA_2C_CoefficientCodingPointers",
+  x00280700: "ACR_NEMA_2C_DCTLabel",
+  x00280701: "ACR_NEMA_2C_DataBlockDescription",
+  x00280702: "ACR_NEMA_2C_DataBlock",
+  x00280710: "ACR_NEMA_2C_NormalizationFactorFormat",
+  x00280720: "ACR_NEMA_2C_ZonalMapNumberFormat",
+  x00280721: "ACR_NEMA_2C_ZonalMapLocation",
+  x00280722: "ACR_NEMA_2C_ZonalMapFormat",
+  x00280730: "ACR_NEMA_2C_AdaptiveMapFormat",
+  x00280740: "ACR_NEMA_2C_CodeNumberFormat",
+  x00280800: "ACR_NEMA_2C_CodeLabel",
+  x00280802: "ACR_NEMA_2C_NumberOfTables",
+  x00280803: "ACR_NEMA_2C_CodeTableLocation",
+  x00280804: "ACR_NEMA_2C_BitsForCodeWord",
+  x00280808: "ACR_NEMA_2C_ImageDataLocation",
+  x00281040: "PixelIntensityRelationship",
+  x00281041: "PixelIntensityRelationshipSign",
+  x00281050: "WindowCenter",
+  x00281051: "WindowWidth",
+  x00281052: "RescaleIntercept",
+  x00281053: "RescaleSlope",
+  x00281054: "RescaleType",
+  x00281055: "WindowCenterWidthExplanation",
+  x00281080: "ACR_NEMA_GrayScale",
+  x00281090: "RecommendedViewingMode",
+  x00281100: "ACR_NEMA_GrayLookupTableDescriptor",
+  x00281101: "RedPaletteColorLookupTableDescriptor",
+  x00281102: "GreenPaletteColorLookupTableDescriptor",
+  x00281103: "BluePaletteColorLookupTableDescriptor",
+  x00281199: "PaletteColorLookupTableUID",
+  x00281200: "ACR_NEMA_GrayLookupTableData",
+  x00281201: "RedPaletteColorLookupTableData",
+  x00281202: "GreenPaletteColorLookupTableData",
+  x00281203: "BluePaletteColorLookupTableData",
+  x00281221: "SegmentedRedPaletteColorLookupTableData",
+  x00281222: "SegmentedGreenPaletteColorLookupTableData",
+  x00281223: "SegmentedBluePaletteColorLookupTableData",
+  x00281300: "ImplantPresent",
+  x00281350: "PartialView",
+  x00281351: "PartialViewDescription",
+  x00282110: "LossyImageCompression",
+  x00282112: "LossyImageCompressionRatio",
+  x00283000: "ModalityLUTSequence",
+  x00283002: "LUTDescriptor",
+  x00283003: "LUTExplanation",
+  x00283004: "ModalityLUTType",
+  x00283006: "LUTData",
+  x00283010: "VOILUTSequence",
+  x00283110: "SoftcopyVOILUTSequence",
+  x00284000: "ACR_NEMA_ImagePresentationComments",
+  x00285000: "BiPlaneAcquisitionSequence",
+  x00286010: "RepresentativeFrameNumber",
+  x00286020: "FrameNumbersOfInterestFOI",
+  x00286022: "FramesOfInterestDescription",
+  x00286030: "RETIRED_MaskPointers",
+  x00286040: "RWavePointer",
+  x00286100: "MaskSubtractionSequence",
+  x00286101: "MaskOperation",
+  x00286102: "ApplicableFrameRange",
+  x00286110: "MaskFrameNumbers",
+  x00286112: "ContrastFrameAveraging",
+  x00286114: "MaskSubPixelShift",
+  x00286120: "TIDOffset",
+  x00286190: "MaskOperationExplanation",
+  x00289001: "DataPointRows",
+  x00289002: "DataPointColumns",
+  x00289003: "SignalDomain",
+  x00289099: "LargestMonochromePixelValue",
+  x00289108: "DataRepresentation",
+  x00289110: "PixelMatrixSequence",
+  x00289132: "FrameVOILUTSequence",
+  x00289145: "PixelValueTransformationSequence",
+  x00289235: "SignalDomainRows",
+  x00320000: "StudyGroupLength",
+  x0032000a: "StudyStatusID",
+  x0032000c: "StudyPriorityID",
+  x00320012: "StudyIDIssuer",
+  x00320032: "StudyVerifiedDate",
+  x00320033: "StudyVerifiedTime",
+  x00320034: "StudyReadDate",
+  x00320035: "StudyReadTime",
+  x00321000: "ScheduledStudyStartDate",
+  x00321001: "ScheduledStudyStartTime",
+  x00321010: "ScheduledStudyStopDate",
+  x00321011: "ScheduledStudyStopTime",
+  x00321020: "ScheduledStudyLocation",
+  x00321021: "ScheduledStudyLocationAETitles",
+  x00321030: "ReasonForStudy",
+  x00321031: "RequestingPhysicianIdentificationSequence",
+  x00321032: "RequestingPhysician",
+  x00321033: "RequestingService",
+  x00321040: "StudyArrivalDate",
+  x00321041: "StudyArrivalTime",
+  x00321050: "StudyCompletionDate",
+  x00321051: "StudyCompletionTime",
+  x00321055: "StudyComponentStatusID",
+  x00321060: "RequestedProcedureDescription",
+  x00321064: "RequestedProcedureCodeSequence",
+  x00321070: "RequestedContrastAgent",
+  x00324000: "StudyComments",
+  x00380000: "VisitGroupLength",
+  x00380004: "ReferencedPatientAliasSequence",
+  x00380008: "VisitStatusID",
+  x00380010: "AdmissionID",
+  x00380011: "IssuerOfAdmissionID",
+  x00380016: "RouteOfAdmissions",
+  x0038001a: "ScheduledAdmissionDate",
+  x0038001b: "ScheduledAdmissionTime",
+  x0038001c: "ScheduledDischargeDate",
+  x0038001d: "ScheduledDischargeTime",
+  x0038001e: "ScheduledPatientInstitutionResidence",
+  x00380020: "AdmittingDate",
+  x00380021: "AdmittingTime",
+  x00380030: "DischargeDate",
+  x00380032: "DischargeTime",
+  x00380040: "DischargeDiagnosisDescription",
+  x00380044: "DischargeDiagnosisCodeSequence",
+  x00380050: "SpecialNeeds",
+  x00380300: "CurrentPatientLocation",
+  x00380400: "PatientsInstitutionResidence",
+  x00380500: "PatientState",
+  x00384000: "VisitComments",
+  x003a0004: "WaveformOriginality",
+  x003a0005: "NumberOfWaveformChannels",
+  x003a0010: "NumberOfWaveformSamples",
+  x003a001a: "SamplingFrequency",
+  x003a0020: "MultiplexGroupLabel",
+  x003a0200: "ChannelDefinitionSequence",
+  x003a0202: "WaveformChannelNumber",
+  x003a0203: "ChannelLabel",
+  x003a0205: "ChannelStatus",
+  x003a0208: "ChannelSourceSequence",
+  x003a0209: "ChannelSourceModifiersSequence",
+  x003a020a: "SourceWaveformSequence",
+  x003a020c: "ChannelDerivationDescription",
+  x003a0210: "ChannelSensitivity",
+  x003a0211: "ChannelSensitivityUnitsSequence",
+  x003a0212: "ChannelSensitivityCorrectionFactor",
+  x003a0213: "ChannelBaseline",
+  x003a0214: "ChannelTimeSkew",
+  x003a0215: "ChannelSampleSkew",
+  x003a0218: "ChannelOffset",
+  x003a021a: "WaveformBitsStored",
+  x003a0220: "FilterLowFrequency",
+  x003a0221: "FilterHighFrequency",
+  x003a0222: "NotchFilterFrequency",
+  x003a0223: "NotchFilterBandwidth",
+  x00400000: "ModalityWorklistGroupLength",
+  x00400001: "ScheduledStationAETitle",
+  x00400002: "ScheduledProcedureStepStartDate",
+  x00400003: "ScheduledProcedureStepStartTime",
+  x00400004: "ScheduledProcedureStepEndDate",
+  x00400005: "ScheduledProcedureStepEndTime",
+  x00400006: "ScheduledPerformingPhysiciansName",
+  x00400007: "ScheduledProcedureStepDescription",
+  x00400008: "ScheduledProtocolCodeSequence",
+  x00400009: "ScheduledProcedureStepID",
+  x0040000a: "StageCodeSequence",
+  x0040000b: "ScheduledPerformingPhysicianIdentificationSequence",
+  x00400010: "ScheduledStationName",
+  x00400011: "ScheduledProcedureStepLocation",
+  x00400012: "PreMedication",
+  x00400020: "ScheduledProcedureStepStatus",
+  x00400100: "ScheduledProcedureStepSequence",
+  x00400220: "ReferencedNonImageCompositeSOPInstanceSequence",
+  x00400241: "PerformedStationAETitle",
+  x00400242: "PerformedStationName",
+  x00400243: "PerformedLocation",
+  x00400244: "PerformedProcedureStepStartDate",
+  x00400245: "PerformedProcedureStepStartTime",
+  x00400250: "PerformedProcedureStepEndDate",
+  x00400251: "PerformedProcedureStepEndTime",
+  x00400252: "PerformedProcedureStepStatus",
+  x00400253: "PerformedProcedureStepID",
+  x00400254: "PerformedProcedureStepDescription",
+  x00400255: "PerformedProcedureTypeDescription",
+  x00400260: "PerformedProtocolCodeSequence",
+  x00400270: "ScheduledStepAttributesSequence",
+  x00400275: "RequestAttributesSequence",
+  x00400280: "CommentsOnThePerformedProcedureStep",
+  x00400281: "PerformedProcedureStepDiscontinuationReasonCodeSequence",
+  x00400293: "QuantitySequence",
+  x00400294: "Quantity",
+  x00400295: "MeasuringUnitsSequence",
+  x00400296: "BillingItemSequence",
+  x00400300: "TotalTimeOfFluoroscopy",
+  x00400301: "TotalNumberOfExposures",
+  x00400302: "EntranceDose",
+  x00400303: "ExposedArea",
+  x00400306: "DistanceSourceToEntrance",
+  x00400307: "RETIRED_DistanceSourceToSupport",
+  x0040030e: "ExposureDoseSequence",
+  x00400310: "CommentsOnRadiationDose",
+  x00400312: "XRayOutput",
+  x00400314: "HalfValueLayer",
+  x00400316: "OrganDose",
+  x00400318: "OrganExposed",
+  x00400320: "BillingProcedureStepSequence",
+  x00400321: "FilmConsumptionSequence",
+  x00400324: "BillingSuppliesAndDevicesSequence",
+  x00400330: "RETIRED_ReferencedProcedureStepSequence",
+  x00400340: "PerformedSeriesSequence",
+  x00400400: "CommentsOnTheScheduledProcedureStep",
+  x0040050a: "SpecimenAccessionNumber",
+  x00400550: "SpecimenSequence",
+  x00400551: "SpecimenIdentifier",
+  x00400555: "AcquisitionContextSequence",
+  x00400556: "AcquisitionContextDescription",
+  x0040059a: "SpecimenTypeCodeSequence",
+  x004006fa: "SlideIdentifier",
+  x0040071a: "ImageCenterPointCoordinatesSequence",
+  x0040072a: "XOffsetInSlideCoordinateSystem",
+  x0040073a: "YOffsetInSlideCoordinateSystem",
+  x0040074a: "ZOffsetInSlideCoordinateSystem",
+  x004008d8: "PixelSpacingSequence",
+  x004008da: "CoordinateSystemAxisCodeSequence",
+  x004008ea: "MeasurementUnitsCodeSequence",
+  x00401001: "RequestedProcedureID",
+  x00401002: "ReasonForTheRequestedProcedure",
+  x00401003: "RequestedProcedurePriority",
+  x00401004: "PatientTransportArrangements",
+  x00401005: "RequestedProcedureLocation",
+  x00401006: "PlacerOrderNumberProcedure",
+  x00401007: "FillerOrderNumberProcedure",
+  x00401008: "ConfidentialityCode",
+  x00401009: "ReportingPriority",
+  x00401010: "NamesOfIntendedRecipientsOfResults",
+  x00401011: "IntendedRecipientsOfResultsIdentificationSequence",
+  x00401101: "PersonIdentificationCodeSequence",
+  x00401102: "PersonsAddress",
+  x00401103: "PersonsTelephoneNumbers",
+  x00401400: "RequestedProcedureComments",
+  x00402001: "ReasonForTheImagingServiceRequest",
+  x00402004: "IssueDateOfImagingServiceRequest",
+  x00402005: "IssueTimeOfImagingServiceRequest",
+  x00402006: "RETIRED_PlacerOrderNumberImagingServiceRequest",
+  x00402007: "RETIRED_FillerOrderNumberImagingServiceRequest",
+  x00402008: "OrderEnteredBy",
+  x00402009: "OrderEnterersLocation",
+  x00402010: "OrderCallbackPhoneNumber",
+  x00402016: "PlacerOrderNumberImagingServiceRequest",
+  x00402017: "FillerOrderNumberImagingServiceRequest",
+  x00402400: "ImagingServiceRequestComments",
+  x00403001: "ConfidentialityConstraintOnPatientDataDescription",
+  x00404001: "GeneralPurposeScheduledProcedureStepStatus",
+  x00404002: "GeneralPurposePerformedProcedureStepStatus",
+  x00404003: "GeneralPurposeScheduledProcedureStepPriority",
+  x00404004: "ScheduledProcessingApplicationsCodeSequence",
+  x00404005: "ScheduledProcedureStepStartDateAndTime",
+  x00404006: "MultipleCopiesFlag",
+  x00404007: "PerformedProcessingApplicationsCodeSequence",
+  x00404009: "HumanPerformerCodeSequence",
+  x00404011: "ExpectedCompletionDateAndTime",
+  x00404015: "ResultingGeneralPurposePerformedProcedureStepsSequence",
+  x00404016: "ReferencedGeneralPurposeScheduledProcedureStepSequence",
+  x00404018: "ScheduledWorkitemCodeSequence",
+  x00404019: "PerformedWorkitemCodeSequence",
+  x00404020: "InputAvailabilityFlag",
+  x00404021: "InputInformationSequence",
+  x00404022: "RelevantInformationSequence",
+  x00404023: "ReferencedGeneralPurposeScheduledProcedureStepTransactionUID",
+  x00404025: "ScheduledStationNameCodeSequence",
+  x00404026: "ScheduledStationClassCodeSequence",
+  x00404027: "ScheduledStationGeographicLocationCodeSequence",
+  x00404028: "PerformedStationNameCodeSequence",
+  x00404029: "PerformedStationClassCodeSequence",
+  x00404030: "PerformedStationGeographicLocationCodeSequence",
+  x00404031: "RequestedSubsequentWorkitemCodeSequence",
+  x00404032: "NonDICOMOutputCodeSequence",
+  x00404033: "OutputInformationSequence",
+  x00404034: "ScheduledHumanPerformersSequence",
+  x00404035: "ActualHumanPerformersSequence",
+  x00404036: "HumanPerformersOrganization",
+  x00404037: "HumanPerformersName",
+  x00408302: "EntranceDoseInmGy",
+  x00409096: "RealWorldValueMappingSequence",
+  x00409210: "LUTLabel",
+  x00409211: "RealWorldValueLUTLastValueMapped",
+  x00409212: "RealWorldValueLUTData",
+  x00409216: "RealWorldValueLUTFirstValueMapped",
+  x00409224: "RealWorldValueIntercept",
+  x00409225: "RealWorldValueSlope",
+  x0040a010: "RelationshipType",
+  x0040a027: "VerifyingOrganization",
+  x0040a030: "VerificationDateTime",
+  x0040a032: "ObservationDateTime",
+  x0040a040: "ValueType",
+  x0040a043: "ConceptNameCodeSequence",
+  x0040a050: "ContinuityOfContent",
+  x0040a073: "VerifyingObserverSequence",
+  x0040a075: "VerifyingObserverName",
+  x0040a088: "VerifyingObserverIdentificationCodeSequence",
+  x0040a0b0: "ReferencedWaveformChannels",
+  x0040a120: "DateTime",
+  x0040a121: "Date",
+  x0040a122: "Time",
+  x0040a123: "PersonName",
+  x0040a124: "UID",
+  x0040a130: "TemporalRangeType",
+  x0040a132: "ReferencedSamplePositions",
+  x0040a136: "ReferencedFrameNumbers",
+  x0040a138: "ReferencedTimeOffsets",
+  x0040a13a: "ReferencedDatetime",
+  x0040a160: "TextValue",
+  x0040a168: "ConceptCodeSequence",
+  x0040a170: "PurposeOfReferenceCodeSequence",
+  x0040a180: "AnnotationGroupNumber",
+  x0040a195: "ModifierCodeSequence",
+  x0040a300: "MeasuredValueSequence",
+  x0040a301: "NumericValueQualifierCodeSequence",
+  x0040a30a: "NumericValue",
+  x0040a360: "PredecessorDocumentsSequence",
+  x0040a370: "ReferencedRequestSequence",
+  x0040a372: "PerformedProcedureCodeSequence",
+  x0040a375: "CurrentRequestedProcedureEvidenceSequence",
+  x0040a385: "PertinentOtherEvidenceSequence",
+  x0040a491: "CompletionFlag",
+  x0040a492: "CompletionFlagDescription",
+  x0040a493: "VerificationFlag",
+  x0040a504: "ContentTemplateSequence",
+  x0040a525: "IdenticalDocumentsSequence",
+  x0040a730: "ContentSequence",
+  x0040b020: "AnnotationSequence",
+  x0040db00: "TemplateIdentifier",
+  x0040db06: "RETIRED_TemplateVersion",
+  x0040db07: "RETIRED_TemplateLocalVersion",
+  x0040db0b: "RETIRED_TemplateExtensionFlag",
+  x0040db0c: "RETIRED_TemplateExtensionOrganizationUID",
+  x0040db0d: "RETIRED_TemplateExtensionCreatorUID",
+  x0040db73: "ReferencedContentItemIdentifier",
+  x00500000: "XRayAngioDeviceGroupLength",
+  x00500004: "CalibrationImage",
+  x00500010: "DeviceSequence",
+  x00500014: "DeviceLength",
+  x00500016: "DeviceDiameter",
+  x00500017: "DeviceDiameterUnits",
+  x00500018: "DeviceVolume",
+  x00500019: "InterMarkerDistance",
+  x00500020: "DeviceDescription",
+  x00540000: "NuclearMedicineGroupLength",
+  x00540010: "EnergyWindowVector",
+  x00540011: "NumberOfEnergyWindows",
+  x00540012: "EnergyWindowInformationSequence",
+  x00540013: "EnergyWindowRangeSequence",
+  x00540014: "EnergyWindowLowerLimit",
+  x00540015: "EnergyWindowUpperLimit",
+  x00540016: "RadiopharmaceuticalInformationSequence",
+  x00540017: "ResidualSyringeCounts",
+  x00540018: "EnergyWindowName",
+  x00540020: "DetectorVector",
+  x00540021: "NumberOfDetectors",
+  x00540022: "DetectorInformationSequence",
+  x00540030: "PhaseVector",
+  x00540031: "NumberOfPhases",
+  x00540032: "PhaseInformationSequence",
+  x00540033: "NumberOfFramesInPhase",
+  x00540036: "PhaseDelay",
+  x00540038: "PauseBetweenFrames",
+  x00540050: "RotationVector",
+  x00540051: "NumberOfRotations",
+  x00540052: "RotationInformationSequence",
+  x00540053: "NumberOfFramesInRotation",
+  x00540060: "RRIntervalVector",
+  x00540061: "NumberOfRRIntervals",
+  x00540062: "GatedInformationSequence",
+  x00540063: "DataInformationSequence",
+  x00540070: "TimeSlotVector",
+  x00540071: "NumberOfTimeSlots",
+  x00540072: "TimeSlotInformationSequence",
+  x00540073: "TimeSlotTime",
+  x00540080: "SliceVector",
+  x00540081: "NumberOfSlices",
+  x00540090: "AngularViewVector",
+  x00540100: "TimeSliceVector",
+  x00540101: "NumberOfTimeSlices",
+  x00540200: "StartAngle",
+  x00540202: "TypeOfDetectorMotion",
+  x00540210: "TriggerVector",
+  x00540211: "NumberOfTriggersInPhase",
+  x00540220: "ViewCodeSequence",
+  x00540222: "ViewModifierCodeSequence",
+  x00540300: "RadionuclideCodeSequence",
+  x00540302: "AdministrationRouteCodeSequence",
+  x00540304: "RadiopharmaceuticalCodeSequence",
+  x00540306: "CalibrationDataSequence",
+  x00540308: "EnergyWindowNumber",
+  x00540400: "ImageID",
+  x00540410: "PatientOrientationCodeSequence",
+  x00540412: "PatientOrientationModifierCodeSequence",
+  x00540414: "PatientGantryRelationshipCodeSequence",
+  x00541000: "SeriesType",
+  x00541001: "Units",
+  x00541002: "CountsSource",
+  x00541004: "ReprojectionMethod",
+  x00541100: "RandomsCorrectionMethod",
+  x00541101: "AttenuationCorrectionMethod",
+  x00541102: "DecayCorrection",
+  x00541103: "ReconstructionMethod",
+  x00541104: "DetectorLinesOfResponseUsed",
+  x00541105: "ScatterCorrectionMethod",
+  x00541200: "AxialAcceptance",
+  x00541201: "AxialMash",
+  x00541202: "TransverseMash",
+  x00541203: "DetectorElementSize",
+  x00541210: "CoincidenceWindowWidth",
+  x00541220: "SecondaryCountsType",
+  x00541300: "FrameReferenceTime",
+  x00541310: "PrimaryPromptsCountsAccumulated",
+  x00541311: "SecondaryCountsAccumulated",
+  x00541320: "SliceSensitivityFactor",
+  x00541321: "DecayFactor",
+  x00541322: "DoseCalibrationFactor",
+  x00541323: "ScatterFractionFactor",
+  x00541324: "DeadTimeFactor",
+  x00541330: "ImageIndex",
+  x00541400: "CountsIncluded",
+  x00541401: "DeadTimeCorrectionFlag",
+  x00600000: "HistogramGroupLength",
+  x00603000: "HistogramSequence",
+  x00603002: "HistogramNumberOfBins",
+  x00603004: "HistogramFirstBinValue",
+  x00603006: "HistogramLastBinValue",
+  x00603008: "HistogramBinWidth",
+  x00603010: "HistogramExplanation",
+  x00603020: "HistogramData",
+  x00700000: "PresentationStateGroupLength",
+  x00700001: "GraphicAnnotationSequence",
+  x00700002: "GraphicLayer",
+  x00700003: "BoundingBoxAnnotationUnits",
+  x00700004: "AnchorPointAnnotationUnits",
+  x00700005: "GraphicAnnotationUnits",
+  x00700006: "UnformattedTextValue",
+  x00700008: "TextObjectSequence",
+  x00700009: "GraphicObjectSequence",
+  x00700010: "BoundingBoxTopLeftHandCorner",
+  x00700011: "BoundingBoxBottomRightHandCorner",
+  x00700012: "BoundingBoxTextHorizontalJustification",
+  x00700014: "AnchorPoint",
+  x00700015: "AnchorPointVisibility",
+  x00700020: "GraphicDimensions",
+  x00700021: "NumberOfGraphicPoints",
+  x00700022: "GraphicData",
+  x00700023: "GraphicType",
+  x00700024: "GraphicFilled",
+  x00700041: "ImageHorizontalFlip",
+  x00700042: "ImageRotation",
+  x00700052: "DisplayedAreaTopLeftHandCorner",
+  x00700053: "DisplayedAreaBottomRightHandCorner",
+  x0070005a: "DisplayedAreaSelectionSequence",
+  x00700060: "GraphicLayerSequence",
+  x00700062: "GraphicLayerOrder",
+  x00700066: "GraphicLayerRecommendedDisplayGrayscaleValue",
+  x00700067: "GraphicLayerRecommendedDisplayRGBValue",
+  x00700068: "GraphicLayerDescription",
+  x00700080: "PresentationLabel",
+  x00700081: "PresentationDescription",
+  x00700082: "PresentationCreationDate",
+  x00700083: "PresentationCreationTime",
+  x00700084: "PresentationCreatorsName",
+  x00700100: "PresentationSizeMode",
+  x00700101: "PresentationPixelSpacing",
+  x00700102: "PresentationPixelAspectRatio",
+  x00700103: "PresentationPixelMagnificationRatio",
+  x00880000: "StorageGroupLength",
+  x00880130: "StorageMediaFileSetID",
+  x00880140: "StorageMediaFileSetUID",
+  x00880200: "IconImageSequence",
+  x00880904: "TopicTitle",
+  x00880906: "TopicSubject",
+  x00880910: "TopicAuthor",
+  x00880912: "TopicKeyWords",
+  x01000410: "SOPInstanceStatus",
+  x01000420: "SOPAuthorizationDateAndTime",
+  x01000424: "SOPAuthorizationComment",
+  x01000426: "AuthorizationEquipmentCertificationNumber",
+  x04000005: "MACIDNumber",
+  x04000010: "MACCalculationTransferSyntaxUID",
+  x04000015: "MACAlgorithm",
+  x04000020: "DataElementsSigned",
+  x04000100: "DigitalSignatureUID",
+  x04000105: "DigitalSignatureDateTime",
+  x04000110: "CertificateType",
+  x04000115: "CertificateOfSigner",
+  x04000120: "Signature",
+  x04000305: "CertifiedTimestampType",
+  x04000310: "CertifiedTimestamp",
+  x04000500: "EncryptedAttributesSequence",
+  x04000510: "EncryptedContentTransferSyntaxUID",
+  x04000520: "EncryptedContent",
+  x04000550: "ModifiedAttributesSequence",
+  x10000000: "ACR_NEMA_2C_CodeTableGroupLength",
+  x10000010: "ACR_NEMA_2C_EscapeTriplet",
+  x10000011: "ACR_NEMA_2C_RunLengthTriplet",
+  x10000012: "ACR_NEMA_2C_HuffmanTableSize",
+  x10000013: "ACR_NEMA_2C_HuffmanTableTriplet",
+  x10000014: "ACR_NEMA_2C_ShiftTableSize",
+  x10000015: "ACR_NEMA_2C_ShiftTableTriplet",
+  x10100000: "ACR_NEMA_2C_ZonalMapGroupLength",
+  x10100004: "ACR_NEMA_2C_ZonalMap",
+  x20000000: "FilmSessionGroupLength",
+  x20000010: "NumberOfCopies",
+  x2000001e: "PrinterConfigurationSequence",
+  x20000020: "PrintPriority",
+  x20000030: "MediumType",
+  x20000040: "FilmDestination",
+  x20000050: "FilmSessionLabel",
+  x20000060: "MemoryAllocation",
+  x20000061: "MaximumMemoryAllocation",
+  x20000062: "ColorImagePrintingFlag",
+  x20000063: "CollationFlag",
+  x20000065: "AnnotationFlag",
+  x20000067: "ImageOverlayFlag",
+  x20000069: "PresentationLUTFlag",
+  x2000006a: "ImageBoxPresentationLUTFlag",
+  x200000a0: "MemoryBitDepth",
+  x200000a1: "PrintingBitDepth",
+  x200000a2: "MediaInstalledSequence",
+  x200000a4: "OtherMediaAvailableSequence",
+  x200000a8: "SupportedImageDisplayFormatsSequence",
+  x20000500: "ReferencedFilmBoxSequence",
+  x20000510: "ReferencedStoredPrintSequence",
+  x20100000: "FilmBoxGroupLength",
+  x20100010: "ImageDisplayFormat",
+  x20100030: "AnnotationDisplayFormatID",
+  x20100040: "FilmOrientation",
+  x20100050: "FilmSizeID",
+  x20100052: "PrinterResolutionID",
+  x20100054: "DefaultPrinterResolutionID",
+  x20100060: "MagnificationType",
+  x20100080: "SmoothingType",
+  x201000a6: "DefaultMagnificationType",
+  x201000a7: "OtherMagnificationTypesAvailable",
+  x201000a8: "DefaultSmoothingType",
+  x201000a9: "OtherSmoothingTypesAvailable",
+  x20100100: "BorderDensity",
+  x20100110: "EmptyImageDensity",
+  x20100120: "MinDensity",
+  x20100130: "MaxDensity",
+  x20100140: "Trim",
+  x20100150: "ConfigurationInformation",
+  x20100152: "ConfigurationInformationDescription",
+  x20100154: "MaximumCollatedFilms",
+  x2010015e: "Illumination",
+  x20100160: "ReflectedAmbientLight",
+  x20100376: "PrinterPixelSpacing",
+  x20100500: "ReferencedFilmSessionSequence",
+  x20100510: "ReferencedImageBoxSequence",
+  x20100520: "ReferencedBasicAnnotationBoxSequence",
+  x20200000: "ImageBoxGroupLength",
+  x20200010: "ImagePosition",
+  x20200020: "Polarity",
+  x20200030: "RequestedImageSize",
+  x20200040: "RequestedDecimateCropBehavior",
+  x20200050: "RequestedResolutionID",
+  x202000a0: "RequestedImageSizeFlag",
+  x202000a2: "DecimateCropResult",
+  x20200110: "BasicGrayscaleImageSequence",
+  x20200111: "BasicColorImageSequence",
+  x20200130: "RETIRED_ReferencedImageOverlayBoxSequence",
+  x20200140: "RETIRED_ReferencedVOILUTBoxSequence",
+  x20300000: "AnnotationGroupLength",
+  x20300010: "AnnotationPosition",
+  x20300020: "TextString",
+  x20400000: "OverlayBoxGroupLength",
+  x20400010: "ReferencedOverlayPlaneSequence",
+  x20400011: "ReferencedOverlayPlaneGroups",
+  x20400020: "OverlayPixelDataSequence",
+  x20400060: "OverlayMagnificationType",
+  x20400070: "OverlaySmoothingType",
+  x20400072: "OverlayOrImageMagnification",
+  x20400074: "MagnifyToNumberOfColumns",
+  x20400080: "OverlayForegroundDensity",
+  x20400082: "OverlayBackgroundDensity",
+  x20400090: "OverlayMode",
+  x20400100: "ThresholdDensity",
+  x20400500: "RETIRED_ReferencedImageBoxSequence",
+  x20500000: "PresentationLUTGroupLength",
+  x20500010: "PresentationLUTSequence",
+  x20500020: "PresentationLUTShape",
+  x20500500: "ReferencedPresentationLUTSequence",
+  x21000000: "PrintJobGroupLength",
+  x21000010: "PrintJobID",
+  x21000020: "ExecutionStatus",
+  x21000030: "ExecutionStatusInfo",
+  x21000040: "CreationDate",
+  x21000050: "CreationTime",
+  x21000070: "Originator",
+  x21000140: "DestinationAE",
+  x21000160: "OwnerID",
+  x21000170: "NumberOfFilms",
+  x21000500: "ReferencedPrintJobSequence",
+  x21100000: "PrinterGroupLength",
+  x21100010: "PrinterStatus",
+  x21100020: "PrinterStatusInfo",
+  x21100030: "PrinterName",
+  x21100099: "PrintQueueID",
+  x21200000: "QueueGroupLength",
+  x21200010: "QueueStatus",
+  x21200050: "PrintJobDescriptionSequence",
+  x21200070: "QueueReferencedPrintJobSequence",
+  x21300000: "PrintContentGroupLength",
+  x21300010: "PrintManagementCapabilitiesSequence",
+  x21300015: "PrinterCharacteristicsSequence",
+  x21300030: "FilmBoxContentSequence",
+  x21300040: "ImageBoxContentSequence",
+  x21300050: "AnnotationContentSequence",
+  x21300060: "ImageOverlayBoxContentSequence",
+  x21300080: "PresentationLUTContentSequence",
+  x213000a0: "ProposedStudySequence",
+  x213000c0: "OriginalImageSequence",
+  x30020000: "RTImageGroupLength",
+  x30020002: "RTImageLabel",
+  x30020003: "RTImageName",
+  x30020004: "RTImageDescription",
+  x3002000a: "ReportedValuesOrigin",
+  x3002000c: "RTImagePlane",
+  x3002000d: "XRayImageReceptorTranslation",
+  x3002000e: "XRayImageReceptorAngle",
+  x30020010: "RTImageOrientation",
+  x30020011: "ImagePlanePixelSpacing",
+  x30020012: "RTImagePosition",
+  x30020020: "RadiationMachineName",
+  x30020022: "RadiationMachineSAD",
+  x30020024: "RadiationMachineSSD",
+  x30020026: "RTImageSID",
+  x30020028: "SourceToReferenceObjectDistance",
+  x30020029: "FractionNumber",
+  x30020030: "ExposureSequence",
+  x30020032: "MetersetExposure",
+  x30020034: "DiaphragmPosition",
+  x30040000: "RTDoseGroupLength",
+  x30040001: "DVHType",
+  x30040002: "DoseUnits",
+  x30040004: "DoseType",
+  x30040006: "DoseComment",
+  x30040008: "NormalizationPoint",
+  x3004000a: "DoseSummationType",
+  x3004000c: "GridFrameOffsetVector",
+  x3004000e: "DoseGridScaling",
+  x30040010: "RTDoseROISequence",
+  x30040012: "DoseValue",
+  x30040040: "DVHNormalizationPoint",
+  x30040042: "DVHNormalizationDoseValue",
+  x30040050: "DVHSequence",
+  x30040052: "DVHDoseScaling",
+  x30040054: "DVHVolumeUnits",
+  x30040056: "DVHNumberOfBins",
+  x30040058: "DVHData",
+  x30040060: "DVHReferencedROISequence",
+  x30040062: "DVHROIContributionType",
+  x30040070: "DVHMinimumDose",
+  x30040072: "DVHMaximumDose",
+  x30040074: "DVHMeanDose",
+  x30060000: "RTStructureSetGroupLength",
+  x30060002: "StructureSetLabel",
+  x30060004: "StructureSetName",
+  x30060006: "StructureSetDescription",
+  x30060008: "StructureSetDate",
+  x30060009: "StructureSetTime",
+  x30060010: "ReferencedFrameOfReferenceSequence",
+  x30060012: "RTReferencedStudySequence",
+  x30060014: "RTReferencedSeriesSequence",
+  x30060016: "ContourImageSequence",
+  x30060020: "StructureSetROISequence",
+  x30060022: "ROINumber",
+  x30060024: "ReferencedFrameOfReferenceUID",
+  x30060026: "ROIName",
+  x30060028: "ROIDescription",
+  x3006002a: "ROIDisplayColor",
+  x3006002c: "ROIVolume",
+  x30060030: "RTRelatedROISequence",
+  x30060033: "RTROIRelationship",
+  x30060036: "ROIGenerationAlgorithm",
+  x30060038: "ROIGenerationDescription",
+  x30060039: "ROIContourSequence",
+  x30060040: "ContourSequence",
+  x30060042: "ContourGeometricType",
+  x30060044: "ContourSlabThickness",
+  x30060045: "ContourOffsetVector",
+  x30060046: "NumberOfContourPoints",
+  x30060048: "ContourNumber",
+  x30060049: "AttachedContours",
+  x30060050: "ContourData",
+  x30060080: "RTROIObservationsSequence",
+  x30060082: "ObservationNumber",
+  x30060084: "ReferencedROINumber",
+  x30060085: "ROIObservationLabel",
+  x30060086: "RTROIIdentificationCodeSequence",
+  x30060088: "ROIObservationDescription",
+  x300600a0: "RelatedRTROIObservationsSequence",
+  x300600a4: "RTROIInterpretedType",
+  x300600a6: "ROIInterpreter",
+  x300600b0: "ROIPhysicalPropertiesSequence",
+  x300600b2: "ROIPhysicalProperty",
+  x300600b4: "ROIPhysicalPropertyValue",
+  x300600c0: "FrameOfReferenceRelationshipSequence",
+  x300600c2: "RelatedFrameOfReferenceUID",
+  x300600c4: "FrameOfReferenceTransformationType",
+  x300600c6: "FrameOfReferenceTransformationMatrix",
+  x300600c8: "FrameOfReferenceTransformationComment",
+  x30080010: "MeasuredDoseReferenceSequence",
+  x30080012: "MeasuredDoseDescription",
+  x30080014: "MeasuredDoseType",
+  x30080016: "MeasuredDoseValue",
+  x30080020: "TreatmentSessionBeamSequence",
+  x30080022: "CurrentFractionNumber",
+  x30080024: "TreatmentControlPointDate",
+  x30080025: "TreatmentControlPointTime",
+  x3008002a: "TreatmentTerminationStatus",
+  x3008002b: "TreatmentTerminationCode",
+  x3008002c: "TreatmentVerificationStatus",
+  x30080030: "ReferencedTreatmentRecordSequence",
+  x30080032: "SpecifiedPrimaryMeterset",
+  x30080033: "SpecifiedSecondaryMeterset",
+  x30080036: "DeliveredPrimaryMeterset",
+  x30080037: "DeliveredSecondaryMeterset",
+  x3008003a: "SpecifiedTreatmentTime",
+  x3008003b: "DeliveredTreatmentTime",
+  x30080040: "ControlPointDeliverySequence",
+  x30080042: "SpecifiedMeterset",
+  x30080044: "DeliveredMeterset",
+  x30080048: "DoseRateDelivered",
+  x30080050: "TreatmentSummaryCalculatedDoseReferenceSequence",
+  x30080052: "CumulativeDoseToDoseReference",
+  x30080054: "FirstTreatmentDate",
+  x30080056: "MostRecentTreatmentDate",
+  x3008005a: "NumberOfFractionsDelivered",
+  x30080060: "OverrideSequence",
+  x30080062: "OverrideParameterPointer",
+  x30080064: "MeasuredDoseReferenceNumber",
+  x30080066: "OverrideReason",
+  x30080070: "CalculatedDoseReferenceSequence",
+  x30080072: "CalculatedDoseReferenceNumber",
+  x30080074: "CalculatedDoseReferenceDescription",
+  x30080076: "CalculatedDoseReferenceDoseValue",
+  x30080078: "StartMeterset",
+  x3008007a: "EndMeterset",
+  x30080080: "ReferencedMeasuredDoseReferenceSequence",
+  x30080082: "ReferencedMeasuredDoseReferenceNumber",
+  x30080090: "ReferencedCalculatedDoseReferenceSequence",
+  x30080092: "ReferencedCalculatedDoseReferenceNumber",
+  x300800a0: "BeamLimitingDeviceLeafPairsSequence",
+  x300800b0: "RecordedWedgeSequence",
+  x300800c0: "RecordedCompensatorSequence",
+  x300800d0: "RecordedBlockSequence",
+  x300800e0: "TreatmentSummaryMeasuredDoseReferenceSequence",
+  x30080100: "RecordedSourceSequence",
+  x30080105: "SourceSeriesNumber",
+  x30080110: "TreatmentSessionApplicationSetupSequence",
+  x30080116: "ApplicationSetupCheck",
+  x30080120: "RecordedBrachyAccessoryDeviceSequence",
+  x30080122: "ReferencedBrachyAccessoryDeviceNumber",
+  x30080130: "RecordedChannelSequence",
+  x30080132: "SpecifiedChannelTotalTime",
+  x30080134: "DeliveredChannelTotalTime",
+  x30080136: "SpecifiedNumberOfPulses",
+  x30080138: "DeliveredNumberOfPulses",
+  x3008013a: "SpecifiedPulseRepetitionInterval",
+  x3008013c: "DeliveredPulseRepetitionInterval",
+  x30080140: "RecordedSourceApplicatorSequence",
+  x30080142: "ReferencedSourceApplicatorNumber",
+  x30080150: "RecordedChannelShieldSequence",
+  x30080152: "ReferencedChannelShieldNumber",
+  x30080160: "BrachyControlPointDeliveredSequence",
+  x30080162: "SafePositionExitDate",
+  x30080164: "SafePositionExitTime",
+  x30080166: "SafePositionReturnDate",
+  x30080168: "SafePositionReturnTime",
+  x30080200: "CurrentTreatmentStatus",
+  x30080202: "TreatmentStatusComment",
+  x30080220: "FractionGroupSummarySequence",
+  x30080223: "ReferencedFractionNumber",
+  x30080224: "FractionGroupType",
+  x30080230: "BeamStopperPosition",
+  x30080240: "FractionStatusSummarySequence",
+  x30080250: "TreatmentDate",
+  x30080251: "TreatmentTime",
+  x300a0000: "RTPlanGroupLength",
+  x300a0002: "RTPlanLabel",
+  x300a0003: "RTPlanName",
+  x300a0004: "RTPlanDescription",
+  x300a0006: "RTPlanDate",
+  x300a0007: "RTPlanTime",
+  x300a0009: "TreatmentProtocols",
+  x300a000a: "TreatmentIntent",
+  x300a000b: "TreatmentSites",
+  x300a000c: "RTPlanGeometry",
+  x300a000e: "PrescriptionDescription",
+  x300a0010: "DoseReferenceSequence",
+  x300a0012: "DoseReferenceNumber",
+  x300a0014: "DoseReferenceStructureType",
+  x300a0015: "NominalBeamEnergyUnit",
+  x300a0016: "DoseReferenceDescription",
+  x300a0018: "DoseReferencePointCoordinates",
+  x300a001a: "NominalPriorDose",
+  x300a0020: "DoseReferenceType",
+  x300a0021: "ConstraintWeight",
+  x300a0022: "DeliveryWarningDose",
+  x300a0023: "DeliveryMaximumDose",
+  x300a0025: "TargetMinimumDose",
+  x300a0026: "TargetPrescriptionDose",
+  x300a0027: "TargetMaximumDose",
+  x300a0028: "TargetUnderdoseVolumeFraction",
+  x300a002a: "OrganAtRiskFullVolumeDose",
+  x300a002b: "OrganAtRiskLimitDose",
+  x300a002c: "OrganAtRiskMaximumDose",
+  x300a002d: "OrganAtRiskOverdoseVolumeFraction",
+  x300a0040: "ToleranceTableSequence",
+  x300a0042: "ToleranceTableNumber",
+  x300a0043: "ToleranceTableLabel",
+  x300a0044: "GantryAngleTolerance",
+  x300a0046: "BeamLimitingDeviceAngleTolerance",
+  x300a0048: "BeamLimitingDeviceToleranceSequence",
+  x300a004a: "BeamLimitingDevicePositionTolerance",
+  x300a004c: "PatientSupportAngleTolerance",
+  x300a004e: "TableTopEccentricAngleTolerance",
+  x300a0051: "TableTopVerticalPositionTolerance",
+  x300a0052: "TableTopLongitudinalPositionTolerance",
+  x300a0053: "TableTopLateralPositionTolerance",
+  x300a0055: "RTPlanRelationship",
+  x300a0070: "FractionGroupSequence",
+  x300a0071: "FractionGroupNumber",
+  x300a0078: "NumberOfFractionsPlanned",
+  x300a0079: "NumberOfFractionPatternDigitsPerDay",
+  x300a007a: "RepeatFractionCycleLength",
+  x300a007b: "FractionPattern",
+  x300a0080: "NumberOfBeams",
+  x300a0082: "BeamDoseSpecificationPoint",
+  x300a0084: "BeamDose",
+  x300a0086: "BeamMeterset",
+  x300a00a0: "NumberOfBrachyApplicationSetups",
+  x300a00a2: "BrachyApplicationSetupDoseSpecificationPoint",
+  x300a00a4: "BrachyApplicationSetupDose",
+  x300a00b0: "BeamSequence",
+  x300a00b2: "TreatmentMachineName",
+  x300a00b3: "PrimaryDosimeterUnit",
+  x300a00b4: "SourceAxisDistance",
+  x300a00b6: "BeamLimitingDeviceSequence",
+  x300a00b8: "RTBeamLimitingDeviceType",
+  x300a00ba: "SourceToBeamLimitingDeviceDistance",
+  x300a00bc: "NumberOfLeafJawPairs",
+  x300a00be: "LeafPositionBoundaries",
+  x300a00c0: "BeamNumber",
+  x300a00c2: "BeamName",
+  x300a00c3: "BeamDescription",
+  x300a00c4: "BeamType",
+  x300a00c6: "RadiationType",
+  x300a00c7: "HighDoseTechniqueType",
+  x300a00c8: "ReferenceImageNumber",
+  x300a00ca: "PlannedVerificationImageSequence",
+  x300a00cc: "ImagingDeviceSpecificAcquisitionParameters",
+  x300a00ce: "TreatmentDeliveryType",
+  x300a00d0: "NumberOfWedges",
+  x300a00d1: "WedgeSequence",
+  x300a00d2: "WedgeNumber",
+  x300a00d3: "WedgeType",
+  x300a00d4: "WedgeID",
+  x300a00d5: "WedgeAngle",
+  x300a00d6: "WedgeFactor",
+  x300a00d8: "WedgeOrientation",
+  x300a00da: "SourceToWedgeTrayDistance",
+  x300a00e0: "NumberOfCompensators",
+  x300a00e1: "MaterialID",
+  x300a00e2: "TotalCompensatorTrayFactor",
+  x300a00e3: "CompensatorSequence",
+  x300a00e4: "CompensatorNumber",
+  x300a00e5: "CompensatorID",
+  x300a00e6: "SourceToCompensatorTrayDistance",
+  x300a00e7: "CompensatorRows",
+  x300a00e8: "CompensatorColumns",
+  x300a00e9: "CompensatorPixelSpacing",
+  x300a00ea: "CompensatorPosition",
+  x300a00eb: "CompensatorTransmissionData",
+  x300a00ec: "CompensatorThicknessData",
+  x300a00ed: "NumberOfBoli",
+  x300a00ee: "CompensatorType",
+  x300a00f0: "NumberOfBlocks",
+  x300a00f2: "TotalBlockTrayFactor",
+  x300a00f4: "BlockSequence",
+  x300a00f5: "BlockTrayID",
+  x300a00f6: "SourceToBlockTrayDistance",
+  x300a00f8: "BlockType",
+  x300a00fa: "BlockDivergence",
+  x300a00fb: "BlockMountingPosition",
+  x300a00fc: "BlockNumber",
+  x300a00fe: "BlockName",
+  x300a0100: "BlockThickness",
+  x300a0102: "BlockTransmission",
+  x300a0104: "BlockNumberOfPoints",
+  x300a0106: "BlockData",
+  x300a0107: "ApplicatorSequence",
+  x300a0108: "ApplicatorID",
+  x300a0109: "ApplicatorType",
+  x300a010a: "ApplicatorDescription",
+  x300a010c: "CumulativeDoseReferenceCoefficient",
+  x300a010e: "FinalCumulativeMetersetWeight",
+  x300a0110: "NumberOfControlPoints",
+  x300a0111: "ControlPointSequence",
+  x300a0112: "ControlPointIndex",
+  x300a0114: "NominalBeamEnergy",
+  x300a0115: "DoseRateSet",
+  x300a0116: "WedgePositionSequence",
+  x300a0118: "WedgePosition",
+  x300a011a: "BeamLimitingDevicePositionSequence",
+  x300a011c: "LeafJawPositions",
+  x300a011e: "GantryAngle",
+  x300a011f: "GantryRotationDirection",
+  x300a0120: "BeamLimitingDeviceAngle",
+  x300a0121: "BeamLimitingDeviceRotationDirection",
+  x300a0122: "PatientSupportAngle",
+  x300a0123: "PatientSupportRotationDirection",
+  x300a0124: "TableTopEccentricAxisDistance",
+  x300a0125: "TableTopEccentricAngle",
+  x300a0126: "TableTopEccentricRotationDirection",
+  x300a0128: "TableTopVerticalPosition",
+  x300a0129: "TableTopLongitudinalPosition",
+  x300a012a: "TableTopLateralPosition",
+  x300a012c: "IsocenterPosition",
+  x300a012e: "SurfaceEntryPoint",
+  x300a0130: "SourceToSurfaceDistance",
+  x300a0134: "CumulativeMetersetWeight",
+  x300a0180: "PatientSetupSequence",
+  x300a0182: "PatientSetupNumber",
+  x300a0184: "PatientAdditionalPosition",
+  x300a0190: "FixationDeviceSequence",
+  x300a0192: "FixationDeviceType",
+  x300a0194: "FixationDeviceLabel",
+  x300a0196: "FixationDeviceDescription",
+  x300a0198: "FixationDevicePosition",
+  x300a01a0: "ShieldingDeviceSequence",
+  x300a01a2: "ShieldingDeviceType",
+  x300a01a4: "ShieldingDeviceLabel",
+  x300a01a6: "ShieldingDeviceDescription",
+  x300a01a8: "ShieldingDevicePosition",
+  x300a01b0: "SetupTechnique",
+  x300a01b2: "SetupTechniqueDescription",
+  x300a01b4: "SetupDeviceSequence",
+  x300a01b6: "SetupDeviceType",
+  x300a01b8: "SetupDeviceLabel",
+  x300a01ba: "SetupDeviceDescription",
+  x300a01bc: "SetupDeviceParameter",
+  x300a01d0: "SetupReferenceDescription",
+  x300a01d2: "TableTopVerticalSetupDisplacement",
+  x300a01d4: "TableTopLongitudinalSetupDisplacement",
+  x300a01d6: "TableTopLateralSetupDisplacement",
+  x300a0200: "BrachyTreatmentTechnique",
+  x300a0202: "BrachyTreatmentType",
+  x300a0206: "TreatmentMachineSequence",
+  x300a0210: "SourceSequence",
+  x300a0212: "SourceNumber",
+  x300a0214: "SourceType",
+  x300a0216: "SourceManufacturer",
+  x300a0218: "ActiveSourceDiameter",
+  x300a021a: "ActiveSourceLength",
+  x300a0222: "SourceEncapsulationNominalThickness",
+  x300a0224: "SourceEncapsulationNominalTransmission",
+  x300a0226: "SourceIsotopeName",
+  x300a0228: "SourceIsotopeHalfLife",
+  x300a022a: "ReferenceAirKermaRate",
+  x300a022c: "AirKermaRateReferenceDate",
+  x300a022e: "AirKermaRateReferenceTime",
+  x300a0230: "ApplicationSetupSequence",
+  x300a0232: "ApplicationSetupType",
+  x300a0234: "ApplicationSetupNumber",
+  x300a0236: "ApplicationSetupName",
+  x300a0238: "ApplicationSetupManufacturer",
+  x300a0240: "TemplateNumber",
+  x300a0242: "TemplateType",
+  x300a0244: "TemplateName",
+  x300a0250: "TotalReferenceAirKerma",
+  x300a0260: "BrachyAccessoryDeviceSequence",
+  x300a0262: "BrachyAccessoryDeviceNumber",
+  x300a0263: "BrachyAccessoryDeviceID",
+  x300a0264: "BrachyAccessoryDeviceType",
+  x300a0266: "BrachyAccessoryDeviceName",
+  x300a026a: "BrachyAccessoryDeviceNominalThickness",
+  x300a026c: "BrachyAccessoryDeviceNominalTransmission",
+  x300a0280: "ChannelSequence",
+  x300a0282: "ChannelNumber",
+  x300a0284: "ChannelLength",
+  x300a0286: "ChannelTotalTime",
+  x300a0288: "SourceMovementType",
+  x300a028a: "NumberOfPulses",
+  x300a028c: "PulseRepetitionInterval",
+  x300a0290: "SourceApplicatorNumber",
+  x300a0291: "SourceApplicatorID",
+  x300a0292: "SourceApplicatorType",
+  x300a0294: "SourceApplicatorName",
+  x300a0296: "SourceApplicatorLength",
+  x300a0298: "SourceApplicatorManufacturer",
+  x300a029c: "SourceApplicatorWallNominalThickness",
+  x300a029e: "SourceApplicatorWallNominalTransmission",
+  x300a02a0: "SourceApplicatorStepSize",
+  x300a02a2: "TransferTubeNumber",
+  x300a02a4: "TransferTubeLength",
+  x300a02b0: "ChannelShieldSequence",
+  x300a02b2: "ChannelShieldNumber",
+  x300a02b3: "ChannelShieldID",
+  x300a02b4: "ChannelShieldName",
+  x300a02b8: "ChannelShieldNominalThickness",
+  x300a02ba: "ChannelShieldNominalTransmission",
+  x300a02c8: "FinalCumulativeTimeWeight",
+  x300a02d0: "BrachyControlPointSequence",
+  x300a02d2: "ControlPointRelativePosition",
+  x300a02d4: "ControlPoint3DPosition",
+  x300a02d6: "CumulativeTimeWeight",
+  x300a02e0: "CompensatorDivergence",
+  x300a02e1: "CompensatorMountingPosition",
+  x300a02e2: "SourceToCompensatorDistance",
+  x300c0000: "RTRelationshipGroupLength",
+  x300c0002: "ReferencedRTPlanSequence",
+  x300c0004: "ReferencedBeamSequence",
+  x300c0006: "ReferencedBeamNumber",
+  x300c0007: "ReferencedReferenceImageNumber",
+  x300c0008: "StartCumulativeMetersetWeight",
+  x300c0009: "EndCumulativeMetersetWeight",
+  x300c000a: "ReferencedBrachyApplicationSetupSequence",
+  x300c000c: "ReferencedBrachyApplicationSetupNumber",
+  x300c000e: "ReferencedSourceNumber",
+  x300c0020: "ReferencedFractionGroupSequence",
+  x300c0022: "ReferencedFractionGroupNumber",
+  x300c0040: "ReferencedVerificationImageSequence",
+  x300c0042: "ReferencedReferenceImageSequence",
+  x300c0050: "ReferencedDoseReferenceSequence",
+  x300c0051: "ReferencedDoseReferenceNumber",
+  x300c0055: "BrachyReferencedDoseReferenceSequence",
+  x300c0060: "ReferencedStructureSetSequence",
+  x300c006a: "ReferencedPatientSetupNumber",
+  x300c0080: "ReferencedDoseSequence",
+  x300c00a0: "ReferencedToleranceTableNumber",
+  x300c00b0: "ReferencedBolusSequence",
+  x300c00c0: "ReferencedWedgeNumber",
+  x300c00d0: "ReferencedCompensatorNumber",
+  x300c00e0: "ReferencedBlockNumber",
+  x300c00f0: "ReferencedControlPointIndex",
+  x300e0000: "RTApprovalGroupLength",
+  x300e0002: "ApprovalStatus",
+  x300e0004: "ReviewDate",
+  x300e0005: "ReviewTime",
+  x300e0008: "ReviewerName",
+  x40000000: "ACR_NEMA_TextGroupLength",
+  x40000010: "ACR_NEMA_TextArbitrary",
+  x40004000: "ACR_NEMA_TextComments",
+  x40080000: "ResultsGroupLength",
+  x40080040: "ResultsID",
+  x40080042: "ResultsIDIssuer",
+  x40080050: "ReferencedInterpretationSequence",
+  x40080100: "InterpretationRecordedDate",
+  x40080101: "InterpretationRecordedTime",
+  x40080102: "InterpretationRecorder",
+  x40080103: "ReferenceToRecordedSound",
+  x40080108: "InterpretationTranscriptionDate",
+  x40080109: "InterpretationTranscriptionTime",
+  x4008010a: "InterpretationTranscriber",
+  x4008010b: "InterpretationText",
+  x4008010c: "InterpretationAuthor",
+  x40080111: "InterpretationApproverSequence",
+  x40080112: "InterpretationApprovalDate",
+  x40080113: "InterpretationApprovalTime",
+  x40080114: "PhysicianApprovingInterpretation",
+  x40080115: "InterpretationDiagnosisDescription",
+  x40080117: "InterpretationDiagnosisCodeSequence",
+  x40080118: "ResultsDistributionListSequence",
+  x40080119: "DistributionName",
+  x4008011a: "DistributionAddress",
+  x40080200: "InterpretationID",
+  x40080202: "InterpretationIDIssuer",
+  x40080210: "InterpretationTypeID",
+  x40080212: "InterpretationStatusID",
+  x40080300: "Impressions",
+  x40084000: "ResultsComments",
+  x4ffe0001: "MACParametersSequence",
+  x52009229: "SharedFunctionalGroupsSequence",
+  x52009230: "PerFrameFunctionalGroupsSequence",
+  x54000000: "WaveformGroupLength",
+  x54000100: "WaveformSequence",
+  x54000110: "ChannelMinimumValue",
+  x54000112: "ChannelMaximumValue",
+  x54001004: "WaveformBitsAllocated",
+  x54001006: "WaveformSampleInterpretation",
+  x5400100a: "WaveformPaddingValue",
+  x54001010: "WaveformData",
+  x56000010: "FirstOrderPhaseCorrectionAngle",
+  x56000020: "SpectroscopyData",
+  x7fe00000: "PixelDataGroupLength",
+  x7fe00010: "PixelData",
+  x7fe00020: "ACR_NEMA_2C_CoefficientsSDVN",
+  x7fe00030: "ACR_NEMA_2C_CoefficientsSDHN",
+  x7fe00040: "ACR_NEMA_2C_CoefficientsSDDN",
+  xfffafffa: "DigitalSignaturesSequence",
+  xfffcfffc: "DataSetTrailingPadding",
+  xfffee000: "Item",
+  xfffee00d: "ItemDelimitationItem",
+  xfffee0dd: "SequenceDelimitationItem",
+  x50000000: "CurveGroupLength",
+  x50000005: "CurveDimensions",
+  x50000010: "NumberOfPoints",
+  x50000020: "TypeOfData",
+  x50000022: "CurveDescription",
+  x50000030: "AxisUnits",
+  x50000040: "AxisLabels",
+  x50000103: "DataValueRepresentation",
+  x50000104: "MinimumCoordinateValue",
+  x50000105: "MaximumCoordinateValue",
+  x50000106: "CurveRange",
+  x50000110: "CurveDataDescriptor",
+  x50001001: "CurveActivationLayer",
+  x50002000: "AudioType",
+  x50002002: "AudioSampleFormat",
+  x50002004: "NumberOfChannels",
+  x50002006: "NumberOfSamples",
+  x50002008: "SampleRate",
+  x5000200a: "TotalTime",
+  x5000200c: "AudioSampleData",
+  x5000200e: "AudioComments",
+  x50002500: "CurveLabel",
+  x50002600: "CurveReferencedOverlaySequence",
+  x50002610: "ReferencedOverlayGroup",
+  x50003000: "CurveData",
+  x60000000: "OverlayGroupLength",
+  x60000010: "OverlayRows",
+  x60000011: "OverlayColumns",
+  x60000012: "OverlayPlanes",
+  x60000015: "NumberOfFramesInOverlay",
+  x60000022: "OverlayDescription",
+  x60000040: "OverlayType",
+  x60000045: "OverlaySubtype",
+  x60000050: "OverlayOrigin",
+  x60000051: "ImageFrameOrigin",
+  x60000052: "OverlayPlaneOrigin",
+  x60000100: "OverlayBitsAllocated",
+  x60000102: "OverlayBitPosition",
+  x60001001: "OverlayActivationLayer",
+  x60001301: "ROIArea",
+  x60001302: "ROIMean",
+  x60001303: "ROIStandardDeviation",
+  x60001500: "OverlayLabel",
+  x60003000: "OverlayData",
+  x7f000000: "ACR_NEMA_2C_VariablePixelDataGroupLength",
+  x00090000: "PrivateGroupLength",
+  x00090001: "PrivateGroupLengthToEnd",
+  x60000060: "ACR_NEMA_2C_OverlayCompressionCode",
+  x60000061: "ACR_NEMA_2C_OverlayCompressionOriginator",
+  x60000062: "ACR_NEMA_2C_OverlayCompressionLabel",
+  x60000063: "ACR_NEMA_2C_OverlayCompressionDescription",
+  x60000066: "ACR_NEMA_2C_OverlayCompressionStepPointers",
+  x60000068: "ACR_NEMA_2C_OverlayRepeatInterval",
+  x60000069: "ACR_NEMA_2C_OverlayBitsGrouped",
+  x7f000010: "ACR_NEMA_2C_VariablePixelData",
+  x7f000011: "ACR_NEMA_2C_VariableNextDataGroup",
+  x7f000020: "ACR_NEMA_2C_VariableCoefficientsSDVN",
+  x7f000030: "ACR_NEMA_2C_VariableCoefficientsSDHN",
+  x7f000040: "ACR_NEMA_2C_VariableCoefficientsSDDN",
+  x00090010: "PrivateCreator",
+  x00010000: "IllegalGroupLength",
+  x00010001: "IllegalGroupLengthToEnd",
+  x00010010: "IllegalPrivateCreator",
+  x60001100: "OverlayDescriptorGray",
+  x60001101: "OverlayDescriptorRed",
+  x60001102: "OverlayDescriptorGreen",
+  x60001103: "OverlayDescriptorBlue",
+  x60001200: "OverlayGray",
+  x60001201: "OverlayRed",
+  x60001202: "OverlayGreen",
+  x60001203: "OverlayBlue",
+  x00203100: "ACR_NEMA_SourceImageID",
+  x60000110: "ACR_NEMA_OverlayFormat",
+  x60000200: "ACR_NEMA_OverlayLocation",
+  x60004000: "ACR_NEMA_OverlayComments",
+  x60000800: "ACR_NEMA_2C_OverlayCodeLabel",
+  x60000802: "ACR_NEMA_2C_OverlayNumberOfTables",
+  x60000803: "ACR_NEMA_2C_OverlayCodeTableLocation",
+  x60000804: "ACR_NEMA_2C_OverlayBitsForCodeWord",
+  x50000112: "CoordinateStartValue",
+  x50000114: "CoordinateStepValue"
+};
+var share;
+(function (e) {
+  var d = function () {
+    function c(a, b) {
+      var f = this;
+      if (0 === b) {
+        b = 60;
+      }
+      this._imageCount = this._currentImageIndex = 0;
+      this._parentEl = a;
+      this._canvas = document.createElement("canvas");
+      this._canvas.setAttribute("name", "progressbar");
+      this._canvas.style.position = "absolute";
+      this._canvas.style.left = "0";
+      this._canvas.style.right = "0";
+      this._canvas.style.bottom = "0";
+      Environment.isMobile ? this._canvas.style.height = "1vmin" : this._canvas.style.height = "0.25em";
+      this._canvas.style.width = "100%";
+      this._canvas.style.zIndex = b.toString();
+      this._parentEl.appendChild(this._canvas);
+      this._tipDiv = document.createElement("div");
+      this._tipDiv.setAttribute("name", "progresstip");
+      this._tipDiv.style.position = "absolute";
+      this._tipDiv.style.left = "0";
+      this._tipDiv.style.right = "0";
+      Environment.isMobile ? this._tipDiv.style.bottom = "1.5vmin" : this._tipDiv.style.bottom = "0.5em";
+      this._tipDiv.style.width = "100%";
+      Environment.isMobile ? this._tipDiv.style.fontSize = "4vmin" : this._tipDiv.style.fontSize = "1.5rem";
+      this._tipDiv.style.color = Global.theme.themeColor;
+      this._tipDiv.style.textAlign = "center";
+      this._tipDiv.style.zIndex = b.toString();
+      this._parentEl.appendChild(this._tipDiv);
+      this._tipSpan = document.createElement("span");
+      this._tipSpan.style.paddingLeft = "1vmin";
+      this._tipSpan.style.paddingRight = "1vmin";
+      this._tipSpan.style.backgroundColor = "rgba(1, 1, 1, 0.8)";
+      this._tipDiv.appendChild(this._tipSpan);
+      this.setCanvasSize();
+      this.draw();
+      Environment.isDesktop ? window.addEventListener("resize", function () {
+        f.setCanvasSize();
+        f.redraw();
+      }) : window.addEventListener("orientationchange", function () {
+        setTimeout(function () {
+          f.setCanvasSize();
+          f.redraw();
+        }, 200);
+      });
+    }
+    Object.defineProperty(c.prototype, "imageCount", {
+      get: function () {
+        return this._imageCount;
+      },
+      set: function (a) {
+        this._imageCount = a;
+        this._currentImageIndex = 0;
+        this.clear();
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    c.prototype.setCanvasSize = function () {
+      this._canvas.height = this._canvas.offsetHeight;
+      this._canvas.width = this._canvas.offsetWidth;
+    };
+    c.prototype.redraw = function () {
+      this._currentImageIndex >= this._imageCount ? this.clear() : this.draw();
+    };
+    c.prototype.draw = function () {
+      if (0 != this._currentImageIndex) {
+        var a = Math.ceil(this._currentImageIndex / this._imageCount * this._canvas.width),
+          b = this._canvas.getContext("2d");
+        b.clearRect(0, 0, this._canvas.width, this._canvas.height);
+        b.fillStyle = Global.theme.themeColor;
+        b.fillRect(0, 0, a, this._canvas.height);
+        0 != Environment.connectionType && "unknown" != Environment.connectionType ? this._tipSpan.textContent = "\u6b63\u5728 ".concat(Environment.connectionType, " \u4e0b\u8f7d ").concat(this._currentImageIndex, "/").concat(this._imageCount, " ......") : this._tipSpan.textContent = "\u6b63\u5728\u4e0b\u8f7d ".concat(this._currentImageIndex, "/").concat(this._imageCount, " ......");
+        this._tipDiv.style.removeProperty("display");
+      }
+    };
+    c.prototype.clear = function () {
+      this._canvas.getContext("2d").clearRect(0, 0, this._canvas.width, this._canvas.height);
+      this._tipDiv.style.display = "none";
+    };
+    c.prototype.reset = function () {
+      this._currentImageIndex = this._imageCount = 0;
+      this.clear();
+    };
+    c.prototype.set = function (a) {
+      this._currentImageIndex = a;
+      this.draw();
+      if (this._currentImageIndex >= this._imageCount) {
+        this.clear();
+        0 != this.downloadCompleted && this.downloadCompleted();
+      }
+    };
+    c.prototype.increase = function () {
+      this._currentImageIndex += 1;
+      this.draw();
+      if (this._currentImageIndex >= this._imageCount) {
+        this.clear();
+        0 != this.downloadCompleted && this.downloadCompleted();
+      }
+    };
+    return c;
+  }();
+  e.DownloadProgressBar = d;
+})(share || (share = {}));
+(function (e) {
+  var d = function () {
+    function c(a, b) {
+      var f = this;
+      if (0 === b) {
+        b = 60;
+      }
+      this._imageCount = this._currentImageIndex = 0;
+      this._parentEl = a;
+      this._progressDiv = document.createElement("div");
+      this._progressDiv.setAttribute("name", "progressbar");
+      this._progressDiv.setAttribute("class", "progressbar_mo");
+      this._progressDiv.style.position = "absolute";
+      this._progressDiv.style.left = "50%";
+      this._progressDiv.style.transform = "translateX(-50%)";
+      this._progressDiv.style.bottom = "-50px";
+      Environment.isMobile ? this._progressDiv.style.height = "10px" : this._progressDiv.style.height = "0.25em";
+      this._progressDiv.style.width = "60%";
+      this._progressDiv.style.zIndex = b.toString();
+      this._parentEl.appendChild(this._progressDiv);
+      this._progressDiv_c = document.createElement("div");
+      this._progressDiv_c.setAttribute("class", "progressbar_mo_c");
+      this._progressDiv_c.style.width = "0%";
+      this._progressDiv.appendChild(this._progressDiv_c);
+      this._tipDiv = document.createElement("div");
+      this._tipDiv.setAttribute("name", "progresstip");
+      this._tipDiv.setAttribute("class", "progress_motip");
+      this._tipDiv.style.position = "absolute";
+      this._tipDiv.style.left = "50%";
+      this._tipDiv.style.transform = "translateX(-50%)";
+      Environment.isMobile ? this._tipDiv.style.bottom = "-35px" : this._tipDiv.style.bottom = "0.5em";
+      Environment.isMobile ? this._tipDiv.style.fontSize = "4vmin" : this._tipDiv.style.fontSize = "1.5rem";
+      this._tipDiv.style.color = "rgba(255,255,255,0.5)";
+      this._tipDiv.style.padding = "3px 8px";
+      this._tipDiv.style.borderRadius = "5px";
+      this._tipDiv.style.background = "rgba(255, 255, 255, 0.15)";
+      this._tipDiv.style.zIndex = b.toString();
+      this._parentEl.appendChild(this._tipDiv);
+      this._tipSpan = document.createElement("span");
+      this._tipSpan.style.color = "#fff";
+      this._tipDiv.appendChild(this._tipSpan);
+      this._tipSpan2 = document.createElement("span");
+      this._tipDiv.appendChild(this._tipSpan2);
+      this.draw();
+      Environment.isDesktop ? window.addEventListener("resize", function () {
+        f.redraw();
+      }) : window.addEventListener("orientationchange", function () {
+        setTimeout(function () {
+          f.redraw();
+        }, 200);
+      });
+    }
+    Object.defineProperty(c.prototype, "imageCount", {
+      get: function () {
+        return this._imageCount;
+      },
+      set: function (a) {
+        this._imageCount = a;
+        this._currentImageIndex = 0;
+        this.clear();
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    c.prototype.redraw = function () {
+      this._currentImageIndex >= this._imageCount ? this.clear() : this.draw();
+    };
+    c.prototype.draw = function () {
+      if (0 != this._currentImageIndex) {
+        this._progressDiv_c.style.width = Math.round(this._currentImageIndex / this._imageCount * 100) + "%";
+        this._progressDiv.style.removeProperty("display");
+        this._tipSpan.textContent = "".concat(this._currentImageIndex);
+        this._tipSpan2.textContent = " / ".concat(this._imageCount);
+        this._tipDiv.style.removeProperty("display");
+      }
+    };
+    c.prototype.clear = function () {
+      this._progressDiv.style.display = "none";
+      this._tipDiv.style.display = "none";
+    };
+    c.prototype.set = function (a) {
+      this._currentImageIndex = a;
+      this.draw();
+      if (this._currentImageIndex >= this._imageCount) {
+        this.clear();
+        0 != this.downloadCompleted && this.downloadCompleted();
+      }
+    };
+    c.prototype.increase = function () {
+      this._currentImageIndex += 1;
+      this.draw();
+      if (this._currentImageIndex >= this._imageCount) {
+        this.clear();
+        0 != this.downloadCompleted && this.downloadCompleted();
+      }
+    };
+    return c;
+  }();
+  e.DownloadProgressBarMo = d;
+})(share || (share = {}));
+(function (e) {
+  var d = function () {
+    function c(a) {
+      this._press = !1;
+      this._parentEl = a;
+      this.el = this.createRulerElement();
+      this._parentEl.appendChild(this.el);
+      this.configuration = {
+        color: "#eaeadc",
+        lineWidth: 1,
+        shadowColor: "black",
+        shadowBlur: 6
+      };
+    }
+    c.prototype.createRulerUnitElement = function () {
+      var a = document.createElement("div");
+      a.className = "ruler-size";
+      a.style.position = "absolute";
+      a.style.bottom = "8%";
+      a.style.right = "2%";
+      return a;
+    };
+    c.prototype.createRulerElement = function () {
+      var a = document.createElement("div");
+      a.className = "ruler";
+      a.style.position = "absolute";
+      a.style.right = "1%";
+      a.style.width = "10%";
+      a.style.height = "70%";
+      a.style.top = "15%";
+      var b = document.createElement("canvas");
+      b.style.cursor = "pointer";
+      b.style.display = "none";
+      a.appendChild(b);
+      a.appendChild(this.createRulerUnitElement());
+      return a;
+    };
+    c.prototype.drawVerticalScalebarIntervals = function (a) {
+      var b = 0,
+        f = [];
+      if (0 < a.verticalMinorTick) {
+        for (; a.verticalLine.start.y + b * a.verticalMinorTick <= a.vscaleBounds.bottomRight.y;) {
+          var c = {
+              x: a.verticalLine.start.x,
+              y: a.verticalLine.start.y + b * a.verticalMinorTick
+            },
+            d = {
+              x: 0,
+              y: a.verticalLine.start.y + b * a.verticalMinorTick
+            };
+          0 === b % 5 ? d.x = a.verticalLine.start.x - a.majorTickLength : d.x = a.verticalLine.start.x - a.minorTickLength;
+          f.push({
+            start: c,
+            end: d
+          });
+          b++;
+        }
+      }
+      return f;
+    };
+    c.prototype.computeScaleBounds = function (a, b, f, c, d) {
+      a = {
+        left: 0,
+        top: 0,
+        width: b.width,
+        height: b.height
+      };
+      c *= Math.min(1E3, b.width);
+      b = d * Math.min(1E3, b.height);
+      a = {
+        left: a.left + c,
+        top: a.top + b,
+        width: a.width - 2 * c,
+        height: a.height - 2 * b
+      };
+      return {
+        topLeft: {
+          x: a.left,
+          y: a.top
+        },
+        bottomRight: {
+          x: a.left + a.width,
+          y: a.top + a.height
+        }
+      };
+    };
+    c.prototype.onImageRendered = function (a) {
+      this._RenderedEvent = a;
+      if (0 != a) {
+        var b = a.detail;
+        a = this.el.getElementsByTagName("canvas")[0].getContext("2d");
+        this.el.getElementsByTagName("canvas")[0].width = this.el.offsetWidth;
+        this.el.getElementsByTagName("canvas")[0].height = this.el.offsetHeight;
+        var f = b.image,
+          c = b.viewport,
+          d = cornerstone.metaData.get("imagePlaneModule", f.imageId),
+          e,
+          l;
+        if (d) {
+          e = d.rowPixelSpacing || d.rowImagePixelSpacing;
+          l = d.columnPixelSpacing || d.colImagePixelSpacing;
+        }
+        if (0 == e || 0 == l) {
+          e = f.rowPixelSpacing;
+          l = f.columnPixelSpacing;
+        }
+        if (0 == e || 0 == l) {
+          d = f.data.string("x00181164");
+          0 != d && d.includes("\\") && (d = d.split("\\"), 2 == d.length && (e = parseFloat(d[0]), l = parseFloat(d[1])));
+        }
+        if (e && l) {
+          d = {
+            width: a.canvas.width,
+            height: a.canvas.height
+          };
+          f = {
+            width: f.width,
+            height: f.height
+          };
+          e = 10 / e * c.scale;
+          l = 10 / l * c.scale;
+          c = this.computeScaleBounds(b, d, f, .25, .05);
+          b = this.computeScaleBounds(b, d, f, .05, .15);
+          if (d.width && d.height && f.width && f.height && c && b) {
+            var n = Object.assign({}, {
+                hscaleBounds: c,
+                vscaleBounds: b,
+                verticalMinorTick: e,
+                horizontalMinorTick: l,
+                minorTickLength: 12.5,
+                majorTickLength: 25,
+                verticalLine: {
+                  start: {
+                    x: b.bottomRight.x,
+                    y: b.topLeft.y
+                  },
+                  end: {
+                    x: b.bottomRight.x,
+                    y: b.bottomRight.y
+                  }
+                },
+                horizontalLine: {
+                  start: {
+                    x: c.topLeft.x,
+                    y: c.bottomRight.y
+                  },
+                  end: {
+                    x: c.bottomRight.x,
+                    y: c.bottomRight.y
+                  }
+                }
+              }, this.configuration),
+              m = {
+                color: n.color,
+                lineWidth: n.lineWidth
+              },
+              p = this.drawVerticalScalebarIntervals(n);
+            cornerstoneTools.drawing.draw(a, function (a) {
+              a.shadowColor = n.shadowColor;
+              a.shadowBlur = n.shadowBlur;
+              cornerstoneTools.drawing.drawLine(a, 0, n.verticalLine.start, n.verticalLine.end, m, "canvas");
+              cornerstoneTools.drawing.drawLines(a, 0, p, m, "canvas");
+              a = a.canvas.parentElement.getElementsByClassName("ruler-size")[0];
+              var b = p.length;
+              if (1E3 < b) {
+                b = 1E3;
+              }
+              a.innerHTML = b - 1 + "cm";
+            });
+          }
+        } else {
+          console.log("\u663e\u793a\u6807\u5c3a\u5931\u8d25\uff1arowPixelSpacing is ".concat(e, ", colPixelSpacing is ").concat(l));
+        }
+      }
+    };
+    c.prototype.rulerAction = function () {
+      var a = this._parentEl.getElementsByClassName("ruler")[0];
+      Environment.isDesktop ? (this._recordStartPoint = this.recordStartPoint.bind(this), this._recordEndPoint = this.recordEndPoint.bind(this), this._mouseUp = this.mouseUp.bind(this), this._mouseLeaveCallback = this.mouseLeaveCallback.bind(this), this._recordStartPoint = MouseCapture({
+        down: this._recordStartPoint,
+        move: this._recordEndPoint,
+        up: this._mouseUp
+      }, a), a.addEventListener("mousemove", this._recordEndPoint), a.addEventListener("mouseup", this._mouseUp), a.addEventListener("mouseleave", this._mouseLeaveCallback)) : (this._recordStartTouchPoint = this.recordStartTouchPoint.bind(this), this._recordMoveTouchPoint = this.recordMoveTouchPoint.bind(this), this._recordEndTouchPoint = this.recordEndTouchPoint.bind(this), a.addEventListener("touchstart", this._recordStartTouchPoint), a.addEventListener("touchmove", this._recordMoveTouchPoint), a.addEventListener("touchend", this._recordEndTouchPoint));
+    };
+    c.prototype.recordStartPoint = function (a) {
+      this._press = !0;
+      this._startPoint = {
+        x: a.pageX,
+        y: a.pageY
+      };
+      a.stopPropagation();
+      a.preventDefault();
+    };
+    c.prototype.recordStartTouchPoint = function (a) {
+      this._press = !0;
+      this._startPoint = {
+        x: a.targetTouches[0].pageX,
+        y: a.targetTouches[0].pageY
+      };
+      a.stopPropagation();
+      a.preventDefault();
+    };
+    c.prototype.recordEndPoint = function (a) {
+      this.activeCanvas();
+      if (this._press && 0 != this._startPoint) {
+        if (0 != this._endPoint) {
+          this._startPoint = this._endPoint;
+        }
+        this._endPoint = {
+          x: a.pageX,
+          y: a.pageY
+        };
+        var b = cornerstoneMath.point.subtract(this._endPoint, this._startPoint).y / 100,
+          f = cornerstoneTools.zoom.getConfiguration();
+        if (f && f.invert) {
+          b *= -1;
+        }
+        if (this.scaleChanged) {
+          this.scaleChanged(b);
+        }
+        a.stopPropagation();
+        a.preventDefault();
+      }
+    };
+    c.prototype.recordMoveTouchPoint = function (a) {
+      this.activeCanvas();
+      if (this._press && 0 != this._startPoint) {
+        if (0 != this._endPoint) {
+          this._startPoint = this._endPoint;
+        }
+        this._endPoint = {
+          x: a.targetTouches[0].pageX,
+          y: a.targetTouches[0].pageY
+        };
+        var b = cornerstoneMath.point.subtract(this._endPoint, this._startPoint).y / 100,
+          f = cornerstoneTools.zoom.getConfiguration();
+        if (f && f.invert) {
+          b *= -1;
+        }
+        if (this.scaleChanged) {
+          this.scaleChanged(b);
+        }
+        a.stopPropagation();
+        a.preventDefault();
+      }
+    };
+    c.prototype.mouseUp = function () {
+      this._press = !1;
+      this._endPoint = this._startPoint = 0;
+      this.mouseLeaveCallback();
+    };
+    c.prototype.recordEndTouchPoint = function () {
+      this._press = !1;
+      this._endPoint = this._startPoint = 0;
+      this.mouseLeaveCallback();
+    };
+    c.prototype.mouseLeaveCallback = function () {
+      this.configuration.color = "#eaeadc";
+      this.el.getElementsByClassName("ruler-size")[0].style.color = "#eaeadc";
+      this.onImageRendered(this._RenderedEvent);
+    };
+    c.prototype.activeCanvas = function () {
+      this.configuration.color = Global.theme.themeColor;
+      this.el.getElementsByClassName("ruler-size")[0].style.color = Global.theme.themeColor;
+      this.onImageRendered(this._RenderedEvent);
+    };
+    c.prototype.cancelAction = function () {
+      var a = this._parentEl.getElementsByClassName("ruler")[0];
+      Environment.isDesktop ? (a.removeEventListener("mousedown", this._recordStartPoint), a.removeEventListener("mousemove", this._recordEndPoint), a.removeEventListener("mouseup", this._mouseUp), a.removeEventListener("mouseleave", this._mouseLeaveCallback)) : (a.removeEventListener("touchstart", this._recordStartTouchPoint), a.removeEventListener("touchmove", this._recordMoveTouchPoint), a.removeEventListener("touchend", this._recordEndTouchPoint));
+    };
+    c.prototype.disable = function (a) {
+      a.removeEventListener(cornerstone.EVENTS.IMAGE_RENDERED, this._onImageRendered);
+      this.el.style.visibility = "hidden";
+      this.cancelAction();
+    };
+    c.prototype.enable = function (a) {
+      if ("hidden" == this.el.style.visibility) {
+        this.el.style.visibility = "visible";
+      }
+      this.el.getElementsByTagName("canvas")[0].style.display = "block";
+      this._onImageRendered = this.onImageRendered.bind(this);
+      a.addEventListener(cornerstone.EVENTS.IMAGE_RENDERED, this._onImageRendered);
+      cornerstone.updateImage(a);
+      this.cancelAction();
+      this.rulerAction();
+    };
+    return c;
+  }();
+  e.ImageRuler = d;
+})(share || (share = {}));
+var pc;
+(function (e) {
+  var d = function () {
+    function c(a) {
+      this._vflip = this._hflip = !1;
+      this._parentEl = a;
+      this.el = this.createElement();
+      this._parentEl.appendChild(this.el);
+    }
+    c.prototype.createElement = function () {
+      var a = document.createElement("div");
+      a.className = "orientationMarkers";
+      a.style.position = "absolute";
+      a.style.width = "100%";
+      a.style.height = "100%";
+      a.style.top = "0";
+      a.style.left = "0";
+      for (var b = 0; 4 > b; b++) {
+        var f = document.createElement("div");
+        f.style.position = "absolute";
+        f.style.color = "#fff";
+        f.style.textShadow = "1.5px 1.5px 1.5px #222";
+        var c = document.createElement("span");
+        c.className = "orientationMarker";
+        switch (b) {
+          case 0:
+            {
+              f.className = "mrtopmiddle";
+              f.style.top = "25px";
+              f.style.left = "50%";
+              f.style.visibility = "hidden";
+              break;
+            }
+          case 1:
+            {
+              f.className = "mrrightmiddle";
+              f.style.top = "50%";
+              f.style.left = "86%";
+              f.style.visibility = "hidden";
+              break;
+            }
+          case 2:
+            {
+              f.className = "mrbottommiddle";
+              f.style.bottom = "5px";
+              f.style.left = "50%";
+              break;
+            }
+          case 3:
+            {
+              f.className = "mrleftmiddle";
+              f.style.top = "50%";
+              f.style.left = "5px";
+            }
+        }
+        f.classList.add("orientationMarkerDiv");
+        f.appendChild(c);
+        a.appendChild(f);
+      }
+      return a;
+    };
+    c.prototype.calculateOrientationMarkers = function (a) {
+      var b = cornerstone.getEnabledElement(a),
+        f = cornerstone.metaData.get("imagePlaneModule", b.image.imageId);
+      if (0 != f && 0 != f.rowCosines && 0 != f.columnCosines) {
+        b = "";
+        if (f.rowCosines) {
+          b = cornerstoneTools.orientation.getOrientationString(f.rowCosines);
+        }
+        var c = "";
+        if (f.columnCosines) {
+          c = cornerstoneTools.orientation.getOrientationString(f.columnCosines);
+        }
+        f = "";
+        if (b) {
+          f = cornerstoneTools.orientation.invertOrientationString(b);
+        }
+        var d = "";
+        if (c) {
+          d = cornerstoneTools.orientation.invertOrientationString(c);
+        }
+        this._markers = {
+          top: d || "",
+          bottom: c || "",
+          left: f || "",
+          right: b || ""
+        };
+        b = a.querySelector(".mrtopmiddle .orientationMarker");
+        c = a.querySelector(".mrbottommiddle .orientationMarker");
+        f = a.querySelector(".mrrightmiddle .orientationMarker");
+        a = a.querySelector(".mrleftmiddle .orientationMarker");
+        b.textContent = "[" + this._markers.top + "]";
+        c.textContent = "[" + this._markers.bottom + "]";
+        f.textContent = "[" + this._markers.right + "]";
+        a.textContent = "[" + this._markers.left + "]";
+      }
+    };
+    c.prototype.updateOrientationMarkers = function (a, b, f) {
+      if (0 != this._markers) {
+        b = b.rotation;
+        var c = a.querySelector(".orientationMarkers");
+        a = c.querySelector(".mrtopmiddle .orientationMarker");
+        var d = c.querySelector(".mrbottommiddle .orientationMarker"),
+          e = c.querySelector(".mrrightmiddle .orientationMarker"),
+          c = c.querySelector(".mrleftmiddle .orientationMarker");
+        if (0 != f) {
+          switch (f) {
+            case "clock":
+              {
+                if (0 == b && 0 == this._hflip && 0 == this._vflip || 360 == b && 0 == this._hflip && 0 == this._vflip || 180 == b && 1 == this._hflip && 1 == this._vflip) {
+                  a.textContent = "[" + this._markers.top + "]";
+                  d.textContent = "[" + this._markers.bottom + "]";
+                  e.textContent = "[" + this._markers.right + "]";
+                  c.textContent = "[" + this._markers.left + "]";
+                } else {
+                  if (90 == b && 0 == this._hflip && 0 == this._vflip || 270 == b && 1 == this._hflip && 1 == this._vflip || -90 == b && 1 == this._hflip && 1 == this._vflip) {
+                    a.textContent = "[" + this._markers.left + "]";
+                    d.textContent = "[" + this._markers.right + "]";
+                    e.textContent = "[" + this._markers.top + "]";
+                    c.textContent = "[" + this._markers.bottom + "]";
+                  } else {
+                    if (180 == b && 0 == this._hflip && 0 == this._vflip || 0 == b && 1 == this._hflip && 1 == this._vflip || 360 == b && 1 == this._hflip && 1 == this._vflip) {
+                      a.textContent = "[" + this._markers.bottom + "]";
+                      d.textContent = "[" + this._markers.top + "]";
+                      e.textContent = "[" + this._markers.left + "]";
+                      c.textContent = "[" + this._markers.right + "]";
+                    } else {
+                      if (270 == b && 0 == this._hflip && 0 == this._vflip || -90 == b && 0 == this._hflip && 0 == this._vflip || 90 == b && 1 == this._hflip && 1 == this._vflip) {
+                        a.textContent = "[" + this._markers.right + "]";
+                        d.textContent = "[" + this._markers.left + "]";
+                        e.textContent = "[" + this._markers.bottom + "]";
+                        c.textContent = "[" + this._markers.top + "]";
+                      } else {
+                        if (0 == b && 1 == this._hflip && 0 == this._vflip || 360 == b && 1 == this._hflip && 0 == this._vflip || 180 == b && 0 == this._hflip && 1 == this._vflip) {
+                          a.textContent = "[" + this._markers.top + "]";
+                          d.textContent = "[" + this._markers.bottom + "]";
+                          e.textContent = "[" + this._markers.left + "]";
+                          c.textContent = "[" + this._markers.right + "]";
+                        } else {
+                          if (90 == b && 1 == this._hflip && 0 == this._vflip || 270 == b && 0 == this._hflip && 1 == this._vflip || -90 == b && 0 == this._hflip && 1 == this._vflip) {
+                            a.textContent = "[" + this._markers.right + "]";
+                            d.textContent = "[" + this._markers.left + "]";
+                            e.textContent = "[" + this._markers.top + "]";
+                            c.textContent = "[" + this._markers.bottom + "]";
+                          } else {
+                            if (180 == b && 1 == this._hflip && 0 == this._vflip || 0 == b && 0 == this._hflip && 1 == this._vflip || 360 == b && 0 == this._hflip && 1 == this._vflip) {
+                              a.textContent = "[" + this._markers.bottom + "]";
+                              d.textContent = "[" + this._markers.top + "]";
+                              e.textContent = "[" + this._markers.right + "]";
+                              c.textContent = "[" + this._markers.left + "]";
+                            } else {
+                              if (270 == b && 1 == this._hflip && 0 == this._vflip || -90 == b && 1 == this._hflip && 0 == this._vflip || 90 == b && 0 == this._hflip && 1 == this._vflip) {
+                                a.textContent = "[" + this._markers.left + "]";
+                                d.textContent = "[" + this._markers.right + "]";
+                                e.textContent = "[" + this._markers.bottom + "]";
+                                c.textContent = "[" + this._markers.top + "]";
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                break;
+              }
+            case "fliphorizontal":
+              {
+                this._hflip = !this._hflip;
+                if (0 == b || 180 == b || 360 == b) {
+                  f = e.textContent;
+                  e.textContent = c.textContent;
+                  c.textContent = f;
+                } else {
+                  if (270 == b || -90 == b || 90 == b) {
+                    f = d.textContent;
+                    d.textContent = a.textContent;
+                    a.textContent = f;
+                  }
+                }
+                break;
+              }
+            case "flipvertical":
+              {
+                this._vflip = !this._vflip;
+                if (0 == b || 180 == b || 360 == b) {
+                  f = d.textContent;
+                  d.textContent = a.textContent;
+                  a.textContent = f;
+                } else {
+                  if (-90 == b || 90 == b || 270 == b) {
+                    f = e.textContent;
+                    e.textContent = c.textContent;
+                    c.textContent = f;
+                  }
+                }
+                break;
+              }
+            case "reset":
+              {
+                a.textContent = "[" + this._markers.top + "]";
+                d.textContent = "[" + this._markers.bottom + "]";
+                e.textContent = "[" + this._markers.right + "]";
+                c.textContent = "[" + this._markers.left + "]";
+              }
+          }
+        }
+      }
+    };
+    c.prototype.hidden = function () {
+      this.el.style.visibility = "hidden";
+    };
+    c.prototype.show = function () {
+      this.el.style.visibility = "visible";
+    };
+    return c;
+  }();
+  e.OrientationMarker = d;
+})(pc || (pc = {}));
+(function (e) {
+  var d = function () {
+    function c(a) {
+      this._parentEl = a;
+      this.el = this.createElement();
+      this._parentEl.appendChild(this.el);
+    }
+    c.prototype.createElement = function () {
+      var a = document.createElement("div");
+      a.className = "overlayDiv";
+      a.style.position = "absolute";
+      a.style.width = "100%";
+      a.style.height = "100%";
+      a.style.top = "0";
+      a.style.left = "0";
+      for (var b = 0; 4 > b; b++) {
+        var f = document.createElement("div");
+        f.style.position = "absolute";
+        f.style.margin = "3px";
+        f.style.color = " rgb(204,204,204)";
+        f.style.textShadow = "1px 1px 1px #222";
+        f.style.fontSize = "1.5rem";
+        f.style.touchAction = "none";
+        f.style.pointerEvents = "none";
+        switch (b) {
+          case 0:
+            {
+              f.className = "topleft";
+              f.style.top = "0";
+              f.style.left = "1px";
+              break;
+            }
+          case 1:
+            {
+              f.className = "topright";
+              f.style.top = "0";
+              f.style.right = "1px";
+              f.style.textAlign = "right";
+              break;
+            }
+          case 2:
+            {
+              f.className = "bottomleft";
+              f.style.bottom = "0";
+              f.style.left = "1px";
+              break;
+            }
+          case 3:
+            {
+              f.className = "bottomright";
+              f.style.bottom = "0";
+              f.style.right = "1px";
+              f.style.textAlign = "right";
+            }
+        }
+        f.classList.add("overlay");
+        a.appendChild(f);
+      }
+      return a;
+    };
+    c.prototype.showInfo = function (a, b) {
+      if ("object" == typeof b) {
+        this._overlayElement = this._parentEl.getElementsByClassName("overlayDiv")[0];
+        0 != this._overlayElement && (a = new ImageCornerInfo().parseCornerInfo(a, b), 0 != a && this.showCornerInfo(a));
+      }
+    };
+    c.prototype.showCornerInfo = function (a) {
+      if (0 != a.leftTop && 0 < a.leftTop.length) {
+        var b = this._overlayElement.getElementsByClassName("overlay")[0];
+        b.textContent = "";
+        a.leftTop.forEach(function (a) {
+          var f = document.createElement("div");
+          b.appendChild(f);
+          f.innerHTML = a;
+        });
+      }
+      if (0 != a.rightTop && 0 < a.rightTop.length) {
+        var f = this._overlayElement.getElementsByClassName("overlay")[1];
+        f.textContent = "";
+        a.rightTop.forEach(function (a) {
+          var b = document.createElement("div");
+          f.appendChild(b);
+          b.innerHTML = a;
+        });
+      }
+      if (0 != a.leftBottom && 0 < a.leftBottom.length) {
+        var c = this._overlayElement.getElementsByClassName("overlay")[2];
+        c.textContent = "";
+        a.leftBottom.forEach(function (a) {
+          var b = document.createElement("div");
+          c.appendChild(b);
+          b.innerHTML = a;
+        });
+      }
+      if (0 != a.rightBottom && 0 < a.rightBottom.length) {
+        var d = this._overlayElement.getElementsByClassName("overlay")[3];
+        d.textContent = "";
+        a.rightBottom.forEach(function (a) {
+          var b = document.createElement("div");
+          d.appendChild(b);
+          b.innerHTML = a;
+        });
+      }
+    };
+    c.prototype.hide = function () {
+      this.el.style.visibility = "hidden";
+    };
+    c.prototype.show = function () {
+      this.el.style.visibility = "visible";
+    };
+    return c;
+  }();
+  e.CornerInfoView = d;
+})(pc || (pc = {}));
+(function (e) {
+  var d = function () {
+    function c(a) {
+      this._parentEl = a;
+      this.loadCss();
+      this.loadTemplate();
+    }
+    c.prototype.isInclude = function (a) {
+      for (var b = document.getElementsByTagName("link"), f = 0; f < b.length; f++) if (-1 != b[f].href.indexOf(a)) {
+        return !0;
+      }
+      return !1;
+    };
+    c.prototype.loadCss = function () {
+      this.isInclude("css/pc/TurnPageForPad.css") || Utils.addCssByLink("css/pc/TurnPageForPad.css");
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this;
+      MessageProxy.getTemplate("templates/pc/TurnPageForPad.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u5e8f\u5217\u5217\u8868\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+    };
+    c.prototype.initView = function (a) {
+      a = new DOMParser().parseFromString(a, "text/html");
+      var b = document.createElement("div");
+      b.innerHTML = a.querySelector("#turnPageForPad").innerHTML;
+      this._el = b.querySelector(".turnPage");
+      this._parentEl.appendChild(this._el);
+      this._el.style.display = "none";
+      this.bindTurnPage();
+    };
+    c.prototype.bindTurnPage = function () {
+      var a = this._el.querySelector(".prev"),
+        b = this._el.querySelector(".next"),
+        f = {
+          domEvents: !0
+        },
+        c = new Hammer(a, f),
+        f = new Hammer(b, f);
+      c.on("tap", this.getPrevImage.bind(this));
+      f.on("tap", this.getNextImage.bind(this));
+      a.addEventListener("touchstart", function (a) {
+        a.preventDefault();
+        a.stopPropagation();
+      }, !1);
+      b.addEventListener("touchstart", function (a) {
+        a.preventDefault();
+        a.stopPropagation();
+      }, !1);
+    };
+    c.prototype.getPrevImage = function () {
+      var a = this._el.querySelector(".prev");
+      a.classList.add("active");
+      setTimeout(function () {
+        a.classList.remove("active");
+      }, 200);
+      if (0 != this.requestPrevImage) {
+        this.requestPrevImage();
+      }
+    };
+    c.prototype.getNextImage = function () {
+      var a = this._el.querySelector(".next");
+      a.classList.add("active");
+      setTimeout(function () {
+        a.classList.remove("active");
+      }, 200);
+      if (0 != this.requestPrevImage) {
+        this.requestNextImage();
+      }
+    };
+    c.prototype.show = function () {
+      var a = this,
+        b = this._parentEl.querySelector(".turnPage");
+      if (0 == b) {
+        var f = setInterval(function () {
+          b = a._parentEl.querySelector(".turnPage");
+          if (0 != b) {
+            b.style.display = "block";
+            clearInterval(f);
+          }
+        }, 100);
+      } else {
+        if ("block" != b.style.display) {
+          b.style.display = "block";
+        }
+      }
+    };
+    c.prototype.hide = function () {
+      var a = this._parentEl.querySelector(".turnPage");
+      if (0 != a) {
+        a.style.display = "none";
+      }
+    };
+    return c;
+  }();
+  e.TurnPageForPad = d;
+})(pc || (pc = {}));
+__values = this && this.__values || function (e) {
+  var d = "function" === typeof Symbol && Symbol.iterator,
+    c = d && e[d],
+    a = 0;
+  if (c) {
+    return c.call(e);
+  }
+  if (e && "number" === typeof e.length) {
+    return {
+      next: function () {
+        if (e && a >= e.length) {
+          e = 0;
+        }
+        return {
+          value: e && e[a++],
+          done: !e
+        };
+      }
+    };
+  }
+  throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+(function (e) {
+  var d = function () {
+    function c(a, b) {
+      var f = this;
+      this._toolWrap = "yes";
+      this._flag = {};
+      this._parentEl = a;
+      if (0 != b) {
+        this._toolWrap = b.toLowerCase();
+      }
+      this.loadCss();
+      this.loadTemplate();
+      if (window.addEventListener) {
+        document.addEventListener("fullscreenchange", function () {
+          f.setFullScreenButton();
+        });
+        document.addEventListener("webkitfullscreenchange", function () {
+          f.setFullScreenButton();
+        });
+      }
+    }
+    c.prototype.loadCss = function () {
+      Utils.addCssByLink("libs/sweetalert2/sweetalert2.min.css");
+      var a = "css/pc/ToolbarView.css?v=".concat(new Date().getTime());
+      Utils.addCssByLink(a);
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this,
+        b = "templates/pc/ToolbarView.html?v=".concat(new Date().getTime());
+      MessageProxy.getTemplate(b, function (b) {
+        b.hasError ? MsgBox.errorAlert("\u5de5\u5177\u6761\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : (a.initView(b.data), a.completeInitTem && a.completeInitTem());
+      });
+    };
+    c.prototype.initView = function (a) {
+      var b = this;
+      a = new DOMParser().parseFromString(a, "text/html");
+      this._parentEl.innerHTML = a.querySelector("#toolbarTemplate").innerHTML;
+      this._rootElement = document.querySelector(".navbar");
+      if (Environment.isDesktop) {
+        this._rootElement.classList.add("pc");
+      }
+      if (Environment.isPad) {
+        this._rootElement.classList.add("pad");
+      }
+      if ("no" == this._toolWrap || Environment.isPad) {
+        this._rootElement.classList.add("noWrap");
+        a = this.getIScrollOptions();
+        this._seriesScroll = new IScroll(".toolbar", a);
+      }
+      this.listenManager();
+      this.listenSeriesLayout();
+      this.listenImageLayout();
+      this.listenThreeLayout();
+      this.listenSelectBtn();
+      this.listenSeriesNav();
+      this.listenCompare();
+      this.listenScroll();
+      this.listenWL();
+      this.listenPresetWL();
+      this.listenPan();
+      this.listenZoom();
+      this.listenFit();
+      this.listenInvert();
+      this.listenReset();
+      this.listenTools();
+      this.listenAnnotation();
+      this.listenPlay();
+      this.listenSet();
+      this.listenShare();
+      this.listenHelp();
+      this.listenFullScreen();
+      this.listenDicomInfo();
+      if (Environment.isDesktop) {
+        this.bindHotKeysEvent();
+      }
+      setTimeout(function () {
+        b.refreshIScroll();
+      }, 50);
+    };
+    c.prototype.hide3DButton = function () {
+      var a = this,
+        b = 0,
+        f = setInterval(function () {
+          b++;
+          if (a._rootElement) {
+            var c = a._rootElement.querySelector(".btn-3To2");
+            if (0 == c) {
+              return;
+            }
+            c.style.display = "none";
+            a.refreshIScroll();
+            clearInterval(f);
+          }
+          if (10 < b) {
+            clearInterval(f);
+          }
+        }, 100);
+    };
+    c.prototype.hidePageButton = function () {
+      var a = this,
+        b = 0,
+        f = setInterval(function () {
+          b++;
+          if (a._rootElement) {
+            var c = a._rootElement.querySelector(".btn-scroll");
+            if (0 == c) {
+              return;
+            }
+            c.style.display = "none";
+            a.refreshIScroll();
+            clearInterval(f);
+          }
+          if (10 < b) {
+            clearInterval(f);
+          }
+        }, 100);
+    };
+    c.prototype.setButtonChecked = function (a) {
+      if (0 != a) {
+        var b = "";
+        if (a == ActionTag.none) {
+          b = ".btn-select";
+        }
+        if (a == ActionTag.wwwl) {
+          b = ".btn-wl";
+        }
+        if (a == ActionTag.pan) {
+          b = ".btn-pan";
+        }
+        if (a == ActionTag.zoom) {
+          b = ".btn-zoom";
+        }
+        if ("" != b) {
+          b = this._rootElement.querySelector(b);
+          this.resetElementActive("radio", b);
+          a == ActionTag.none && this.triggerSelectBtn(b);
+          a == ActionTag.wwwl && this.triggerWL(b);
+          a == ActionTag.pan && this.triggerPan(b);
+          a == ActionTag.zoom && this.triggerZoom(b);
+        }
+      }
+    };
+    c.prototype.mockHoverListener = function (a, b) {
+      var f = this,
+        c;
+      b ? c = a.querySelectorAll(".normalMenu-item") : c = a.querySelectorAll(".menu-item");
+      a = function (a) {
+        var b = c[a];
+        b.addEventListener("mouseover", function () {
+          if (0 != f._subMenuTimeOutCallback) {
+            clearTimeout(f._subMenuTimeOutCallback);
+          }
+          0 != b.querySelectorAll(".subMenu").length ? f._subMenuTimeOutCallback = setTimeout(function () {
+            b.classList.add("active");
+            clearTimeout(f._subMenuTimeOutCallback);
+          }, 400) : b.classList.add("active");
+        });
+        b.addEventListener("mouseleave", function () {
+          if (0 != f._subMenuTimeOutCallback) {
+            clearTimeout(f._subMenuTimeOutCallback);
+          }
+          if (b.classList.contains("active")) {
+            b.classList.remove("active");
+          }
+        });
+      };
+      for (b = 0; b < c.length; b++) a(b);
+    };
+    c.prototype.getHammerDom = function (a) {
+      return "string" == typeof a ? (a = this._rootElement.querySelector(a)) ? {
+        HtmlElement: a,
+        Hammer: new Hammer(a)
+      } : {
+        HtmlElement: a,
+        Hammer: 0
+      } : a instanceof HTMLElement ? {
+        HtmlElement: a,
+        Hammer: new Hammer(a)
+      } : {
+        HtmlElement: 0,
+        Hammer: 0
+      };
+    };
+    c.prototype.showPopMenu = function (a) {
+      var b = this._rootElement.querySelector(".popMenu"),
+        f = document.querySelector(".toolbar");
+      b.innerHTML = "";
+      var c = 0,
+        d = 8;
+      if (0 != this._seriesScroll) {
+        c = this._seriesScroll.x;
+      }
+      if ("no" == this._toolWrap) {
+        d = 4;
+      }
+      var e = a.offsetLeft,
+        d = a.offsetTop + a.offsetHeight + d;
+      b.removeAttribute("style");
+      var l = a.querySelector(".menu"),
+        n = document.createElement("div");
+      n.className = "menu";
+      n.innerHTML = l.innerHTML;
+      b.appendChild(n);
+      if (null != b.querySelector(".slider") && 0 != this._flag.currentFps) {
+        b.querySelector(".slider").setAttribute("data-value", this._flag.currentFps.toString());
+      }
+      e + c + b.offsetWidth >= f.offsetWidth ? b.style.left = "".concat(f.offsetWidth - b.clientWidth - 5, "px") : b.style.left = "".concat(e + c, "px");
+      b.style.top = "".concat(d, "px");
+      if (a.classList.contains("btn-play")) {
+        return n;
+      }
+      this._documentCallback = this.documentCallback.bind(this, b);
+      Environment.isDesktop ? document.addEventListener("mousedown", this._documentCallback) : Environment.isPad && document.addEventListener("touchstart", this._documentCallback);
+      return n;
+    };
+    c.prototype.documentCallback = function (a, b) {
+      if (0 == a.contains(b.target)) {
+        this.resetElementActive();
+      }
+      Environment.isDesktop ? document.removeEventListener("mousedown", this._documentCallback) : Environment.isPad && document.removeEventListener("touchstart", this._documentCallback);
+      this._documentCallback = 0;
+    };
+    c.prototype.hidePopMenu = function () {
+      if (0 != this._threeLayoutCallback) {
+        window.removeEventListener("orientationchange", this._threeLayoutCallback);
+        window.removeEventListener("resize", this._threeLayoutCallback);
+      }
+      if (0 != this._documentCallback) {
+        Environment.isDesktop ? document.removeEventListener("mousedown", this._documentCallback) : Environment.isPad && document.removeEventListener("touchstart", this._documentCallback);
+        this._documentCallback = 0;
+      }
+      var a = this._rootElement.querySelector(".popMenu");
+      if ("" != a.innerHTML) {
+        a.innerHTML = "";
+      }
+      if ("none" != a.style.display) {
+        a.style.display = "none";
+      }
+    };
+    c.prototype.removeElementActive = function (a) {
+      if (a.classList.contains("active")) {
+        if (a.classList.contains("btn-play")) {
+          var b = a.querySelector("i"),
+            f = a.querySelector("span");
+          b.className = "iconfont icon-play";
+          f.innerText = "\u64ad\u653e";
+          if (0 != this.btnCineClicked) {
+            this.btnCineClicked(!1);
+          }
+        }
+        a.classList.remove("active");
+        this.hidePopMenu();
+      }
+    };
+    c.prototype.resetElementActive = function (a, b) {
+      if ("openMenu" == a) {
+        0 != this._openMenuElement && this._openMenuElement != b && (this.removeElementActive(this._openMenuElement), this._openMenuElement = b);
+        0 == this._openMenuElement && (this._openMenuElement = b);
+      } else {
+        if ("radio" == a) {
+          if (0 != this._radioElement && this._radioElement != b) {
+            if (this._radioElement.classList.contains("radio")) {
+              this._radioElement.classList.remove("radio");
+            }
+            if (this._radioElement.classList.contains("btn-scroll") && 0 != this.btnSelectClicked) {
+              this.btnSelectClicked(!1);
+            }
+            if (this._radioElement.classList.contains("btn-tools")) {
+              var f = this._radioElement.querySelector("i"),
+                c = this._radioElement.querySelector("span");
+              f.className = "iconfont icon-tools";
+              c.innerText = "\u5de5\u5177";
+            }
+            if (this._radioElement.classList.contains("btn-annotation")) {
+              f = this._radioElement.querySelector("i");
+              c = this._radioElement.querySelector("span");
+              f.className = "iconfont icon-annotations";
+              c.innerText = "\u6807\u6ce8";
+            }
+            this.removeElementActive(this._radioElement);
+            this._radioElement = b;
+          }
+          if (0 == this._radioElement) {
+            this._radioElement = b;
+          }
+        }
+      }
+      0 == this._openMenuElement || 0 != a && "openMenu" == a || (this.removeElementActive(this._openMenuElement), this._openMenuElement = 0);
+    };
+    c.prototype.setButtonFlash = function (a) {
+      a.classList.add("flash");
+      setTimeout(function () {
+        a.classList.remove("flash");
+      }, 200);
+    };
+    c.prototype.listenManager = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-manager"),
+        f = b.Hammer;
+      if (f) {
+        f.on("tap", function () {
+          a.setButtonFlash(b.HtmlElement);
+          a.resetElementActive();
+          a.triggerManager(b.HtmlElement);
+        });
+      }
+    };
+    c.prototype.triggerManager = function (a) {
+      a.classList.contains("active") ? a.classList.remove("active") : a.classList.add("active");
+      if (0 != this.btnManagerClicked) {
+        this.btnManagerClicked();
+      }
+    };
+    c.prototype.listenSeriesLayout = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-seriesLayout");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive("openMenu", b.HtmlElement);
+        a.setButtonFlash(b.HtmlElement);
+        a.openLayoutMenu(b.HtmlElement, 2, "series");
+      });
+    };
+    c.prototype.listenImageLayout = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-imageLayout");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive("openMenu", b.HtmlElement);
+        a.setButtonFlash(b.HtmlElement);
+        a.openLayoutMenu(b.HtmlElement, 2, "image");
+      });
+    };
+    c.prototype.listenThreeLayout = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-threeLayout");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive("openMenu", b.HtmlElement);
+        a.setButtonFlash(b.HtmlElement);
+        a.openLayoutMenu(b.HtmlElement, 3, "2dLayout");
+      });
+    };
+    c.prototype.openLayoutMenu = function (a, b, f) {
+      var c = this;
+      if (a.classList.contains("active")) {
+        this.removeElementActive(a);
+      } else {
+        a.classList.add("active");
+        var d = this.showPopMenu(a);
+        2 == b && "2dLayout" != f ? this.listenTwoLayoutMenuItem(d, a, f) : 3 == b && (this.listenThreeLayoutMenuItem(d, a), this._threeLayoutCallback = function () {
+          Environment.isLandscape ? (d.classList.remove("three-portrait"), d.classList.add("three-landscape")) : (d.classList.remove("three-landscape"), d.classList.add("three-portrait"));
+        }, window.addEventListener("orientationchange", this._threeLayoutCallback), window.addEventListener("resize", this._threeLayoutCallback), this._threeLayoutCallback());
+        b = d.querySelector(".girdMenu");
+        if (Environment.isDesktop) {
+          this.mockHoverListener(d);
+          this.girdMenuMouseOver(b);
+        }
+        this.girdMenuTapListener(b, a, f);
+        if (0 != this._seriesScroll) {
+          this._seriesScroll.off("scrollStart");
+          this._seriesScroll.on("scrollStart", function () {
+            c.removeElementActive(a);
+            c._seriesScroll.off("scrollStart");
+          });
+        }
+      }
+    };
+    c.prototype.girdMenuTapListener = function (a, b, f) {
+      var c = this;
+      this.getHammerDom(a).Hammer.on("tap", function (a) {
+        a = a.target;
+        if (a.classList.contains("grid-cell")) {
+          c.triggerLayoutMenuItem(a, f);
+          setTimeout(function () {
+            c.removeElementActive(b);
+          }, 150);
+        }
+      });
+    };
+    c.prototype.girdMenuMouseOver = function (a) {
+      a.addEventListener("mouseover", function (b) {
+        var f = a.querySelectorAll(".grid-cell"),
+          c = b.target;
+        if (c.classList.contains("grid-cell")) {
+          b = parseInt(c.getAttribute("data-column"));
+          for (var c = parseInt(c.getAttribute("data-row")), d = 0; d < f.length; d++) {
+            var e = f[d];
+            e.classList.remove("active");
+          }
+          for (d = 0; d < f.length; d++) {
+            var e = f[d],
+              l = parseInt(e.getAttribute("data-column")),
+              n = parseInt(e.getAttribute("data-row"));
+            if (l <= b && n <= c) {
+              e.classList.add("active");
+            }
+          }
+        }
+      });
+    };
+    c.prototype.listenTwoLayoutMenuItem = function (a, b, f) {
+      var c = this,
+        d = a.querySelectorAll(".menu-item");
+      a = function (a) {
+        a = d[a];
+        var k = a.querySelector(".iconfont"),
+          h = parseInt(k.getAttribute("data-column")),
+          k = parseInt(k.getAttribute("data-row"));
+        if (0 == h && 0 == k) {
+          return "continue";
+        }
+        var g = e.getHammerDom(a);
+        g.Hammer.on("tap", function () {
+          var a = g.HtmlElement.querySelector(".iconfont");
+          c.triggerLayoutMenuItem(a, f);
+          setTimeout(function () {
+            c.removeElementActive(b);
+          }, 150);
+          if (0 != c._seriesScroll) {
+            c._seriesScroll.off("scrollStart");
+          }
+        });
+      };
+      for (var e = this, l = 0; l < d.length; l++) a(l);
+    };
+    c.prototype.listenThreeLayoutMenuItem = function (a, b) {
+      var f = this,
+        c = a.querySelectorAll(".menu-item");
+      a = function (a) {
+        var k = c[a],
+          e = k.querySelector(".menu-name").getAttribute("data-name");
+        if ("Original" == e) {
+          if (Environment.isPad) {
+            d.getHammerDom(k).Hammer.on("tap", function () {
+              k.classList.contains("active") ? k.classList.remove("active") : k.classList.add("active");
+            });
+          }
+          return "continue";
+        }
+        d.getHammerDom(k).Hammer.on("tap", function () {
+          f.trigger3dModel(e);
+          setTimeout(function () {
+            f.removeElementActive(b);
+          }, 150);
+          if (0 != f._seriesScroll) {
+            f._seriesScroll.off("scrollStart");
+          }
+        });
+      };
+      for (var d = this, e = 0; e < c.length; e++) a(e);
+    };
+    c.prototype.triggerLayoutMenuItem = function (a, b) {
+      var f = parseInt(a.getAttribute("data-column"));
+      a = parseInt(a.getAttribute("data-row"));
+      "series" == b && 0 != this.btnSeriesClicked ? this.btnSeriesClicked(a, f) : "image" == b && 0 != this.btnImageClicked ? this.btnImageClicked(a, f) : "2dLayout" == b && 0 != this.change2DLayout && this.change2DLayout(a, f);
+    };
+    c.prototype.trigger3dModel = function (a) {
+      if (0 != this.change3DLayout) {
+        var b, f;
+        Environment.isLandscape ? (b = "landscape", f = "cols") : (b = "portrait", f = "rows");
+        this.change3DLayout(a, b, f);
+      }
+    };
+    c.prototype.listenSelectBtn = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-select");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive("radio", b.HtmlElement);
+        a.setButtonFlash(b.HtmlElement);
+        a.triggerSelectBtn(b.HtmlElement);
+      });
+    };
+    c.prototype.triggerSelectBtn = function (a) {
+      a.classList.contains("active") || 0 == this.btnDefaultClicked || (a.classList.add("active"), this.btnDefaultClicked());
+    };
+    c.prototype.listenSeriesNav = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-seriesNav");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive("openMenu", b.HtmlElement);
+        a.setButtonFlash(b.HtmlElement);
+        a.openSeriesNav(b.HtmlElement);
+      });
+    };
+    c.prototype.openSeriesNav = function (a) {
+      var b = this;
+      if (a.classList.contains("active")) {
+        this.removeElementActive(a);
+      } else {
+        a.classList.add("active");
+        var f = this.showPopMenu(a);
+        this.listenSeriesNavMenuItem(f, a);
+        if (Environment.isDesktop) {
+          this.mockHoverListener(f);
+        }
+        if (0 != this._seriesScroll) {
+          this._seriesScroll.off("scrollStart");
+          this._seriesScroll.on("scrollStart", function () {
+            b.removeElementActive(a);
+            b._seriesScroll.off("scrollStart");
+          });
+        }
+      }
+    };
+    c.prototype.listenSeriesNavMenuItem = function (a, b) {
+      var f = this,
+        c = a.querySelectorAll(".menu-item");
+      a = function (a) {
+        a = c[a];
+        var k = a.querySelector(".menu-name").getAttribute("data-name");
+        d.getHammerDom(a).Hammer.on("tap", function () {
+          f.triggerSeriesNav(k);
+          setTimeout(function () {
+            f.removeElementActive(b);
+          }, 150);
+          if (0 != f._seriesScroll) {
+            f._seriesScroll.off("scrollStart");
+          }
+        });
+      };
+      for (var d = this, e = 0; e < c.length; e++) a(e);
+    };
+    c.prototype.triggerSeriesNav = function (a) {
+      if (0 != this.btnSeriesnavClicked) {
+        this.btnSeriesnavClicked(a);
+      }
+    };
+    c.prototype.listenCompare = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-compare");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive();
+        a.setButtonFlash(b.HtmlElement);
+        a.triggerCompare(b.HtmlElement);
+      });
+    };
+    c.prototype.triggerCompare = function (a) {
+      a.classList.contains("active") ? (a.classList.remove("active"), a = !1) : (a.classList.add("active"), a = !0);
+      if (0 != this.btnCompareClicked) {
+        this.btnCompareClicked(a);
+      }
+    };
+    c.prototype.listenScroll = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-scroll");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive("radio", b.HtmlElement);
+        a.setButtonFlash(b.HtmlElement);
+        a.triggerScroll(b.HtmlElement);
+      });
+    };
+    c.prototype.triggerScroll = function (a) {
+      a.classList.contains("active") || 0 == this.btnSelectClicked || (a.classList.add("active"), this.btnSelectClicked(!0));
+    };
+    c.prototype.listenWL = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-wl");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive("radio", b.HtmlElement);
+        a.setButtonFlash(b.HtmlElement);
+        a.triggerWL(b.HtmlElement);
+      });
+    };
+    c.prototype.triggerWL = function (a) {
+      a.classList.contains("active") || 0 == this.btnWWWLClicked || (a.classList.add("active"), this.btnWWWLClicked());
+    };
+    c.prototype.listenPresetWL = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-presetWL");
+      this.appendWlMenu(b.HtmlElement);
+      b.Hammer.on("tap", function () {
+        a.resetElementActive("openMenu", b.HtmlElement);
+        a.setButtonFlash(b.HtmlElement);
+        a.openPresetwlMenu(b.HtmlElement);
+      });
+    };
+    c.prototype.appendWlMenu = function (a) {
+      if (0 != Config.presetWwwl && 0 != Config.presetWwwl.CT && 0 != Config.presetWwwl.CT.length) {
+        var b = Config.presetWwwl,
+          f = a.querySelector(".menu");
+        b.CT.forEach(function (a, b, c) {
+          var d = document.createElement("div");
+          d.className = "menu-item";
+          var k = document.createElement("div");
+          k.className = "menu-name";
+          k.setAttribute("data-ww", a.ww.toString());
+          k.setAttribute("data-wl", a.wl.toString());
+          var e = a.name;
+          for (a = a.name.length; 6 > a; a++) e += "\u3000";
+          a = document.createElement("span");
+          Environment.isDesktop ? a.innerHTML = "".concat(e, "F").concat(b + 1) : a.innerHTML = "".concat(e);
+          k.appendChild(a);
+          d.appendChild(k);
+          f.appendChild(d);
+          if (b + 1 != c.length) {
+            b = document.createElement("div");
+            b.className = "divider";
+            f.appendChild(b);
+          }
+        });
+      }
+    };
+    c.prototype.openPresetwlMenu = function (a) {
+      var b = this;
+      if (a.classList.contains("active")) {
+        this.removeElementActive(a);
+      } else {
+        a.classList.add("active");
+        var f = this.showPopMenu(a);
+        this.listenPresetwlMenuItem(f, a);
+        if (Environment.isDesktop) {
+          this.mockHoverListener(f);
+        }
+        if (0 != this._seriesScroll) {
+          this._seriesScroll.off("scrollStart");
+          this._seriesScroll.on("scrollStart", function () {
+            b.removeElementActive(a);
+            b._seriesScroll.off("scrollStart");
+          });
+        }
+      }
+    };
+    c.prototype.listenPresetwlMenuItem = function (a, b) {
+      var f = this,
+        c = a.querySelectorAll(".menu-item");
+      a = function (a) {
+        var k = d.getHammerDom(c[a]);
+        k.Hammer.on("tap", function () {
+          f.triggerPresetwl(k.HtmlElement);
+          setTimeout(function () {
+            f.removeElementActive(b);
+          }, 150);
+          if (0 != f._seriesScroll) {
+            f._seriesScroll.off("scrollStart");
+          }
+        });
+      };
+      for (var d = this, e = 0; e < c.length; e++) a(e);
+    };
+    c.prototype.triggerPresetwl = function (a) {
+      var b = a.querySelector(".menu-name");
+      a = parseInt(b.getAttribute("data-ww"));
+      b = parseInt(b.getAttribute("data-wl"));
+      if (0 != this.btnPresetwwwlClicked) {
+        this.btnPresetwwwlClicked(a, b);
+      }
+    };
+    c.prototype.listenPan = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-pan");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive("radio", b.HtmlElement);
+        a.setButtonFlash(b.HtmlElement);
+        a.triggerPan(b.HtmlElement);
+      });
+    };
+    c.prototype.triggerPan = function (a) {
+      a.classList.contains("active") || 0 == this.btnPanClicked || (a.classList.add("active"), this.btnPanClicked());
+    };
+    c.prototype.listenZoom = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-zoom");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive("radio", b.HtmlElement);
+        a.setButtonFlash(b.HtmlElement);
+        a.triggerZoom(b.HtmlElement);
+      });
+    };
+    c.prototype.triggerZoom = function (a) {
+      a.classList.contains("active") || 0 == this.btnZoomClicked || (a.classList.add("active"), this.btnZoomClicked());
+    };
+    c.prototype.listenFit = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-fit");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive();
+        a.setButtonFlash(b.HtmlElement);
+        if (0 != a.btnFitClicked) {
+          a.btnFitClicked();
+        }
+      });
+    };
+    c.prototype.listenActual = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-actual");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive();
+        a.setButtonFlash(b.HtmlElement);
+        if (0 != a.btnActualPXClicked) {
+          a.btnActualPXClicked();
+        }
+      });
+    };
+    c.prototype.listenInvert = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-invert");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive();
+        a.setButtonFlash(b.HtmlElement);
+        if (0 != a.btnInvertColorClicked) {
+          a.btnInvertColorClicked();
+        }
+      });
+    };
+    c.prototype.listenReset = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-reset");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive();
+        a.setButtonFlash(b.HtmlElement);
+        if (0 != a.btnResetClicked) {
+          a.btnResetClicked();
+        }
+      });
+    };
+    c.prototype.listenTools = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-tools");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive("openMenu", b.HtmlElement);
+        a.setButtonFlash(b.HtmlElement);
+        a.openToolsMenu(b.HtmlElement);
+      });
+    };
+    c.prototype.openToolsMenu = function (a) {
+      var b = this;
+      if (a.classList.contains("active")) {
+        this.removeElementActive(a);
+      } else {
+        a.classList.add("active");
+        var f = this.showPopMenu(a);
+        this.listenToolsMenuItem(f, a);
+        if (Environment.isDesktop) {
+          this.mockHoverListener(f);
+        }
+        if (0 != this._seriesScroll) {
+          this._seriesScroll.off("scrollStart");
+          this._seriesScroll.on("scrollStart", function () {
+            b.removeElementActive(a);
+            b._seriesScroll.off("scrollStart");
+          });
+        }
+      }
+    };
+    c.prototype.listenToolsMenuItem = function (a, b) {
+      var f = this,
+        c = a.querySelectorAll(".menu-item");
+      a = function (a) {
+        var k = c[a],
+          e = k.querySelector(".menu-name").getAttribute("data-name");
+        if ("zoom" == e) {
+          d.listenZoomList(k, b);
+          if (Environment.isPad) {
+            d.getHammerDom(k).Hammer.on("tap", function () {
+              k.classList.contains("active") ? k.classList.remove("active") : k.classList.add("active");
+            });
+          }
+          return "continue";
+        }
+        var h = d.getHammerDom(k);
+        h.Hammer.on("tap", function () {
+          f.triggerTools(e, h.HtmlElement, b);
+          setTimeout(function () {
+            if ("magnifier" != e && "ctvalue" != e) {
+              f.removeElementActive(b);
+            }
+          }, 150);
+          if (0 != f._seriesScroll) {
+            f._seriesScroll.off("scrollStart");
+          }
+        });
+      };
+      for (var d = this, e = 0; e < c.length; e++) a(e);
+    };
+    c.prototype.triggerTools = function (a, b, f, c) {
+      var d = this;
+      if ("magnifier" == a || "ctvalue" == a) {
+        var k = b.querySelector("i");
+        b = b.querySelector("span");
+        var e = f.querySelector("i"),
+          n = f.querySelector("span");
+        e.className = k.className;
+        n.innerText = b.innerText;
+        setTimeout(function () {
+          d.resetElementActive("radio", f);
+        }, 150);
+        f.classList.contains("radio") || f.classList.add("radio");
+      }
+      "setwwwl" == a ? this.openSetwwwlPopup() : ("copy" == a && (k = document.createElement("input"), k.setAttribute("readonly", "readonly"), k.setAttribute("value", window.location.href), document.body.appendChild(k), k.setSelectionRange(0, 999), k.select(), document.execCommand("copy") && document.execCommand("copy"), document.body.removeChild(k), MsgBox.info("\u590d\u5236\u6210\u529f\uff01")), 0 != this.btnToolsClicked && ("zoom" == a ? this.btnToolsClicked(a, c) : this.btnToolsClicked(a)));
+    };
+    c.prototype.listenZoomList = function (a, b) {
+      var f = this,
+        c = a.querySelector(".normalMenu"),
+        d = c.querySelectorAll(".normalMenu-item");
+      if (Environment.isDesktop) {
+        this.mockHoverListener(c, !0);
+      }
+      for (var c = function (c) {
+          var k = e.getHammerDom(d[c]);
+          k.Hammer.on("tap", function () {
+            var c = k.HtmlElement.querySelector(".menu-name"),
+              c = parseInt(c.getAttribute("data-name"));
+            f.triggerTools("zoom", a, b, c);
+            setTimeout(function () {
+              f.removeElementActive(b);
+            }, 150);
+            if (0 != f._seriesScroll) {
+              f._seriesScroll.off("scrollStart");
+            }
+          });
+        }, e = this, l = 0; l < d.length; l++) c(l);
+    };
+    c.prototype.listenAnnotation = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-annotation");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive("openMenu", b.HtmlElement);
+        a.setButtonFlash(b.HtmlElement);
+        a.openAnnotationMenu(b.HtmlElement);
+      });
+    };
+    c.prototype.openAnnotationMenu = function (a) {
+      var b = this;
+      if (a.classList.contains("active")) {
+        this.removeElementActive(a);
+      } else {
+        a.classList.add("active");
+        var f = this.showPopMenu(a);
+        this.listenAnnotationMenuItem(f, a);
+        if (Environment.isDesktop) {
+          this.mockHoverListener(f);
+        }
+        if (0 != this._seriesScroll) {
+          this._seriesScroll.off("scrollStart");
+          this._seriesScroll.on("scrollStart", function () {
+            b.removeElementActive(a);
+            b._seriesScroll.off("scrollStart");
+          });
+        }
+      }
+    };
+    c.prototype.listenAnnotationMenuItem = function (a, b) {
+      var f = this,
+        c = a.querySelectorAll(".menu-item");
+      a = function (a) {
+        a = c[a];
+        var k = a.querySelector(".menu-name").getAttribute("data-name"),
+          e = d.getHammerDom(a);
+        e.Hammer.on("tap", function () {
+          f.triggerAnnotation(k, e.HtmlElement, b);
+          setTimeout(function () {
+            if ("deleteall" == k) {
+              f.removeElementActive(b);
+            }
+          }, 150);
+          if (0 != f._seriesScroll) {
+            f._seriesScroll.off("scrollStart");
+          }
+        });
+      };
+      for (var d = this, e = 0; e < c.length; e++) a(e);
+    };
+    c.prototype.triggerAnnotation = function (a, b, f) {
+      var c = this;
+      if ("deleteall" != a) {
+        var d = b.querySelector("i");
+        b = b.querySelector("span");
+        var e = f.querySelector("i"),
+          l = f.querySelector("span");
+        e.className = d.className;
+        l.innerText = b.innerText;
+        setTimeout(function () {
+          c.resetElementActive("radio", f);
+        }, 150);
+        f.classList.contains("radio") || f.classList.add("radio");
+      }
+      if (0 != this.btnAnnotationClicked) {
+        this.btnAnnotationClicked(a);
+      }
+    };
+    c.prototype.listenPlay = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-play");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive("openMenu", b.HtmlElement);
+        a.setButtonFlash(b.HtmlElement);
+        a.openPlayMenu(b.HtmlElement);
+      });
+    };
+    c.prototype.openPlayMenu = function (a) {
+      var b = this;
+      if (a.classList.contains("active")) {
+        this.removeElementActive(a);
+      } else {
+        var f = a.querySelector("i"),
+          c = a.querySelector("span");
+        f.className = "iconfont icon-zantingbofang";
+        c.innerText = "\u505c\u6b62";
+        a.classList.add("active");
+        if (0 != this.btnCineClicked) {
+          this.btnCineClicked(!0);
+        }
+        f = this.showPopMenu(a);
+        this.listenSlideRect(f);
+        if (0 != this._seriesScroll) {
+          this._seriesScroll.off("scrollStart");
+          this._seriesScroll.on("scrollStart", function () {
+            b.removeElementActive(a);
+            b._seriesScroll.off("scrollStart");
+          });
+        }
+      }
+    };
+    c.prototype.listenSlideRect = function (a) {
+      var b = this;
+      a = a.querySelector(".slider");
+      var f = parseInt(a.getAttribute("data-min")),
+        c = parseInt(a.getAttribute("data-max")),
+        d = parseInt(a.getAttribute("data-value")),
+        e = a.querySelector(".slider-num"),
+        l = a.querySelector(".slider-block"),
+        n = a.querySelector(".slider-rect"),
+        m = l.offsetWidth,
+        p = n.offsetWidth,
+        q = parseFloat(((m - p) / (c - f)).toFixed(2));
+      e.innerText = "".concat(d, "fps");
+      n.style.left = "".concat((d - f) * q, "px");
+      a = this.getHammerDom(n).Hammer;
+      a.on("panstart", function () {
+        b._flag.slideRectX = parseInt(n.style.left) || 0;
+      });
+      a.on("panmove", function (a) {
+        a = b._flag.slideRectX + a.deltaX;
+        if (0 > a) {
+          a = 0;
+        }
+        if (a > m - p) {
+          a = m - p;
+        }
+        n.style.left = "".concat(a, "px");
+        a = Math.ceil(a / q) + f;
+        e.innerText = "".concat(a, "fps");
+        if (0 != b.changeFPS && b._flag.currentFps != a) {
+          b._flag.currentFps = a;
+          b.changeFPS(a);
+        }
+      });
+      a.on("panend", function () {
+        b._flag.slideRectX = 0;
+      });
+      a.on("pancancel", function () {
+        b._flag.slideRectX = 0;
+      });
+    };
+    c.prototype.listenSet = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-set");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive("openMenu", b.HtmlElement);
+        a.setButtonFlash(b.HtmlElement);
+        a.openSetMenu(b.HtmlElement);
+      });
+    };
+    c.prototype.openSetMenu = function (a) {
+      var b = this;
+      if (a.classList.contains("active")) {
+        this.removeElementActive(a);
+      } else {
+        a.classList.add("active");
+        var f = this.showPopMenu(a);
+        this.listeSetMenuItem(f, a);
+        if (Environment.isDesktop) {
+          this.mockHoverListener(f);
+        }
+        if (0 != this._seriesScroll) {
+          this._seriesScroll.off("scrollStart");
+          this._seriesScroll.on("scrollStart", function () {
+            b.removeElementActive(a);
+            b._seriesScroll.off("scrollStart");
+          });
+        }
+      }
+    };
+    c.prototype.listeSetMenuItem = function (a, b) {
+      for (var f = this, c = a.querySelectorAll(".menu-item"), d = function (d) {
+          var k = c[d],
+            h = k.querySelector(".menu-name").getAttribute("data-name"),
+            l = e.getHammerDom(k);
+          l.Hammer.on("tap", function () {
+            f.triggerSet(h, l.HtmlElement, d, b, a);
+            setTimeout(function () {
+              f.removeElementActive(b);
+            }, 150);
+            if (0 != f._seriesScroll) {
+              f._seriesScroll.off("scrollStart");
+            }
+          });
+        }, e = this, l = 0; l < c.length; l++) d(l);
+    };
+    c.prototype.triggerSet = function (a, b, f, c, d) {
+      b = b.querySelector("i");
+      c = c.querySelectorAll(".menu-item");
+      f = c[f].querySelector("i");
+      b.classList.contains("icon-check-square") ? (b.classList.remove("icon-check-square"), f.classList.remove("icon-check-square"), b.classList.add("icon-uncheck-square"), f.classList.add("icon-uncheck-square"), this.btnSetClicked(a, !1)) : (b.classList.remove("icon-uncheck-square"), f.classList.remove("icon-uncheck-square"), b.classList.add("icon-check-square"), f.classList.add("icon-check-square"), this.btnSetClicked(a, !0));
+      d = d.querySelectorAll(".menu-item");
+      if ("all-show" == a) {
+        for (a = 0; a < d.length; a++) {
+          f = d[a];
+          f = this.getHammerDom(f);
+          f = f.HtmlElement.querySelector("i");
+          var e = c[a].querySelector("i");
+          b.classList.contains("icon-check-square") ? (f.classList.remove("icon-uncheck-square"), f.classList.add("icon-check-square"), e.classList.remove("icon-uncheck-square"), e.classList.add("icon-check-square")) : (f.classList.remove("icon-check-square"), e.classList.remove("icon-check-square"), f.classList.add("icon-uncheck-square"), e.classList.add("icon-uncheck-square"));
+        }
+      } else {
+        b = 0;
+        for (a = 1; a < d.length; a++) if (this.getHammerDom(d[a]).HtmlElement.querySelector("i"), c[a].querySelector("i").classList.contains("icon-uncheck-square")) {
+          b = a;
+          break;
+        }
+        f = c[0];
+        f = this.getHammerDom(f);
+        d = f.HtmlElement.querySelector("i");
+        c = c[0].querySelector("i");
+        0 != b ? (d.classList.remove("icon-check-square"), c.classList.remove("icon-check-square"), d.classList.add("icon-uncheck-square"), c.classList.add("icon-uncheck-square")) : (d.classList.add("icon-check-square"), c.classList.add("icon-check-square"), d.classList.remove("icon-uncheck-square"), c.classList.remove("icon-uncheck-square"));
+      }
+    };
+    c.prototype.listenShare = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-share");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive("openMenu", b.HtmlElement);
+        a.setButtonFlash(b.HtmlElement);
+        b.HtmlElement.querySelector(".qrcode-div").innerHTML = "";
+        var c = document.createElement("div");
+        c.className = "qrcode";
+        new QRCode(c, {
+          text: window.location.href,
+          width: 128,
+          height: 128,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H
+        });
+        b.HtmlElement.querySelector(".qrcode-div").appendChild(c);
+        c.querySelector("img").addEventListener("load", function (c) {
+          a.openToolsMenu(b.HtmlElement);
+        });
+      });
+    };
+    c.prototype.listenHelp = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-help");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive();
+        a.setButtonFlash(b.HtmlElement);
+        if (0 != a.btnHelpClicked) {
+          a.btnHelpClicked();
+        }
+      });
+    };
+    c.prototype.listenFullScreen = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-full-screen");
+      b.Hammer.on("tap", function () {
+        a.resetElementActive();
+        a.setButtonFlash(b.HtmlElement);
+        if (0 != document.fullscreen && 0 == document.fullscreen || 0 == document.webkitIsFullScreen) {
+          var c = document.documentElement;
+          (c.requestFullscreen || c.webkitRequestFullScreen || c.mozRequestFullScreen || c.msRequestFullscreen).call(c);
+        } else {
+          c = document;
+          (c.exitFullscreen || c.webkitExitFullscreen || c.mozCancelFullScreen || c.msExitFullscreen).call(c);
+        }
+        a.refreshIScroll();
+      });
+    };
+    c.prototype.listenDicomInfo = function () {
+      var a = this,
+        b = this.getHammerDom(".btn-dicom-info");
+      if (null != b.Hammer) {
+        b.Hammer.on("tap", function () {
+          a.resetElementActive();
+          a.setButtonFlash(b.HtmlElement);
+          if (0 != a.btnDicomClicked) {
+            a.btnDicomClicked();
+          }
+        });
+      }
+    };
+    c.prototype.click2dInitButton = function () {
+      var a = this._rootElement.querySelector(".btn-wl");
+      this.resetElementActive("radio", a);
+      this.triggerWL(a);
+    };
+    c.prototype.click3dInitButton = function () {
+      var a = this._rootElement.querySelector(".btn-select");
+      this.resetElementActive("radio", a);
+      this.triggerSelectBtn(a);
+    };
+    c.prototype.refreshIScroll = function () {
+      if (0 != this._seriesScroll) {
+        this._seriesScroll.refresh();
+      }
+    };
+    c.prototype.getIScrollOptions = function () {
+      var a = {
+        mouseWheel: !0,
+        scrollbars: "custom",
+        interactiveScrollbars: !0,
+        click: !0,
+        tap: !0,
+        preventDefault: !0,
+        scrollX: !0,
+        scrollY: !1
+      };
+      Environment.isPad ? a.fadeScrollbars = !0 : (a.fadeScrollbars = !1, a.disablePointer = !0, a.disableTouch = !0);
+      return a;
+    };
+    c.prototype.openSetwwwlPopup = function () {
+      var a,
+        b,
+        c,
+        d,
+        e,
+        g,
+        l,
+        n,
+        m,
+        p,
+        q = this,
+        r = this._rootElement.getElementsByClassName("setwl-popup")[0].outerHTML;
+      swal({
+        customClass: "swal-popwwwl",
+        html: r,
+        width: "23em",
+        padding: "0px",
+        heightAuto: !1,
+        allowOutsideClick: !1,
+        showCancelButton: !0,
+        confirmButtonText: "\u786e\u8ba4",
+        cancelButtonText: "\u53d6\u6d88"
+      }).then(function (a) {
+        if (a.value) {
+          var b = document.getElementById("swal2-content");
+          a = b.getElementsByClassName("input-item")[0].value;
+          b = b.getElementsByClassName("input-item")[1].value;
+          if (0 != q.btnPresetwwwlClicked) {
+            q.btnPresetwwwlClicked(parseInt(a), parseInt(b));
+          }
+        }
+      });
+      var r = document.getElementById("swal2-content"),
+        t = r.querySelectorAll(".icon-jianhao"),
+        v = r.querySelectorAll(".icon-jiahao"),
+        u = r.querySelectorAll(".input-item");
+      try {
+        for (var w = __values(t), x = w.next(); !x.done; x = w.next()) {
+          var y = x.value;
+          y.addEventListener("mousedown", function () {
+            this.style.color = "#808080";
+          });
+          y.addEventListener("mouseup", function () {
+            this.style.color = "#ccc";
+          });
+        }
+      } catch (A) {
+        a = {
+          error: A
+        };
+      } finally {
+        try {
+          if (x && !x.done && (b = w.return)) {
+            b.call(w);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+      try {
+        for (var z = __values(v), C = z.next(); !C.done; C = z.next()) {
+          var E = C.value;
+          E.addEventListener("mousedown", function () {
+            this.style.color = "#808080";
+          });
+          E.addEventListener("mouseup", function () {
+            this.style.color = "#ccc";
+          });
+        }
+      } catch (A) {
+        c = {
+          error: A
+        };
+      } finally {
+        try {
+          if (C && !C.done && (d = z.return)) {
+            d.call(z);
+          }
+        } finally {
+          if (c) {
+            throw c.error;
+          }
+        }
+      }
+      try {
+        for (var F = __values(u), D = F.next(); !D.done; D = F.next()) D.value.addEventListener("keyup", function () {
+          var a = this.value,
+            b = 1 == a.length ? /[0-9\-]/ : /(-|\+)?\d+/g,
+            a = b.exec(a);
+          Array.isArray(a) ? this.value = a = a[0] : this.value = a = "";
+        });
+      } catch (A) {
+        e = {
+          error: A
+        };
+      } finally {
+        try {
+          if (D && !D.done && (g = F.return)) {
+            g.call(F);
+          }
+        } finally {
+          if (e) {
+            throw e.error;
+          }
+        }
+      }
+      try {
+        for (var G = __values(t), B = G.next(); !B.done; B = G.next()) {
+          y = B.value;
+          y.addEventListener("click", function () {
+            var a = this.getAttribute("data-belong");
+            "ww" == a ? (a = u[0].value, u[0].value = (parseInt(a) - 5).toString()) : "wl" == a && (a = u[1].value, u[1].value = (parseInt(a) - 5).toString());
+          });
+        }
+      } catch (A) {
+        l = {
+          error: A
+        };
+      } finally {
+        try {
+          if (B && !B.done && (n = G.return)) {
+            n.call(G);
+          }
+        } finally {
+          if (l) {
+            throw l.error;
+          }
+        }
+      }
+      try {
+        for (var I = __values(v), H = I.next(); !H.done; H = I.next()) {
+          E = H.value;
+          E.addEventListener("click", function () {
+            var a = this.getAttribute("data-belong");
+            "ww" == a ? (a = u[0].value, u[0].value = (parseInt(a) + 5).toString()) : "wl" == a && (a = u[1].value, u[1].value = (parseInt(a) + 5).toString());
+          });
+        }
+      } catch (A) {
+        m = {
+          error: A
+        };
+      } finally {
+        try {
+          if (H && !H.done && (p = I.return)) {
+            p.call(I);
+          }
+        } finally {
+          if (m) {
+            throw m.error;
+          }
+        }
+      }
+    };
+    c.prototype.btnsetwwwlClicked = function (a) {
+      var b = this,
+        c = Config.presetWwwl.CT;
+      if (0 != c || 0 != c.length) {
+        for (var d = [112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123], e = [], g = 0; g < c.length; g++) e.push(d[g]);
+        e.forEach(function (f, d) {
+          if (f == a) {
+            b.btnPresetwwwlClicked(c[d].ww, c[d].wl);
+          }
+        });
+      }
+    };
+    c.prototype.addHotKeys = function () {
+      for (var a = Config.presetWwwl.CT, b = "F1 F2 F3 F4 F5 F6 F7 F8 F9 F11 F12".split(" "), c = [], d = 0; d < a.length; d++) c.push(b[d]);
+      var e = document.querySelector(".hotkeys");
+      c.forEach(function (b, c) {
+        var f = document.createElement("tr");
+        f.innerHTML += "<td>" + b + "</td><td>" + a[c].name + "</td>";
+        e.appendChild(f);
+      });
+    };
+    c.prototype.bindHotKeysEvent = function () {
+      var a = this;
+      this.addHotKeys();
+      document.addEventListener("keydown", function (b) {
+        var c = b.which || b.keyCode;
+        switch (c) {
+          case 112:
+            {}
+          case 113:
+            {}
+          case 114:
+            {}
+          case 115:
+            {}
+          case 116:
+            {}
+          case 117:
+            {}
+          case 118:
+            {}
+          case 119:
+            {}
+          case 120:
+            {}
+          case 121:
+            {}
+          case 122:
+            {}
+          case 123:
+            {
+              if (0 == Config.presetWwwl || 0 == Config.presetWwwl.CT.length) {
+                return;
+              }
+              var d = [112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123].findIndex(function (a) {
+                return a == c;
+              });
+              if (-1 >= d || d >= Config.presetWwwl.CT.length) {
+                return;
+              }
+              b.preventDefault();
+              a.btnsetwwwlClicked(c);
+              break;
+            }
+          case 80:
+            {
+              d = a._rootElement.querySelector(".btn-pan");
+              a.resetElementActive("radio", d);
+              a.triggerPan(d);
+              break;
+            }
+          case 83:
+            {
+              if (0 != a.btnSelectClicked) {
+                a.btnSelectClicked(!0);
+              }
+              break;
+            }
+          case 90:
+            {
+              d = a._rootElement.querySelector(".btn-zoom");
+              a.resetElementActive("radio", d);
+              a.triggerZoom(d);
+              break;
+            }
+          case 77:
+            {
+              var d = a._rootElement.querySelector(".btn-tools"),
+                e = d.querySelectorAll(".menu-item")[0];
+              a.triggerTools("magnifier", e, d);
+              break;
+            }
+          case 70:
+            {
+              if (0 != a.btnFitClicked) {
+                a.btnFitClicked();
+              }
+              break;
+            }
+          case 86:
+            {
+              d = a._rootElement.querySelector(".btn-tools");
+              e = d.querySelectorAll(".menu-item")[1];
+              a.triggerTools("ctvalue", e, d);
+              break;
+            }
+          case 69:
+            {
+              d = a._rootElement.querySelector(".btn-annotation");
+              e = d.querySelectorAll(".menu-item")[4];
+              a.triggerAnnotation("ellipse", e, d);
+              break;
+            }
+          case 82:
+            {
+              d = a._rootElement.querySelector(".btn-annotation");
+              e = d.querySelectorAll(".menu-item")[1];
+              a.triggerAnnotation("length", e, d);
+              break;
+            }
+          case 73:
+            {
+              if (0 != a.btnInvertColorClicked) {
+                a.btnInvertColorClicked();
+              }
+              break;
+            }
+          case 187:
+            {
+              a.btnToolsClicked("zoom", 10);
+              break;
+            }
+          case 189:
+            {
+              a.btnToolsClicked("zoom", -10);
+              break;
+            }
+          case 49:
+            {
+              b.ctrlKey || a.btnImageClicked(1, 1);
+              break;
+            }
+          case 50:
+            {
+              b.ctrlKey || a.btnImageClicked(1, 2);
+              break;
+            }
+          case 51:
+            {
+              b.ctrlKey || a.btnImageClicked(1, 3);
+              break;
+            }
+          case 52:
+            {
+              b.ctrlKey || a.btnImageClicked(2, 2);
+              break;
+            }
+          case 54:
+            {
+              b.ctrlKey || a.btnImageClicked(2, 3);
+            }
+        }
+        b.ctrlKey && 49 == b.keyCode ? a.btnSeriesClicked(1, 1) : b.ctrlKey && 50 == b.keyCode ? a.btnSeriesClicked(1, 2) : b.ctrlKey && 51 == b.keyCode ? a.btnSeriesClicked(1, 3) : b.ctrlKey && 52 == b.keyCode ? a.btnSeriesClicked(2, 2) : (b.ctrlKey && 54 == b.keyCode || b.ctrlKey && 53 == b.keyCode) && a.btnSeriesClicked(2, 3);
+      });
+    };
+    c.prototype.setFullScreenButton = function () {
+      var a = this._parentEl.querySelector(".btn-full-screen"),
+        b = a.querySelector(".button-name span"),
+        a = a.querySelector(".button-icon .iconfont");
+      0 != document.fullscreen && 1 == document.fullscreen || 1 == document.webkitIsFullScreen ? (b.textContent = "\u9000\u51fa\u5168\u5c4f", a.classList.remove("icon-zuidahua"), a.classList.add("icon-zuixiaohua1")) : (b.textContent = "\u5168\u5c4f", a.classList.remove("icon-zuixiaohua1"), a.classList.add("icon-zuidahua"));
+    };
+    c.prototype.hideFullScreenButton = function () {
+      var a = this,
+        b = 0,
+        c = setInterval(function () {
+          b++;
+          if (a._rootElement) {
+            var f = a._rootElement.querySelector(".btn-full-screen");
+            if (0 == f) {
+              return;
+            }
+            f.style.display = "none";
+            a.refreshIScroll();
+            clearInterval(c);
+          }
+          if (10 < b) {
+            clearInterval(c);
+          }
+        }, 100);
+    };
+    c.prototype.hideCompareButton = function () {
+      var a = this,
+        b = 0,
+        c = setInterval(function () {
+          b++;
+          if (a._rootElement) {
+            var f = a._rootElement.querySelector(".btn-compare");
+            if (0 == f) {
+              return;
+            }
+            f.style.display = "none";
+            a.refreshIScroll();
+            clearInterval(c);
+          }
+          if (10 < b) {
+            clearInterval(c);
+          }
+        }, 100);
+    };
+    c.prototype.hideAnnoPolygon = function () {
+      this.showhideButton(".btn-annotation .menu-polygon", !1);
+    };
+    c.prototype.hideAnnoDeleteSelected = function () {
+      this.showhideButton(".btn-annotation .menu-delete-selected", !1);
+    };
+    c.prototype.showhideButton = function (a, b) {
+      var c = this,
+        d = 0,
+        e = setInterval(function () {
+          d++;
+          var f = c._rootElement.querySelector(a);
+          if (0 != f) {
+            1 == b ? f.style.display = "inline-block" : f.style.display = "none";
+            0 != c._seriesScroll && c._seriesScroll.refresh();
+            clearInterval(e);
+            10 < d && clearInterval(e);
+          }
+        }, 100);
+    };
+    return c;
+  }();
+  e.ToolbarView = d;
+})(pc || (pc = {}));
+__values = this && this.__values || function (e) {
+  var d = "function" === typeof Symbol && Symbol.iterator,
+    c = d && e[d],
+    a = 0;
+  if (c) {
+    return c.call(e);
+  }
+  if (e && "number" === typeof e.length) {
+    return {
+      next: function () {
+        if (e && a >= e.length) {
+          e = 0;
+        }
+        return {
+          value: e && e[a++],
+          done: !e
+        };
+      }
+    };
+  }
+  throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+(function (e) {
+  var d = function () {
+    function c(a) {
+      var b = this;
+      this._loaded = !1;
+      this._parentEl = a;
+      this.loadCss();
+      this.loadTemplate();
+      var c = this;
+      0 < navigator.userAgent.indexOf("Windows") ? window.onresize = function () {
+        if (0 != c._seriesScroll) {
+          c._seriesScroll.destroy();
+        }
+        c.orientationChange();
+        c.setScrollerWidth();
+      } : window.addEventListener("orientationchange", function () {
+        if (0 != c._seriesScroll) {
+          c._seriesScroll.destroy();
+        }
+        c.orientationChange();
+      });
+      setTimeout(function () {
+        if (b._seriesScroll) {
+          b._seriesScroll.refresh();
+        }
+      }, 1E3);
+    }
+    c.prototype.orientationChange = function () {
+      if (Environment.isLandscape) {
+        var a = this.getIScrollOptions();
+        this._seriesScroll = new IScroll("#wrapper", a);
+      } else {
+        if (Environment.isPortrait) {
+          a = this.getIScrollOptions();
+          a.scrollX = !0;
+          a.scrollY = !1;
+          this._seriesScroll = new IScroll("#wrapper", a);
+        }
+      }
+    };
+    c.prototype.loadCss = function () {
+      var a = "css/pc/SeriesListView.css?v=".concat(new Date().getTime());
+      Utils.addCssByLink(a);
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this,
+        b = "templates/pc/SeriesListView.html?v=".concat(new Date().getTime());
+      MessageProxy.getTemplate(b, function (b) {
+        b.hasError ? MsgBox.errorAlert("\u5e8f\u5217\u5217\u8868\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+    };
+    c.prototype.initView = function (a) {
+      var b, c;
+      a = new DOMParser().parseFromString(a, "text/html");
+      var d = document.createElement("div");
+      d.innerHTML = a.querySelector("#baseInfoTemplate").innerHTML;
+      this._itemTemplate = a.querySelector("#seriesListTemplate").innerHTML;
+      this._listTemplate = a.querySelector("#baseInfoTemplate").innerHTML;
+      this._to3dPopupDom = d.querySelector(".to3d-popup");
+      0 != this._itemTemplate.length && 0 != this._listTemplate.length || MsgBox.warning("\u52a0\u8f7d\u5931\u8d25\uff01");
+      d.querySelector("#scroller").innerHTML = "";
+      this._parentEl.appendChild(d.querySelector("#wrapper"));
+      this.orientationChange();
+      this._loaded = !0;
+      if (0 != Global.studies && 0 != Global.studies.length) {
+        try {
+          for (var e = __values(Global.studies), g = e.next(); !g.done; g = e.next()) this.fillSeriesList(g.value);
+        } catch (l) {
+          b = {
+            error: l
+          };
+        } finally {
+          try {
+            if (g && !g.done && (c = e.return)) {
+              c.call(e);
+            }
+          } finally {
+            if (b) {
+              throw b.error;
+            }
+          }
+        }
+      }
+    };
+    c.prototype.addStudyInfo = function (a) {
+      if (this._loaded) {
+        this.fillSeriesList(a);
+      }
+    };
+    c.prototype.fillSeriesList = function (a) {
+      var b, c;
+      if (0 != a && 0 != a.series && 0 != a.series.length) {
+        var d = document.createElement("div");
+        d.innerHTML = this._listTemplate;
+        for (var e = document.getElementById("scroller"), g = d.getElementsByClassName("series-list-under")[0], l = g.getElementsByClassName("list-info")[0].innerHTML, d = 0; d < a.series.length; d++) if (0 != a.series[d].pacsFAS && 1 == a.series[d].pacsFAS) {
+          l += this._itemTemplate;
+        }
+        g.getElementsByClassName("patient-name")[0].innerHTML = a.patientName;
+        if (a.studyTime) {
+          d = a.studyTime.replace(" ", ":").replace(/\:/g, "-").split("-");
+          g.getElementsByClassName("study-time")[0].innerHTML = "".concat(d[0], "\u5e74").concat(d[1], "\u6708").concat(d[2], "\u65e5");
+        }
+        g.getElementsByClassName("modality-patient-id")[0].innerHTML = "[".concat(0 != a.modality ? a.modality : "\u672a\u77e5\u8bbe\u5907", "]").concat(0 != a.patientId ? a.patientId : "");
+        g.getElementsByClassName("list-info")[0].innerHTML = l;
+        for (var l = g.getElementsByClassName("list-info")[0], n = 0, d = 0; d < a.series.length; d++) if (0 != a.series[d].pacsFAS && 1 == a.series[d].pacsFAS) {
+          var m = a.series[d],
+            p = l.querySelectorAll(".series-list-item")[n];
+          if (0 != p) {
+            p.setAttribute("study-id", a.studyUid);
+            p.setAttribute("series-id", m.seriesUid);
+            p.setAttribute("image-total", "".concat(m.images.length));
+            m.seriesNumber && p.setAttribute("series-index", "".concat(m.seriesNumber));
+            l.getElementsByClassName("image-total")[n].innerText = "".concat(m.images.length, "\u56fe");
+            l.getElementsByClassName("series-index")[n].innerText = "".concat(m.seriesNumber);
+            null != m.seriesDesc ? l.getElementsByClassName("series-desc")[n].innerText = m.seriesDesc : l.getElementsByClassName("series-desc")[n].innerText = "";
+          }
+          n += 1;
+        }
+        e.appendChild(g);
+        this.setScrollerWidth();
+        if (this._seriesScroll) {
+          this._seriesScroll.refresh();
+        }
+        var q = this,
+          r = g.querySelector(".series-list-info");
+        r.addEventListener(Environment.isDesktop ? "mouseup" : "click", function () {
+          "none" != g.getElementsByClassName("list-info")[0].style.display ? (g.getElementsByClassName("list-info")[0].style.display = "none", r.getElementsByClassName("series-list-icon")[0].style.transform = "rotate(0deg)") : (g.getElementsByClassName("list-info")[0].style.display = "flex", r.getElementsByClassName("series-list-icon")[0].style.transform = "rotate(-90deg)");
+          q.setScrollerWidth();
+          if (q._seriesScroll) {
+            q._seriesScroll.refresh();
+          }
+        });
+        a = l.getElementsByClassName("series-list-item");
+        try {
+          for (var t = __values(a), v = t.next(); !v.done; v = t.next()) {
+            var u = v.value;
+            u.addEventListener(Environment.isDesktop ? "dblclick" : "click", function (a) {
+              var b = a.target;
+              if (1 == Environment.isDesktop || 1 == Environment.isPad && "series-list-item" == b.parentElement.className) {
+                a = b;
+                if (0 == b.classList.contains("series-list-item")) {
+                  a = b.parentElement;
+                }
+                var b = a.getAttribute("study-id"),
+                  c = a.getAttribute("series-id"),
+                  f = a.getAttribute("image-total");
+                if (-1 == a.className.search(/active/) && 0 != q.seriesItemTapped) {
+                  q.seriesItemTapped(b, c, parseInt(f));
+                }
+              }
+            });
+            var w = u.getElementsByClassName("series-thumb")[0];
+            w.draggable = !0;
+            w.addEventListener("dragstart", function (a) {
+              a = a.dataTransfer;
+              a.effectAllowed = "copy";
+              var b = this.parentElement.getAttribute("study-id"),
+                c = this.parentElement.getAttribute("series-id"),
+                f = this.parentElement.getAttribute("image-total");
+              window.ActiveXObject || "ActiveXObject" in window ? q.setDragSeriesUid(c) : (a.setData("studyId", b), a.setData("seriesId", c), a.setData("imageTotal", f));
+            }, !1);
+            document.ondragover = function (a) {
+              a.preventDefault();
+            };
+            document.ondrop = function (a) {
+              a.preventDefault();
+            };
+          }
+        } catch (x) {
+          b = {
+            error: x
+          };
+        } finally {
+          try {
+            if (v && !v.done && (c = t.return)) {
+              c.call(t);
+            }
+          } finally {
+            if (b) {
+              throw b.error;
+            }
+          }
+        }
+      }
+    };
+    c.prototype.setScrollerWidth = function () {
+      var a, b;
+      if (window.ActiveXObject || "ActiveXObject" in window) {
+        if (Environment.isPortrait) {
+          var c = document.getElementsByClassName("list-info"),
+            d = 0;
+          try {
+            for (var e = __values(c), g = e.next(); !g.done; g = e.next()) {
+              var l = g.value;
+              if ("none" != l.style.display) {
+                var n = l.getElementsByClassName("series-list-item").length * (l.getElementsByClassName("series-list-item")[0].offsetWidth + 8),
+                  d = d + n;
+              }
+            }
+          } catch (m) {
+            a = {
+              error: m
+            };
+          } finally {
+            try {
+              if (g && !g.done && (b = e.return)) {
+                b.call(e);
+              }
+            } finally {
+              if (a) {
+                throw a.error;
+              }
+            }
+          }
+          a = document.getElementsByClassName("series-list-info")[0].offsetWidth + 8;
+          d += a * document.getElementsByClassName("series-list-info").length;
+          document.getElementById("scroller").style.width = d + "px";
+        } else {
+          document.getElementById("scroller").style.width = "100%";
+        }
+        if (this._seriesScroll) {
+          this._seriesScroll.refresh();
+        }
+      }
+    };
+    c.prototype.getIScrollOptions = function () {
+      var a = {
+        mouseWheel: !0,
+        scrollbars: "custom",
+        interactiveScrollbars: !0,
+        click: !0,
+        tap: !0,
+        preventDefault: !1
+      };
+      Environment.isLandscape ? (a.scrollX = !1, a.scrollY = !0) : Environment.isPortrait && (a.scrollX = !0, a.scrollY = !1);
+      Environment.isPad ? a.fadeScrollbars = !0 : (a.fadeScrollbars = !1, a.disablePointer = !0, a.disableTouch = !0);
+      return a;
+    };
+    c.prototype.setActive = function (a) {
+      if (0 < document.getElementsByClassName("series-list-item active").length) {
+        for (a = 0; a < document.getElementsByClassName("series-list-item").length; a++) document.getElementsByClassName("series-list-item")[a].classList.remove("active");
+      }
+    };
+    c.prototype.emptyEL = function () {
+      document.getElementById("scroller").innerHTML = "";
+    };
+    c.prototype.popupTo3d = function (a) {
+      swal({
+        customClass: "swal-popTo3d",
+        html: this._to3dPopupDom.outerHTML,
+        width: "23em",
+        padding: "0px",
+        heightAuto: !1,
+        allowOutsideClick: !1,
+        showCancelButton: !0,
+        confirmButtonText: "\u786e\u5b9a",
+        cancelButtonText: "\u53d6\u6d88"
+      }).then(function (b) {
+        if (b.value) {
+          a();
+        }
+      });
+    };
+    c.prototype.showImage = function (a, b) {
+      if (0 != a && "" != a && 0 != b && "" != b) {
+        var c = 0,
+          d = setInterval(function () {
+            if (20 < c) {
+              clearInterval(d);
+            }
+            0 == document.querySelectorAll(".series-list-item[series-id='" + a + "']  img ")[0] ? c++ : (document.querySelectorAll(".series-list-item[series-id='" + a + "']  img ")[0].setAttribute("src", b), clearInterval(d));
+          }, 200);
+      }
+    };
+    return c;
+  }();
+  e.SeriesListView = d;
+})(pc || (pc = {}));
+__values = this && this.__values || function (e) {
+  var d = "function" === typeof Symbol && Symbol.iterator,
+    c = d && e[d],
+    a = 0;
+  if (c) {
+    return c.call(e);
+  }
+  if (e && "number" === typeof e.length) {
+    return {
+      next: function () {
+        if (e && a >= e.length) {
+          e = 0;
+        }
+        return {
+          value: e && e[a++],
+          done: !e
+        };
+      }
+    };
+  }
+  throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+(function (e) {
+  var d = function () {
+    function c(a, b) {
+      this._readedStudyIndex = -1;
+      this._parentEl = a;
+      this._studiesData = b;
+      this.loadCss();
+      this.loadTemplate();
+    }
+    Object.defineProperty(c.prototype, "currentSeries", {
+      set: function (a) {
+        var b, c;
+        this._currentSeries = a;
+        if (0 != this._rootElement) {
+          a = this._rootElement.getElementsByClassName("series-menu")[0].getElementsByClassName("dropdown-item");
+          var d = !1;
+          try {
+            for (var e = __values(a), g = e.next(); !g.done; g = e.next()) if (-1 != g.value.getElementsByTagName("a")[0].className.search(/active/)) {
+              d = !0;
+            }
+          } catch (l) {
+            b = {
+              error: l
+            };
+          } finally {
+            try {
+              if (g && !g.done && (c = e.return)) {
+                c.call(e);
+              }
+            } finally {
+              if (b) {
+                throw b.error;
+              }
+            }
+          }
+          d || this.setStudyCheck(0, this._studiesData, 0);
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "studies", {
+      get: function () {
+        return this._studiesData;
+      },
+      set: function (a) {
+        this._studiesData = a;
+        if (0 != a && 0 != a.length && 0 != this._rootElement) {
+          this.fillStudyDom(this._studiesData);
+          this.setStudyCheck(0, this._studiesData, 0);
+          this.bindButtonEvent();
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    c.prototype.loadCss = function () {
+      var a,
+        b,
+        c = document.getElementsByTagName("head")[0].getElementsByTagName("link"),
+        d = !1;
+      try {
+        for (var e = __values(c), g = e.next(); !g.done; g = e.next()) if (-1 != g.value.href.indexOf("css/pc/SeriesToolView.css")) {
+          d = !0;
+        }
+      } catch (l) {
+        a = {
+          error: l
+        };
+      } finally {
+        try {
+          if (g && !g.done && (b = e.return)) {
+            b.call(e);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+      d || Utils.addCssByLink("css/pc/SeriesToolView.css");
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this;
+      MessageProxy.getTemplate("templates/pc/SeriesToolView.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u5de5\u5177\u6761\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+    };
+    c.prototype.initView = function (a) {
+      var b = this;
+      a = new DOMParser().parseFromString(a, "text/html");
+      var c = document.createElement("div");
+      c.innerHTML = a.querySelector("#seriesToolTemplate").innerHTML;
+      this._parentEl.appendChild(c.getElementsByClassName("seriesnav")[0]);
+      this._rootElement = this._parentEl.getElementsByClassName("seriesnav")[0];
+      this.appendSortCheckEffect(0);
+      if (Environment.isDesktop) {
+        this.importGridBoxEffect();
+      } else {
+        for (a = this._parentEl.querySelectorAll(".dropdown-grid"), c = 0; c < a.length; c++) a[c].style.display = "none";
+      }
+      this.bindToolbarEvent();
+      if (0 != this._studiesData && 0 != this._studiesData.length) {
+        this.fillStudyDom(this._studiesData);
+        0 != this._currentSeries && this.setStudyCheck(0, this._studiesData, this._currentSeries.index);
+        setTimeout(function () {
+          b.bindButtonEvent();
+        }, 100);
+      }
+    };
+    c.prototype.fillStudyDom = function (a) {
+      var b = this,
+        c = this._rootElement.getElementsByClassName("studies-menu")[0];
+      a.forEach(function (a, f) {
+        if (!(f <= b._readedStudyIndex)) {
+          b._readedStudyIndex = f;
+          var d = document.createElement("li"),
+            e = document.createElement("a"),
+            k = document.createElement("i"),
+            h = document.createElement("span");
+          h.innerText = a.modality + " , " + a.studyTime;
+          d.classList.add("dropdown-item");
+          d.setAttribute("data-index", f.toString());
+          d.setAttribute("studyid", a.studyUid);
+          k.className = "iconfont icon-uncheck-square";
+          e.appendChild(k);
+          e.appendChild(h);
+          d.appendChild(e);
+          c.appendChild(d);
+        }
+      });
+    };
+    c.prototype.fillSeriesDom = function (a, b) {
+      if (0 != a && 0 != a.length && 0 != this._rootElement) {
+        var c = this._rootElement.getElementsByClassName("series-menu")[0],
+          d = !1;
+        if (0 < c.childNodes.length) {
+          c.innerHTML = "";
+          d = !0;
+        }
+        a.forEach(function (a, b) {
+          var f = document.createElement("li"),
+            d = document.createElement("a"),
+            e = document.createElement("i"),
+            k = document.createElement("span");
+          k.innerText = b + 1 + "\uff1a" + a.seriesDesc;
+          f.classList.add("dropdown-item");
+          f.setAttribute("data-index", b.toString());
+          f.setAttribute("studyid", a.study.studyUid);
+          f.setAttribute("seriesid", a.seriesUid);
+          e.className = "iconfont icon-uncheck-square";
+          d.appendChild(e);
+          d.appendChild(k);
+          f.appendChild(d);
+          c.appendChild(f);
+        });
+        if (0 != b) {
+          this.appendSeriesCheckEffect(b);
+        }
+        if (d) {
+          this.independentBindSeriesEvent();
+        }
+      }
+    };
+    c.prototype.setStudyCheck = function (a, b, c) {
+      if (0 != b && 0 != b.length && 0 != b[a].series) {
+        b = b[a].series;
+        this.appendStudyCheckEffect(a);
+        this.fillSeriesDom(b, c);
+      }
+    };
+    c.prototype.removeAllStudyEffect = function () {
+      var a, b;
+      if (0 != this._rootElement) {
+        var c = this._rootElement.getElementsByClassName("studies-menu")[0].getElementsByClassName("dropdown-item");
+        try {
+          for (var d = __values(c), e = d.next(); !e.done; e = d.next()) {
+            var g = e.value,
+              l = g.getElementsByTagName("a")[0],
+              n = g.getElementsByTagName("i")[0];
+            l.classList.remove("active");
+            n.className = "iconfont icon-uncheck-square";
+          }
+        } catch (m) {
+          a = {
+            error: m
+          };
+        } finally {
+          try {
+            if (e && !e.done && (b = d.return)) {
+              b.call(d);
+            }
+          } finally {
+            if (a) {
+              throw a.error;
+            }
+          }
+        }
+      }
+    };
+    c.prototype.removeAllSeriesEffect = function () {
+      var a,
+        b,
+        c = this._rootElement.getElementsByClassName("series-menu")[0].getElementsByClassName("dropdown-item");
+      try {
+        for (var d = __values(c), e = d.next(); !e.done; e = d.next()) {
+          var g = e.value,
+            l = g.getElementsByTagName("a")[0],
+            n = g.getElementsByTagName("i")[0];
+          l.classList.remove("active");
+          n.className = "iconfont icon-uncheck-square";
+        }
+      } catch (m) {
+        a = {
+          error: m
+        };
+      } finally {
+        try {
+          if (e && !e.done && (b = d.return)) {
+            b.call(d);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+    };
+    c.prototype.removeAllSortEffect = function () {
+      var a,
+        b,
+        c = this._rootElement.getElementsByClassName("sort-menu")[0];
+      if (0 != c) {
+        c = c.getElementsByClassName("dropdown-item");
+        try {
+          for (var d = __values(c), e = d.next(); !e.done; e = d.next()) {
+            var g = e.value,
+              l = g.getElementsByTagName("a")[0],
+              n = g.getElementsByTagName("i")[0];
+            l.classList.remove("active");
+            n.className = "iconfont icon-uncheck-square";
+          }
+        } catch (m) {
+          a = {
+            error: m
+          };
+        } finally {
+          try {
+            if (e && !e.done && (b = d.return)) {
+              b.call(d);
+            }
+          } finally {
+            if (a) {
+              throw a.error;
+            }
+          }
+        }
+      }
+    };
+    c.prototype.appendStudyCheckEffect = function (a) {
+      if (0 != this._rootElement) {
+        this.removeAllStudyEffect();
+        var b = this._rootElement.getElementsByClassName("studies-menu")[0].getElementsByClassName("dropdown-item")[a];
+        a = b.getElementsByTagName("a")[0];
+        b = b.getElementsByTagName("i")[0];
+        a.classList.add("active");
+        b.classList.remove("icon-uncheck-square");
+        b.classList.add("icon-check-square");
+      }
+    };
+    c.prototype.appendSeriesCheckEffect = function (a) {
+      this.removeAllSeriesEffect();
+      var b = this._rootElement.getElementsByClassName("series-menu")[0].getElementsByClassName("dropdown-item")[a];
+      a = b.getElementsByTagName("a")[0];
+      b = b.getElementsByTagName("i")[0];
+      a.classList.add("active");
+      b.classList.remove("icon-uncheck-square");
+      b.classList.add("icon-check-square");
+    };
+    c.prototype.appendSortCheckEffect = function (a) {
+      this.removeAllSortEffect();
+      var b = this._rootElement.getElementsByClassName("sort-menu")[0];
+      if (0 != b) {
+        b = b.getElementsByClassName("dropdown-item")[a];
+        a = b.getElementsByTagName("a")[0];
+        b = b.getElementsByTagName("i")[0];
+        a.classList.add("active");
+        b.classList.remove("icon-uncheck-square");
+        b.classList.add("icon-check-square");
+      }
+    };
+    c.prototype.importGridBoxEffect = function () {
+      var a,
+        b,
+        c = this._rootElement.getElementsByClassName("grid-box"),
+        d = function (a) {
+          var b,
+            c,
+            f = a.getElementsByClassName("grid-cell");
+          try {
+            for (var d = (b = 0, __values(f)), e = d.next(); !e.done; e = d.next()) e.value.addEventListener("mouseover", function () {
+              var a,
+                b,
+                c = this.getAttribute("data-column"),
+                d = this.getAttribute("data-row");
+              try {
+                for (var e = __values(f), k = e.next(); !k.done; k = e.next()) {
+                  var h = k.value;
+                  h.getAttribute("data-column") <= c && h.getAttribute("data-row") <= d ? h.classList.add("active") : h.classList.remove("active");
+                }
+              } catch (C) {
+                a = {
+                  error: C
+                };
+              } finally {
+                try {
+                  if (k && !k.done && (b = e.return)) {
+                    b.call(e);
+                  }
+                } finally {
+                  if (a) {
+                    throw a.error;
+                  }
+                }
+              }
+            });
+          } catch (t) {
+            b = {
+              error: t
+            };
+          } finally {
+            try {
+              if (e && !e.done && (c = d.return)) {
+                c.call(d);
+              }
+            } finally {
+              if (b) {
+                throw b.error;
+              }
+            }
+          }
+        };
+      try {
+        for (var e = __values(c), g = e.next(); !g.done; g = e.next()) d(g.value);
+      } catch (l) {
+        a = {
+          error: l
+        };
+      } finally {
+        try {
+          if (g && !g.done && (b = e.return)) {
+            b.call(e);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+    };
+    c.prototype.independentBindSeriesEvent = function () {
+      var a,
+        b,
+        c = this,
+        d = this._rootElement.getElementsByClassName("series-menu")[0].getElementsByClassName("dropdown-item");
+      try {
+        for (var e = __values(d), g = e.next(); !g.done; g = e.next()) g.value.addEventListener("click", function () {
+          if (-1 == this.getElementsByTagName("a")[0].className.search(/active/)) {
+            var a = this.getAttribute("data-index"),
+              b = this.getAttribute("studyid"),
+              f = this.getAttribute("seriesid");
+            c.appendSeriesCheckEffect(a);
+            if (0 != c.btnseriesClicked) {
+              c.btnseriesClicked(b, f);
+            }
+          }
+        });
+      } catch (l) {
+        a = {
+          error: l
+        };
+      } finally {
+        try {
+          if (g && !g.done && (b = e.return)) {
+            b.call(e);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+    };
+    c.prototype.documentClick = function (a, b) {
+      a.contains(b.target) || a.classList.remove("open");
+      document.removeEventListener("click", this._currentDocumentCallback);
+      this._currentDocumentCallback = 0;
+    };
+    c.prototype.bindToolbarEvent = function () {
+      var a = this,
+        b = this._rootElement.querySelectorAll(".dropdown");
+      null != b && 0 != b.length || console.error("\u5e8f\u5217\u5de5\u5177\u6761\uff1a\u7ed1\u5b9a\u4e8b\u4ef6\u5931\u8d25");
+      for (var c = function (c) {
+          var f = b[c],
+            d = f.getAttribute("name");
+          f.addEventListener("click", function (b) {
+            for (var c = document.querySelectorAll(".open:not([name=".concat(d, "])")), e = 0; e < c.length; e++) {
+              var k = c[e];
+              if (k.classList.contains("open")) {
+                0 != k.querySelector(".toolbar-play") ? k.querySelector(".toolbar-play").click() : k.classList.remove("open");
+              }
+            }
+            if (0 != a._currentDocumentCallback) {
+              document.removeEventListener("click", a._currentDocumentCallback);
+              a._currentDocumentCallback = 0;
+            }
+            f.classList.contains("open") ? f.classList.remove("open") : (f.classList.add("open"), b.stopPropagation(), a._currentDocumentCallback = a.documentClick.bind(a, f), document.addEventListener("click", a._currentDocumentCallback));
+          }, !0);
+        }, d = 0; d < b.length; d++) c(d);
+    };
+    c.prototype.bindButtonEvent = function () {
+      var a,
+        b,
+        c,
+        d,
+        e,
+        g,
+        l,
+        n,
+        m = this,
+        p = this._rootElement.querySelector(".layout-menu"),
+        q = this._rootElement.getElementsByClassName("studies-menu")[0],
+        r = this._rootElement.getElementsByClassName("series-menu")[0],
+        t = this._rootElement.getElementsByClassName("sort-menu")[0],
+        v = this._rootElement.getElementsByClassName("close")[0],
+        p = p.querySelectorAll(".dropdown-item"),
+        q = q.querySelectorAll(".dropdown-item"),
+        r = r.querySelectorAll(".dropdown-item"),
+        u;
+      if (t) {
+        u = t.getElementsByClassName("dropdown-item");
+      }
+      try {
+        for (var w = __values(p), x = w.next(); !x.done; x = w.next()) {
+          var y = x.value;
+          y.onclick = function (a) {
+            var b = this.querySelector("i"),
+              c = parseInt(b.getAttribute("data-column")),
+              b = parseInt(b.getAttribute("data-row"));
+            0 == c && 0 == b ? (a = a.srcElement, -1 != a.className.search(/active/) && (c = parseInt(a.getAttribute("data-column")), b = parseInt(a.getAttribute("data-row")), 0 != m.btnlayoutClicked && m.btnlayoutClicked(b, c))) : 0 != m.btnlayoutClicked && m.btnlayoutClicked(b, c);
+          };
+        }
+      } catch (B) {
+        a = {
+          error: B
+        };
+      } finally {
+        try {
+          if (x && !x.done && (b = w.return)) {
+            b.call(w);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+      try {
+        for (var z = __values(q), C = z.next(); !C.done; C = z.next()) {
+          y = C.value;
+          y.addEventListener("click", function () {
+            if (-1 == this.getElementsByTagName("a")[0].className.search(/active/)) {
+              var a = this.getAttribute("data-index"),
+                b = this.getAttribute("studyid");
+              m.setStudyCheck(a, m._studiesData, 0);
+              m.independentBindSeriesEvent();
+              if (0 != m.btnseriesClicked) {
+                m.btnseriesClicked(b, m._studiesData[a].series[0].seriesUid);
+              }
+            }
+          });
+        }
+      } catch (B) {
+        c = {
+          error: B
+        };
+      } finally {
+        try {
+          if (C && !C.done && (d = z.return)) {
+            d.call(z);
+          }
+        } finally {
+          if (c) {
+            throw c.error;
+          }
+        }
+      }
+      try {
+        for (var E = __values(r), F = E.next(); !F.done; F = E.next()) {
+          y = F.value;
+          y.addEventListener("click", function () {
+            if (-1 == this.getElementsByTagName("a")[0].className.search(/active/)) {
+              var a = this.getAttribute("data-index"),
+                b = this.getAttribute("studyid"),
+                c = this.getAttribute("seriesid");
+              m.appendSeriesCheckEffect(a);
+              if (0 != m.btnseriesClicked) {
+                m.btnseriesClicked(b, c);
+              }
+            }
+          });
+        }
+      } catch (B) {
+        e = {
+          error: B
+        };
+      } finally {
+        try {
+          if (F && !F.done && (g = E.return)) {
+            g.call(E);
+          }
+        } finally {
+          if (e) {
+            throw e.error;
+          }
+        }
+      }
+      if (u) {
+        try {
+          for (var D = __values(u), G = D.next(); !G.done; G = D.next()) {
+            y = G.value;
+            y.addEventListener("click", function () {
+              var a = this.getAttribute("data-index");
+              m.appendSortCheckEffect(a);
+              if (0 != a && 0 != m.btnsortClicked) {
+                m.btnsortClicked(a);
+              }
+            });
+          }
+        } catch (B) {
+          l = {
+            error: B
+          };
+        } finally {
+          try {
+            if (G && !G.done && (n = D.return)) {
+              n.call(D);
+            }
+          } finally {
+            if (l) {
+              throw l.error;
+            }
+          }
+        }
+      }
+      v.addEventListener("click", function () {
+        m._rootElement.style.display = "none";
+        m._parentEl.getElementsByClassName("visible-seriestool")[0].style.display = "block";
+        m.btnCloseClicked(!0);
+      });
+    };
+    c.prototype.setSeriesIndex = function (a, b) {
+      this.setStudyCheck(a, this._studiesData, b);
+    };
+    return c;
+  }();
+  e.SeriesToolView = d;
+})(pc || (pc = {}));
+(function (e) {
+  var d = function () {
+    function c() {
+      this._elementToolOptions = {};
+      this._toolType = "dragProbe";
+      var a = {
+        fireOnTouchStart: !0,
+        touchStartCallback: this.touchStartCallback.bind(this),
+        touchEndCallback: this.touchEndCallback.bind(this)
+      };
+      this._dragProbe = cornerstoneTools.simpleMouseButtonTool(this.mouseDownCallback.bind(this), this._toolType);
+      this._dragProbe.strategies = {
+        default: this.defaultStrategy.bind(this),
+        minimal: this.minimalStrategy.bind(this)
+      };
+      this._dragProbe.strategy = this.defaultStrategy.bind(this);
+      this.dragProbeTouch = cornerstoneTools.touchDragTool(this.dragCallback.bind(this), this._toolType, a);
+    }
+    c.prototype.getToolOptions = function (a, b) {
+      return this._elementToolOptions[a] ? (a = this._elementToolOptions[a].find(function (a) {
+        return a.element === b;
+      })) ? a.options : {} : {};
+    };
+    c.prototype.defaultStrategy = function (a) {
+      var b = a.element,
+        c = cornerstone.getEnabledElement(a.element),
+        c = cornerstoneTools.drawing.getNewContext(c.canvas),
+        d = cornerstoneTools.toolColors.getActiveColor(),
+        e = cornerstoneTools.textStyle.getFontSize(),
+        g = this._dragProbe.getConfiguration(),
+        l = Math.round(a.currentPoints.image.x),
+        n = Math.round(a.currentPoints.image.y);
+      0 > l || 0 > n || l >= a.image.columns || n >= a.image.rows || cornerstoneTools.drawing.draw(c, function (c) {
+        g.shadow = !0;
+        cornerstoneTools.drawing.setShadow(c, g);
+        var f;
+        if (a.image.color) {
+          f = cornerstoneTools.getRGBPixels(a.element, l, n, 1, 1);
+          "".concat(l, ", ").concat(n);
+          f = "R: ".concat(f[0], " G: ").concat(f[1], " B: ").concat(f[2], " A: ").concat(f[3]);
+        } else {
+          f = cornerstone.getStoredPixels(a.element, l, n, 1, 1);
+          var k = f[0];
+          f = k * a.image.slope + a.image.intercept;
+          k = cornerstoneTools.calculateSUV(a.image, k);
+          "\u4f4d\u7f6e\uff1a".concat(l, ", ").concat(n);
+          f = "".concat(parseFloat(f.toFixed(3)));
+          if (k) {
+            f += " SUV: ".concat(parseFloat(k.toFixed(3)));
+          }
+        }
+        var k = cornerstone.pixelToCanvas(a.element, {
+            x: a.currentPoints.image.x + 3,
+            y: a.currentPoints.image.y - 3
+          }),
+          h = Utils.vmin2px(6.5),
+          m = Utils.vmin2px(9.1);
+        if (Environment.isMobile) {
+          h = Utils.vmin2px(10);
+          m = Utils.vmin2px(16);
+        }
+        cornerstoneTools.drawing.drawCircle(c, b, k, 6, {
+          color: d
+        }, "canvas");
+        Environment.isDesktop ? cornerstoneTools.drawTextBox(c, [f], k.x + 10, k.y, d) : cornerstoneTools.drawTextBox(c, [f], k.x - h, k.y + e + h / 10 - m, d, {});
+      });
+    };
+    c.prototype.minimalStrategy = function (a) {
+      var b = a.element,
+        c = cornerstone.getEnabledElement(b),
+        d = c.image,
+        c = cornerstoneTools.drawing.getNewContext(c.canvas),
+        e = cornerstoneTools.toolColors.getActiveColor(),
+        g = cornerstoneTools.dragProbe.getConfiguration(),
+        l;
+      !0 === a.isTouchEvent ? l = cornerstone.pageToPixel(b, a.currentPoints.page.x, a.currentPoints.page.y - 4 * cornerstoneTools.textStyle.getFontSize()) : l = cornerstone.pageToPixel(b, a.currentPoints.page.x, a.currentPoints.page.y - cornerstoneTools.textStyle.getFontSize() / 2);
+      0 > l.x || 0 > l.y || l.x >= d.columns || l.y >= d.rows || cornerstoneTools.drawing.draw(c, function (c) {
+        var f, k;
+        cornerstoneTools.drawing.setShadow(c, g);
+        var h = cornerstone.metaData.get("generalSeriesModule", d.imageId),
+          n;
+        if (h) {
+          n = h.modality;
+        }
+        h = "";
+        d.color ? (f = cornerstoneTools.getRGBPixels(b, l.x, l.y, 1, 1), h = "R: ".concat(f[0], " G: ").concat(f[1], " B: ").concat(f[2])) : (f = cornerstone.getStoredPixels(b, l.x, l.y, 1, 1), f = f[0], k = parseFloat((f * a.image.slope + a.image.intercept).toFixed(2)), "CT" === n ? h += "HU: ".concat(k) : "PT" === n ? (h += k, (n = cornerstoneTools.calculateSUV(a.image, f)) && (h += " SUV: ".concat(parseFloat(n.toFixed(2))))) : h += k);
+        n = cornerstone.pixelToCanvas(b, l);
+        f = cornerstoneTools.drawTextBox.textBoxWidth(c, h, 5);
+        !0 === a.isTouchEvent ? (f = -f / 2, k = -cornerstoneTools.textStyle.getFontSize() - 10 - 12) : (f = 12, k = -(cornerstoneTools.textStyle.getFontSize() + 10) / 2);
+        cornerstoneTools.drawing.drawCircle(c, b, n, 6, {
+          color: e
+        }, "canvas");
+        cornerstoneTools.drawTextBox(c, h, n.x + f, n.y + k, e);
+      });
+    };
+    c.prototype.imageRenderedCallback = function () {
+      if (this._dragEventData) {
+        this._dragProbe.strategy(this._dragEventData);
+        this._dragEventData = null;
+      }
+    };
+    c.prototype.dragCallback = function (a) {
+      var b = a.detail,
+        c = Utils.vmin2px(.025 * Math.min(b.image.width, b.image.height));
+      Environment.isPhone ? c = 60 : Environment.isMobile && (c = Utils.vmin2px(30));
+      b.currentPoints.image.x -= c;
+      b.currentPoints.image.y -= c;
+      c = b.element;
+      this._dragEventData = b;
+      cornerstone.updateImage(c);
+      a.preventDefault();
+      a.stopPropagation();
+    };
+    c.prototype.mouseUpCallback = function (a) {
+      a = a.detail;
+      var b = a.element;
+      b.removeEventListener(cornerstone.EVENTS.IMAGE_RENDERED, this.imageRenderedCallback);
+      b.removeEventListener("cornerstonetoolsmousedrag", this.dragCallback);
+      b.removeEventListener("cornerstonetoolsmouseup", this.mouseUpCallback);
+      b.removeEventListener("cornerstonetoolsmouseclick", this.mouseUpCallback);
+      cornerstone.updateImage(a.element);
+    };
+    c.prototype.mouseDownCallback = function (a) {
+      var b = a.detail,
+        c = b.element,
+        d = this.getToolOptions(this._toolType, c);
+      if (cornerstoneTools.isMouseButtonEnabled(b.which, d.mouseButtonMask)) {
+        c.addEventListener(cornerstone.EVENTS.IMAGE_RENDERED, this._imageRenderedCallback);
+        c.addEventListener("cornerstonetoolsmousedrag", this.dragCallback);
+        c.addEventListener("cornerstonetoolsmouseup", this.mouseUpCallback);
+        c.addEventListener("cornerstonetoolsmouseclick", this.mouseUpCallback);
+        this._dragProbe.strategy(b);
+        a.preventDefault();
+        a.stopPropagation();
+      }
+    };
+    c.prototype.touchStartCallback = function (a) {
+      a = a.detail.element;
+      this._imageRenderedCallback = this.imageRenderedCallback.bind(this);
+      a.addEventListener(cornerstone.EVENTS.IMAGE_RENDERED, this._imageRenderedCallback);
+    };
+    c.prototype.touchEndCallback = function (a) {
+      a = a.detail.element;
+      a.removeEventListener(cornerstone.EVENTS.IMAGE_RENDERED, this._imageRenderedCallback);
+      cornerstone.updateImage(a);
+    };
+    return c;
+  }();
+  e.DragProbe = d;
+})(pc || (pc = {}));
+var CobbAngleTool = function () {
+  function e() {
+    this.toolType = "cobbAngle";
+    this.hasIncomplete = !1;
+  }
+  e.prototype.addNewMeasurement = function (d) {
+    var c,
+      a,
+      b = d.element;
+    (a = function (a) {
+      if ((a = cornerstoneTools.getToolState(a, "cobbAngle")) && Array.isArray(a.data)) {
+        return a.data.find(function (a) {
+          return !1 === a.complete;
+        });
+      }
+    }(b)) ? (c = a, c.complete = !0, c.handles.start2 = {
+      x: d.currentPoints.image.x,
+      y: d.currentPoints.image.y,
+      drawnIndependently: !1,
+      highlight: !0,
+      active: !0,
+      allowedOutsideImage: !0
+    }, c.handles.end2 = {
+      x: d.currentPoints.image.x,
+      y: d.currentPoints.image.y,
+      drawnIndependently: !1,
+      highlight: !0,
+      active: !0,
+      allowedOutsideImage: !0
+    }, a = c.handles.end2, this.hasIncomplete = !1) : (c = this.createNewMeasurement(d), a = c.handles.end, cornerstoneTools.addToolState(b, "cobbAngle", c));
+    Environment.isDesktop ? cornerstoneTools.moveNewHandle(d, "cobbAngle", c, a, function () {
+      c.active = !1;
+    }, !1) : Environment.isPad && cornerstoneTools.moveNewHandleTouch(d, "cobbAngle", c, a, function () {
+      c.active = !1;
+    }, 0);
+    cornerstone.updateImage(b);
+  };
+  e.prototype.createNewMeasurement = function (d) {
+    this.hasIncomplete = !0;
+    return {
+      visible: !0,
+      active: !0,
+      color: 0,
+      invalidated: !0,
+      complete: !1,
+      value: "",
+      handles: {
+        start: {
+          x: d.currentPoints.image.x,
+          y: d.currentPoints.image.y,
+          highlight: !0,
+          active: !0,
+          allowedOutsideImage: !0
+        },
+        end: {
+          x: d.currentPoints.image.x,
+          y: d.currentPoints.image.y,
+          highlight: !0,
+          active: !0,
+          allowedOutsideImage: !0
+        },
+        start2: {
+          x: d.currentPoints.image.x,
+          y: d.currentPoints.image.y,
+          highlight: !0,
+          active: !1,
+          drawnIndependently: !0,
+          allowedOutsideImage: !0
+        },
+        end2: {
+          x: d.currentPoints.image.x + 1,
+          y: d.currentPoints.image.y,
+          highlight: !0,
+          active: !1,
+          drawnIndependently: !0,
+          allowedOutsideImage: !0
+        },
+        textBox: {
+          active: !1,
+          hasMoved: !1,
+          movesIndependently: !1,
+          drawnIndependently: !0,
+          allowedOutsideImage: !0,
+          hasBoundingBox: !0
+        }
+      }
+    };
+  };
+  e.prototype.pointNearTool = function (d, c, a) {
+    function b(a, b, c, d) {
+      a = {
+        start: cornerstone.pixelToCanvas(a, b),
+        end: cornerstone.pixelToCanvas(a, c)
+      };
+      return cornerstoneMath.lineSegment.distanceToPoint(a, d);
+    }
+    return !1 === c.visible || this.hasIncomplete ? !1 : 25 > b(d, c.handles.start, c.handles.end, a) || 25 > b(d, c.handles.start2, c.handles.end2, a);
+  };
+  e.prototype.onImageRendered = function (d) {
+    function c(a, b, c) {
+      var f;
+      1 == c ? f = {
+        x: (a.start.x + a.end.x) / 2,
+        y: (a.start.y + a.end.y) / 2
+      } : 2 == c && (f = {
+        x: (a.start2.x + a.end2.x) / 2,
+        y: (a.start2.y + a.end2.y) / 2
+      });
+      return cornerstone.pixelToCanvas(b, f);
+    }
+    function a(a, c, f, d, e, k, h, l, g, n) {
+      var m = cornerstone.pixelToCanvas(c, f);
+      if (g) {
+        m.x += g;
+      }
+      f.boundingBox = cornerstoneTools.drawTextBox(a, d, m.x, m.y, h, {
+        centering: {
+          x: !1,
+          y: n
+        }
+      });
+      if (f.hasMoved) {
+        d = k(e).map(function (a) {
+          return cornerstone.pixelToCanvas(c, a);
+        });
+        b(d, m, f.boundingBox, a, h, l);
+      }
+    }
+    function b(a, b, c, f, d, e) {
+      0 < a.length ? a = cornerstoneMath.point.findClosestPoint(a, b) : a = b;
+      c = cornerstoneMath.point.findClosestPoint([{
+        x: c.left + c.width / 2,
+        y: c.top
+      }, {
+        x: c.left,
+        y: c.top + c.height / 2
+      }, {
+        x: c.left + c.width / 2,
+        y: c.top + c.height
+      }, {
+        x: c.left + c.width,
+        y: c.top + c.height / 2
+      }], a);
+      cornerstoneTools.drawing.drawLine(f, 0, a, c, {
+        color: d,
+        lineWidth: e,
+        lineDash: [2, 3]
+      }, "canvas");
+    }
+    function f(a) {
+      return [a.start, {
+        x: (a.start.x + a.end.x) / 2,
+        y: (a.start.y + a.end.y) / 2
+      }, a.end];
+    }
+    var e = d.detail,
+      h = cornerstoneTools.getToolState(e.element, "cobbAngle");
+    if (h) {
+      var g = cornerstoneTools.drawing.getNewContext(e.canvasContext.canvas),
+        l = cornerstoneTools.toolStyle.getToolWidth(),
+        n = cornerstoneTools.textStyle.getFont();
+      d = cornerstone.getEnabledElement(e.element).image;
+      var m = cornerstone.metaData.get("imagePlaneModule", d.imageId),
+        p,
+        q;
+      m ? (p = m.rowPixelSpacing || m.rowImagePixelSpacing, q = m.columnPixelSpacing || m.colImagePixelSpacing) : (p = d.rowPixelSpacing, q = d.columnPixelSpacing);
+      d = function (b) {
+        var d = h.data[b];
+        if (!1 === d.visible) {
+          return "continue";
+        }
+        cornerstoneTools.drawing.draw(g, function (b) {
+          cornerstoneTools.drawing.setShadow(b, {
+            shadowColor: "#000000",
+            shadowOffsetX: 1,
+            shadowOffsetY: 1
+          });
+          var k = cornerstoneTools.toolColors.getColorIfActive(d);
+          cornerstoneTools.drawing.drawLine(b, e.element, d.handles.start, d.handles.end, {
+            color: k
+          }, 0);
+          if (d.complete) {
+            var h = c(d.handles, e.element, 1),
+              g = c(d.handles, e.element, 2);
+            cornerstoneTools.drawing.drawLine(b, 0, h, g, {
+              color: k,
+              lineWidth: l,
+              lineDash: [2, 3]
+            }, "canvas");
+            cornerstoneTools.drawing.drawLine(b, e.element, d.handles.start2, d.handles.end2, {
+              color: k
+            }, 0);
+          }
+          cornerstoneTools.drawHandles(b, e, d.handles, k, {
+            color: k,
+            handleRadius: 6,
+            drawHandlesIfActive: !1
+          });
+          b.fillStyle = k;
+          var h = (Math.ceil(d.handles.start.x) - Math.ceil(d.handles.end.x)) * q,
+            g = (Math.ceil(d.handles.start.y) - Math.ceil(d.handles.end.y)) * p,
+            m = (Math.ceil(d.handles.start2.x) - Math.ceil(d.handles.end2.x)) * q,
+            r = (Math.ceil(d.handles.start2.y) - Math.ceil(d.handles.end2.y)) * p,
+            h = Math.acos(Math.abs((h * m + g * r) / (Math.sqrt(h * h + g * g) * Math.sqrt(m * m + r * r)))),
+            h = 180 / Math.PI * h,
+            g = Math.pow(10, 2);
+          d.rAngle = Math.round(h * g) / g;
+          d.invalidated = !1;
+          h = d.rAngle;
+          Number.isNaN(h) || (p && q ? g = "" : g = " (isotropic)", h = h.toString() + String.fromCharCode(176) + g, d.value = h);
+          h = d.value;
+          d.handles.textBox.hasMoved || (g = (d.handles.start.x + d.handles.end.x) / 2, m = (d.handles.start.y + d.handles.end.y) / 2 - 10, b.font = n, d.handles.textBox.x = g, d.handles.textBox.y = m);
+          a(b, e.element, d.handles.textBox, h, d.handles, f, k, l, 0, !0);
+        });
+      };
+      for (m = 0; m < h.data.length; m++) d(m);
+    }
+  };
+  return e;
+}();
+cornerstoneTools.cobbAngle = cornerstoneTools.mouseButtonTool(new CobbAngleTool());
+cornerstoneTools.cobbAngleTouch = cornerstoneTools.touchTool(new CobbAngleTool());
+(function (e) {
+  var d = function () {
+    function c() {
+      this._active = !1;
+    }
+    c.prototype.drawBorder = function (a) {
+      var b = this;
+      if (0 != this._active) {
+        var c = a.detail;
+        a = c.element;
+        var d = c.image,
+          c = c.viewport,
+          e = c.scale,
+          c = c.translation,
+          g = a.clientWidth / 2 + c.x * e,
+          l = a.clientHeight / 2 + c.y * e;
+        a = a.querySelector("canvas");
+        a = this.getNewContext(a);
+        this.draw(a, function (a) {
+          var c = Math.floor(g - d.width * e * 1 / 2),
+            f = Math.floor(l - d.height * e * 1 / 2),
+            k = Math.floor(d.width * e),
+            h = Math.floor(d.height * e);
+          b.path(a, {
+            color: "greenyellow",
+            lineWidth: 1,
+            lineDash: [4]
+          }, function (a) {
+            a.rect(c, f, k, h);
+          });
+        });
+      }
+    };
+    c.prototype.setActive = function (a) {
+      this._active = a;
+    };
+    c.prototype.clear = function (a) {
+      this._active = !1;
+      var b = a.target.parentElement,
+        c = !1;
+      cornerstone.getEnabledElements().forEach(function (a) {
+        if (a.element == b && 0 != a.image) {
+          c = !0;
+        }
+      });
+      if (c) {
+        cornerstone.updateImage(b);
+      }
+    };
+    c.prototype.getNewContext = function (a) {
+      a = a.getContext("2d");
+      a.setTransform(1, 0, 0, 1, 0, 0);
+      return a;
+    };
+    c.prototype.draw = function (a, b) {
+      a.save();
+      b(a);
+      a.restore();
+    };
+    c.prototype.path = function (a, b, c) {
+      var f = b.color,
+        d = b.lineWidth;
+      b = b.lineDash;
+      a.beginPath();
+      a.strokeStyle = f || a.strokeStyle;
+      a.lineWidth = d || 0 === d && 2 || a.lineWidth;
+      if (b) {
+        a.setLineDash(b);
+      }
+      c(a);
+      a.stroke();
+      if (b) {
+        a.setLineDash([]);
+      }
+    };
+    return c;
+  }();
+  e.ImageBorder = d;
+})(pc || (pc = {}));
+(function (e) {
+  var d = function () {
+    function c(a) {
+      this._hammerOptions = {
+        domEvents: !0
+      };
+      this._currentFrame = 0;
+      this._currentSpeed = 1;
+      this._sliderFlag = {};
+      this._parentEl = a;
+      this.loadCss();
+      this.loadTemplate();
+    }
+    Object.defineProperty(c.prototype, "currentFrame", {
+      set: function (a) {
+        this._currentFrame = a;
+        if (0 > this._currentFrame) {
+          this._currentFrame = 0;
+        }
+        if (this._currentFrame >= this._totalFrame) {
+          this._currentFrame = this._totalFrame - 1;
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    c.prototype.isInclude = function (a) {
+      for (var b = document.getElementsByTagName("link"), c = 0; c < b.length; c++) if (-1 != b[c].href.indexOf(a)) {
+        return !0;
+      }
+      return !1;
+    };
+    c.prototype.loadCss = function () {
+      this.isInclude("css/pc/mutiFrameToolbar.css") || Utils.addCssByLink("css/pc/mutiFrameToolbar.css");
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this;
+      MessageProxy.getTemplate("templates/pc/mutiFrameToolbar.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u5e8f\u5217\u5217\u8868\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+    };
+    c.prototype.initSlider = function (a) {
+      var b = this._el.querySelector(".dsa-button");
+      b.style.left = "0px";
+      b.style.opacity = "0.8";
+      this.setFrameNumText();
+      "pc" == a ? b.addEventListener("mousedown", this.dsaButtonMouseDown.bind(this)) : "pad" == a && b.addEventListener("touchstart", this.dsaButtonMouseDown.bind(this));
+    };
+    c.prototype.dsaButtonMouseDown = function (a) {
+      if (!this.isPlaying()) {
+        var b = this._el.querySelector(".dsa-button");
+        b.style.opacity = "1";
+        a instanceof TouchEvent ? this._sliderFlag.pressX = a.touches[0].clientX : this._sliderFlag.pressX = a.clientX;
+        this._sliderFlag.pressLeft = parseFloat(b.style.left);
+        this._sliderFlag.moveCallback = this.dsaControllerMouseMove.bind(this);
+        this._sliderFlag.upCallback = this.dsaControllerMouseUp.bind(this);
+        Environment.isDesktop ? (this._el.addEventListener("mousemove", this._sliderFlag.moveCallback), document.addEventListener("mousemove", this._sliderFlag.moveCallback), document.addEventListener("mouseup", this._sliderFlag.upCallback)) : (this._el.addEventListener("touchmove", this._sliderFlag.moveCallback), document.addEventListener("touchmove", this._sliderFlag.moveCallback), document.addEventListener("touchend", this._sliderFlag.upCallback));
+      }
+    };
+    c.prototype.dsaControllerMouseUp = function () {
+      var a = this._el.querySelector(".dsa-button");
+      this._el.removeEventListener("mousemove", this._sliderFlag.moveCallback);
+      document.removeEventListener("mousemove", this._sliderFlag.moveCallback);
+      document.removeEventListener("mouseup", this._sliderFlag.upCallback);
+      a.style.opacity = "0.8";
+      this._sliderFlag = {};
+    };
+    c.prototype.dsaControllerMouseMove = function (a) {
+      var b = this._el.querySelector(".dsa-slider"),
+        c = this._el.querySelector(".dsa-button"),
+        b = b.offsetWidth - 26;
+      a = this._sliderFlag.pressLeft + (a instanceof TouchEvent ? a.touches[0].clientX - this._sliderFlag.pressX : a.clientX - this._sliderFlag.pressX);
+      0 >= a ? a = 0 : a >= b && (a = b);
+      if (0 != this._perImageWidth) {
+        b = Math.floor(a / this._perImageWidth);
+        this._sliderFlag.lastIndex != b && b + 1 <= this._totalFrame && (this.currentFrame = this._sliderFlag.lastIndex = b, this.setFrameNumText(), b = this._currentImageId + "?frame=" + this._currentFrame, 0 != this.showImage && this.showImage(b));
+      }
+      c.style.left = "".concat(a, "px");
+    };
+    c.prototype.setFrameNumText = function () {
+      this._el.querySelector(".num").innerText = "".concat(this._currentFrame + 1, "/").concat(this._totalFrame);
+    };
+    c.prototype.setButtonPosition = function () {
+      this._el.querySelector(".dsa-button").style.left = "".concat(this._currentFrame * this._perImageWidth, "px");
+    };
+    c.prototype.stopDefaultEvent = function (a) {
+      "pc" == a ? (this._el.addEventListener("wheel", function (a) {
+        a.stopPropagation();
+        a.preventDefault();
+      }), this._el.addEventListener("mousedown", function (a) {
+        a.stopPropagation();
+        a.preventDefault();
+      }), this._el.addEventListener("mousemove", function (a) {
+        a.stopPropagation();
+        a.preventDefault();
+      })) : "pad" == a && (this._el.addEventListener("touchstart", function (a) {
+        a.stopPropagation();
+        a.preventDefault();
+      }), this._el.addEventListener("touchmove", function (a) {
+        a.stopPropagation();
+        a.preventDefault();
+      }), this._el.addEventListener("touchend", function (a) {
+        a.stopPropagation();
+        a.preventDefault();
+      }));
+    };
+    c.prototype.initView = function (a) {
+      a = new DOMParser().parseFromString(a, "text/html");
+      var b = document.createElement("div");
+      b.innerHTML = a.querySelector("#mutiFrameToolbar").innerHTML;
+      this._el = b.querySelector(".mutiFrameToolbar-container");
+      this._parentEl.appendChild(this._el);
+      this._el.style.display = "none";
+      Environment.isDesktop ? this.bindButtonEvent("pc") : this.bindButtonEvent("pad");
+    };
+    c.prototype.bindButtonEvent = function (a) {
+      this.stopDefaultEvent(a);
+      this.stopAndStart(a);
+      this.speed(a);
+      this.initSlider(a);
+    };
+    c.prototype.setStop = function () {
+      if (0 != this._el) {
+        var a = this._el.querySelector(".play"),
+          b = a.querySelector("i");
+        if ("stop" == a.getAttribute("data-state")) {
+          b.classList.remove("icon-small-stop");
+          b.classList.add("icon-small-play");
+          a.setAttribute("data-state", "play");
+        }
+        clearInterval(this._currentTimer);
+      }
+    };
+    c.prototype.resetMutiFrameState = function (a, b) {
+      var c = this;
+      this.setStop();
+      this._currentFrame = 0;
+      this._currentSpeed = 1;
+      this._currentTimer = 0;
+      this._currentImageId = a;
+      this._totalFrame = b;
+      var d = setInterval(function () {
+        if (0 != c._el) {
+          var a = c._el.querySelector(".dsa-slider").offsetWidth;
+          c._perImageWidth = parseFloat(((a - 26) / c._totalFrame).toFixed(2));
+          clearInterval(d);
+        }
+      }, 500);
+      1 == b ? this.hide() : 1 != b && this.show();
+    };
+    c.prototype.stopAndStartCallback = function (a) {
+      this.addActive(a);
+      var b = a.getAttribute("data-state");
+      "play" == b ? this.autoPlay(0) : "stop" == b && this.setStop();
+      this.removeActive(a);
+    };
+    c.prototype.stopAndStart = function (a) {
+      var b = this._el.querySelector(".play");
+      if ("pc" == a) {
+        b.addEventListener("click", this.stopAndStartCallback.bind(this, b));
+      } else {
+        if ("pad" == a) {
+          new Hammer(b, this._hammerOptions).on("tap", this.stopAndStartCallback.bind(this, b));
+        }
+      }
+    };
+    c.prototype.removeSpeedCheckStyle = function () {
+      for (var a = this._el.querySelector(".mutiFrameImage-menu").querySelectorAll("li"), b = 0; b < a.length; b++) {
+        var c = a[b].querySelector("i");
+        if (c.classList.contains("icon-check-square")) {
+          c.classList.remove("icon-check-square");
+          c.classList.add("icon-uncheck-square");
+        }
+      }
+    };
+    c.prototype.isPlaying = function () {
+      return "stop" == this._el.querySelector(".play").getAttribute("data-state") ? !0 : !1;
+    };
+    c.prototype.menuLiSpeedCallback = function (a) {
+      this.removeSpeedCheckStyle();
+      var b = parseFloat(a.getAttribute("data-num"));
+      a = a.querySelector("i");
+      if (a.classList.contains("icon-uncheck-square")) {
+        a.classList.remove("icon-uncheck-square");
+        a.classList.add("icon-check-square");
+      }
+      this._currentSpeed = b;
+      if (this.isPlaying()) {
+        clearInterval(this._currentTimer);
+        this.autoPlay(0);
+      }
+    };
+    c.prototype.speedButtonCallback = function (a) {
+      this.addActive(a);
+      a.classList.contains("open") ? a.classList.remove("open") : a.classList.add("open");
+      this.removeActive(a);
+    };
+    c.prototype.speed = function (a) {
+      for (var b = this._el.querySelector(".speed"), c = this._el.querySelector(".mutiFrameImage-menu").querySelectorAll("li"), d = 0; d < c.length; d++) {
+        var e = c[d];
+        if ("pc" == a) {
+          e.addEventListener("click", this.menuLiSpeedCallback.bind(this, e));
+        } else {
+          if ("pad" == a) {
+            var g = new Hammer(e, this._hammerOptions);
+            g.on("tap", this.menuLiSpeedCallback.bind(this, e));
+          }
+        }
+      }
+      "pc" == a ? b.addEventListener("click", this.speedButtonCallback.bind(this, b)) : "pad" == a && (g = new Hammer(b, this._hammerOptions), g.on("tap", this.speedButtonCallback.bind(this, b)));
+    };
+    c.prototype.addActive = function (a) {
+      a.classList.contains("active") || a.classList.add("active");
+    };
+    c.prototype.removeActive = function (a) {
+      setTimeout(function () {
+        a.classList.remove("active");
+      }, 200);
+    };
+    c.prototype.autoPlay = function (a) {
+      var b = this;
+      setTimeout(function () {
+        var a = b._el.querySelector(".play"),
+          c = a.querySelector("i");
+        c.classList.remove("icon-small-play");
+        c.classList.add("icon-small-stop");
+        a.setAttribute("data-state", "stop");
+        clearInterval(b._currentTimer);
+        b._currentTimer = setInterval(function () {
+          b._currentFrame + 1 == b._totalFrame ? b.currentFrame = 0 : b.currentFrame = b._currentFrame + 1;
+          b.setFrameNumText();
+          b.setButtonPosition();
+          var a = b._currentImageId + "?frame=" + b._currentFrame;
+          if (0 != b.showImage) {
+            b.showImage(a);
+          }
+        }, 1E3 / b._currentSpeed);
+      }, a);
+    };
+    c.prototype.show = function () {
+      var a = this,
+        b = setInterval(function () {
+          if (0 != a._el) {
+            "block" != a._el.style.display && (a._el.style.display = "block");
+            clearInterval(b);
+          }
+        }, 100);
+    };
+    c.prototype.hide = function () {
+      if ("none" != this._el.style.display) {
+        this._el.style.display = "none";
+      }
+    };
+    return c;
+  }();
+  e.mutiFrameToolbar = d;
+})(pc || (pc = {}));
+(function (e) {
+  var d = function () {
+    return function () {
+      this._wwwcSynchronizer = new cornerstoneTools.Synchronizer("cornerstoneimagerendered", cornerstoneTools.wwwcSynchronizer);
+      this._panZoomSynchronizer = new cornerstoneTools.Synchronizer("cornerstoneimagerendered", cornerstoneTools.panZoomSynchronizer);
+    };
+  }();
+  e.ImageViewManger = d;
+})(pc || (pc = {}));
+__values = this && this.__values || function (e) {
+  var d = "function" === typeof Symbol && Symbol.iterator,
+    c = d && e[d],
+    a = 0;
+  if (c) {
+    return c.call(e);
+  }
+  if (e && "number" === typeof e.length) {
+    return {
+      next: function () {
+        if (e && a >= e.length) {
+          e = 0;
+        }
+        return {
+          value: e && e[a++],
+          done: !e
+        };
+      }
+    };
+  }
+  throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+(function (e) {
+  var d = function () {
+    function c(a) {
+      var b = this;
+      this.cornerFontSize = 1.6;
+      this._imageViewOptions = {};
+      this.ifscroll = this.ifCompare = !1;
+      this._clientPoint = {
+        clientX: 0,
+        clientY: 0
+      };
+      this.changeSeries = !1;
+      this._actionTag = ActionTag.none;
+      this._firstRender = !0;
+      this.layoutSuccess = this.reRender = !1;
+      this.el = document.createElement("div");
+      this.el.setAttribute("name", "image");
+      this.el.style.position = "relative";
+      this.el.style.height = "100%";
+      this.el.style.width = "100%";
+      a.appendChild(this.el);
+      this._cornerInfoView = new e.CornerInfoView(this.el);
+      this._orientationMarker = new e.OrientationMarker(this.el);
+      this._dragProbe = new e.DragProbe();
+      this._imageBorder = new e.ImageBorder();
+      this._imageViewOptions.positionlineAct = !0;
+      if (Environment.isDesktop) {
+        window.addEventListener("resize", function () {
+          b.resize();
+        });
+        document.addEventListener(Global.events.contextMenu.eventName, this.contentMenuPop.bind(this));
+      }
+      this.el.addEventListener("cornerstonetoolstouchdrag", this.touchdrag.bind(this));
+      this.el.addEventListener("cornerstonetoolsmousedrag", this.touchdrag.bind(this));
+      this.el.addEventListener("cornerstonetoolstouchstart", this.padPanTouchStart.bind(this));
+      this.el.addEventListener("cornerstonetoolstouchend", this.padPanTouchEnd.bind(this));
+      this.el.addEventListener("cornerstoneimagerendered", this.imageRenderedCallback.bind(this));
+      this.el.addEventListener("cornerstonetoolsmousedownactivate", this.mousedownactivate.bind(this));
+      this.el.addEventListener("cornerstonetoolsmeasurementmodified", this.mousedownactivate.bind(this));
+      this.el.addEventListener("cornerstonetoolsmousedoubleclick", this.mouseDbClick.bind(this));
+      this.el.addEventListener("cornerstonetoolsdoubletap", this.mouseDbClick.bind(this));
+      this.el.addEventListener("mousedown", this.mousedown.bind(this));
+      this.el.addEventListener("mouseup", this.mouseup.bind(this));
+      this.el.addEventListener("touchstart", this.touchstart.bind(this));
+      this.el.addEventListener("touchmove", this.touchmove.bind(this));
+      this.el.addEventListener("cornerstonenewimage", this.newImage.bind(this));
+      this.el.addEventListener("mouseenter", function () {
+        b.el.style.cursor = b._cursorStyle || "default";
+      });
+      this.el.addEventListener("mouseleave", function () {
+        b.el.style.cursor = "default";
+      });
+      var c = this,
+        d = new MutationObserver(function (a) {
+          a.forEach(function (a) {
+            if (0 < a.addedNodes.length) {
+              for (var b = 0; b < a.addedNodes.length; b++) {
+                var f = a.addedNodes[b];
+                if ("DIV" == f.nodeName && "image" == f.getAttribute("name")) {
+                  c.layoutSuccess = !0;
+                  d.disconnect();
+                }
+              }
+            }
+          });
+        });
+      if (this.getChromeVersion()) {
+        49 >= this.getChromeVersion() ? c.layoutSuccess = !0 : d.observe(a, {
+          attributes: !0,
+          childList: !0,
+          subtree: !0
+        });
+      }
+      if (1 == navigator.userAgent.includes("Firefox")) {
+        c.layoutSuccess = !0;
+      }
+      if (Environment.isPad) {
+        c.layoutSuccess = !0;
+      }
+      a.appendChild(this.el);
+    }
+    Object.defineProperty(c.prototype, "actionTag", {
+      get: function () {
+        return this._actionTag;
+      },
+      set: function (a) {
+        this._actionTag = a;
+        this.activateTools();
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "imageViewOptions", {
+      get: function () {
+        return this._imageViewOptions;
+      },
+      set: function (a) {
+        this._imageViewOptions = Object.assign(this._imageViewOptions, a);
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "currentImage", {
+      get: function () {
+        return this._currentImage;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "viewport", {
+      get: function () {
+        if (0 != this.isEnabledElement()) {
+          return cornerstone.getViewport(this.el);
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    c.prototype.getChromeVersion = function () {
+      for (var a = navigator.userAgent.split(" "), b = "", c = 0; c < a.length; c++) if (/chrome/i.test(a[c])) {
+        b = a[c];
+      }
+      return b ? Number(b.split("/")[1].split(".")[0]) : !1;
+    };
+    c.prototype.attachImage = function (a) {
+      this._currentImage = a;
+      if (Environment.isPad) {
+        1 == this._currentImage.series.imageTotal ? this._turnPageForPad && this._turnPageForPad.hide() : this._turnPageForPad && this._turnPageForPad.show();
+      }
+    };
+    c.prototype.contentMenuPop = function (a) {
+      var b = this;
+      a = a.detail;
+      if (a.target == this.el) {
+        a.action == Global.events.contextMenu.saveAsJpg ? html2canvas(this.el).then(function (a) {
+          a = a.toDataURL("image/jpeg");
+          a = b.base64ToBlob(a);
+          a = URL.createObjectURL(a);
+          Utils.downLoadUrl(a, b.currentImage.series.study.patientName);
+        }) : a.action == Global.events.contextMenu.saveAsDicom && MessageProxy.downloadImageFromFAS(this.currentImage, function (a) {
+          if (1 == a.imageInfo.isDicom) {
+            var b = new Blob([a.data], {
+                type: "x-lml/x-evm"
+              }),
+              b = URL.createObjectURL(b);
+            Utils.downLoadUrl(b, a.fileName);
+          }
+        });
+      }
+    };
+    c.prototype.base64ToBlob = function (a) {
+      var b = a.split(";base64,");
+      a = b[0].split(":")[1];
+      for (var b = window.atob(b[1]), c = b.length, d = new Uint8Array(c), e = 0; e < c; ++e) d[e] = b.charCodeAt(e);
+      return new Blob([d], {
+        type: a
+      });
+    };
+    c.prototype.mouseDbClick = function () {
+      if (0 != this.maximizing) {
+        this.maximizing(this.currentImage.index);
+      }
+    };
+    c.prototype.resetCursorStyle = function () {
+      this.el.style.cursor = this._cursorStyle || "default";
+      if (0 != this._resetCursorStyleOnMouseUp) {
+        this.el.removeEventListener("mouseup", this._resetCursorStyleOnMouseUp);
+        this._resetCursorStyleOnMouseUp = 0;
+      }
+    };
+    c.prototype.mousedown = function (a) {
+      if (2 == a.which) {
+        this.el.style.cursor = "move";
+        this._resetCursorStyleOnMouseUp = this.resetCursorStyle.bind(this);
+        this.el.addEventListener("mouseup", this._resetCursorStyleOnMouseUp);
+      } else {
+        if (3 == a.which) {
+          var b = document.location.origin,
+            c = document.location.pathname,
+            c = c.substring(0, c.lastIndexOf("/"));
+          this.el.style.cursor = "url('".concat(b).concat(c, "/images/cur_wl.png') 5 5, auto");
+          this._resetCursorStyleOnMouseUp = this.resetCursorStyle.bind(this);
+          this.el.addEventListener("mouseup", this._resetCursorStyleOnMouseUp);
+        }
+      }
+      if (this.ifCompare) {
+        this._clientPoint.clientX = a.clientX;
+        this._clientPoint.clientY = a.clientY;
+      }
+    };
+    c.prototype.mousedownactivate = function () {
+      this._imageBorder.setActive(!0);
+    };
+    c.prototype.mouseup = function (a) {
+      this._imageBorder.clear(a);
+      !this.ifCompare || this.ifscroll || !this.hasCornerstoneCanvas() || this.actionTag != ActionTag.wwwl && this.actionTag != ActionTag.zoom && this.actionTag != ActionTag.pan || !this.ifCompare || 0 == this.sendViewPort || a.clientX == this._clientX && a.clientY == this._clientY || (a = cornerstone.getViewport(this.el), this.sendViewPort(a, this.actionTag));
+    };
+    c.prototype.touchstart = function (a) {
+      this._clientPoint.clientX = a.targetTouches[0].pageX;
+      this._clientPoint.clientY = a.targetTouches[0].pageY;
+    };
+    c.prototype.touchmove = function (a) {
+      this.actionTag != ActionTag.wwwl && this.actionTag != ActionTag.zoom && this.actionTag != ActionTag.pan || !this.ifCompare || 0 == this.sendViewPort || a.targetTouches[0].pageX == this._clientX && a.targetTouches[0].pageY == this._clientY || (a = cornerstone.getViewport(this.el), this.sendViewPort(a, this.actionTag));
+    };
+    c.prototype.imageRenderedCallback = function (a) {
+      if (this.actionTag != ActionTag.annoDeleteAll && this.actionTag != ActionTag.annoDeleteSelected && this.actionTag.includes("anno")) {
+        this._imageBorder.drawBorder(a);
+      }
+      isNaN(a.detail.viewport.voi.windowCenter) || (a.detail.viewport.voi.windowCenter = parseInt(a.detail.viewport.voi.windowCenter));
+      var b = Math.round(a.detail.viewport.voi.windowWidth).toString(),
+        c = Math.round(a.detail.viewport.voi.windowCenter).toString(),
+        d = a.detail.viewport.scale.toFixed(2).toString();
+      if (0 != this._curImageCornerInfo) {
+        this._curImageCornerInfo.windowCenter = c;
+        this._curImageCornerInfo.windowWidth = b;
+        this._curImageCornerInfo.zoomFactor = d;
+        this._cornerInfoView.showInfo(this._currentImage, this._curImageCornerInfo);
+        this.hideCornerInfo();
+      }
+      this.imageRendered(a);
+    };
+    c.prototype.touchdrag = function (a) {
+      if (this.ifscroll) {
+        this.deactivateTools();
+        var b = a.detail,
+          c = b.element,
+          d = cornerstoneTools.getToolOptions("stackScroll", c),
+          e = d.deltaY || 0,
+          e = e + b.deltaPoints.page.y,
+          b = Math.max(2, c.offsetHeight / Math.max(this._currentImage.series.imageTotal, 8));
+        Math.abs(e) >= b ? (0 < Math.round(e / b) ? this.positionImage("down") : this.positionImage("up"), d.deltaY = e % b) : d.deltaY = e;
+        cornerstoneTools.setToolOptions("stackScroll", c, d);
+        a.preventDefault();
+        a.stopPropagation();
+      }
+    };
+    c.prototype.newImage = function () {
+      if (0 != this._currentImage && 1 == this._imageViewOptions.positionlineAct) {
+        this.getScreenElements().forEach(function (a) {
+          var b = !1;
+          cornerstone.getEnabledElements().forEach(function (c) {
+            if (c.element == a.el && 0 != c.image) {
+              b = !0;
+              c.data.render = !0;
+            }
+          });
+          if (b) {
+            cornerstone.updateImage(a.el);
+          }
+        });
+      }
+    };
+    c.prototype.imageRendered = function (a) {
+      var b = this,
+        c = a.detail,
+        d = cornerstoneTools.referenceLines.renderActiveReferenceLine,
+        e = c.canvasContext.canvas.getContext("2d");
+      cornerstone.setToPixelCoordinateSystem(c.enabledElement, e, 1);
+      if (1 == this._imageViewOptions.positionlineAct) {
+        a = this.getScreenElements();
+        var g = [];
+        a.forEach(function (a) {
+          if (0 != a.currentImage && 0 != a.currentImage.series) {
+            a = a.currentImage.series.index;
+            g.includes(a) || g.push(a);
+          }
+        });
+        1 == g.length ? a.forEach(function (a) {
+          var b;
+          cornerstone.getEnabledElements().forEach(function (c) {
+            if (c.element == a.el && 0 != c.image) {
+              b = c;
+            }
+          });
+          if (0 != b && 1 == b.data.render) {
+            b.data = {};
+            cornerstone.updateImage(a.el);
+          }
+        }) : a.forEach(function (a) {
+          var f;
+          cornerstone.getEnabledElements().forEach(function (b) {
+            if (b.element == a.el && 0 != b.image && 0 != b.image.data) {
+              var c = b.image.data.string("x00080060"),
+                d = b.image.data.string("x00080008");
+              c.includes("CT") ? d.includes("LOCALIZER") || (f = b) : f = b;
+            }
+          });
+          if (0 != f) {
+            c.enabledElement.image.data.string("x00080060").includes("MR") ? 0 != b.seriesIsFocus && 0 == b.seriesIsFocus() && d(e, c, b.el, f.element) : d(e, c, b.el, f.element);
+          }
+        });
+      }
+    };
+    c.prototype.hasCornerstoneCanvas = function () {
+      return 0 == this.el.querySelectorAll(".cornerstone-canvas").length ? !1 : !0;
+    };
+    c.prototype.onScaleChanged = function (a) {
+      var b = cornerstone.getViewport(this.el),
+        c = cornerstoneTools.zoom.getConfiguration();
+      a = Math.pow(1.7, Math.log(b.scale) / Math.log(1.7) + a);
+      c.maxScale && a > c.maxScale ? b.scale = c.maxScale : c.minScale && a < c.minScale ? b.scale = c.minScale : b.scale = a;
+      cornerstone.setViewport(this.el, b);
+      if (1 == this.ifCompare && 0 != this.sendViewPort) {
+        this.sendViewPort(b, ActionTag.zoom);
+      }
+    };
+    c.prototype.resize = function () {
+      if (0 != this.isEnabledElement()) {
+        var a = cornerstone.getViewport(this.el),
+          b = a.translation.x,
+          c = a.translation.y;
+        cornerstone.resize(this.el);
+        a = cornerstone.getViewport(this.el);
+        a.translation.x = b;
+        a.translation.y = c;
+        cornerstone.setViewport(this.el, a);
+      }
+    };
+    c.prototype.activateTools = function () {
+      var a = this.el;
+      if (this.hasCornerstoneCanvas()) {
+        this.deactivateTools();
+        this._firstRender && (this._firstRender = !1);
+        if (0 == this._imageViewOptions.annotationAct) {
+          cornerstoneTools.arrowAnnotate.disable(this.el);
+          cornerstoneTools.length.disable(this.el);
+          cornerstoneTools.rectangleRoi.disable(this.el);
+          cornerstoneTools.freehand.disable(this.el);
+          cornerstoneTools.ellipticalRoi.disable(this.el);
+          cornerstoneTools.simpleAngle.disable(this.el);
+          cornerstoneTools.textMarker.disable(this.el);
+        } else {
+          Environment.isPad ? (cornerstoneTools.panMultiTouch.activate(a), cornerstoneTools.zoomTouchPinch.activate(a)) : (cornerstoneTools.wwwc.activate(a, 4), cornerstoneTools.pan.activate(a, 2));
+          var b = "";
+          switch (Global.actionTag) {
+            case ActionTag.wwwl:
+              {
+                b = "cur_wl.png";
+                cornerstoneTools.wwwc.activate(a, 1);
+                cornerstoneTools.wwwcTouchDrag.activate(a);
+                break;
+              }
+            case ActionTag.pan:
+              {
+                b = "move";
+                cornerstoneTools.pan.activate(a, 1);
+                cornerstoneTools.panTouchDrag.activate(a);
+                break;
+              }
+            case ActionTag.zoom:
+              {
+                cornerstoneTools.zoom.activate(a, 1);
+                cornerstoneTools.zoomTouchPinch.activate(a);
+                break;
+              }
+            case ActionTag.magnifier:
+              {
+                cornerstoneTools.magnify.activate(a, 1);
+                cornerstoneTools.magnifyTouchDrag.activate(a);
+                break;
+              }
+            case ActionTag.ctValue:
+              {
+                cornerstoneTools.dragProbe.strategy = this._dragProbe.defaultStrategy.bind(this._dragProbe);
+                cornerstoneTools.dragProbe.activate(a, 1);
+                cornerstoneTools.dragProbe.setConfiguration({
+                  shadow: !0
+                });
+                this._dragProbe.dragProbeTouch.activate(a);
+                break;
+              }
+            case ActionTag.annoArrow:
+              {
+                cornerstoneTools.arrowAnnotate.activate(a, 1);
+                cornerstoneTools.arrowAnnotateTouch.activate(a);
+                break;
+              }
+            case ActionTag.annoText:
+              {
+                cornerstoneTools.textMarker.activate(a, 1);
+                break;
+              }
+            case ActionTag.annoLength:
+              {
+                cornerstoneTools.length.activate(a, 1);
+                cornerstoneTools.lengthTouch.activate(a);
+                break;
+              }
+            case ActionTag.annoRectangle:
+              {
+                cornerstoneTools.rectangleRoi.activate(a, 1);
+                cornerstoneTools.rectangleRoiTouch.activate(a);
+                break;
+              }
+            case ActionTag.annoPolygon:
+              {
+                cornerstoneTools.freehand.activate(a, 1);
+                break;
+              }
+            case ActionTag.annoEllipse:
+              {
+                cornerstoneTools.ellipticalRoi.activate(a, 1);
+                cornerstoneTools.ellipticalRoiTouch.activate(a);
+                break;
+              }
+            case ActionTag.annoAngle:
+              {
+                cornerstoneTools.simpleAngle.activate(a, 1);
+                cornerstoneTools.angleTouch.activate(a);
+                break;
+              }
+            case ActionTag.annoCobbAngle:
+              {
+                cornerstoneTools.cobbAngle.activate(a, 1);
+                cornerstoneTools.cobbAngleTouch.activate(a);
+                break;
+              }
+            case ActionTag.annoDeleteSelected:
+              {
+                cornerstoneTools.arrowAnnotate.enable(a);
+                cornerstoneTools.length.enable(a);
+                cornerstoneTools.rectangleRoi.enable(a);
+                cornerstoneTools.freehand.enable(a);
+                cornerstoneTools.ellipticalRoi.enable(a);
+                cornerstoneTools.simpleAngle.enable(a);
+                cornerstoneTools.cobbAngle.enable(a);
+                cornerstoneTools.cobbAngleTouch.enable(a);
+                cornerstoneTools.textMarker.enable(a);
+                cornerstoneTools.eraser.enable(a);
+                cornerstoneTools.eraser.activate(a, 1);
+                cornerstoneTools.eraserTouch.activate(a);
+                break;
+              }
+            case ActionTag.annoDeleteAll:
+              {
+                cornerstoneTools.globalImageIdSpecificToolStateManager.clear(a);
+                cornerstone.updateImage(a);
+              }
+          }
+          this.setCursorStyle(b);
+        }
+      }
+    };
+    c.prototype.deactivateTools = function () {
+      var a = this.el;
+      cornerstoneTools.wwwc.deactivate(a);
+      cornerstoneTools.wwwcTouchDrag.deactivate(a);
+      cornerstoneTools.pan.deactivate(a);
+      cornerstoneTools.panTouchDrag.deactivate(a);
+      cornerstoneTools.zoom.deactivate(a);
+      cornerstoneTools.zoomTouchDrag.deactivate(a);
+      cornerstoneTools.magnify.deactivate(a);
+      cornerstoneTools.magnifyTouchDrag.deactivate(a);
+      cornerstoneTools.dragProbe.deactivate(a);
+      this._dragProbe.dragProbeTouch.disable(a);
+      if (0 != this.el.getElementsByTagName("canvas").length && this.isDisplaying()) {
+        cornerstoneTools.arrowAnnotate.deactivate(a, 1);
+        cornerstoneTools.arrowAnnotateTouch.deactivate(a);
+        cornerstoneTools.length.deactivate(a, 1);
+        cornerstoneTools.lengthTouch.deactivate(a);
+        cornerstoneTools.textMarker.deactivate(a, 1);
+        cornerstoneTools.rectangleRoi.deactivate(a, 1);
+        cornerstoneTools.rectangleRoiTouch.deactivate(a);
+        cornerstoneTools.ellipticalRoi.deactivate(a, 1);
+        cornerstoneTools.ellipticalRoiTouch.deactivate(a);
+        cornerstoneTools.freehand.deactivate(a, 1);
+        cornerstoneTools.simpleAngle.deactivate(a, 1);
+        cornerstoneTools.cobbAngle.deactivate(a, 1);
+        cornerstoneTools.cobbAngleTouch.deactivate(a, 1);
+        cornerstoneTools.angleTouch.deactivate(a);
+        cornerstoneTools.eraser.deactivate(a, 1);
+        cornerstoneTools.eraserTouch.deactivate(a);
+      }
+    };
+    c.prototype.disableView = function () {
+      if (1 == this.isEnabledElement()) {
+        cornerstoneTools.touchInput.disable(this.el);
+        cornerstoneTools.zoomTouchPinch.deactivate(this.el);
+        cornerstone.disable(this.el);
+      }
+      if (this._orientationMarker) {
+        this._orientationMarker.hidden();
+      }
+      if (this._cornerInfoView) {
+        this._cornerInfoView.hide();
+      }
+      if (this._ruler) {
+        this._ruler.disable(this.el);
+      }
+    };
+    c.prototype.setCursorStyle = function (a) {
+      var b = document.location.origin,
+        c = document.location.pathname,
+        c = c.substring(0, c.lastIndexOf("/"));
+      "" != a && a.includes(".") ? this._cursorStyle = "url('".concat(b).concat(c, "/images/").concat(a, "') 5 5, auto") : "" == a || a.includes(".") ? this._cursorStyle = "default" : this._cursorStyle = a;
+    };
+    c.prototype.setShowInfo = function () {
+      if (this.hasCornerstoneCanvas()) {
+        for (var a in this._imageViewOptions) switch (a) {
+          case "rulerAct":
+            {
+              0 == this._imageViewOptions.rulerAct ? this._ruler.disable(this.el) : this._ruler.enable(this.el);
+              break;
+            }
+          case "overlayAct":
+            {
+              1 == this._imageViewOptions.overlayAct ? this.hideCornerInfo() : this._cornerInfoView.hide();
+              break;
+            }
+          case "orientationAct":
+            {
+              0 == this._imageViewOptions.orientationAct ? this._orientationMarker.hidden() : this._orientationMarker.show();
+              break;
+            }
+          case "annotationAct":
+            {
+              0 == this._imageViewOptions.annotationAct ? (cornerstoneTools.arrowAnnotate.disable(this.el), cornerstoneTools.length.disable(this.el), cornerstoneTools.rectangleRoi.disable(this.el), cornerstoneTools.freehand.disable(this.el), cornerstoneTools.ellipticalRoi.disable(this.el), cornerstoneTools.simpleAngle.disable(this.el), cornerstoneTools.textMarker.disable(this.el)) : (cornerstoneTools.arrowAnnotate.enable(this.el), cornerstoneTools.length.enable(this.el), cornerstoneTools.rectangleRoi.enable(this.el), cornerstoneTools.freehand.enable(this.el), cornerstoneTools.ellipticalRoi.enable(this.el), cornerstoneTools.simpleAngle.enable(this.el), cornerstoneTools.textMarker.enable(this.el), this.activateTools());
+            }
+        }
+      }
+    };
+    c.prototype.clearImage = function () {
+      cornerstone.disable(this.el);
+    };
+    c.prototype.setWWWL = function (a, b) {
+      if (this.hasCornerstoneCanvas()) {
+        var c = cornerstone.getViewport(this.el);
+        if (0 != c) {
+          c.voi.windowWidth = a;
+          c.voi.windowCenter = b;
+          cornerstone.setViewport(this.el, c);
+          this.ifCompare && 0 != this.sendViewPort && this.sendViewPort(c, ActionTag.wwwl);
+        }
+      }
+    };
+    c.prototype.fitToWindow = function () {
+      if (0 != this.el.getElementsByClassName("cornerstone-canvas").length && (cornerstone.fitToWindow(this.el), this.ifCompare && 0 != this.sendViewPort)) {
+        var a = cornerstone.getViewport(this.el);
+        this.sendViewPort(a, "fitToWindow");
+      }
+    };
+    c.prototype.invertColor = function () {
+      if (this.hasCornerstoneCanvas()) {
+        var a = cornerstone.getViewport(this.el);
+        a.invert = !a.invert;
+        cornerstone.setViewport(this.el, a);
+        if (this.ifCompare && 0 != this.sendViewPort) {
+          this.sendViewPort(a, "invert");
+        }
+      }
+    };
+    c.prototype.setScale = function (a) {
+      if (this.hasCornerstoneCanvas()) {
+        var b;
+        b = cornerstone.getViewport(this.el);
+        10 >= a ? b.scale = b.scale + b.scale * a / 100 : 100 == a ? b.scale = 1 : b.scale = a / 100;
+        cornerstone.setViewport(this.el, b);
+        if (this.ifCompare && 0 != this.sendViewPort) {
+          b.scale = a;
+          this.sendViewPort(b, "scale");
+        }
+      }
+    };
+    c.prototype.resetImage = function () {
+      if (0 != this.isEnabledElement()) {
+        var a = cornerstone.getViewport(this.el);
+        this._orientationMarker.updateOrientationMarkers(this.el, a, "reset");
+        cornerstone.reset(this.el);
+      }
+    };
+    c.prototype.clockwise = function () {
+      if (this.hasCornerstoneCanvas()) {
+        var a = cornerstone.getViewport(this.el);
+        a.rotation += 90;
+        cornerstone.setViewport(this.el, a);
+        this._orientationMarker.updateOrientationMarkers(this.el, a, "clock");
+        if (this.ifCompare && 0 != this.sendViewPort) {
+          this.sendViewPort(a, "clock");
+        }
+      }
+    };
+    c.prototype.counterclockwise = function () {
+      if (this.hasCornerstoneCanvas()) {
+        var a = cornerstone.getViewport(this.el);
+        a.rotation -= 90;
+        cornerstone.setViewport(this.el, a);
+        this._orientationMarker.updateOrientationMarkers(this.el, a, "clock");
+        if (this.ifCompare && 0 != this.sendViewPort) {
+          this.sendViewPort(a, "clock");
+        }
+      }
+    };
+    c.prototype.fliphorizontal = function () {
+      if (this.hasCornerstoneCanvas()) {
+        var a = cornerstone.getViewport(this.el);
+        a.hflip = !a.hflip;
+        cornerstone.setViewport(this.el, a);
+        this._orientationMarker.updateOrientationMarkers(this.el, a, "fliphorizontal");
+        if (this.ifCompare && 0 != this.sendViewPort) {
+          this.sendViewPort(a, "fliphorizontal");
+        }
+      }
+    };
+    c.prototype.flipvertical = function () {
+      if (this.hasCornerstoneCanvas()) {
+        var a = cornerstone.getViewport(this.el);
+        a.vflip = !a.vflip;
+        cornerstone.setViewport(this.el, a);
+        this._orientationMarker.updateOrientationMarkers(this.el, a, "flipvertical");
+        if (this.ifCompare && 0 != this.sendViewPort) {
+          this.sendViewPort(a, "flipvertical");
+        }
+      }
+    };
+    c.prototype.deleteall = function () {
+      if (this.hasCornerstoneCanvas()) {
+        cornerstoneTools.globalImageIdSpecificToolStateManager.clear(this.el);
+        cornerstone.updateImage(this.el);
+      }
+    };
+    c.prototype.hideCornerInfo = function () {
+      Environment.isDesktop ? 394 > this.el.offsetWidth || 210 > this.el.offsetHeight || 0 == this._imageViewOptions.overlayAct ? this._cornerInfoView.hide() : this._cornerInfoView.show() : Environment.isLandscape ? 270 > this.el.offsetWidth || 210 > this.el.offsetHeight || 0 == this._imageViewOptions.overlayAct ? this._cornerInfoView.hide() : this._cornerInfoView.show() : 250 > this.el.offsetWidth || 210 > this.el.offsetHeight || 0 == this._imageViewOptions.overlayAct ? this._cornerInfoView.hide() : this._cornerInfoView.show();
+    };
+    c.prototype.showImage = function (a, b) {
+      var c = this;
+      if (0 != a && 0 != this._currentImage && a.imageId == this._currentImage.imageId) {
+        if (1 == a.isAVI) {
+          MsgBox.error("\u6682\u65e0\u6cd5\u64ad\u653e AVI \u6587\u4ef6\u3002");
+        } else {
+          this._currentImage = a;
+          var d = this;
+          if (Environment.isPad && 0 == this._turnPageForPad) {
+            this._turnPageForPad = new e.TurnPageForPad(this.el);
+            1 < this._currentImage.series.imageTotal && this._turnPageForPad.show();
+            this._turnPageForPad.requestPrevImage = function () {
+              c.positionImage("up");
+            };
+            this._turnPageForPad.requestNextImage = function () {
+              c.positionImage("down");
+            };
+          }
+          if (Utils.existCornerstoneCache(a)) {
+            this.replacePixelSpacing(a.cornerstoneImageId);
+            var h = cornerstone.imageCache.imageCache[a.cornerstoneImageId],
+              g = setInterval(function () {
+                if (1 == d.layoutSuccess) {
+                  d.displayImage(h.image);
+                  clearInterval(g);
+                }
+              }, 100);
+          } else {
+            if (0 == a.cornerstoneImageId || "" == a.cornerstoneImageId) {
+              a.cornerstoneImageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(b);
+            }
+            0 == a.isDicom ? 0 == a.isAVI && cornerstone.loadImage(a.imageUrl).then(function (a) {
+              var b = setInterval(function () {
+                if (1 == d.layoutSuccess) {
+                  d.displayImage(a);
+                  d.hideLoading();
+                  clearInterval(b);
+                }
+              }, 100);
+            }, function (a) {
+              console.log("\u663e\u793a\u56fe\u50cf\u5931\u8d25\uff1a" + a);
+              MsgBox.error("\u663e\u793a\u56fe\u50cf\u5931\u8d25\uff1a" + JSON.stringify(a));
+            }) : cornerstone.loadAndCacheImage(a.cornerstoneImageId).then(function (b) {
+              if (0 != a.cornerstoneImageId && "" != a.cornerstoneImageId) {
+                var f = cornerstoneWADOImageLoader.getImageFrame(a.cornerstoneImageId);
+                if (1 == cornerstoneWADOImageLoader.isColorImage(f.photometricInterpretation) && 0 == f.planarConfiguration) {
+                  f.planarConfiguration = 0;
+                }
+                c.replacePixelSpacing(a.cornerstoneImageId);
+              }
+              var e = setInterval(function () {
+                if (1 == d.layoutSuccess) {
+                  d.displayImage(b);
+                  d.hideLoading();
+                  clearInterval(e);
+                }
+              }, 100);
+            }, function (a) {
+              console.error("\u663e\u793a\u56fe\u50cf\u5931\u8d25\uff1a");
+              console.error(a);
+              a.error && a.error.message ? MsgBox.error("\u663e\u793a\u56fe\u50cf\u5931\u8d25\uff1a" + a.error.message) : MsgBox.error("\u663e\u793a\u56fe\u50cf\u5931\u8d25\uff1a" + JSON.stringify(a));
+            });
+          }
+        }
+      }
+    };
+    c.prototype.displayImage = function (a) {
+      if (0 != a) {
+        if (0 == this.isEnabledElement()) {
+          this.enableElement();
+        }
+        if ("PR,MR" == this._currentImage.series.study.modality) {
+          var b = cornerstone.getViewport(this.el);
+          null == b || a.windowCenter == b.voi.windowCenter && a.windowWidth == b.voi.windowWidth || (b.voi.windowWidth = a.windowWidth, b.voi.windowCenter = a.windowCenter);
+        }
+        cornerstone.displayImage(this.el, a);
+        this.isMutiFrameImage(a);
+        this.deleteVoiLutParam(a);
+        if (1 == this._currentImage.isDicom && 0 != a.data) {
+          0 != this._curImageCornerInfo ? this._curImageCornerInfo = this._curImageCornerInfo.getImageCornerInfo(a) : this._curImageCornerInfo = new ImageCornerInfo().getImageCornerInfo(a);
+          this._ruler.enable(this.el);
+        }
+        if (0 != this.dbClickViewPort) {
+          b = cornerstone.getViewport(this.el);
+          b.translation.x = this.dbClickViewPort.translation.x;
+          b.translation.y = this.dbClickViewPort.translation.y;
+          b.voi.windowWidth = this.dbClickViewPort.voi.windowWidth;
+          b.voi.windowCenter = this.dbClickViewPort.voi.windowCenter;
+          b.invert = this.dbClickViewPort.invert;
+          cornerstone.setViewport(this.el, b);
+          this.dbClickViewPort = 0;
+        }
+        cornerstoneTools.mouseInput.enable(this.el);
+        cornerstoneTools.mouseWheelInput.enable(this.el);
+        this.hideLoading();
+        if (0 == this.isSynchronized()) {
+          this.getViewport && (b = this.getViewport(), this.setViewport(b));
+          this.addToSynchronizer();
+          this.activateTools();
+        }
+      }
+    };
+    c.prototype.replacePixelSpacing = function (a) {
+      if (0 == cornerstoneWADOImageLoader.wadouri.metaData.metaDataProvider("imagePlaneModule", a).pixelSpacing) {
+        console.info("\u56fe\u50cf ".concat(this._currentImage.index, " \u65e0 pixelSpacing (0028,0030)\uff0c\u5c06\u628a ImagerPixelSpacing (0018,1164) \u8d4b\u7ed9 pixelSpacing"));
+        a = cornerstoneWADOImageLoader.wadouri.parseImageId(a);
+        a = cornerstoneWADOImageLoader.wadouri.dataSetCacheManager.get(a.url);
+        0 != a.elements.x00181164 && (a.elements.x00280030 = a.elements.x00181164);
+      }
+    };
+    c.prototype.enableElement = function () {
+      if (1 != this.isEnabledElement()) {
+        0 == this.el.parentElement ? console.log("\u5143\u7d20\u672a\u7f6e\u4e8e DOM \u4e2d\uff0c\u65e0\u6cd5 cornerstone.enable") : (Environment.isPad ? (cornerstoneTools.touchInput.enable(this.el), cornerstoneTools.panMultiTouch.activate(this.el), cornerstoneTools.zoomTouchPinch.activate(this.el)) : (cornerstoneTools.wwwc.activate(this.el, 4), cornerstoneTools.pan.activate(this.el, 2)), cornerstoneTools.mouseInput.enable(this.el), cornerstoneTools.mouseWheelInput.enable(this.el), cornerstoneTools.magnify.setConfiguration({
+          magnifySize: 255,
+          magnificationLevel: 3
+        }), cornerstoneTools.arrowAnnotate.setConfiguration({
+          getTextCallback: function (a) {
+            a("");
+          },
+          drawHandles: !1,
+          drawHandlesOnHover: !0,
+          arrowFirst: !0
+        }), cornerstoneTools.toolColors.setToolColor(Global.theme.annoColor), cornerstoneTools.toolColors.setActiveColor(Global.theme.annoActiveColor), cornerstoneTools.zoom.setConfiguration({
+          invert: !0
+        }), cornerstone.enable(this.el), 0 != this._ruler && (this._ruler.disable(this.el), this.el.removeChild(this.el.querySelector(".ruler"))), this._ruler = new share.ImageRuler(this.el), this._ruler.scaleChanged = this.onScaleChanged.bind(this));
+      }
+    };
+    c.prototype.isEnabledElement = function () {
+      var a,
+        b,
+        c = !1,
+        d = cornerstone.getEnabledElements();
+      try {
+        for (var e = __values(d), g = e.next(); !g.done; g = e.next()) if (g.value.element === this.el) {
+          c = !0;
+          break;
+        }
+      } catch (l) {
+        a = {
+          error: l
+        };
+      } finally {
+        try {
+          if (g && !g.done && (b = e.return)) {
+            b.call(e);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+      return c;
+    };
+    c.prototype.isDisplaying = function () {
+      if (0 == this.isEnabledElement()) {
+        return !1;
+      }
+      var a = cornerstone.getEnabledElement(this.el);
+      return 0 != a && 0 != a.image ? !0 : !1;
+    };
+    c.prototype.isSynchronized = function () {
+      var a,
+        b,
+        c = !1,
+        d = this.wwwcSynchronizer.getTargetElements();
+      try {
+        for (var e = __values(d), g = e.next(); !g.done; g = e.next()) if (g.value === this.el) {
+          c = !0;
+          break;
+        }
+      } catch (l) {
+        a = {
+          error: l
+        };
+      } finally {
+        try {
+          if (g && !g.done && (b = e.return)) {
+            b.call(e);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+      return c;
+    };
+    c.prototype.addToSynchronizer = function () {
+      var a, b, c, d;
+      if (0 == this.isDisplaying()) {
+        console.log("\u6ca1\u6709\u663e\u793a\u56fe\u50cf\u524d\uff0c\u5143\u7d20\u65e0\u6cd5\u52a0\u5165\u540c\u6b65\u5668");
+      } else {
+        if (this.wwwcSynchronizer) {
+          var e = !1,
+            g = this.wwwcSynchronizer.getTargetElements();
+          try {
+            for (var l = __values(g), n = l.next(); !n.done; n = l.next()) {
+              var m = n.value;
+              if (m === this.el) {
+                e = !0;
                 break;
               }
             }
+          } catch (r) {
+            a = {
+              error: r
+            };
+          } finally {
+            try {
+              if (n && !n.done && (b = l.return)) {
+                b.call(l);
+              }
+            } finally {
+              if (a) {
+                throw a.error;
+              }
+            }
+          }
+          if (0 == e) {
+            this.wwwcSynchronizer.add(this.el);
+          }
+        }
+        if (this.panZoomSynchronizer) {
+          e = !1;
+          g = this.panZoomSynchronizer.getTargetElements();
+          try {
+            for (var p = __values(g), q = p.next(); !q.done; q = p.next()) if (m = q.value, m === this.el) {
+              e = !0;
+              break;
+            }
+          } catch (r) {
+            c = {
+              error: r
+            };
+          } finally {
+            try {
+              if (q && !q.done && (d = p.return)) {
+                d.call(p);
+              }
+            } finally {
+              if (c) {
+                throw c.error;
+              }
+            }
+          }
+          if (0 == e) {
+            this.panZoomSynchronizer.add(this.el);
           }
         }
       }
-    }
-  }
-  if (!_0x535ca1) {
-    _0x3f051d("未找到存档", "error");
-    return null;
-  }
-  _0x56a8e2.data.cloud_data = JSON.stringify(_0x2113dc);
-  _0x1571ce(_0x56a8e2, "info");
-  return _0x56a8e2;
-}
-function _0x2c9085() {
-  const _0x1cbc23 = new Date("2025-08-20");
-  const _0x3a4df9 = new Date();
-  if (_0x3a4df9.getTime() > _0x1cbc23.getTime()) {
-    {
-      alert("出错了！请添加qq群：978854483或者请联系闲鱼用户“资源杂货铺”获取最新脚本，非资源杂货铺购买均无售后");
-      return null;
-    }
-  }
-  const _0x33a858 = prompt("请输入要进入的存档编号:");
-  if (_0x33a858 <= 0) {
-    {
-      _0x3f051d("未找到存档", "error");
-      return null;
-    }
-  }
-  if (_0x33a858 !== null) {
-    if (/^\d+$/.test(_0x33a858)) {
-      let _0x322d70 = {
-        msg: "ok",
-        status: 1,
-        data: {
-          last_save_time: Math.floor(Date.now() / 1000),
-          cloud_data: ""
-        }
-      };
-      let _0x3123c5 = {};
-      const _0x38a90f = "" + _0x1e433c.STORAGE_PREFIX + _0x151067 + "_" + _0x5d142b + "_";
-      const _0x57356a = localStorage.getItem(_0x38a90f);
-      let _0x185aef = false;
-      let _0x4f1d19 = 1;
-      _0x5192d6: for (const _0x20e471 of Object.keys(localStorage)) {
-        _0x1571ce(_0x20e471);
-        if (_0x20e471.startsWith(_0x38a90f)) {
-          {
-            if (_0x4f1d19 == _0x33a858) {
-              _0x185aef = true;
-              let _0x4a8f6a = localStorage.getItem(_0x20e471);
-              let _0x433854 = null;
-              try {
-                _0x433854 = JSON.parse(_0x4a8f6a);
-              } catch (_0x4b2656) {
-                _0x1571ce("出出错了+e");
+    };
+    c.prototype.setViewport = function (a) {
+      if (0 != a && 0 != this.isEnabledElement()) {
+        var b = cornerstone.getViewport(this.el);
+        b.voi.windowWidth = a.voi.windowWidth;
+        b.voi.windowCenter = a.voi.windowCenter;
+        b.translation.x = a.translation.x;
+        b.translation.y = a.translation.y;
+        b.scale = a.scale;
+        b.invert = a.invert;
+        b.rotation = a.rotation;
+        b.hflip = a.hflip;
+        b.vflip = a.vflip;
+        cornerstone.setViewport(this.el, b);
+      }
+    };
+    c.prototype.padPanTouchStart = function (a) {
+      if (this._actionTag == ActionTag.pan) {
+        var b = a.detail.currentPoints.canvas,
+          c = a.detail.element;
+        Object.keys(cornerstoneTools).forEach(function (a) {
+          var d = cornerstoneTools[a];
+          if (a = cornerstoneTools.getToolState(c, a)) {
+            a.data.forEach(function (a) {
+              if ("function" === typeof d.pointNearTool && d.pointNearTool(c, a, b)) {
+                cornerstoneTools.pan.disable(c);
+                cornerstoneTools.panTouchDrag.deactivate(c);
               }
-              if (_0x433854 && _0x433854.data) {
-                {
-                  for (const _0x456f7f of Object.keys(_0x433854.data)) {
-                    if (_0x456f7f.includes(_0x433854.info.cookieid)) {
-                      {
-                        _0x3123c5 = JSON.parse(_0x433854.data[_0x456f7f]);
-                        break _0x5192d6;
-                      }
+            });
+          }
+        });
+      }
+    };
+    c.prototype.padPanTouchEnd = function (a) {
+      this._imageBorder.clear(a);
+      if (this._actionTag == ActionTag.pan) {
+        cornerstoneTools.pan.activate(this.el, 1);
+        cornerstoneTools.panTouchDrag.activate(this.el);
+      }
+    };
+    c.prototype.showMutiFrame = function (a) {
+      var b = this;
+      cornerstone.loadAndCacheImage(a).then(function (a) {
+        if ("SC" != b._currentImage.series.study.modality && "US" != b._currentImage.series.study.modality) {
+          0 == b._curImageCornerInfo && (b._curImageCornerInfo = new ImageCornerInfo());
+          b._curImageCornerInfo = b._curImageCornerInfo.getImageCornerInfo(a);
+        }
+        cornerstone.displayImage(b.el, a);
+      }, function (a) {
+        console.log(a);
+        b._mutiFrameToolbar.setStop();
+        MsgBox.error("\u663e\u793a\u56fe\u50cf\u5931\u8d25\uff1a" + a);
+      });
+    };
+    c.prototype.deleteVoiLutParam = function (a) {
+      var b = cornerstone.getViewport(this.el);
+      if (0 != b.voiLUT) {
+        b.voiLUT = 0;
+        cornerstone.setViewport(this.el, b);
+      }
+      if (0 != a.voiLUT) {
+        delete a.voiLUT;
+      }
+    };
+    c.prototype.isMutiFrameImage = function (a) {
+      if (0 != a.data) {
+        var b = a.data.intString("x00280008") || 1;
+        a = a.imageId;
+        if (1 != b && 0 == this._mutiFrameToolbar) {
+          this._mutiFrameToolbar = new e.mutiFrameToolbar(this.el);
+          this._mutiFrameToolbar.showImage = this.showMutiFrame.bind(this);
+        }
+        if (0 != this._mutiFrameToolbar) {
+          this._mutiFrameToolbar.resetMutiFrameState(a, b);
+        }
+      }
+    };
+    c.prototype.setViewPortParam = function (a, b) {
+      var c = cornerstone.getViewport(this.el);
+      switch (b) {
+        case ActionTag.wwwl:
+          {
+            if (c.voi.windowWidth != a.voi.windowWidth || c.voi.windowCenter != a.voi.windowCenter) {
+              c.voi.windowWidth = a.voi.windowWidth;
+              c.voi.windowCenter = a.voi.windowCenter;
+              cornerstone.setViewport(this.el, c);
+            }
+            break;
+          }
+        case ActionTag.zoom:
+          {
+            if (c.scale != a.scale) {
+              c.translation.x = a.translation.x;
+              c.translation.y = a.translation.y;
+              c.scale = a.scale;
+              cornerstone.setViewport(this.el, c);
+            }
+            break;
+          }
+        case ActionTag.pan:
+          {
+            if (c.translation.x != a.translation.x || c.translation.y != a.translation.y) {
+              c.translation.x = a.translation.x;
+              c.translation.y = a.translation.y;
+              cornerstone.setViewport(this.el, c);
+            }
+            break;
+          }
+        case "invert":
+          {
+            c.invert = a.invert;
+            cornerstone.setViewport(this.el, c);
+            break;
+          }
+        case "scale":
+          {
+            b = a.scale;
+            10 >= b ? (a = cornerstone.getViewport(this.el), a.scale += a.scale * b / 100) : 100 == b ? (a = cornerstone.getViewport(this.el), a.scale = 1) : (a = cornerstone.getViewport(this.el), a.scale = b / 100);
+            cornerstone.setViewport(this.el, a);
+            break;
+          }
+        case "clock":
+          {
+            c.rotation = a.rotation;
+            cornerstone.setViewport(this.el, c);
+            this._orientationMarker.updateOrientationMarkers(this.el, c, "clock");
+            break;
+          }
+        case "reset":
+          {
+            if (0 == this.el.getElementsByClassName("cornerstone-canvas").length) {
+              break;
+            }
+            cornerstone.reset(this.el);
+            a = cornerstone.getViewport(this.el);
+            this._orientationMarker.updateOrientationMarkers(this.el, a, "reset");
+            break;
+          }
+        case "fliphorizontal":
+          {
+            c.hflip = a.hflip;
+            cornerstone.setViewport(this.el, c);
+            this._orientationMarker.updateOrientationMarkers(this.el, c, "fliphorizontal");
+            break;
+          }
+        case "flipvertical":
+          {
+            c.vflip = a.vflip;
+            cornerstone.setViewport(this.el, c);
+            this._orientationMarker.updateOrientationMarkers(this.el, c, "flipvertical");
+            break;
+          }
+        case "fitToWindow":
+          {
+            if (0 != this.el.getElementsByClassName("cornerstone-canvas").length) {
+              cornerstone.fitToWindow(this.el);
+            }
+          }
+      }
+    };
+    return c;
+  }();
+  e.ImageView = d;
+})(pc || (pc = {}));
+var __awaiter = this && this.__awaiter || function (e, d, c, a) {
+    function b(a) {
+      return a instanceof c ? a : new c(function (b) {
+        b(a);
+      });
+    }
+    return new (c || (c = Promise))(function (c, k) {
+      function f(b) {
+        try {
+          l(a.next(b));
+        } catch (m) {
+          k(m);
+        }
+      }
+      function g(b) {
+        try {
+          l(a["throw"](b));
+        } catch (m) {
+          k(m);
+        }
+      }
+      function l(a) {
+        a.done ? c(a.value) : b(a.value).then(f, g);
+      }
+      l((a = a.apply(e, d || [])).next());
+    });
+  },
+  __generator = this && this.__generator || function (e, d) {
+    function c(b) {
+      return function (c) {
+        return a([b, c]);
+      };
+    }
+    function a(a) {
+      if (f) {
+        throw new TypeError("Generator is already executing.");
+      }
+      for (; b;) try {
+        f = 1;
+        if (k && (a[0] & 2 ? h = k["return"] : a[0] ? h = k["throw"] || ((h = k["return"]) && h.call(k), 0) : h = k.next) && !(h = h.call(k, a[1])).done) {
+          return h;
+        }
+        k = 0;
+        if (h) {
+          a = [a[0] & 2, h.value];
+        }
+        switch (a[0]) {
+          case 0:
+            {}
+          case 1:
+            {
+              h = a;
+              break;
+            }
+          case 4:
+            {
+              b.label++;
+              return {
+                value: a[1],
+                done: !1
+              };
+            }
+          case 5:
+            {
+              b.label++;
+              k = a[1];
+              a = [0];
+              continue;
+            }
+          case 7:
+            {
+              a = b.ops.pop();
+              b.trys.pop();
+              continue;
+            }
+          default:
+            {
+              if (!(h = b.trys, h = 0 < h.length && h[h.length - 1]) && (6 === a[0] || 2 === a[0])) {
+                b = 0;
+                continue;
+              }
+              if (3 === a[0] && (!h || a[1] > h[0] && a[1] < h[3])) {
+                b.label = a[1];
+              } else {
+                if (6 === a[0] && b.label < h[1]) {
+                  b.label = h[1];
+                  h = a;
+                } else {
+                  if (h && b.label < h[2]) {
+                    b.label = h[2];
+                    b.ops.push(a);
+                  } else {
+                    if (h[2]) {
+                      b.ops.pop();
                     }
+                    b.trys.pop();
+                    continue;
                   }
                 }
-              } else {
-                _0x3f051d("出现了异常", "error");
               }
-            } else {
-              _0x4f1d19++;
+            }
+        }
+        a = d.call(e, b);
+      } catch (n) {
+        a = [6, n];
+        k = 0;
+      } finally {
+        f = h = 0;
+      }
+      if (a[0] & 5) {
+        throw a[1];
+      }
+      return {
+        value: a[0] ? a[1] : 0,
+        done: !0
+      };
+    }
+    var b = {
+        label: 0,
+        sent: function () {
+          if (h[0] & 1) {
+            throw h[1];
+          }
+          return h[1];
+        },
+        trys: [],
+        ops: []
+      },
+      f,
+      k,
+      h,
+      g;
+    g = {
+      next: c(0),
+      "throw": c(1),
+      "return": c(2)
+    };
+    "function" === typeof Symbol && (g[Symbol.iterator] = function () {
+      return this;
+    });
+    return g;
+  },
+  __values = this && this.__values || function (e) {
+    var d = "function" === typeof Symbol && Symbol.iterator,
+      c = d && e[d],
+      a = 0;
+    if (c) {
+      return c.call(e);
+    }
+    if (e && "number" === typeof e.length) {
+      return {
+        next: function () {
+          if (e && a >= e.length) {
+            e = 0;
+          }
+          return {
+            value: e && e[a++],
+            done: !e
+          };
+        }
+      };
+    }
+    throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+  };
+(function (e) {
+  var d = function () {
+    function c(a) {
+      var b = this;
+      this._firstImageIndex = 0;
+      this.playing = this._wheeling = !1;
+      this.FPS = 15;
+      this._seriesLayoutViewOptions = {};
+      this._imageViews = [];
+      this._mouseInThisEl = !1;
+      this._preCacheMode = "no";
+      this._isCachingSeries = !1;
+      this._failedImageNum = 0;
+      this.prevColNum = this.prevRowNum = this._imageColNum = this._imageRowNum = 1;
+      this._studies = [];
+      this._isMaximizing = this.ifscroll = this.ifCompare = !1;
+      this._wwwcSynchronizer = new cornerstoneTools.Synchronizer(cornerstone.EVENTS.IMAGE_RENDERED, cornerstoneTools.wwwcSynchronizer);
+      this._panZoomSynchronizer = new cornerstoneTools.Synchronizer(cornerstone.EVENTS.IMAGE_RENDERED, cornerstoneTools.panZoomSynchronizer);
+      this._actionTag = ActionTag.none;
+      this.cornerFontSize = 1.6;
+      this._isFocused = !1;
+      if (a) {
+        this._preCacheMode = a;
+      }
+      this._viewId = ++c.viewId;
+      this.el = document.createElement("div");
+      this.el.setAttribute("name", "series".concat(this._viewId));
+      this.el.style.position = "relative";
+      this.el.style.height = "100%";
+      this.el.style.width = "100%";
+      this.el.classList.add("series-view-container");
+      this.loadCss();
+      this.loadTemplate();
+      if (Environment.isDesktop) {
+        window.addEventListener("resize", function () {
+          b.calcScrollerContentHeight(b._currentSeries);
+        });
+        document.addEventListener(Global.events.contextMenu.eventName, this.contentMenuPop.bind(this));
+      }
+      window.addEventListener("orientationchange", function () {
+        b.imageViews.forEach(function (a) {
+          setTimeout(function () {
+            a.resize();
+            b.calcScrollerContentHeight(b._currentSeries);
+          }, 500);
+        });
+      });
+      ["mousewheel", "DOMMouseScroll"].forEach(function (a) {
+        b.el.addEventListener(a, b.mousewheel.bind(b));
+      });
+    }
+    Object.defineProperty(c.prototype, "seriesLayoutViewOptions", {
+      set: function (a) {
+        var b = this,
+          c;
+        for (c in a) switch (c) {
+          case "rulerAct":
+            {
+              if (0 == a.rulerAct) {
+                break;
+              }
+              this._seriesLayoutViewOptions = Object.assign(this._seriesLayoutViewOptions, a);
+              this._imageViews.forEach(function (a) {
+                a.imageViewOptions.rulerAct = b._seriesLayoutViewOptions.rulerAct;
+              });
+              break;
+            }
+          case "overlayAct":
+            {
+              if (0 == a.overlayAct) {
+                break;
+              }
+              this._seriesLayoutViewOptions = Object.assign(this._seriesLayoutViewOptions, a);
+              this._imageViews.forEach(function (a) {
+                a.imageViewOptions.overlayAct = b._seriesLayoutViewOptions.overlayAct;
+              });
+              break;
+            }
+          case "orientationAct":
+            {
+              if (0 == a.orientationAct) {
+                break;
+              }
+              this._seriesLayoutViewOptions = Object.assign(this._seriesLayoutViewOptions, a);
+              this._imageViews.forEach(function (a) {
+                a.imageViewOptions.orientationAct = b._seriesLayoutViewOptions.orientationAct;
+              });
+              break;
+            }
+          case "annotationAct":
+            {
+              if (0 != a.annotationAct) {
+                this._seriesLayoutViewOptions = Object.assign(this._seriesLayoutViewOptions, a);
+                this._imageViews.forEach(function (a) {
+                  a.imageViewOptions.annotationAct = b._seriesLayoutViewOptions.annotationAct;
+                });
+              }
+            }
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "viewId", {
+      get: function () {
+        return this._viewId;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "rowCount", {
+      get: function () {
+        return this._imageRowNum;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "colCount", {
+      get: function () {
+        return this._imageColNum;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "firstImageIndex", {
+      get: function () {
+        return this._firstImageIndex;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "currentSeries", {
+      get: function () {
+        return this._currentSeries;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "imageViews", {
+      get: function () {
+        return this._imageViews;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "studies", {
+      set: function (a) {
+        this._studies = a;
+        if (0 != this._seriesToolView) {
+          this._seriesToolView.studies = a;
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "actionTag", {
+      get: function () {
+        return this._actionTag;
+      },
+      set: function (a) {
+        this._actionTag = a;
+        this._imageViews.forEach(function (b) {
+          b.actionTag = a;
+        });
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "isFocused", {
+      get: function () {
+        return this._isFocused;
+      },
+      set: function (a) {
+        this._isFocused = a;
+        1 == a ? this.el.classList.add("focus") : this.el.classList.contains("focus") && this.el.classList.remove("focus");
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "hasImages", {
+      get: function () {
+        return 0 != this._currentSeries ? !0 : !1;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    c.prototype.loadCss = function () {
+      Utils.addCssByLink("css/pc/SeriesLayoutView.css");
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this;
+      MessageProxy.getTemplate("templates/pc/SeriesLayoutView.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u5e03\u5c40\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : (a.initView(b.data), 0 != a.completeTemplate && a.completeTemplate());
+      });
+    };
+    c.prototype.initView = function (a) {
+      var b = this;
+      a = new DOMParser().parseFromString(a, "text/html");
+      this.el.innerHTML = a.querySelector("#seriesViewTemplate").innerHTML;
+      this.createSeriesToolView();
+      this.bindVisibleSeriesTool();
+      this.setImageLayout(1, 1);
+      this.el.addEventListener("drop", function (a) {
+        var c = a.dataTransfer,
+          d = a.dataTransfer.getData("studyId"),
+          f;
+        window.ActiveXObject || "ActiveXObject" in window ? b.getDragSeriesUid && (f = b.getDragSeriesUid()) : f = c.getData("seriesId");
+        if (0 == b._currentSeries || b._currentSeries.seriesUid != f || 1 != b._imageViews[0].isDisplaying()) {
+          if (1 == b._isCachingSeries) {
+            MsgBox.info("\u6b63\u5728\u4e0b\u8f7d\u56fe\u50cf\uff0c\u8bf7\u7a0d\u540e\u518d\u6253\u5f00\u8fd9\u4e2a\u5e8f\u5217\u3002");
+          } else {
+            a.preventDefault();
+            a.stopPropagation();
+            c.dropEffect = "copy";
+            b.isFocused = !0;
+            b.setFocusedStyle();
+            var e;
+            a = Global.studies.find(function (a) {
+              return a.studyUid == d;
+            });
+            if (null != a) {
+              e = a.series.find(function (a) {
+                return a.seriesUid == f;
+              });
+            }
+            if (null != e) {
+              b.openSeries(e);
+              b.loadImages(0);
+              b.cacheImages();
             }
           }
         }
-      }
-      if (!_0x185aef) {
-        _0x3f051d("未找到存档", "error");
-        return null;
-      }
-      _0x322d70.data.cloud_data = JSON.stringify(_0x3123c5);
-      _0x1571ce(_0x322d70, "info");
-      return _0x322d70;
-    } else {
-      _0x3f051d("未按要求填写，请输入数字", "error");
-      return null;
-    }
-  }
-}
-const _0x268266 = {
-  cloud_data: "{\"1\":{\"Header\":{\"Platform\":\"WEB\",\"Version\":\"1.0.0.0913\",\"Name\":\"魔女与往昔重逢\",\"StoryName\":\"跨年\",\"SaveTime\":1755391934228,\"IsFreeLimit\":0,\"isTimeMallGoods\":0,\"isNameChanged\":0,\"StoryID\":233,\"ver\":\"271\",\"CustomizedData\":[]},\"Thumbnail\":{\"base64\":\"https://c1.cgyouxi.com/website/hfplayer/v3/bin/res/logo/960x540.jpg\",\"cloudImageUrl\":\"https://cloudarchivecdn.cgyouxi.com/131232859/da4bd11493474d7f85591bb38504c93c/pic_0.jpeg\"}}}",
-  last_save_time: 1755391935
-};
-const _0x50dd44 = {
-  status: 1,
-  msg: "ok",
-  data: _0x268266
-};
-const _0x86edc = {
-  status: 304,
-  msg: "not modified",
-  data: {
-    last_save_time: () => Math.floor(Date.now() / 1000)
-  }
-};
-function _0x3f051d(_0x211cba, _0x2cd81e = "info", _0x59b7dc = 3000) {
-  const _0x1862b8 = document.getElementById("customNotification");
-  if (_0x1862b8) {
-    {
-      _0x1862b8.remove();
-    }
-  }
-  const _0x4e1297 = document.createElement("div");
-  _0x4e1297.id = "customNotification";
-  const _0x18ab2e = {
-    background: "#10b981",
-    color: "white"
-  };
-  const _0x11f04f = {
-    background: "#ef4444",
-    color: "white"
-  };
-  const _0x3755da = {
-    background: "#f59e0b",
-    color: "white"
-  };
-  const _0x16aa33 = {
-    background: "#3b82f6",
-    color: "white"
-  };
-  const _0x1bd5ec = {
-    success: _0x18ab2e,
-    error: _0x11f04f,
-    warning: _0x3755da,
-    info: _0x16aa33
-  };
-  const _0x22249d = _0x1bd5ec[_0x2cd81e];
-  _0x4e1297.style.cssText = "\n      position: fixed;\n      top: 20px;\n      right: 20px;\n      background: " + _0x22249d.background + ";\n      color: " + _0x22249d.color + ";\n      padding: 12px 16px;\n      border-radius: 12px;\n      box-shadow: 0 8px 16px rgba(0,0,0,0.12);\n      z-index: 100000;\n      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n      font-size: 14px;\n      font-weight: 500;\n      max-width: 300px;\n      animation: fadeInRight 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);\n    ";
-  _0x4e1297.textContent = _0x211cba;
-  document.body.appendChild(_0x4e1297);
-  setTimeout(() => {
-    _0x4e1297.style.animation = "fadeOutRight 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)";
-    setTimeout(() => {
-      {
-        _0x4e1297.parentNode && _0x4e1297.remove();
-      }
-    }, 300);
-  }, _0x59b7dc);
-}
-function _0x39dff8(_0x156c93, _0x545380, _0xe85298) {
-  const _0x36327b = document.createElement("div");
-  _0x36327b.style.cssText = "\n      position: fixed;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background: rgba(0,0,0,0.4);\n      z-index: 100001;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      backdrop-filter: blur(8px);\n      animation: fadeIn 0.2s ease;\n    ";
-  const _0x2895c5 = document.createElement("div");
-  _0x2895c5.style.cssText = "\n      background: white;\n      border-radius: 16px;\n      padding: 24px;\n      max-width: 360px;\n      width: 90%;\n      box-shadow: 0 25px 50px rgba(0,0,0,0.12);\n      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n      animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);\n    ";
-  _0x2895c5.innerHTML = "\n      <div style=\"margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #111827;\">确认操作</div>\n      <div style=\"color: #4b5563; font-size: 15px; line-height: 1.5; margin-bottom: 24px;\">" + _0x156c93 + "</div>\n      <div style=\"display: flex; gap: 12px; justify-content: flex-end;\">\n        <button id=\"cancelBtn\" style=\"\n          padding: 10px 16px;\n          background: #f3f4f6;\n          color: #4b5563;\n          border: none;\n          border-radius: 10px;\n          cursor: pointer;\n          font-size: 14px;\n          font-weight: 500;\n          transition: all 0.2s ease;\n        \">取消</button>\n        <button id=\"confirmBtn\" style=\"\n          padding: 10px 16px;\n          background: #3b82f6;\n          color: white;\n          border: none;\n          border-radius: 10px;\n          cursor: pointer;\n          font-size: 14px;\n          font-weight: 500;\n          transition: all 0.2s ease;\n        \">确认</button>\n      </div>\n    ";
-  _0x36327b.appendChild(_0x2895c5);
-  document.body.appendChild(_0x36327b);
-  const _0x188be3 = _0x2895c5.querySelector("#cancelBtn");
-  const _0x457d9d = _0x2895c5.querySelector("#confirmBtn");
-  _0x188be3.onmouseover = () => _0x188be3.style.background = "#e5e7eb";
-  _0x188be3.onmouseout = () => _0x188be3.style.background = "#f3f4f6";
-  _0x457d9d.onmouseover = () => _0x457d9d.style.background = "#2563eb";
-  _0x457d9d.onmouseout = () => _0x457d9d.style.background = "#3b82f6";
-  const _0x3d533a = () => {
-    _0x36327b.style.animation = "fadeOut 0.2s ease";
-    setTimeout(() => _0x36327b.remove(), 200);
-  };
-  _0x188be3.onclick = () => {
-    {
-      _0x3d533a();
-      if (_0xe85298) {
-        _0xe85298();
-      }
-    }
-  };
-  _0x457d9d.onclick = () => {
-    _0x3d533a();
-    if (_0x545380) {
-      _0x545380();
-    }
-  };
-  _0x36327b.onclick = _0x24d492 => {
-    if (_0x24d492.target === _0x36327b) {
-      _0x3d533a();
-      if (_0xe85298) {
-        _0xe85298();
-      }
-    }
-  };
-}
-function _0xb5f559(_0x5a2eac, _0x35acac = "", _0x1bf4b3, _0x4d73b2) {
-  const _0x28463e = document.createElement("div");
-  _0x28463e.style.cssText = "\n      position: fixed;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background: rgba(0,0,0,0.4);\n      z-index: 100001;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      backdrop-filter: blur(8px);\n      animation: fadeIn 0.2s ease;\n    ";
-  const _0x283204 = document.createElement("div");
-  _0x283204.style.cssText = "\n      background: white;\n      border-radius: 16px;\n      padding: 24px;\n      max-width: 360px;\n      width: 90%;\n      box-shadow: 0 25px 50px rgba(0,0,0,0.12);\n      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n      animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);\n    ";
-  _0x283204.innerHTML = "\n      <div style=\"margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #111827;\">" + _0x5a2eac + "</div>\n      <input type=\"text\" id=\"inputField\" value=\"" + _0x35acac + "\" style=\"\n        width: 100%;\n        padding: 12px 16px;\n        border: 1px solid #e5e7eb;\n        border-radius: 12px;\n        font-size: 15px;\n        outline: none;\n        transition: all 0.2s ease;\n        margin-bottom: 20px;\n        box-sizing: border-box;\n      \">\n      <div style=\"display: flex; gap: 12px; justify-content: flex-end;\">\n        <button id=\"cancelBtn\" style=\"\n          padding: 10px 16px;\n          background: #f3f4f6;\n          color: #4b5563;\n          border: none;\n          border-radius: 10px;\n          cursor: pointer;\n          font-size: 14px;\n          font-weight: 500;\n          transition: all 0.2s ease;\n        \">取消</button>\n        <button id=\"confirmBtn\" style=\"\n          padding: 10px 16px;\n          background: #3b82f6;\n          color: white;\n          border: none;\n          border-radius: 10px;\n          cursor: pointer;\n          font-size: 14px;\n          font-weight: 500;\n          transition: all 0.2s ease;\n        \">确认</button>\n      </div>\n    ";
-  _0x28463e.appendChild(_0x283204);
-  document.body.appendChild(_0x28463e);
-  const _0x2a3a97 = _0x283204.querySelector("#inputField");
-  const _0x294fd0 = _0x283204.querySelector("#cancelBtn");
-  const _0x477f60 = _0x283204.querySelector("#confirmBtn");
-  _0x2a3a97.focus();
-  _0x2a3a97.select();
-  _0x2a3a97.onfocus = () => {
-    _0x2a3a97.style.borderColor = "#3b82f6";
-    _0x2a3a97.style.boxShadow = "0 0 0 3px rgba(59, 130, 246, 0.1)";
-  };
-  _0x2a3a97.onblur = () => {
-    _0x2a3a97.style.borderColor = "#e5e7eb";
-    _0x2a3a97.style.boxShadow = "none";
-  };
-  _0x294fd0.onmouseover = () => _0x294fd0.style.background = "#e5e7eb";
-  _0x294fd0.onmouseout = () => _0x294fd0.style.background = "#f3f4f6";
-  _0x477f60.onmouseover = () => _0x477f60.style.background = "#2563eb";
-  _0x477f60.onmouseout = () => _0x477f60.style.background = "#3b82f6";
-  const _0x166992 = () => {
-    _0x28463e.style.animation = "fadeOut 0.2s ease";
-    setTimeout(() => _0x28463e.remove(), 200);
-  };
-  const _0x92f9e1 = () => {
-    const _0x36a491 = _0x2a3a97.value;
-    _0x166992();
-    if (_0x1bf4b3) {
-      _0x1bf4b3(_0x36a491);
-    }
-  };
-  _0x294fd0.onclick = () => {
-    {
-      _0x166992();
-      if (_0x4d73b2) {
-        _0x4d73b2();
-      }
-    }
-  };
-  _0x477f60.onclick = _0x92f9e1;
-  _0x2a3a97.onkeypress = _0x115c87 => {
-    if (_0x115c87.key === "Enter") {
-      _0x92f9e1();
-    } else {
-      if (_0x115c87.key === "Escape") {
-        {
-          _0x166992();
-          if (_0x4d73b2) {
-            _0x4d73b2();
+      }, !1);
+      this.el.addEventListener("dragend", function (a) {
+        a.preventDefault();
+      }, !1);
+      ["mousedown", "touchstart"].forEach(function (a) {
+        b.el.addEventListener(a, function () {
+          b.isFocused = !0;
+          if (0 != b.focusChanged) {
+            b.focusChanged(b._viewId, b._currentSeries);
           }
-        }
-      }
-    }
-  };
-  _0x28463e.onclick = _0xa58cbe => {
-    if (_0xa58cbe.target === _0x28463e) {
-      _0x166992();
-      if (_0x4d73b2) {
-        _0x4d73b2();
-      }
-    }
-  };
-}
-function _0x3fbf8c() {
-  const _0x2755bf = window.location.pathname;
-  const _0x2a8bcc = _0x2755bf.match(/\/h5\/(\d+)/);
-  return _0x2a8bcc ? _0x2a8bcc[1] : _0x1e433c.GAME_ID_UNKNOWN;
-}
-function _0x231766() {
-  if (typeof window.getUserData === "function") {
-    {
-      const _0x3f6948 = window.getUserData;
-      window.getUserData = function () {
-        {
-          const _0x575388 = _0x3f6948 ? _0x3f6948() : {};
-          _0x575388.uid = parseInt(_0x151067);
-          _0x575388.isLogin = true;
-          const _0xac890a = parseInt(_0x49520d);
-          ["totalFlower", "freshFlower", "wildFlower", "tempFlower", "realFlower", "haveFlower"].forEach(_0x3a6ac3 => {
-            const _0x3bebcf = {
-              value: _0xac890a,
-              writable: true
-            };
-            Object.defineProperty(_0x575388, _0x3a6ac3, _0x3bebcf);
-          });
-          return _0x575388;
-        }
-      };
-    }
-  } else {
-    setTimeout(_0x231766, 100);
-  }
-}
-function _0x33748d(_0x385c1d) {
-  _0xb5f559("请输入购买数量", "1", _0x2debe2 => {
-    if (!_0x2debe2 || isNaN(_0x2debe2)) {
-      _0x3f051d("请输入有效数字", "error");
-      return;
-    }
-    const _0x4397f1 = parseInt(_0x2debe2);
-    if (_0x4397f1 < 1 || _0x4397f1 > 99) {
-      _0x3f051d("只可以输入1-99之间的整数", "error");
-      return;
-    }
-    const _0x2eb07e = _0x385c1d.value;
-    if (window.hxsj && window.hxsj.successPurchase) {
-      {
-        window.hxsj.successPurchase(_0x2eb07e, _0x4397f1);
-        _0x3f051d("购买成功 × " + _0x4397f1, "success");
-      }
-    } else {
-      _0x3f051d("购买失败，请先在游戏中打开商城", "error");
-    }
-  });
-}
-function _0x294f4() {
-  const _0x5f1599 = document.createElement("div");
-  _0x5f1599.id = "shopPanel";
-  _0x5f1599.style.cssText = "\n      position: fixed;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      width: 360px;\n      max-height: 70vh;\n      background: white;\n      border-radius: 20px;\n      padding: 0;\n      z-index: 99999;\n      display: none;\n      flex-direction: column;\n      box-shadow: 0 25px 50px rgba(0,0,0,0.15);\n      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n      overflow: hidden;\n      animation: fadeIn 0.3s ease;\n    ";
-  _0x5f1599.innerHTML = "\n      <div style=\"padding: 20px; border-bottom: 1px solid #f3f4f6;\">\n        <div style=\"display: flex; justify-content: space-between; align-items: center;\">\n          <h2 style=\"color: #111827; margin: 0; font-size: 18px; font-weight: 600;\">商城</h2>\n          <button id=\"closeShopPanel\" style=\"\n            background: transparent;\n            border: none;\n            width: 32px;\n            height: 32px;\n            border-radius: 50%;\n            cursor: pointer;\n            color: #9ca3af;\n            font-size: 20px;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            transition: all 0.2s ease;\n          \">×</button>\n        </div>\n      </div>\n      <div style=\"flex: 1; padding: 20px; overflow-y: auto;\">\n        <div id=\"shopItemsContainer\" style=\"display: flex; flex-direction: column; gap: 12px;\"></div>\n      </div>\n    ";
-  document.body.appendChild(_0x5f1599);
-  const _0x14f681 = document.getElementById("closeShopPanel");
-  _0x14f681.onmouseover = () => _0x14f681.style.color = "#ef4444";
-  _0x14f681.onmouseout = () => _0x14f681.style.color = "#9ca3af";
-  _0x14f681.onclick = () => {
-    _0x5f1599.style.animation = "fadeOut 0.3s ease";
-    setTimeout(() => _0x5f1599.style.display = "none", 300);
-  };
-  return _0x5f1599;
-}
-function _0x1827f7() {
-  const _0x1680a0 = document.getElementById("shopItemsContainer");
-  if (!_0x1680a0) {
-    return;
-  }
-  _0x1680a0.innerHTML = "";
-  if (window.hxsj && window.hxsj.mallItems) {
-    window.hxsj.mallItems.forEach((_0x4cad99, _0x3959a4) => {
-      {
-        const _0x28e47e = document.createElement("div");
-        _0x28e47e.style.cssText = "\n          padding: 16px;\n          background: #f9fafb;\n          border-radius: 14px;\n          cursor: pointer;\n          transition: all 0.2s ease;\n          animation: fadeIn 0.3s ease " + _0x3959a4 * 0.05 + "s both;\n        ";
-        _0x28e47e.innerHTML = "\n          <div style=\"display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;\">\n            <div style=\"font-weight: 600; color: #111827; font-size: 15px;\">" + _0x4cad99.itemData.itemName + "</div>\n            <div style=\"\n              background: #3b82f6;\n              color: white;\n              font-size: 12px;\n              font-weight: 500;\n              padding: 4px 8px;\n              border-radius: 6px;\n            \"></div>\n          </div>\n          <button style=\"\n            width: 100%;\n            padding: 10px;\n            background: #3b82f6;\n            border: none;\n            border-radius: 10px;\n            cursor: pointer;\n            font-size: 14px;\n            font-weight: 500;\n            color: white;\n            transition: all 0.2s ease;\n          \">购买</button>\n        ";
-        const _0x382c10 = _0x28e47e.querySelector("button");
-        _0x382c10.value = _0x4cad99.itemData.itemId;
-        _0x382c10.onmouseover = () => _0x382c10.style.background = "#2563eb";
-        _0x382c10.onmouseout = () => _0x382c10.style.background = "#3b82f6";
-        _0x28e47e.onmouseover = () => _0x28e47e.style.background = "#f3f4f6";
-        _0x28e47e.onmouseout = () => _0x28e47e.style.background = "#f9fafb";
-        _0x382c10.onclick = function () {
-          {
-            _0x33748d(this);
+        });
+      });
+      if ("all" == this._preCacheMode) {
+        this._downloadProgressBar = new share.DownloadProgressBar(this.el);
+        this._downloadProgressBar.downloadCompleted = function () {
+          b._isCachingSeries = !1;
+          if (b.downloadCompleted) {
+            b.downloadCompleted(b._currentSeries);
           }
         };
-        _0x1680a0.appendChild(_0x28e47e);
       }
-    });
-  } else {
-    {
-      _0x1680a0.innerHTML = "\n        <div style=\"\n          color: #6b7280;\n          text-align: center;\n          padding: 24px 16px;\n          background: #f9fafb;\n          border-radius: 12px;\n          font-size: 14px;\n        \">\n          请先在游戏中打开商城页面\n        </div>\n      ";
-    }
-  }
-}
-function _0x5e619d() {
-  const _0x104a16 = document.createElement("div");
-  _0x104a16.id = "logPanel";
-  _0x104a16.style.cssText = "\n      position: fixed;\n      bottom: 20px;\n      right: 20px;\n      width: 400px;\n      height: 300px;\n      background: rgba(0, 0, 0, 0.8);\n      border-radius: 12px;\n      padding: 0;\n      z-index: 99999;\n      display: none;\n      flex-direction: column;\n      box-shadow: 0 10px 25px rgba(0,0,0,0.2);\n      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n      overflow: hidden;\n      animation: fadeIn 0.3s ease;\n      backdrop-filter: blur(10px);\n    ";
-  _0x104a16.innerHTML = "\n      <div style=\"padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center;\">\n        <h2 style=\"color: white; margin: 0; font-size: 14px; font-weight: 600;\">开发者日志</h2>\n        <div style=\"display: flex; gap: 8px;\">\n          <button id=\"clearLogBtn\" style=\"\n            background: rgba(255,255,255,0.1);\n            border: none;\n            border-radius: 6px;\n            color: white;\n            padding: 4px 8px;\n            font-size: 12px;\n            cursor: pointer;\n            transition: all 0.2s ease;\n          \">清除</button>\n          <button id=\"closeLogPanel\" style=\"\n            background: transparent;\n            border: none;\n            width: 24px;\n            height: 24px;\n            border-radius: 50%;\n            cursor: pointer;\n            color: rgba(255,255,255,0.6);\n            font-size: 16px;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            transition: all 0.2s ease;\n          \">×</button>\n        </div>\n      </div>\n      <div id=\"logContent\" style=\"flex: 1; padding: 12px; overflow-y: auto; color: #a3e635; font-size: 12px; font-family: monospace; line-height: 1.5;\">\n        日志记录已启动...\n      </div>\n    ";
-  document.body.appendChild(_0x104a16);
-  const _0x56743f = document.getElementById("closeLogPanel");
-  _0x56743f.onmouseover = () => _0x56743f.style.color = "white";
-  _0x56743f.onmouseout = () => _0x56743f.style.color = "rgba(255,255,255,0.6)";
-  _0x56743f.onclick = () => {
-    _0x104a16.style.animation = "fadeOut 0.3s ease";
-    setTimeout(() => _0x104a16.style.display = "none", 300);
-  };
-  const _0x82739f = document.getElementById("clearLogBtn");
-  _0x82739f.onmouseover = () => _0x82739f.style.background = "rgba(255,255,255,0.2)";
-  _0x82739f.onmouseout = () => _0x82739f.style.background = "rgba(255,255,255,0.1)";
-  _0x82739f.onclick = () => {
-    const _0x4868bb = document.getElementById("logContent");
-    _0x4868bb && (_0x4868bb.innerHTML = "日志已清除...", _0x33677d = []);
-  };
-  return _0x104a16;
-}
-function _0x1571ce(_0x3a3d79, _0x1c1d57 = "info") {
-  return;
-  const _0x10577c = document.getElementById("logContent");
-  if (!_0x10577c) {
-    return;
-  }
-  const _0x3fe5c2 = new Date();
-  const _0x3c1473 = _0x3fe5c2.getHours().toString().padStart(2, "0") + ":" + _0x3fe5c2.getMinutes().toString().padStart(2, "0") + ":" + _0x3fe5c2.getSeconds().toString().padStart(2, "0");
-  const _0x115838 = {
-    info: "#a3e635",
-    error: "#ef4444",
-    warning: "#f59e0b",
-    success: "#10b981",
-    api: "#60a5fa"
-  };
-  const _0x17c733 = document.createElement("div");
-  _0x17c733.style.marginBottom = "6px";
-  _0x17c733.style.borderLeft = "2px solid " + (_0x115838[_0x1c1d57] || "#a3e635");
-  _0x17c733.style.paddingLeft = "8px";
-  let _0x519ba9 = "";
-  if (typeof _0x3a3d79 === "object") {
-    try {
-      _0x519ba9 = JSON.stringify(_0x3a3d79, null, 2);
-    } catch (_0x33b62c) {
-      _0x519ba9 = "[无法序列化的对象]";
-    }
-  } else {
-    _0x519ba9 = _0x3a3d79;
-  }
-  _0x17c733.innerHTML = "<span style=\"color: rgba(255,255,255,0.5); margin-right: 8px;\">[" + _0x3c1473 + "]</span> <span style=\"color: " + (_0x115838[_0x1c1d57] || "#a3e635") + ";\">" + _0x519ba9 + "</span>";
-  _0x10577c.appendChild(_0x17c733);
-  _0x10577c.scrollTop = _0x10577c.scrollHeight;
-  const _0x501cc5 = {
-    time: _0x3c1473,
-    message: _0x519ba9,
-    type: _0x1c1d57
-  };
-  _0x33677d.push(_0x501cc5);
-  _0x33677d.length > 100 && _0x33677d.shift();
-}
-function _0x580555() {
-  const _0x1202bd = XMLHttpRequest.prototype.open;
-  const _0x3be01b = XMLHttpRequest.prototype.send;
-  XMLHttpRequest.prototype.open = function (_0x46d922, _0x48e134, _0x10c830, _0x188f0b, _0x4897c7) {
-    this._method = _0x46d922;
-    this._url = _0x48e134;
-    this._targetUrl = _0x48e134 && (_0x48e134.includes("/cloud/v4/index/cloud_load?") || _0x48e134.includes("/cloud/v4/index/cloud_load_ex?") || _0x48e134.includes("/cloud/v4/index/cloud_load_data_by_gear?") || _0x48e134.endsWith("/cloud/v4/index/cloud_load") || _0x48e134.endsWith("/cloud/v4/index/cloud_load_ex") || _0x48e134.endsWith("/cloud/v4/index/cloud_load_data_by_gear"));
-    return _0x1202bd.apply(this, arguments);
-  };
-  XMLHttpRequest.prototype.send = function (_0x442fcc) {
-    {
-      if (this._targetUrl) {
-        this.addEventListener("readystatechange", function () {
-          {
-            if (this.readyState === 4) {
-              if (this.status >= 200 && this.status < 300) {
-                let _0x51d34d = null;
-                if (this._url.includes("cloud_load_data_by_gear")) {
-                  let _0x3c302d = _0x2c9085();
-                  if (!_0x3c302d) {
-                    return;
-                  }
-                  _0x51d34d = _0x3c302d;
-                  _0x1571ce("===== 拦截 gear 请求，使用固定响应 =====", "success");
-                } else {
-                  _0x51d34d = _0x50fcf6();
-                  _0x1571ce("===== 使用自定义响应数据 =====", "success");
+    };
+    c.prototype.createSeriesToolView = function () {
+      var a = this;
+      this._seriesToolView = new e.SeriesToolView(this.el, this._studies);
+      if (this._currentSeries) {
+        this._seriesToolView.currentSeries = this._currentSeries;
+        var b = Global.studies.findIndex(function (b) {
+          return b.studyUid == a._currentSeries.study.studyUid;
+        });
+        this._seriesToolView.setSeriesIndex(b, this._currentSeries.index);
+      }
+      this._seriesToolView.btnlayoutClicked = function (b, c) {
+        if (a.imageViews[0].hasCornerstoneCanvas()) {
+          a._isMaximizing = !1;
+          a.setImageLayout(b, c);
+          a.attachImage(a._firstImageIndex);
+          a.loadImages(a._firstImageIndex);
+        }
+      };
+      this._seriesToolView.btnseriesClicked = function (b, c) {
+        if (0 != c && (0 == a._currentSeries || a._currentSeries.seriesUid != c)) {
+          var d,
+            f = Global.studies.find(function (a) {
+              return a.studyUid == b;
+            });
+          if (null != f) {
+            d = f.series.find(function (a) {
+              return a.seriesUid == c;
+            });
+          }
+          if (null != d) {
+            a.openSeries(d);
+            a.loadImages(0);
+            a.cacheImages();
+          }
+        }
+      };
+      this._seriesToolView.btnCloseClicked = function (b) {
+        if (b) {
+          b = a.el.querySelector(".image-view-container");
+          b.style.height = "calc(100% - 6px)";
+          b.style.top = "0px";
+          a.resize();
+        }
+      };
+    };
+    c.prototype.downloadImages = function (a, b, c) {
+      var d = this;
+      if (0 === c) {
+        c = !1;
+      }
+      if (0 != b && 0 != b.length) {
+        var f = [];
+        Global.getCachedImages(a.seriesUid, b, function (b) {
+          if (1 == b.taskCompleted) {
+            if (0 < f.length) {
+              Global.downloadImages(a.seriesUid, f, c);
+            }
+          } else {
+            if (0 != b.hasError && 1 == b.hasError) {
+              b.imageInfo ? f.push(b.imageInfo) : console.warn("cacheTask.imageRetrieved result.imageInfo =", b.imageInfo);
+              console.error("\u67e5\u627e\u7f13\u5b58\u56fe\u50cf\u9519\u8bef\uff1a" + b.errorText);
+            } else {
+              if (b.imageInfo && b.imageFile) {
+                if (0 == b.imageInfo.cornerstoneImageId || "" == b.imageInfo.cornerstoneImageId) {
+                  b.imageInfo.cornerstoneImageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(b.imageFile);
+                  a.images[b.imageInfo.index].cornerstoneImageId = b.imageInfo.cornerstoneImageId;
                 }
-                if (_0x51d34d) {
-                  _0x1571ce(JSON.stringify(_0x51d34d), "api");
-                  Object.defineProperty(this, "responseText", {
-                    value: JSON.stringify(_0x51d34d),
-                    writable: false
-                  });
-                  Object.defineProperty(this, "response", {
-                    value: JSON.stringify(_0x51d34d),
-                    writable: false
-                  });
-                } else {
-                  if (this.responseText) {
-                    {
-                      _0x1571ce("===== 服务器响应数据 =====", "success");
-                      _0x1571ce(this.responseText, "api");
-                      try {
-                        const _0x1b7f9a = JSON.parse(this.responseText);
-                        _0x1571ce("===== JSON格式响应 =====", "success");
-                        _0x1571ce(_0x1b7f9a, "api");
-                        window._lastCloudLoadResponse = this.responseText;
-                      } catch (_0x4696fb) {
-                        _0x1571ce("响应不是JSON格式", "warning");
-                      }
-                    }
-                  }
+                if (0 != b.imageInfo.cornerstoneImageId && "" != b.imageInfo.cornerstoneImageId) {
+                  cornerstone.loadAndCacheImage(b.imageInfo.cornerstoneImageId).then(function (a) {});
+                }
+                try {
+                  d.showImage(b.imageInfo, b.imageFile);
+                } catch (l) {
+                  console.error("\u663e\u793a\u56fe\u50cf\u9519\u8bef\uff1a" + l);
                 }
               } else {
-                _0x1571ce("请求失败: " + this.status, "error");
+                f.push(b.imageInfo);
               }
             }
           }
         });
       }
-      return _0x3be01b.apply(this, arguments);
+    };
+    c.prototype.contentMenuPop = function (a) {
+      a = a.detail;
+      if (a.target == this.el && a.action == Global.events.contextMenu.exportSeriesDicom) {
+        this.downloadSeriesDicom();
+      }
+    };
+    c.prototype.downloadSeriesDicom = function () {
+      return __awaiter(this, 0, 0, function () {
+        var a,
+          b,
+          c,
+          d,
+          e = this;
+        return __generator(this, function (f) {
+          switch (f.label) {
+            case 0:
+              {
+                if (0 != this._currentZip) {
+                  MsgBox.infoAlert("\u6b63\u5728\u5bfc\u51fa\u5e8f\u5217\u8bf7\u7a0d\u540e\u91cd\u8bd5");
+                  return [2];
+                }
+                this._currentZip = new JSZip();
+                a = this._currentSeries;
+                b = this._currentZip.folder("".concat(a.study.patientName, "-series").concat(a.seriesNumber));
+                c = 0;
+                f.label = 1;
+              }
+            case 1:
+              {
+                if (!(c < a.images.length)) {
+                  return [3, 4];
+                }
+                if (0 == c && "all" != this._preCacheMode) {
+                  Progress.start();
+                }
+                d = a.images[c];
+                return [4, this.waitSeriesDownload(d, b)];
+              }
+            case 2:
+              {
+                f.sent();
+                0 != c && "all" != this._preCacheMode && Progress.setPercent(d.index / a.images.length);
+                f.label = 3;
+              }
+            case 3:
+              {
+                c++;
+                return [3, 1];
+              }
+            case 4:
+              {
+                this._currentZip.generateAsync({
+                  type: "blob"
+                }).then(function (b) {
+                  b = URL.createObjectURL(b);
+                  Utils.downLoadUrl(b, "".concat(a.study.patientName, "-series").concat(a.seriesNumber, ".zip"));
+                  if ("all" != e._preCacheMode) {
+                    Progress.done();
+                  }
+                  e._currentZip = 0;
+                });
+                return [2];
+              }
+          }
+        });
+      });
+    };
+    c.prototype.waitSeriesDownload = function (a, b) {
+      return new Promise(function (c) {
+        MessageProxy.downloadImageFromFAS(a, function (a) {
+          var d = 1 == a.imageInfo.isDicom ? new Blob([a.data], {
+            type: "x-lml/x-evm"
+          }) : "avi" == a.errorText ? new Blob([a.data], {
+            type: "video/x-msvideo"
+          }) : new Blob([a.data]);
+          b.file(a.fileName, d);
+          c(b);
+        });
+      });
+    };
+    c.prototype.mousewheel = function (a) {
+      var b = this;
+      if (0 != this._wheelTimer) {
+        clearTimeout(this._wheelTimer);
+      }
+      this._wheelTimer = setTimeout(function () {
+        if (0 == b.isFocused) {
+          b.isFocused = !0;
+          b.setFocusedStyle();
+        }
+        if (0 == b._currentSeries) {
+          return !1;
+        }
+        0 > a.wheelDelta || 0 < a.detail ? b.positionImage(b._firstImageIndex + 1) : b.positionImage(b._firstImageIndex - 1);
+        return !1;
+      }, 80);
+    };
+    c.prototype.positionImage = function (a, b) {
+      if (null != this._currentSeries) {
+        var c,
+          d = this._currentSeries.images.length - this._imageViews.length;
+        if (a > d) {
+          a = d;
+        }
+        if (0 > a) {
+          a = 0;
+        }
+        if (a != this._firstImageIndex) {
+          !this.ifCompare || 0 == this.sendViewPort || 0 != b && 0 != b || (a > this._firstImageIndex ? c = "".concat(a, ",").concat(this.firstImageIndex) : this._firstImageIndex > a && (c = "".concat(a, ",").concat(this.firstImageIndex)), this.sendViewPort(0, "scroll", this, c));
+          this.attachImage(a);
+          this.scrollToPosition(a);
+          this.loadImages(a);
+        }
+      }
+    };
+    c.prototype.openSeries = function (a) {
+      var b,
+        c,
+        d,
+        e,
+        g = this;
+      if (0 != a && 0 != a.images && 0 != a.images.length) {
+        this._currentSeries = a;
+        this._failedImageNum = this._firstImageIndex = 0;
+        if (this._seriesToolView) {
+          this._seriesToolView.currentSeries = this._currentSeries;
+        }
+        if (this._downloadProgressBar) {
+          this._downloadProgressBar.imageCount = this._currentSeries.images.length;
+        }
+        try {
+          for (var l = __values(this._imageViews), n = l.next(); !n.done; n = l.next()) n.value.disableView();
+        } catch (q) {
+          b = {
+            error: q
+          };
+        } finally {
+          try {
+            if (n && !n.done && (c = l.return)) {
+              c.call(l);
+            }
+          } finally {
+            if (b) {
+              throw b.error;
+            }
+          }
+        }
+        if (0 == this.id) {
+          this.id = Math.floor(1E9 * (9 * Math.random() + 1));
+        }
+        this.disabledImageViewMouseInput(!0);
+        setTimeout(function () {
+          g.calcScrollerContentHeight(g._currentSeries);
+        }, 200);
+        if (this._seriesToolView) {
+          b = Global.studies.findIndex(function (b) {
+            return b.studyUid == a.study.studyUid;
+          });
+          this._seriesToolView.setSeriesIndex(b, a.index);
+        }
+        this.attachImage(0);
+        try {
+          for (var m = __values(this._imageViews), p = m.next(); !p.done; p = m.next()) p.value.actionTag = Global.actionTag;
+        } catch (q) {
+          d = {
+            error: q
+          };
+        } finally {
+          try {
+            if (p && !p.done && (e = m.return)) {
+              e.call(m);
+            }
+          } finally {
+            if (d) {
+              throw d.error;
+            }
+          }
+        }
+      }
+    };
+    c.prototype.disabledImageViewMouseInput = function (a) {
+      this._imageViews.forEach(function (b) {
+        cornerstoneTools.mouseInput.disable(b.el);
+        cornerstoneTools.mouseWheelInput.disable(b.el);
+        if (a) {
+          b.reRender = !0;
+        }
+      });
+    };
+    c.prototype.resize = function () {
+      this._imageViews.forEach(function (a) {
+        a.resize();
+      });
+      this.calcScrollerContentHeight(this._currentSeries);
+    };
+    c.prototype.hideLoading = function (a) {
+      if ("all" != this._preCacheMode || 1 == a) {
+        a = this.el.querySelector(".csspinner");
+        0 != a && (a.style.visibility = "hidden", a.style.zIndex = "-1");
+      }
+    };
+    c.prototype.showLoading = function () {
+      var a = this.el.getElementsByClassName("csspinner")[0];
+      a.style.visibility = "visible";
+      a.style.zIndex = "1";
+    };
+    c.prototype.attachImage = function (a) {
+      if (0 != this._currentSeries && 0 != this._currentSeries.images && 0 != this._currentSeries.images.length) {
+        if (0 > a) {
+          a = 0;
+        }
+        if (a >= this._currentSeries.images.length) {
+          a = this._currentSeries.images.length - 1;
+          0 > a && (a = 0);
+        }
+        this._firstImageIndex = a;
+        for (var b = 0; b < this.imageViews.length; b++) b < this._currentSeries.images.length ? this._imageViews[b].attachImage(this._currentSeries.images[a + b]) : this._imageViews[b].disableView();
+      }
+    };
+    c.prototype.loadImages = function (a) {
+      if (null != this._currentSeries) {
+        for (var b = [], c = this.rowCount * this.colCount, d = 0; d < c; d++) if (d < this._currentSeries.images.length) {
+          var e = this._currentSeries.images[d + a];
+          Utils.existCornerstoneCache(e) ? this.showImage(e) : b.push(e);
+        } else {
+          this.imageViews[d].disableView();
+        }
+        if (0 < b.length) {
+          this.downloadImages(this._currentSeries, b, !0);
+        }
+      }
+    };
+    c.prototype.cacheImages = function () {
+      if ("no" != this._preCacheMode && null != this._currentSeries) {
+        var a = this.rowCount * this.colCount,
+          b = 0;
+        "all" == this._preCacheMode ? b = this._currentSeries.images.length : 0 < this._preCacheMode && 0 < this._currentSeries.images.length && (this._preCacheMode > this._currentSeries.images.length ? b = this._currentSeries.images.length : b = this._preCacheMode);
+        for (var c = []; a < b; a++) {
+          var d = this._currentSeries.images[a];
+          Utils.existCornerstoneCache(d) ? this.showImage(d) : c.push(d);
+        }
+        if (0 < c.length) {
+          this.downloadImages(this._currentSeries, c, !1);
+        }
+      }
+    };
+    c.prototype.showImage = function (a, b) {
+      var c, d;
+      if (0 != this._currentSeries && 0 != this._currentSeries.images && 0 != this._currentSeries.images.length && a.series.study.studyUid == this._currentSeries.study.studyUid && a.series.seriesUid == this._currentSeries.seriesUid && a.series.seriesNumber == this._currentSeries.seriesNumber) {
+        var e = 0;
+        try {
+          for (var g = __values(this._currentSeries.images), l = g.next(); !l.done; l = g.next()) if (0 != l.value.cornerstoneImageId) {
+            e += 1;
+          }
+        } catch (n) {
+          c = {
+            error: n
+          };
+        } finally {
+          try {
+            if (l && !l.done && (d = g.return)) {
+              d.call(g);
+            }
+          } finally {
+            if (c) {
+              throw c.error;
+            }
+          }
+        }
+        if ("all" == this._preCacheMode) {
+          this._downloadProgressBar.set(e + this._failedImageNum);
+          this.addContainerInnerHeight(e - 1 + this._failedImageNum);
+        }
+        this._imageViews.forEach(function (c) {
+          try {
+            c.showImage(a, b);
+          } catch (m) {
+            console.error("\u663e\u793a\u56fe\u50cf\u9519\u8bef\uff1a" + m);
+          }
+        });
+      }
+    };
+    c.prototype.downloadImageFailed = function (a) {
+      if (0 != this._currentSeries && 0 != this._currentSeries.images && 0 != this._currentSeries.images.length && a.series.study.studyUid == this._currentSeries.study.studyUid && a.series.seriesUid == this._currentSeries.seriesUid && a.series.seriesNumber == this._currentSeries.seriesNumber) {
+        console.log("downloadImageFailed", this._failedImageNum);
+        this._failedImageNum += 1;
+      }
+    };
+    c.prototype.setImageLayout = function (a, b) {
+      var c = this,
+        d = this.el.querySelector(".image-view-container");
+      if (0 == d) {
+        setTimeout(function () {
+          c.setImageLayout(a, b);
+        }, 50);
+      } else {
+        this._imageRowNum = a;
+        this._imageColNum = b;
+        var h = (100 / a).toFixed(2),
+          g = Math.floor(100 / b),
+          l = a * b,
+          n = this._imageViews.length;
+        if (this._imageViews.length < l) {
+          for (; n < l; n++) {
+            var m = new e.ImageView(d);
+            m.actionTag = this._actionTag;
+            m.wwwcSynchronizer = this._wwwcSynchronizer;
+            m.panZoomSynchronizer = this._panZoomSynchronizer;
+            m.getViewport = function () {
+              if (0 != c._imageViews.length) {
+                return c._imageViews[0].viewport;
+              }
+            };
+            m.positionImage = function (a) {
+              "down" == a ? c.positionImage(c._firstImageIndex + 1) : "up" == a && c.positionImage(c._firstImageIndex - 1);
+            };
+            m.maximizing = this.onMaximizing.bind(this);
+            m.getScreenElements = function () {
+              return 0 != c.getScreenElements ? c.getScreenElements() : [];
+            };
+            m.seriesIsFocus = function () {
+              return c._isFocused;
+            };
+            m.sendViewPort = function (a, b, d) {
+              if (0 != c.sendViewPort) {
+                c.sendViewPort(a, b, c, d);
+              }
+            };
+            m.hideLoading = this.hideLoading;
+            m.actionTag = this._actionTag;
+            m.imageViewOptions = this._seriesLayoutViewOptions;
+            m.ifCompare = this.ifCompare;
+            m.ifscroll = this.ifscroll;
+            m.cornerFontSize = this.cornerFontSize;
+            this._imageViews.push(m);
+          }
+        }
+        for (n = 0; n < l; n++) {
+          this._imageViews[n].el.style.height = "".concat(h, "%");
+          this._imageViews[n].el.style.width = "".concat(g, "%");
+        }
+        this.resize();
+        var d = function (a) {
+            var b = !1;
+            cornerstone.getEnabledElements().forEach(function (d) {
+              if (d.element == c._imageViews[a].el) {
+                b = !0;
+              }
+            });
+            b || cornerstone.disable(p._imageViews[a].el);
+            window.ActiveXObject || "ActiveXObject" in window ? p._imageViews[a].el.parentNode.removeChild(p._imageViews[a].el) : p._imageViews[a].el.remove();
+          },
+          p = this,
+          n = l;
+        for (; n < this._imageViews.length; n++) d(n);
+        this._imageViews.splice(l, this._imageViews.length - l);
+      }
+    };
+    c.prototype.onMaximizing = function (a) {
+      if (0 == this._isMaximizing) {
+        if (1 == this._imageRowNum && 1 == this._imageColNum) {
+          return;
+        }
+        this._offsetImageIndex = a - this._firstImageIndex;
+        this._oldRowNum = this._imageRowNum;
+        this._oldColNum = this._imageColNum;
+        this._isMaximizing = !0;
+        this._firstImageIndex = a;
+        this._imageColNum = this._imageRowNum = 1;
+      } else {
+        this._isMaximizing = !1;
+        this._firstImageIndex = a - this._offsetImageIndex;
+        this._imageRowNum = this._oldRowNum;
+        this._imageColNum = this._oldColNum;
+      }
+      this.setImageLayout(this._imageRowNum, this._imageColNum);
+      this.attachImage(this._firstImageIndex);
+      this.loadImages(this._firstImageIndex);
+      this.calcScrollerContentHeight(this._currentSeries);
+    };
+    c.prototype.bindVisibleSeriesTool = function () {
+      var a = this.el.querySelector(".visible-seriestool");
+      a.removeEventListener("click", this.visibleBtn.bind(this));
+      a.addEventListener("click", this.visibleBtn.bind(this));
+    };
+    c.prototype.visibleBtn = function () {
+      var a = this.el.getElementsByClassName("visible-seriestool")[0],
+        b = this.el.getElementsByClassName("seriesnav")[0];
+      a.style.display = "none";
+      if (0 != b) {
+        b.style.display = "block";
+        a = this.el.querySelector(".image-view-container");
+        a.style.height = "calc(100% - 33px)";
+        a.style.top = "27px";
+        this.resize();
+      }
+    };
+    c.prototype.scrollToPosition = function (a) {
+      var b = this.el.querySelector(".controller"),
+        c = b.offsetHeight;
+      this._wheeling = !0;
+      b.scrollTop = c * a;
+    };
+    c.prototype.controllerMouseMove = function () {
+      this._mouseInThisEl = !0;
+    };
+    c.prototype.controllerMouseOut = function () {
+      this._mouseInThisEl = !1;
+    };
+    c.prototype.addContainerInnerHeight = function (a) {
+      a = this.el.getElementsByClassName("controller")[0].offsetHeight * (a + 1);
+      this.el.getElementsByClassName("container-inner")[0].style.height = "".concat(a, "px");
+    };
+    c.prototype.scrollDebounce = function () {
+      var a = this;
+      if (this._wheelTimer) {
+        clearTimeout(this._wheelTimer);
+      }
+      if (0 == this.el.querySelectorAll(".cornerstone-canvas").length || 1 == this._wheeling) {
+        if (this._wheeling) {
+          this._wheeling = !1;
+        }
+      } else {
+        var b = this.el.querySelector(".controller"),
+          c = Math.floor(Math.ceil(b.scrollTop) / b.offsetHeight);
+        if (this._mouseInThisEl) {
+          this._wheelTimer = setTimeout(function () {
+            a.positionImage(c);
+          }, 0);
+        }
+      }
+    };
+    c.prototype.calcScrollerContentHeight = function (a) {
+      if (0 != a && 0 != this.el.querySelector(".controller") && 0 != this.el.querySelector(".container-inner")) {
+        var b,
+          c = this._imageRowNum * this._imageColNum,
+          d = a.images.length;
+        if (d <= c) {
+          a = 0;
+        } else {
+          b = this.el.querySelector(".controller").offsetHeight;
+          if ("all" == this._preCacheMode && 1 == this._isCachingSeries) {
+            var e = 1;
+            if (0 != a.images) {
+              a.images.forEach(function (a) {
+                if (0 != a.cornerstoneImageId) {
+                  e += 1;
+                }
+              });
+              1 == e ? e = 0 : e == a.images.length + 1 && (e = a.images.length);
+            }
+            a = b * e;
+          } else {
+            a = b * (d - c + 1);
+          }
+        }
+        this.el.querySelector(".container-inner").style.height = "".concat(a, "px");
+        c = this.el.getElementsByClassName("controller")[0];
+        0 == a ? c.scrollTop = 0 : c.scrollTop = b * this._firstImageIndex;
+        this._controllerMouseMoveCallback = this.controllerMouseMove.bind(this);
+        this._controllerMouseOutCallback = this.controllerMouseOut.bind(this);
+        c.removeEventListener("mousemove", this._controllerMouseMoveCallback);
+        c.removeEventListener("mouseout", this._controllerMouseOutCallback);
+        c.addEventListener("mousemove", this._controllerMouseMoveCallback);
+        c.addEventListener("mouseout", this._controllerMouseOutCallback);
+        c.onscroll = this.scrollDebounce.bind(this);
+      }
+    };
+    c.prototype.setFocusedStyle = function () {
+      var a, b;
+      if (0 != document.querySelectorAll(".image-view-container").length) {
+        var c = document.querySelectorAll(".image-view-container");
+        try {
+          for (var d = __values(c), e = d.next(); !e.done; e = d.next()) e.value.classList.remove("focus");
+        } catch (g) {
+          a = {
+            error: g
+          };
+        } finally {
+          try {
+            if (e && !e.done && (b = d.return)) {
+              b.call(d);
+            }
+          } finally {
+            if (a) {
+              throw a.error;
+            }
+          }
+        }
+        this.el.querySelector(".image-view-container").classList.add("focus");
+        this._isFocused = !0;
+        if (0 != this.focusChanged) {
+          this.focusChanged(this._viewId, this._currentSeries);
+        }
+        if (0 != this.getScreenElements) {
+          this.getScreenElements().forEach(function (a) {
+            var b = !1;
+            cornerstone.getEnabledElements().forEach(function (c) {
+              if (c.element == a.el && 0 != c.image) {
+                b = !0;
+              }
+            });
+            if (b) {
+              cornerstone.updateImage(a.el);
+            }
+          });
+        }
+      }
+    };
+    c.prototype.clearImage = function () {
+      var a = this;
+      this._currentSeries = 0;
+      MessageProxy.getTemplate("templates/pc/SeriesLayoutView.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u5e03\u5c40\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+      this._imageViews.forEach(function (a) {
+        a.clearImage();
+      });
+      this._imageViews = [];
+    };
+    c.prototype.setWWWL = function (a, b) {
+      this._imageViews.forEach(function (c) {
+        c.setWWWL(a, b);
+      });
+    };
+    c.prototype.setScale = function (a) {
+      this._imageViews.forEach(function (b) {
+        b.setScale(a);
+      });
+    };
+    c.prototype.onceAction = function (a) {
+      "fitToWindow" == a ? this._imageViews.forEach(function (a) {
+        a.fitToWindow();
+      }) : "invertcolor" == a ? this._imageViews.forEach(function (a) {
+        a.invertColor();
+      }) : "reset" == a ? this._imageViews.forEach(function (a) {
+        a.resetImage();
+      }) : "clockwise" == a ? this._imageViews.forEach(function (a) {
+        a.clockwise();
+      }) : "counterclockwise" == a ? this._imageViews.forEach(function (a) {
+        a.counterclockwise();
+      }) : "fliphorizontal" == a ? this._imageViews.forEach(function (a) {
+        a.fliphorizontal();
+      }) : "flipvertical" == a && this._imageViews.forEach(function (a) {
+        a.flipvertical();
+      });
+    };
+    c.prototype.onceSet = function (a, b) {
+      this._imageViews.forEach(function (c) {
+        "ruler" == a ? c.imageViewOptions.rulerAct = b : "overlay" == a ? c.imageViewOptions.overlayAct = b : "orientation" == a ? c.imageViewOptions.orientationAct = b : "annotation" == a ? c.imageViewOptions.annotationAct = b : ("positionline" != a && (c.imageViewOptions.rulerAct = b, c.imageViewOptions.overlayAct = b, c.imageViewOptions.orientationAct = b, c.imageViewOptions.annotationAct = b), c.imageViewOptions.positionlineAct = b);
+        c.setShowInfo();
+      });
+    };
+    c.prototype.deleteAll = function () {
+      this._imageViews.forEach(function (a) {
+        a.deleteall();
+      });
+    };
+    c.prototype.playSeries = function () {
+      var a = this;
+      this._playTimer = setInterval(function () {
+        a.playSeriesOnce();
+      }, 1E3 / this.FPS);
+    };
+    c.prototype.playSeriesOnce = function () {
+      var a, b;
+      try {
+        for (var c = __values(this._imageViews), d = c.next(); !d.done; d = c.next()) {
+          var e = d.value;
+          e.deactivateTools();
+          cornerstoneTools.wwwc.activate(e.el, 4);
+          cornerstoneTools.wwwcTouchDrag.activate(e.el);
+        }
+      } catch (g) {
+        a = {
+          error: g
+        };
+      } finally {
+        try {
+          if (d && !d.done && (b = c.return)) {
+            b.call(c);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+      if (this._firstImageIndex == this._currentSeries.images.length - this._imageViews.length) {
+        this._firstImageIndex = -1;
+      }
+      this.positionImage(this._firstImageIndex + 1);
+    };
+    c.prototype.cineClicked = function (a) {
+      a ? (this.playSeries(), this.playing = !0) : (this.stopPlay(), this.playing = !1);
+    };
+    c.prototype.stopPlay = function () {
+      var a, b;
+      if (0 != this._playTimer) {
+        clearInterval(this._playTimer);
+        this._playTimer = 0;
+      }
+      try {
+        for (var c = __values(this._imageViews), d = c.next(); !d.done; d = c.next()) d.value.activateTools();
+      } catch (h) {
+        a = {
+          error: h
+        };
+      } finally {
+        try {
+          if (d && !d.done && (b = c.return)) {
+            b.call(c);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+    };
+    c.prototype.changeFPS = function () {
+      if (this.playing) {
+        this.stopPlay();
+        this.playSeries();
+      }
+    };
+    c.viewId = 0;
+    return c;
+  }();
+  e.SeriesLayoutView = d;
+})(pc || (pc = {}));
+(function (e) {
+  var d = function () {
+    function c() {
+      this._repStudyInfo = [];
+      this._loaded = !1;
+      this.loadCss();
+      this.loadTemplate();
     }
-  };
-  _0x1571ce("网络请求拦截器已启动", "success");
-}
-function _0x1ef036(_0x167b48) {
-  try {
-    {
-      const _0x5ee158 = JSON.parse(_0x167b48);
-      if (_0x5ee158.Header) {
+    c.prototype.loadCss = function () {
+      Utils.addCssByLink("css/pc/StudyReportView.css");
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this;
+      MessageProxy.getTemplate("templates/pc/StudyReportView.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u5e8f\u5217\u5217\u8868\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+    };
+    c.prototype.addRepStudyInfo = function (a) {
+      this._repStudyInfo.push(a);
+    };
+    c.prototype.initView = function (a) {
+      this._reportTemplate = new DOMParser().parseFromString(a, "text/html").querySelector("#reportViewTemplate").innerHTML;
+      this._loaded = !0;
+      if (0 != this._repStudyInfo && 0 != this._repStudyInfo.length) {
+        this.LoadReportView();
+      }
+    };
+    c.prototype.LoadReportView = function () {
+      var a = this;
+      if (0 != this._loaded) {
+        if (0 == this._repStudyInfo || 0 == this._repStudyInfo.length) {
+          this.addEmptyContent();
+        } else {
+          var b = document.getElementById("reportContent");
+          b.innerHTML = "";
+          var c = document.createElement("div");
+          c.innerHTML = this._reportTemplate;
+          b.appendChild(c.querySelector("#reportContener"));
+          c = this.getIScrollOptions();
+          this._reportScroll = new IScroll("#reportContent", c);
+          for (var d = b.querySelectorAll(".icon-arrowright"), e = 0, g = this, b = function (a) {
+              d[a].style.color = "darkgray";
+              d[a].addEventListener("click", function () {
+                if (0 == a && "white" == d[0].style.color) {
+                  e--;
+                } else {
+                  if (1 == a && "white" == d[1].style.color) {
+                    e++;
+                  } else {
+                    return;
+                  }
+                }
+                0 == e ? (d[0].style.color = "darkgray", d[1].style.color = "white") : e == g._repStudyInfo.length - 1 ? (d[0].style.color = "white", d[1].style.color = "darkgray") : (d[0].style.color = "white", d[1].style.color = "white");
+                g.showInfo(e);
+              });
+              if (0 == e) {
+                0 == e;
+                d[0].style.color = "darkgray";
+              }
+              if (1 == l._repStudyInfo.length) {
+                d[0].style.color = "darkgray";
+                d[1].style.color = "darkgray";
+              }
+              if (1 < l._repStudyInfo.length) {
+                d[0].style.color = "darkgray";
+                d[1].style.color = "white";
+              }
+            }, l = this, c = 0; c < d.length; c++) b(c);
+          g.showInfo(e);
+          setTimeout(function () {
+            a._reportScroll.refresh();
+          }, 400);
+        }
+      }
+    };
+    c.prototype.getIScrollOptions = function () {
+      return {
+        mouseWheel: !0,
+        scrollbars: "custom",
+        interactiveScrollbars: !0,
+        click: !0,
+        tap: !0,
+        preventDefault: !1,
+        scrollX: !1,
+        scrollY: !0
+      };
+    };
+    c.prototype.showInfo = function (a) {
+      var b = document.getElementById("reportContent").querySelector("#reportContener"),
+        c = this._repStudyInfo[a];
+      b.getElementsByClassName("report-number")[0].innerHTML = a + 1 + "/" + this._repStudyInfo.length;
+      b.getElementsByClassName("confirmed-doctor")[0].innerHTML = c.confirmedDoctorName + "/" + (null != c.studyDoctorName ? c.studyDoctorName : "");
+      b.getElementsByClassName("confirmed-time")[0].innerHTML = c.confirmedFinishTime;
+      b.getElementsByClassName("clinical-diagnose")[0].innerHTML = c.clinicalDiagnose;
+      b.getElementsByClassName("report-des")[0].innerHTML = c.reportDescription;
+      b.getElementsByClassName("report-diagnose")[0].innerHTML = c.reportDiagnose;
+      a = document.querySelector(".base-info");
+      b = document.querySelector(".report-info");
+      a = a.offsetHeight + b.offsetHeight;
+      b = document.querySelector(".navbar");
+      document.getElementById("reportContener").style.height = "".concat(a + b.offsetHeight, "px");
+      this._reportScroll.refresh();
+    };
+    c.prototype.addEmptyContent = function () {
+      var a = document.getElementById("reportContent");
+      a.innerHTML = "";
+      var b = document.createElement("div");
+      b.style.position = "absolute";
+      b.style.top = "40%";
+      b.style.left = "0";
+      b.style.right = "0";
+      b.style.bottom = "0";
+      b.style.textAlign = "center";
+      b.innerHTML = "\u6682\u65e0\u8bb0\u5f55";
+      a.appendChild(b);
+    };
+    return c;
+  }();
+  e.StudyReportView = d;
+})(pc || (pc = {}));
+__values = this && this.__values || function (e) {
+  var d = "function" === typeof Symbol && Symbol.iterator,
+    c = d && e[d],
+    a = 0;
+  if (c) {
+    return c.call(e);
+  }
+  if (e && "number" === typeof e.length) {
+    return {
+      next: function () {
+        if (e && a >= e.length) {
+          e = 0;
+        }
         return {
-          gameName: _0x5ee158.Header.Name || "未知游戏",
-          storyName: _0x5ee158.Header.StoryName || "未知剧情",
-          saveTime: _0x5ee158.Header.SaveTime ? new Date(_0x5ee158.Header.SaveTime).toLocaleString() : "未知时间",
-          valid: true
+          value: e && e[a++],
+          done: !e
         };
       }
-      const _0x13fac6 = {
-        valid: false
-      };
-      return _0x13fac6;
-    }
-  } catch (_0x1254ea) {
-    const _0x4f57f6 = {
-      valid: false
     };
-    return _0x4f57f6;
   }
-}
-function _0x526c60() {
-  try {
-    {
-      for (const _0x3b7878 of Object.keys(localStorage)) {
-        if (_0x3b7878.startsWith("save") && _0x3b7878.indexOf(_0x151067) !== -1) {
-          const _0x5c2f1a = localStorage.getItem(_0x3b7878);
-          if (_0x5c2f1a) {
-            const _0x31b9db = JSON.parse(_0x5c2f1a);
-            if (_0x31b9db.Header && _0x31b9db.Header.StoryName) {
+  throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+(function (e) {
+  var d = function () {
+    function c() {
+      this._studyInfo = [];
+      this._loaded = !1;
+      this.loadCss();
+      this.loadTemplate();
+    }
+    c.prototype.loadCss = function () {
+      Utils.addCssByLink("css/pc/StudyHistoryView.css");
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this;
+      MessageProxy.getTemplate("templates/pc/StudyHistoryView.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u5e8f\u5217\u5217\u8868\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+    };
+    c.prototype.addStudyInfo = function (a) {
+      this._studyInfo.push(a);
+    };
+    c.prototype.initView = function (a) {
+      this._historyTemplate = new DOMParser().parseFromString(a, "text/html").querySelector("#historyViewTemplate").innerHTML;
+      this._loaded = !0;
+    };
+    c.prototype.loadHisView = function () {
+      var a,
+        b,
+        c = this;
+      if (0 == this._studyInfo.length) {
+        this.addEmptyContent();
+      } else {
+        var d = document.createElement("div");
+        d.id = "scrollerHis";
+        var e = document.querySelector("#historyContent");
+        e.innerHTML = "";
+        for (var g = 0; g < this._studyInfo.length; g++) {
+          var l = document.createElement("div");
+          l.innerHTML = this._historyTemplate;
+          l = l.getElementsByClassName("history-list-item")[0];
+          l.style.height = "70px";
+          l.setAttribute("study-id", this._studyInfo[g].pacs_study_uid);
+          l.getElementsByClassName("time-item")[0].innerHTML = this._studyInfo[g].study_time;
+          l.getElementsByClassName("pacs-study-item")[0].innerHTML = this._studyInfo[g].pacs_study_item;
+          l.getElementsByClassName("patient-id")[0].innerHTML = this._studyInfo[g].patient_id;
+          l.getElementsByClassName("patient-type")[0].innerHTML = this._studyInfo[g].patient_type;
+          l.getElementsByClassName("study-status")[0].innerHTML = this.getStudyStatus(this._studyInfo[g].study_status);
+          l.getElementsByClassName("device-type")[0].innerHTML = this._studyInfo[g].modality;
+          l.getElementsByClassName("image-count")[0].innerHTML = "".concat(null == this._studyInfo[g].image_count || 0 == this._studyInfo[g].image_count ? 0 : this._studyInfo[g].image_count, "\u56fe");
+          d.appendChild(l);
+        }
+        e.appendChild(d);
+        d = document.getElementsByClassName("patient-history")[0];
+        g = document.getElementsByClassName("history-number")[0];
+        d.innerHTML = "\u65e2\u5f80\u68c0\u67e5(" + this._studyInfo.length + ")";
+        g.innerHTML = "\u65e2\u5f80\u68c0\u67e5(".concat(this._studyInfo.length, ")");
+        var e = e.getElementsByClassName("history-list-item"),
+          n = this,
+          d = function (a) {
+            a.addEventListener(Environment.isDesktop ? "dblclick" : "click", function (b) {
+              b = a.getAttribute("study-id");
+              if (-1 == a.className.search(/active/) && n.studyItemTapped) {
+                n.studyItemTapped(b);
+                n.setActive(b);
+              }
+            });
+          };
+        try {
+          for (var m = __values(e), p = m.next(); !p.done; p = m.next()) d(p.value);
+        } catch (q) {
+          a = {
+            error: q
+          };
+        } finally {
+          try {
+            if (p && !p.done && (b = m.return)) {
+              b.call(m);
+            }
+          } finally {
+            if (a) {
+              throw a.error;
+            }
+          }
+        }
+        setTimeout(function () {
+          c.scrollrefresh();
+        }, 200);
+      }
+    };
+    c.prototype.setActive = function (a) {
+      if ("null" != a && null != a && 0 != a) {
+        document.getElementsByClassName("history-list-item active");
+        var b = 0;
+        if (0 != a && 0 == Config.studyHistory) {
+          var c = setInterval(function () {
+            0 == document.querySelectorAll(".history-list-item[study-id='" + a + "']")[0] ? (b++, 20 < b && clearInterval(c)) : (clearInterval(c), document.querySelectorAll(".history-list-item[study-id='" + a + "']")[0].classList.add("active"));
+          }, 500);
+        }
+      }
+    };
+    c.prototype.getIScrollOptions = function () {
+      return {
+        mouseWheel: !0,
+        scrollbars: "custom",
+        interactiveScrollbars: !0,
+        click: !0,
+        tap: !0,
+        preventDefault: !1,
+        scrollX: !1,
+        scrollY: !0
+      };
+    };
+    c.prototype.getStudyStatus = function (a) {
+      switch (a) {
+        case 0:
+          {
+            return "\u9884\u7ea6";
+          }
+        case 10:
+          {
+            return "\u767b\u8bb0";
+          }
+        case 20:
+          {
+            return "\u5230\u8bca";
+          }
+        case 30:
+          {
+            return "\u6b63\u5728\u68c0\u67e5";
+          }
+        case 40:
+          {
+            return "\u68c0\u67e5\u5b8c\u6bd5";
+          }
+        case 50:
+          {
+            return "\u5f85\u8bca\u65ad";
+          }
+        case 60:
+          {
+            return "\u5df2\u8bca\u65ad\u3001\u5f85\u786e\u8ba4";
+          }
+        case 70:
+          {
+            return "\u5df2\u8bca\u65ad";
+          }
+        default:
+          {
+            return "\u672a\u77e5\u72b6\u6001";
+          }
+      }
+    };
+    c.prototype.addEmptyContent = function () {
+      var a = document.getElementById("historyContent");
+      a.innerHTML = "";
+      var b = document.createElement("div");
+      b.style.position = "absolute";
+      b.style.top = "40%";
+      b.style.left = "0";
+      b.style.right = "0";
+      b.style.bottom = "0";
+      b.style.textAlign = "center";
+      b.innerHTML = "\u6682\u65e0\u8bb0\u5f55";
+      a.appendChild(b);
+    };
+    c.prototype.scrollrefresh = function () {
+      if (null != document.querySelector(".history-list-item") && 0 != document.querySelector(".history-list-item")) {
+        var a = (document.querySelector(".history-list-item").offsetHeight + 5) * this._studyInfo.length,
+          b = document.querySelector("#toolbarContainer").offsetHeight;
+        if ("relative" != getComputedStyle(document.querySelector(".history-list-content")).position) {
+          document.querySelector("#scrollerHis").style.height = "".concat(a + b + 10, "px");
+        }
+        if (0 != this._seriesScroll) {
+          this._seriesScroll.destroy();
+        }
+        a = this.getIScrollOptions();
+        this._seriesScroll = new IScroll("#historyContent", a);
+      }
+    };
+    return c;
+  }();
+  e.StudyHistoryView = d;
+})(pc || (pc = {}));
+__awaiter = this && this.__awaiter || function (e, d, c, a) {
+  function b(a) {
+    return a instanceof c ? a : new c(function (b) {
+      b(a);
+    });
+  }
+  return new (c || (c = Promise))(function (c, k) {
+    function f(b) {
+      try {
+        l(a.next(b));
+      } catch (m) {
+        k(m);
+      }
+    }
+    function g(b) {
+      try {
+        l(a["throw"](b));
+      } catch (m) {
+        k(m);
+      }
+    }
+    function l(a) {
+      a.done ? c(a.value) : b(a.value).then(f, g);
+    }
+    l((a = a.apply(e, d || [])).next());
+  });
+};
+__generator = this && this.__generator || function (e, d) {
+  function c(b) {
+    return function (c) {
+      return a([b, c]);
+    };
+  }
+  function a(a) {
+    if (f) {
+      throw new TypeError("Generator is already executing.");
+    }
+    for (; b;) try {
+      f = 1;
+      if (k && (a[0] & 2 ? h = k["return"] : a[0] ? h = k["throw"] || ((h = k["return"]) && h.call(k), 0) : h = k.next) && !(h = h.call(k, a[1])).done) {
+        return h;
+      }
+      k = 0;
+      if (h) {
+        a = [a[0] & 2, h.value];
+      }
+      switch (a[0]) {
+        case 0:
+          {}
+        case 1:
+          {
+            h = a;
+            break;
+          }
+        case 4:
+          {
+            b.label++;
+            return {
+              value: a[1],
+              done: !1
+            };
+          }
+        case 5:
+          {
+            b.label++;
+            k = a[1];
+            a = [0];
+            continue;
+          }
+        case 7:
+          {
+            a = b.ops.pop();
+            b.trys.pop();
+            continue;
+          }
+        default:
+          {
+            if (!(h = b.trys, h = 0 < h.length && h[h.length - 1]) && (6 === a[0] || 2 === a[0])) {
+              b = 0;
+              continue;
+            }
+            if (3 === a[0] && (!h || a[1] > h[0] && a[1] < h[3])) {
+              b.label = a[1];
+            } else {
+              if (6 === a[0] && b.label < h[1]) {
+                b.label = h[1];
+                h = a;
+              } else {
+                if (h && b.label < h[2]) {
+                  b.label = h[2];
+                  b.ops.push(a);
+                } else {
+                  if (h[2]) {
+                    b.ops.pop();
+                  }
+                  b.trys.pop();
+                  continue;
+                }
+              }
+            }
+          }
+      }
+      a = d.call(e, b);
+    } catch (n) {
+      a = [6, n];
+      k = 0;
+    } finally {
+      f = h = 0;
+    }
+    if (a[0] & 5) {
+      throw a[1];
+    }
+    return {
+      value: a[0] ? a[1] : 0,
+      done: !0
+    };
+  }
+  var b = {
+      label: 0,
+      sent: function () {
+        if (h[0] & 1) {
+          throw h[1];
+        }
+        return h[1];
+      },
+      trys: [],
+      ops: []
+    },
+    f,
+    k,
+    h,
+    g;
+  g = {
+    next: c(0),
+    "throw": c(1),
+    "return": c(2)
+  };
+  "function" === typeof Symbol && (g[Symbol.iterator] = function () {
+    return this;
+  });
+  return g;
+};
+__values = this && this.__values || function (e) {
+  var d = "function" === typeof Symbol && Symbol.iterator,
+    c = d && e[d],
+    a = 0;
+  if (c) {
+    return c.call(e);
+  }
+  if (e && "number" === typeof e.length) {
+    return {
+      next: function () {
+        if (e && a >= e.length) {
+          e = 0;
+        }
+        return {
+          value: e && e[a++],
+          done: !e
+        };
+      }
+    };
+  }
+  throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+(function (e) {
+  var d = function () {
+    function c(a, b) {
+      var c = this;
+      this._preCacheMode = 100;
+      this._3dDisplayed = !1;
+      this._seriesViews = [];
+      this._actionTag = ActionTag.none;
+      this._defaultFontSize = 1.6;
+      this._seriesRowNum = 1;
+      this._seriesColNum = 2;
+      this._imageColNum = this._imageRowNum = 1;
+      this._ifscroll = this._ifCompare = !1;
+      this._toolWrap = "yes";
+      this._isHistoryItemClicked = this._isEmbed = !1;
+      this._prePatientMasterIndex = [];
+      0 != a && 0 != a.length || 0 != b && (0 != b.token && "" != b.token || 0 != b.hisApplyId && "" != b.hisApplyId) ? (this._studyIds = a, 0 != b && (0 != b.toolWrap && (this._toolWrap = b.toolWrap.toLowerCase()), 0 != b.preCacheMode && "" != b.preCacheMode ? this._preCacheMode = b.preCacheMode : Environment.isPad ? this._preCacheMode = "all" : Environment.isDesktop && (this._preCacheMode = "no"), 0 != b.embed && 0 != b.embed && (this._isEmbed = !0), 0 != b.seriesLayoutRows && (this._seriesRowNum = b.seriesLayoutRows), 0 != b.seriesLayoutCols && (this._seriesColNum = b.seriesLayoutCols), 0 != b.hisApplyId && (this._hisApplyId = b.hisApplyId), 0 != b.imageId && (this._imageId = b.imageId), 0 != b.objectUid && (this._objectUid = b.objectUid), 0 != b.seriesFolder && (this._seriesFolder = b.seriesFolder)), this.el = document.createElement("div"), this.el.setAttribute("name", "frame"), this.el.style.position = "relative", this.el.style.height = "100%", this.el.style.width = "100%", this.loadCss(), this.loadTemplate(), window.addEventListener("resize", this.resize.bind(this)), document.addEventListener("keydown", function (a) {
+        if (null != c.el.querySelector("div[name='layout2d']") && 0 != c.el.querySelector("div[name='layout2d']")) {
+          c.onceKeyDown(a.which || a.keyCode);
+        }
+      })) : MsgBox.errorAlert("\u65e0\u6548\u7684\u53c2\u6570\uff1astudyid/token/hisApplyId");
+    }
+    c.prototype.loadCss = function () {
+      Utils.addCssByLink("css/pc/CloudImageView.css");
+      window.onload = function () {
+        var a = 0;
+        document.addEventListener("touchstart", function (a) {
+          if (1 < a.touches.length) {
+            a.preventDefault();
+          }
+        });
+        document.addEventListener("touchend", function (b) {
+          var c = new Date().getTime();
+          if (500 >= c - a) {
+            b.preventDefault();
+          }
+          a = c;
+        });
+        document.addEventListener("gesturestart", function (a) {
+          a.preventDefault();
+        });
+      };
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this;
+      MessageProxy.getTemplate("templates/pc/CloudImageView.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u6a21\u677f\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+    };
+    c.prototype.initView = function (a) {
+      var b = this;
+      a = new DOMParser().parseFromString(a, "text/html");
+      this.el.innerHTML = a.querySelector("#mainTemplate").innerHTML;
+      this.createToolbarView();
+      this.createSeriesListView();
+      this.createSeriesView();
+      this.createPatientView();
+      this.createOtherViews();
+      Global.imageDownloaded = this.onImageDownloaded.bind(this);
+      if (0 != this._hisApplyId && "" != this._hisApplyId) {
+        MessageProxy.queryApplyInfoById(this._hisApplyId, function (a) {
+          a.hasError ? MsgBox.error("\u83b7\u53d6\u7533\u8bf7\u5355\u4fe1\u606f\u5931\u8d25\uff1a" + a.errorText) : 0 == a.risStudyId || "" == a.risStudyId ? MsgBox.error("\u83b7\u53d6\u7533\u8bf7\u5355\u4fe1\u606f\u5931\u8d25\u3002") : (b._studyIds = [], b._studyIds.push(a.risStudyId), b.loadData(a.risStudyId), 0 == Config.hideReport && b.loadRepData(a.risStudyId));
+        });
+      } else {
+        var c = function (a) {
+          return __awaiter(b, 0, 0, function () {
+            var b;
+            return __generator(this, function (c) {
+              switch (c.label) {
+                case 0:
+                  {
+                    return [4, Global.downloadImage(0, a)];
+                  }
+                case 1:
+                  {
+                    b = c.sent();
+                    1 == b.hasError ? console.error(b.errorText) : this._seriesViews[0].imageViews[0].showImage(b.imageInfo, b.imageFile);
+                    return [2];
+                  }
+              }
+            });
+          });
+        };
+        if (0 != this._imageId && "" != this._imageId) {
+          this.setSeriesLayout(1, 1);
+          this._seriesViews[0].setImageLayout(1, 1);
+          var d = new ImageInfo();
+          d.imageId = this._imageId;
+          a = location.href.indexOf("index.html");
+          d.imageUrl = location.href.substr(0, a) + "images/" + this._imageId + ".dcm";
+          var e = setInterval(function () {
+            if (null != b._seriesViews && 0 < b._seriesViews.length && null != b._seriesViews[0].imageViews && 0 < b._seriesViews[0].imageViews.length) {
+              b._seriesViews[0].imageViews[0].attachImage(d);
+              c(d);
+              clearInterval(e);
+            }
+          }, 100);
+        } else {
+          if (0 != this._seriesFolder && "" != this._seriesFolder) {
+            this.setSeriesLayout(1, 1);
+            this._seriesViews[0].setImageLayout(1, 1);
+            a = location.href.indexOf("index.html");
+            var g = location.href.substr(0, a) + "images/" + this._seriesFolder + "/";
+            fetch(g + "index.json").then(function (a) {
+              a.ok ? a.json().then(function (a) {
+                if (Array.isArray(a)) {
+                  var c = new StudyInfo();
+                  c.risStudyUid = b._seriesFolder;
+                  c.studyUid = b._seriesFolder;
+                  c.series = [];
+                  var d = new SeriesInfo();
+                  d.study = c;
+                  d.index = 0;
+                  d.seriesUid = b._seriesFolder;
+                  d.seriesNumber = 1;
+                  d.thumbnailUrl = g + a[0];
+                  c.series.push(d);
+                  d.images = [];
+                  for (var e = 0; e < a.length; e++) {
+                    var f = new ImageInfo();
+                    f.series = d;
+                    f.index = e;
+                    f.imageId = a[e];
+                    f.imageUrl = g + a[e];
+                    d.images.push(f);
+                  }
+                  Global.studies.push(c);
+                  b.openSeries(c, 0);
+                } else {
+                  console.log("\u56fe\u50cf\u8def\u5f84\u6570\u636e\u9519\u8bef");
+                }
+              }) : console.log("\u83b7\u53d6\u56fe\u50cf\u8def\u5f84\u9519\u8bef");
+            }).catch(function (a) {
+              console.log(a);
+            });
+          } else {
+            if (0 != this._objectUid && "" != this._objectUid) {
+              var l = this._studyIds[0];
+              MessageProxy.queryStudyInfoByRisID(l, function (a) {
+                var d, e;
+                if (a.hasError) {
+                  MsgBox.error("\u83b7\u53d6\u68c0\u67e5\u4fe1\u606f\u5931\u8d25\uff1a" + a.errorText);
+                } else {
+                  if (0 == a.studyInfo || 0 == a.studyInfo.length) {
+                    MsgBox.error("\u83b7\u53d6\u68c0\u67e5\u4fe1\u606f\u5931\u8d25\uff1a\u67e5\u8be2\u5230 0 \u6761\u8bb0\u5f55\u3002");
+                  } else {
+                    try {
+                      for (var f = __values(a.studyInfo), k = f.next(); !k.done; k = f.next()) Global.studies.push(k.value);
+                    } catch (u) {
+                      d = {
+                        error: u
+                      };
+                    } finally {
+                      try {
+                        if (k && !k.done && (e = f.return)) {
+                          e.call(f);
+                        }
+                      } finally {
+                        if (d) {
+                          throw d.error;
+                        }
+                      }
+                    }
+                    b.setSeriesLayout(1, 1);
+                    b._seriesViews[0].setImageLayout(1, 1);
+                    var h = new ImageInfo();
+                    h.imageId = b._objectUid;
+                    h.imageUrl = Global.getPacsFasUrl(l) + "getobject.do?objectuid=" + b._objectUid;
+                    var g = setInterval(function () {
+                      if (null != b._seriesViews && 0 < b._seriesViews.length && null != b._seriesViews[0].imageViews && 0 < b._seriesViews[0].imageViews.length) {
+                        b._seriesViews[0].imageViews[0].attachImage(h);
+                        c(h);
+                        clearInterval(g);
+                      }
+                    }, 100);
+                  }
+                }
+              });
+            } else {
+              this._studyIds.forEach(function (a) {
+                b.loadData(a);
+                if (0 == Config.hideReport) {
+                  b.loadRepData(a);
+                }
+              });
+            }
+          }
+        }
+      }
+      setTimeout(function () {
+        b.resize();
+      }, 100);
+    };
+    c.prototype.getValidToolBarHeight = function () {
+      return __awaiter(this, 0, 0, function () {
+        var a = this;
+        return __generator(this, function (b) {
+          return [2, new Promise(function (b) {
+            var c = document.querySelector("#toolbarContainer"),
+              d = document.body.clientHeight;
+            if (0 == c.offsetHeight || c.offsetHeight > d) {
+              var e = 0;
+              a._getOffsetHeightTimer = setInterval(function () {
+                if (10 == e) {
+                  clearInterval(a._getOffsetHeightTimer);
+                  a._getOffsetHeightTimer = 0;
+                  b(!1);
+                }
+                if (0 != c.offsetHeight && c.offsetHeight < d) {
+                  clearInterval(a._getOffsetHeightTimer);
+                  a._getOffsetHeightTimer = 0;
+                  b(!0);
+                }
+                e += 1;
+              }, 200);
+            } else {
+              b(!0);
+            }
+          })];
+        });
+      });
+    };
+    c.prototype.resize = function () {
+      return __awaiter(this, 0, 0, function () {
+        var a, b, c, d, e, g, l, n, m, p, q;
+        return __generator(this, function (f) {
+          switch (f.label) {
+            case 0:
               {
-                return _0x31b9db.Header.StoryName;
+                a = document.querySelector(".mainContent");
+                b = document.querySelector("#toolbarContainer");
+                c = document.querySelector(".seriesWrap");
+                d = document.querySelector("#seriesListContainer");
+                e = document.querySelector("#layoutContainer");
+                g = document.querySelector("#patientHistory");
+                l = document.querySelector("#patientReport");
+                e.removeAttribute("style");
+                a.removeAttribute("style");
+                c.removeAttribute("style");
+                l.removeAttribute("style");
+                return [4, this.getValidToolBarHeight()];
+              }
+            case 1:
+              {
+                n = f.sent();
+                if (!n) {
+                  return [2];
+                }
+                if (Environment.isLandscape) {
+                  a.style.height = "calc(100% - ".concat(b.offsetHeight, "px)");
+                  e.style.height = "100%";
+                }
+                if (Environment.isPortrait) {
+                  a.style.height = "calc(100% - ".concat(b.offsetHeight, "px)");
+                  g && "block" != g.style.display && "block" != l.style.display && (c.style.width = "calc(100% - ".concat(g.offsetWidth + l.offsetWidth, "px)"));
+                  e.style.height = "calc(100% - ".concat(d.offsetHeight, "px)");
+                }
+                if (a.offsetHeight > a.offsetWidth) {
+                  e.style.height = "calc(100% - ".concat(d.offsetHeight, "px)");
+                }
+                if ((m = document.querySelector("#patientHistory")) && 1 == Config.studyHistory) {
+                  m.style.display = "none";
+                }
+                p = document.querySelector("#patientReport");
+                if (Config.hideReport) {
+                  p.style.display = "none";
+                }
+                q = this.el.querySelector(".seriesWrap");
+                if (m) {
+                  "none" != m.style.display && "none" != p.style.display ? q.style.width = "calc(100% - ".concat(m.offsetWidth, "px - ").concat(p.offsetWidth, "px)") : "none" != m.style.display && "none" == p.style.display ? q.style.width = "calc(100% - ".concat(m.offsetWidth, "px)") : "none" == m.style.display && "none" != p.style.display ? q.style.width = "calc(100% - 20}px)" : q.style.width = "100%";
+                }
+                return [2];
+              }
+          }
+        });
+      });
+    };
+    c.prototype.createToolbarView = function () {
+      var a = this,
+        b = this,
+        c = document.querySelector("#toolbarContainer");
+      this._toolbarView = new e.ToolbarView(c, this._toolWrap);
+      this._toolbarView.completeInitTem = function () {
+        Environment.isDesktop ? setTimeout(function () {
+          a._toolbarView.hidePageButton();
+        }, 200) : (1 == a._isEmbed && (a._toolbarView.hideFullScreenButton(), a._toolbarView.hideCompareButton()), a._toolbarView.hideAnnoPolygon(), a._toolbarView.hideAnnoDeleteSelected());
+        a._toolbarView.setButtonChecked(a._actionTag);
+      };
+      this._toolbarView.btnSeriesClicked = function (b, c) {
+        a.setSeriesLayout(b, c);
+      };
+      this._toolbarView.keydown = function (a) {
+        b.onceKeyDown(a);
+      };
+      this._toolbarView.btnImageClicked = function (b, c) {
+        a.setImageLayout(b, c);
+      };
+      this._toolbarView.btnCompareClicked = function (b) {
+        Global.compareFlag = b;
+        if (2 != a._seriesRowNum * a._seriesColNum) {
+          a.setSeriesLayout(1, 2);
+        }
+        a._ifCompare = b;
+        a._seriesViews.forEach(function (a) {
+          a.ifCompare = b;
+          a.imageViews.forEach(function (a) {
+            a.ifCompare = b;
+          });
+        });
+      };
+      this._toolbarView.btnPresetwwwlClicked = function (a, c) {
+        0 == b._3dDisplayed ? b.setFocusedWWWL(a, c) : b._image3dComponent && b._image3dComponent.setWwwc(a, c);
+      };
+      this._toolbarView.btnDefaultClicked = function () {
+        Global.actionTag = ActionTag.none;
+        a._actionTag = ActionTag.none;
+        a.parseActionTag(ActionTag.none);
+      };
+      this._toolbarView.btnWWWLClicked = function () {
+        Global.actionTag = ActionTag.wwwl;
+        a._actionTag = ActionTag.wwwl;
+        a.parseActionTag(ActionTag.wwwl);
+      };
+      this._toolbarView.btnPanClicked = function () {
+        Global.actionTag = ActionTag.pan;
+        b._actionTag = ActionTag.pan;
+        b.parseActionTag(ActionTag.pan);
+      };
+      this._toolbarView.btnZoomClicked = function () {
+        Global.actionTag = ActionTag.zoom;
+        b._actionTag = ActionTag.zoom;
+        b.parseActionTag(ActionTag.zoom);
+      };
+      this._toolbarView.btnFitClicked = function () {
+        if (0 == b._3dDisplayed) {
+          b.onceAction("fitToWindow");
+        } else {
+          if (b._image3dComponent) {
+            b._image3dComponent.fitToWindow();
+          }
+        }
+      };
+      this._toolbarView.btnActualPXClicked = function () {
+        0 == b._3dDisplayed ? b.setFocusedScale(100) : b._image3dComponent && b._image3dComponent.actualSize();
+      };
+      this._toolbarView.btnInvertColorClicked = function () {
+        b.onceAction("invertcolor");
+      };
+      this._toolbarView.btnResetClicked = function () {
+        if (0 == b._3dDisplayed) {
+          b.onceAction("reset");
+        } else {
+          if (b._image3dComponent) {
+            b._image3dComponent.resetImage();
+          }
+        }
+      };
+      this._toolbarView.btnToolsClicked = function (a, c) {
+        switch (a) {
+          case "magnifier":
+            {
+              Global.actionTag = ActionTag.magnifier;
+              b._actionTag = ActionTag.magnifier;
+              b.parseActionTag(ActionTag.magnifier);
+              break;
+            }
+          case "ctvalue":
+            {
+              Global.actionTag = ActionTag.ctValue;
+              b._actionTag = ActionTag.ctValue;
+              b.parseActionTag(ActionTag.ctValue);
+              break;
+            }
+          case "zoom":
+            {
+              b.setFocusedScale(c);
+              break;
+            }
+          case "clockwise":
+            {
+              b.onceAction("clockwise");
+              break;
+            }
+          case "counterclockwise":
+            {
+              b.onceAction("counterclockwise");
+              break;
+            }
+          case "fliphorizontal":
+            {
+              b.onceAction("fliphorizontal");
+              break;
+            }
+          case "flipvertical":
+            {
+              b.onceAction("flipvertical");
+            }
+        }
+      };
+      this._toolbarView.btnAnnotationClicked = function (a) {
+        switch (a) {
+          case "arrow":
+            {
+              Global.actionTag = ActionTag.annoArrow;
+              b._actionTag = ActionTag.annoArrow;
+              b.parseActionTag(ActionTag.annoArrow);
+              break;
+            }
+          case "text":
+            {
+              Global.actionTag = ActionTag.annoText;
+              b._actionTag = ActionTag.annoText;
+              b.parseActionTag(ActionTag.annoText);
+              break;
+            }
+          case "length":
+            {
+              Global.actionTag = ActionTag.annoLength;
+              b._actionTag = ActionTag.annoLength;
+              b.parseActionTag(ActionTag.annoLength);
+              break;
+            }
+          case "rectangle":
+            {
+              Global.actionTag = ActionTag.annoRectangle;
+              b._actionTag = ActionTag.annoRectangle;
+              b.parseActionTag(ActionTag.annoRectangle);
+              break;
+            }
+          case "Polygon":
+            {
+              Global.actionTag = ActionTag.annoPolygon;
+              b._actionTag = ActionTag.annoPolygon;
+              b.parseActionTag(ActionTag.annoPolygon);
+              break;
+            }
+          case "ellipse":
+            {
+              Global.actionTag = ActionTag.annoEllipse;
+              b._actionTag = ActionTag.annoEllipse;
+              b.parseActionTag(ActionTag.annoEllipse);
+              break;
+            }
+          case "angle":
+            {
+              Global.actionTag = ActionTag.annoAngle;
+              b._actionTag = ActionTag.annoAngle;
+              b.parseActionTag(ActionTag.annoAngle);
+              break;
+            }
+          case "cobbangle":
+            {
+              Global.actionTag = ActionTag.annoCobbAngle;
+              b._actionTag = ActionTag.annoCobbAngle;
+              b.parseActionTag(ActionTag.annoCobbAngle);
+              break;
+            }
+          case "deleteselected":
+            {
+              Global.actionTag = ActionTag.annoDeleteSelected;
+              b._actionTag = ActionTag.annoDeleteSelected;
+              b.parseActionTag(ActionTag.annoDeleteSelected);
+              break;
+            }
+          case "deleteall":
+            {
+              0 == b._3dDisplayed ? b.getFocusedSeriesView().deleteAll() : b._image3dComponent && b._image3dComponent.deleteAllAnnotations();
+            }
+        }
+      };
+      this._toolbarView.btnCineClicked = function (a) {
+        var c = b.getFocusedSeriesView();
+        0 == c ? 1 == a && MsgBox.info("\u8bf7\u5148\u9009\u62e9\u8981\u64ad\u653e\u7684\u5e8f\u5217\u3002") : c.cineClicked(a);
+      };
+      this._toolbarView.btnFullScreenClicked = function (a) {
+        var b = document.documentElement;
+        a ? (a = b.requestFullscreen || b.webkitRequestFullScreen || b.mozRequestFullScreen || b.msRequestFullscreen, "undefined" != typeof a && a ? a.call(b) : "undefined" != typeof window.ActiveXObject && (b = new ActiveXObject("WScript.Shell"), null != b && b.SendKeys("{F11}"))) : (b = document, a = b.exitFullscreen || b.webkitExitFullscreen || b.mozCancelFullScreen || b.msExitFullscreen, a.call(b));
+        return !0;
+      };
+      this._toolbarView.btnHelpClicked = function () {
+        var a = this._rootElement.getElementsByClassName("tool-help")[0].outerHTML;
+        swal({
+          customClass: "swal-help",
+          title: "\u5feb\u6377\u952e",
+          html: a,
+          width: "60em",
+          padding: "0px",
+          heightAuto: !1,
+          allowOutsideClick: !1,
+          confirmButtonText: "\u5173\u95ed"
+        }).then(function (a) {});
+      };
+      this._toolbarView.btnDicomClicked = function () {
+        var a = b.getFocusedSeriesView();
+        if (null == a || 0 == a.imageViews[0]._currentImage) {
+          MsgBox.info("\u8bf7\u9009\u62e9\u5e8f\u5217\uff01");
+        } else {
+          a = a.imageViews[0]._currentImage.cornerstoneImageId;
+          if (0 != a) {
+            var c = cornerstone.imageCache.imageCache[a],
+              d = !1;
+            switch (c.image.data.string("x00020010")) {
+              case "1.2.840.10008.1.2.1":
+                {
+                  d = !0;
+                  break;
+                }
+              case "1.2.840.10008.1.2.2":
+                {
+                  d = !0;
+                  break;
+                }
+              case "1.2.840.10008.1.2":
+                {
+                  d = !1;
+                }
+            }
+            var a = Object.keys(c.image.data.elements),
+              e = this._rootElement.querySelector(".dicom-info");
+            e.innerHTML = "";
+            a.forEach(function (a, f) {
+              f = document.createElement("tr");
+              var k = [];
+              k.push(a.slice(1, 5));
+              k.push(a.slice(-4));
+              var k = k.join(","),
+                h = c.image.data.elements[a].vr;
+              if (0 == d && 0 == h) {
+                h = b.getVR(k);
+              }
+              f.innerHTML += "<td>" + k + "</td><td>" + (0 != Config.tagName[a] ? Config.tagName[a] : "") + "</td><td>" + h + "</td><td>" + b.getTextContent(c.image, a, h, c.image.data.elements[a]) + "</td>";
+              e.appendChild(f);
+            });
+            a = this._rootElement.getElementsByClassName("tool-dicom")[0].outerHTML;
+            swal({
+              customClass: "swal-dicom",
+              title: "DICOM\u4fe1\u606f",
+              html: a,
+              width: "60em",
+              padding: "0px",
+              heightAuto: !1,
+              allowOutsideClick: !1,
+              confirmButtonText: "\u5173\u95ed"
+            }).then(function (a) {});
+          }
+        }
+      };
+      this._toolbarView.btnSeriesnavClicked = function (b) {
+        a.changeSeries(b);
+      };
+      this._toolbarView.btnSetClicked = function (a, c) {
+        if (0 == b._3dDisplayed) {
+          b.onceSet(a, c);
+        } else {
+          if (b._image3dComponent) {
+            "ruler" == a ? c ? b._image3dComponent.showRuler() : b._image3dComponent.hideRuler() : "overlay" == a ? c ? b._image3dComponent.showOverlayInfo() : b._image3dComponent.hideOverlayInfo() : "all-show" == a && (c ? (b._image3dComponent.showRuler(), b._image3dComponent.showOverlayInfo()) : (b._image3dComponent.hideRuler(), b._image3dComponent.hideOverlayInfo()));
+          }
+        }
+      };
+      this._toolbarView.btnSelectClicked = function (b) {
+        a._ifscroll = b;
+        a._seriesViews.forEach(function (a) {
+          a.ifscroll = b;
+          a.imageViews.forEach(function (a) {
+            if (a.ifscroll = b) {
+              a.setCursorStyle("cur_layer.png");
+            }
+            if (Environment.isDesktop) {
+              a.deactivateTools();
+            }
+          });
+        });
+      };
+      this._toolbarView.changeFPS = function (a) {
+        b._seriesViews.forEach(function (b) {
+          b.FPS = a;
+        });
+        b.getFocusedSeriesView().changeFPS();
+      };
+    };
+    c.prototype.getTextContent = function (a, b, c, d) {
+      var e = 0 != this.getTextDecoderData(a, d) ? this.getTextDecoderData(a, d) : "";
+      switch (c) {
+        case "SS":
+          {
+            0 != a.data.int16(b, 0) ? e = a.data.int16(b, 0) : e = "";
+            break;
+          }
+        case "US":
+          {}
+        case "AT":
+          {
+            0 != a.data.uint16(b, 0) ? e = a.data.uint16(b, 0) : e = "";
+            break;
+          }
+        case "SL":
+          {
+            0 != a.data.int32(b, 0) ? e = a.data.int32(b, 0) : e = "";
+            break;
+          }
+        case "UL":
+          {
+            0 != a.data.uint32(b, 0) ? e = a.data.uint32(b, 0) : e = "";
+            break;
+          }
+        case "FL":
+          {
+            0 != a.data.float(b, 0) ? e = a.data.float(b, 0) : e = "";
+            break;
+          }
+        case "FD":
+          {
+            0 != a.data.double(b, 0) ? e = a.data.double(b, 0) : e = "";
+            break;
+          }
+        case "OB":
+          {}
+        case "OW":
+          {}
+        case "SQ":
+          {}
+        case "OF":
+          {}
+        case "UT":
+          {
+            if (0 != d.items && 0 != d.items.length) {
+              b = d.items[0].tag;
+              0 != a.data.string(b) ? e = a.data.string(b) : e = "";
+            }
+            if ("x00291010" == b || "x7fe00010" == b || "x00291210" == b || "x60003000" == b || 3E4 <= d.length) {
+              0 != a.data.string(b) ? e = "......" : e = "";
+            }
+            break;
+          }
+        case "UN":
+          {
+            0 != a.data.string(b) ? e = a.data.string(b) : e = "";
+            break;
+          }
+        default:
+          {
+            "DA" == c && (e = "".concat(e.substr(0, 4), "\u5e74").concat(e.substr(4, 2), "\u6708").concat(e.substr(6, 2), "\u65e5"));
+            "TM" == c && (e = "".concat(e.substr(0, 2), ":").concat(e.substr(2, 2), ":").concat(e.substr(4, 2)).concat(e.substr(6)));
+            "AS" == c && "x00101010" == b && (a = parseInt(e.substr(0, 3)), d = e.substr(3, 1), "W" == d ? e = "".concat(a, "\u5468") : "M" == d ? e = "".concat(a, "\u6708") : "Y" == d ? e = "".concat(a, "\u5c81") : "D" == d && (e = "".concat(a, "\u5929")));
+            "CS" == c && "x00100040" == b && ("M" == e.replace(/\s*/g, "") ? e = "\u7537" : "F" == e.replace(/\s*/g, "") ? e = "\u5973" : e = "\u672a\u77e5");
+          }
+      }
+      return e;
+    };
+    c.prototype.getTextDecoderData = function (a, b) {
+      var c = a.data.string("x00080005");
+      if (window.TextDecoder) {
+        var d = a.data.byteArray.subarray(b.dataOffset, b.dataOffset + b.length);
+        0 == c || "" == c ? a = new TextDecoder("gbk").decode(d) : "ISO_IR 192" == c ? a = new TextDecoder("utf-8").decode(d) : "GB18030" == c ? a = new TextDecoder("gbk").decode(d) : "ISO_IR 100" == c ? a = new TextDecoder("gbk").decode(d) : 0 != a.data.string(b.tag) ? a = a.data.string(b.tag) : a = "";
+      } else {
+        0 != a.data.string(b.tag) ? a = a.data.string(b.tag) : a = "";
+      }
+      return a;
+    };
+    c.prototype.getVR = function (a) {
+      switch (a) {
+        case "0002,0000":
+          {
+            a = "UL";
+            break;
+          }
+        case "0002,0010":
+          {}
+        case "0008,0016":
+          {}
+        case "0008,0018":
+          {
+            a = "UI";
+            break;
+          }
+        case "0002,0013":
+          {}
+        case "0008,0050":
+          {}
+        case "0020,0010":
+          {}
+        case "0008,0201":
+          {}
+        case "0008,1010":
+          {}
+        case "0010,2180":
+          {
+            a = "SH";
+            break;
+          }
+        case "0008,0005":
+          {}
+        case "0008,0008":
+          {}
+        case "0008,0060":
+          {}
+        case "0008,0068":
+          {}
+        case "0028,0004":
+          {}
+        case "0010,0040":
+          {}
+        case "0018,0015":
+          {}
+        case "0018,1166":
+          {}
+        case "0018,7004":
+          {}
+        case "0020,0020":
+          {}
+        case "0020,0060":
+          {}
+        case "0020,0062":
+          {}
+        case "0028,0301":
+          {}
+        case "0028,1040":
+          {}
+        case "0028,2110":
+          {}
+        case "2050,0020":
+          {
+            a = "CS";
+            break;
+          }
+        case "0008,1032":
+          {}
+        case "0008,1111":
+          {
+            a = "SQ";
+            break;
+          }
+        case "0008,0020":
+          {}
+        case "0008,0021":
+          {}
+        case "0008,0022":
+          {}
+        case "0008,0023":
+          {}
+        case "0010,0030":
+          {
+            a = "DA";
+            break;
+          }
+        case "0008,002a":
+          {
+            a = "DT";
+            break;
+          }
+        case "0008,0030":
+          {}
+        case "0008,0031":
+          {}
+        case "0008,0032":
+          {}
+        case "0008,0033":
+          {
+            a = "TM";
+            break;
+          }
+        case "0008,0070":
+          {}
+        case "0008,0080":
+          {}
+        case "0008,1030":
+          {}
+        case "0008,103e":
+          {}
+        case "0008,1090":
+          {}
+        case "0009,0010":
+          {}
+        case "0010,0020":
+          {}
+        case "0018,1000":
+          {}
+        case "0018,1004":
+          {}
+        case "0018,1020":
+          {}
+        case "0018,1030":
+          {}
+        case "0028,1054":
+          {
+            a = "LO";
+            break;
+          }
+        case "0010,0010":
+          {}
+        case "0008,0090":
+          {
+            a = "PN";
+            break;
+          }
+        case "0018,0060":
+          {}
+        case "0018,1110":
+          {}
+        case "0018,115e":
+          {}
+        case "0018,1164":
+          {}
+        case "0028,0030":
+          {}
+        case "0028,2112":
+          {
+            a = "DS";
+            break;
+          }
+        case "0018,1151":
+          {}
+        case "0020,0011":
+          {}
+        case "0020,0012":
+          {}
+        case "0020,0013":
+          {}
+        case "0028,0008":
+          {}
+        case "0018,1150":
+          {}
+        case "0018,1151":
+          {}
+        case "0018,1152":
+          {}
+        case "0018,1153":
+          {}
+        case "0028,0034":
+          {
+            a = "IS";
+            break;
+          }
+        case "0028,0002":
+          {}
+        case "0028,0010":
+          {}
+        case "0028,0011":
+          {}
+        case "0028,0100":
+          {}
+        case "0028,0101":
+          {}
+        case "0028,0102":
+          {}
+        case "0028,0103":
+          {
+            a = "US";
+            break;
+          }
+        case "0028,1050":
+          {}
+        case "0028,1051":
+          {}
+        case "0028,1052":
+          {}
+        case "0028,1053":
+          {
+            a = "DS";
+            break;
+          }
+        case "0040,0008":
+          {}
+        case "0040,0260":
+          {}
+        case "0040,0275":
+          {
+            a = "SQ";
+            break;
+          }
+        case "0008,0081":
+          {
+            a = "ST";
+            break;
+          }
+        case "0010,1010":
+          {
+            a = "AS";
+            break;
+          }
+        case "7fe0,0010":
+          {}
+        case "6000,3000":
+          {
+            a = "OW";
+            break;
+          }
+        case "0010,4000":
+          {
+            a = "LT";
+            break;
+          }
+        default:
+          {
+            a = "UN";
+          }
+      }
+      return a;
+    };
+    c.prototype.onceKeyDown = function (a) {
+      var b = this.getFocusedSeriesView();
+      if (0 != b && 0 != b.el.getElementsByClassName("cornerstone-canvas").length) {
+        var c = b.imageViews;
+        40 == a ? (c = {
+          wheelDelta: -1
+        }, b.mousewheel(c)) : 38 == a ? (c = {
+          wheelDelta: 1
+        }, b.mousewheel(c)) : 34 == a ? (a = b.currentSeries.images.length - c.length, c = b.firstImageIndex + c.length, c > a && (c = a), b.positionImage(c)) : 33 == a ? (c = b.firstImageIndex - c.length, 0 > c && (c = 0), b.positionImage(c)) : 36 == a ? b.positionImage(0) : 35 == a && (a = b.currentSeries.images.length - c.length, b.positionImage(a));
+      }
+    };
+    c.prototype.createSeriesListView = function () {
+      var a = this,
+        b = document.querySelector("#seriesListContainer");
+      this._seriesListView = new e.SeriesListView(b);
+      this._seriesListView.seriesItemTapped = function (b, c) {
+        var d = Global.studies.find(function (a) {
+          return a.studyUid == b;
+        });
+        if (null != d && (d = d.series.find(function (a) {
+          return a.seriesUid == c;
+        }), null != d)) {
+          var e = a.getFocusedSeriesView();
+          if (null == e) {
+            e = a.getEmptySeriesView();
+          }
+          if (null == e) {
+            e = a._seriesViews[0];
+          }
+          if (null != e) {
+            e.openSeries(d);
+            for (var f = [], k = e.rowCount * e.colCount, m = 0; m < k; m++) if (m < d.images.length) {
+              var p = d.images[m];
+              Utils.existCornerstoneCache(p) ? e.showImage(p) : f.push(p);
+            } else {
+              e.imageViews[m].disableView();
+            }
+            if (0 < f.length) {
+              a.downloadImages(d, f, !0);
+            }
+            if ("no" != a._preCacheMode) {
+              m = e.rowCount * e.colCount;
+              f = 0;
+              "all" == a._preCacheMode ? f = d.images.length : 0 < a._preCacheMode && 0 < d.images.length && (a._preCacheMode > d.images.length ? f = d.images.length : f = a._preCacheMode);
+              for (k = []; m < f; m++) {
+                p = d.images[m];
+                Utils.existCornerstoneCache(p) ? e.showImage(p) : k.push(p);
+              }
+              if (0 < k.length) {
+                a.downloadImages(d, k, !1);
+              }
+            }
+          }
+        }
+      };
+      this._seriesListView.setDragSeriesUid = function (a) {};
+    };
+    c.prototype.createSeriesView = function () {
+      this._layoutEl = document.createElement("div");
+      this._layoutEl.setAttribute("name", "layout2d");
+      this._layoutEl.style.position = "relative";
+      this._layoutEl.style.height = "100%";
+      this._layoutEl.style.width = "100%";
+      this._layoutEl.style.display = "flex";
+      this._layoutEl.style.flexWrap = "wrap";
+      this._layoutEl.style.justifyContent = "space-between";
+      document.querySelector("#layoutContainer").appendChild(this._layoutEl);
+      this.setSeriesLayout(this._seriesRowNum, this._seriesColNum);
+    };
+    c.prototype.createOtherViews = function () {};
+    c.prototype.createPatientView = function () {
+      var a = this;
+      this._studyHistoryView = new e.StudyHistoryView();
+      this._studyReportView = new e.StudyReportView();
+      var b = document.querySelector("#patientHistory"),
+        c = document.querySelector("#patientReport"),
+        d = document.querySelector(".history-list-title"),
+        h = b.querySelector(".history-list-content"),
+        g = d.querySelector(".iconfont"),
+        l = h.querySelector(".iconfont"),
+        n = document.getElementsByClassName("report-list-title")[0],
+        m = c.getElementsByClassName("report-list-content")[0],
+        p = n.querySelector(".iconfont"),
+        q = m.querySelector(".iconfont"),
+        r = document.getElementsByClassName("seriesWrap")[0],
+        t = document.querySelector("#wrapUnder"),
+        v = this;
+      d.addEventListener("click", function () {
+        if (g.classList.contains("icon-double-arrow-right")) {
+          h.style.display = "block";
+          g.classList.remove("icon-double-arrow-right");
+          h.addEventListener("mouseleave", u, !1);
+          r.style.width = "calc(100% - ".concat(c.offsetWidth + b.offsetWidth, "px)");
+          Environment.isPad && (t.style.display = "block", t.addEventListener("click", function () {
+            h.style.display = "none";
+            d.style.display = "flex";
+            g.classList.add("icon-double-arrow-right");
+            l.classList.remove("icon-tuding-hor");
+            l.classList.add("icon-unfix");
+            t.style.display = "none";
+          }));
+          v._studyHistoryView.scrollrefresh();
+        }
+        v._seriesViews.forEach(function (a) {
+          a.resize();
+        });
+      });
+      l.addEventListener("click", function () {
+        l.classList.contains("icon-unfix") ? (h.style.position = "relative", h.style.left = "0", d.style.display = "none", l.classList.remove("icon-unfix"), l.classList.add("icon-tuding-hor"), t.style.display = "none", h.removeEventListener("mouseleave", u, !1)) : l.classList.contains("icon-tuding-hor") && (h.style.display = "block", h.style.position = "fixed", d.style.display = "flex", l.classList.remove("icon-tuding-hor"), l.classList.add("icon-unfix"), h.addEventListener("mouseleave", u, !1), Environment.isPad && (h.style.display = "none", d.style.display = "flex", g.classList.add("icon-double-arrow-right"), l.classList.remove("icon-tuding-hor"), l.classList.add("icon-unfix")));
+        r.style.width = "calc(100% - ".concat(b.offsetWidth + c.offsetWidth, "px)");
+        0 == v._3dDisplayed ? v._seriesViews.forEach(function (a) {
+          a.resize();
+        }) : v._image3dComponent && v._image3dComponent.resize();
+      });
+      n.addEventListener("click", function () {
+        if (p.classList.contains("icon-double-arrow-left")) {
+          m.style.display = "block";
+          m.style.right = "0px";
+          n.style.display = "flex";
+          p.classList.remove("icon-double-arrow-left");
+          m.addEventListener("mouseleave", w, !1);
+          r.style.width = "calc(100% - ".concat(b.offsetWidth + c.offsetWidth, "px)");
+          var a = document.querySelector(".base-info"),
+            d = document.querySelector(".report-info");
+          if (0 != a || 0 != d) {
+            a = a.offsetHeight + d.offsetHeight;
+            d = document.querySelector(".navbar");
+            document.getElementById("reportContener").style.height = "".concat(a + d.offsetHeight, "px");
+            v._studyReportView._reportScroll.refresh();
+          }
+          if (Environment.isPad) {
+            t.style.display = "block";
+            t.addEventListener("click", function () {
+              m.style.display = "none";
+              n.style.display = "flex";
+              p.classList.add("icon-double-arrow-left");
+              q.classList.remove("icon-tuding-hor");
+              q.classList.add("icon-unfix");
+              t.style.display = "none";
+            });
+          }
+        }
+        v._seriesViews.forEach(function (a) {
+          a.resize();
+        });
+      });
+      q.addEventListener("click", function () {
+        q.classList.contains("icon-unfix") ? (m.style.position = "relative", m.style.right = "0", n.style.display = "none", q.classList.remove("icon-unfix"), q.classList.add("icon-tuding-hor"), t.style.display = "none", m.removeEventListener("mouseleave", w, !1)) : q.classList.contains("icon-tuding-hor") && (m.style.display = "block", m.style.position = "fixed", n.style.display = "flex", q.classList.remove("icon-tuding-hor"), q.classList.add("icon-unfix"), m.addEventListener("mouseleave", w, !1), Environment.isPad && (m.style.display = "none", n.style.display = "flex", p.classList.add("icon-double-arrow-left"), q.classList.remove("icon-tuding-hor"), q.classList.add("icon-unfix"), r.style.width = "calc(100% - ".concat(c.offsetWidth + b.offsetWidth, "px)")));
+        r.style.width = "calc(100% - ".concat(b.offsetWidth + c.offsetWidth, "px)");
+        0 == v._3dDisplayed ? v._seriesViews.forEach(function (a) {
+          a.resize();
+        }) : v._image3dComponent && v._image3dComponent.resize();
+      });
+      var u = function () {
+          h.style.display = "none";
+          d.style.display = "flex";
+          g.classList.add("icon-double-arrow-right");
+          l.classList.remove("icon-tuding-hor");
+          l.classList.add("icon-unfix");
+          r.style.width = "calc(100% - ".concat(c.offsetWidth + b.offsetWidth, "px)");
+        },
+        w = function () {
+          m.style.display = "none";
+          n.style.display = "flex";
+          p.classList.add("icon-double-arrow-left");
+          q.classList.remove("icon-tuding-hor");
+          q.classList.add("icon-unfix");
+          r.style.width = "calc(100% - ".concat(c.offsetWidth + b.offsetWidth, "px)");
+        };
+      this._studyHistoryView.studyItemTapped = function (b) {
+        "null" == b || null == b || 0 == b ? MsgBox.error("\u65e0\u6548\u7684\u53c2\u6570\uff1astudyid \u4e3a\u7a7a") : (a._isHistoryItemClicked = !0, a.loadData(b));
+      };
+    };
+    c.prototype.loadData = function (a) {
+      Progress.start();
+      var b = this;
+      MessageProxy.queryStudyInfoByRisID(a, function (a) {
+        b.queryStudyInfoCompleted(a);
+      });
+    };
+    c.prototype.queryStudyInfoCompleted = function (a) {
+      var b,
+        c,
+        d,
+        e,
+        g = this;
+      if (a.hasError) {
+        MsgBox.error("\u83b7\u53d6\u68c0\u67e5\u4fe1\u606f\u5931\u8d25\uff1a" + a.errorText);
+        Progress.done();
+      } else {
+        if (0 == a.studyInfo || 0 == a.studyInfo.length) {
+          MsgBox.error("\u83b7\u53d6\u68c0\u67e5\u4fe1\u606f\u5931\u8d25\uff1a\u67e5\u8be2\u5230 0 \u6761\u8bb0\u5f55\u3002");
+          Progress.done();
+        } else {
+          if (!this._isHistoryItemClicked) {
+            var l = a.studyInfo[0].patientMasterIndex,
+              n = !1;
+            try {
+              for (var m = __values(this._prePatientMasterIndex), p = m.next(); !p.done; p = m.next()) if (p.value == l) {
+                n = !0;
+                break;
+              }
+            } catch (t) {
+              b = {
+                error: t
+              };
+            } finally {
+              try {
+                if (p && !p.done && (c = m.return)) {
+                  c.call(m);
+                }
+              } finally {
+                if (b) {
+                  throw b.error;
+                }
+              }
+            }
+            if (0 != l && "" != l && 0 == n && 0 == Config.studyHistory) {
+              this._prePatientMasterIndex.push(a.studyInfo[0].patientMasterIndex);
+              0 != a.studyInfo[0].patientMasterIndex && "" != a.studyInfo[0].patientMasterIndex ? this.loadHistoryData(a.studyInfo[0].patientMasterIndex) : MsgBox.info("\u65e0\u6548\u7684\u60a3\u8005\u4e3b\u7d22\u5f15\u3002");
+            }
+          }
+          b = function (a) {
+            Global.studies.push(a);
+            Global.getImageInfo(a.studyUid, function (b) {
+              if (null == b) {
+                Progress.done();
+              } else {
+                Progress.done();
+                1 == b.series.length && (g.setSeriesLayout(1, 1), g._seriesViews[0].setImageLayout(1, 2));
+                null != g._seriesListView && g._seriesListView.addStudyInfo(a);
+                g._studyHistoryView.setActive(a.studyUid);
+                g.getCacheThumbnails(b);
+                if (0 == Global.studies.findIndex(function (a) {
+                  return a.studyId == b.studyId || a.studyUid == b.studyUid || a.risStudyUid == b.risStudyUid;
+                })) {
+                  var c = setInterval(function () {
+                    for (var a = 0; a < g._seriesViews.length; a++) if (0 == g._seriesViews[a].imageViews.length) {
+                      return;
+                    }
+                    clearInterval(c);
+                    g.openSeries(Global.studies[0], 0);
+                  }, 100);
+                }
+              }
+            });
+          };
+          try {
+            for (var q = __values(a.studyInfo), r = q.next(); !r.done; r = q.next()) b(r.value);
+          } catch (t) {
+            d = {
+              error: t
+            };
+          } finally {
+            try {
+              if (r && !r.done && (e = q.return)) {
+                e.call(q);
+              }
+            } finally {
+              if (d) {
+                throw d.error;
+              }
+            }
+          }
+          this._seriesViews.forEach(function (a) {
+            a.studies = Global.studies;
+          });
+        }
+      }
+    };
+    c.prototype.loadRepData = function (a) {
+      var b = this;
+      MessageProxy.queryReportInfoByRisID(a, function (a) {
+        if (null != b._studyReportView) {
+          b._studyReportView._repStudyInfo = [];
+          if (0 != a.studies && 0 != a.studies.length) {
+            for (var c = 0; c < a.studies.length; c++) b._studyReportView.addRepStudyInfo(a.studies[c]);
+          }
+          b._studyReportView.LoadReportView();
+        }
+      });
+    };
+    c.prototype.loadHistoryData = function (a) {
+      var b = this;
+      MessageProxy.queryHistoryInfoByMasterId(a, function (a) {
+        if (null != b._studyHistoryView) {
+          if (0 != a.data && 0 != a.data.length) {
+            for (var c = 0; c < a.data.length; c++) b._studyHistoryView.addStudyInfo(a.data[c]);
+          }
+          var d = setInterval(function () {
+            if (b._studyHistoryView._loaded) {
+              b._studyHistoryView.loadHisView();
+              clearInterval(d);
+            }
+          }, 200);
+        }
+      });
+    };
+    c.prototype.changeSeries = function (a) {
+      var b = this._seriesRowNum * this._seriesColNum;
+      if (0 != this._seriesViews.length && null != this._seriesViews[0].currentSeries) {
+        var c = this.getFocusedSeriesView();
+        if (null != c) {
+          c.stopPlay();
+        }
+        "prevscreen" == a ? 0 != this._seriesViews[0].currentSeries.index && (a = this._seriesViews[0].currentSeries.index - b, 0 > a && (a = 0), this.openSeries(this._seriesViews[0].currentSeries.study, a)) : "nextscreen" == a ? 0 == this._seriesViews.length || null == this._seriesViews[0].currentSeries || this._seriesViews[0].currentSeries.index + b >= this._seriesViews[0].currentSeries.study.series.length || this.openSeries(this._seriesViews[0].currentSeries.study, this._seriesViews[0].currentSeries.index + b) : "prevseries" == a ? 0 != this._seriesViews[0].currentSeries.index && this.openSeries(this._seriesViews[0].currentSeries.study, this._seriesViews[0].currentSeries.index - 1) : "nextseries" == a ? this._seriesViews[0].currentSeries.index + 1 >= this._seriesViews[0].currentSeries.study.series.length || this.openSeries(this._seriesViews[0].currentSeries.study, this._seriesViews[0].currentSeries.index + 1) : "reset" == a && this.openSeries(this._seriesViews[0].currentSeries.study, 0);
+      }
+    };
+    c.prototype.openSeries = function (a, b) {
+      if (0 != a && 0 != a.series && 0 != a.series.length && !(0 > b || b >= a.series.length)) {
+        for (var c = Math.min(a.series.length, this._seriesViews.length), d = 0; d < c; d++) if (b + d >= a.series.length) {
+          if (d < this._seriesViews.length) {
+            this._seriesViews[d].clearImage();
+          }
+        } else {
+          var e = a.series[b + d],
+            g = this._seriesViews[d];
+          g.openSeries(e);
+          for (var l = [], n = g.rowCount * g.colCount, m = 0; m < n; m++) if (m < e.images.length) {
+            var p = e.images[m];
+            Utils.existCornerstoneCache(p) ? g.showImage(p) : l.push(p);
+          } else {
+            g.imageViews[m].disableView();
+          }
+          if (0 < l.length) {
+            this.downloadImages(e, l, !0);
+          }
+        }
+        if ("no" != this._preCacheMode) {
+          for (c = Math.min(a.series.length, this._seriesViews.length), d = 0; d < c; d++) if (e = a.series[b + d], null != e) {
+            g = this._seriesViews[d];
+            p = g.rowCount * g.colCount;
+            n = 0;
+            "all" == this._preCacheMode ? n = e.images.length : 0 < this._preCacheMode && 0 < e.images.length && (this._preCacheMode > e.images.length ? n = e.images.length : n = this._preCacheMode);
+            l = [];
+            for (m = p; m < n; m++) {
+              p = e.images[m];
+              Utils.existCornerstoneCache(p) ? g.showImage(p) : l.push(p);
+            }
+            if (0 < l.length) {
+              this.downloadImages(e, l, !1);
+            }
+          }
+        }
+      }
+    };
+    c.prototype.downloadImages = function (a, b, c) {
+      var d = this;
+      if (0 === c) {
+        c = !1;
+      }
+      if (0 != b && 0 != b.length) {
+        var e = [];
+        Global.getCachedImages(a.seriesUid, b, function (b) {
+          var f, k;
+          if (1 == b.taskCompleted) {
+            if (0 < e.length) {
+              Global.downloadImages(a.seriesUid, e, c);
+              1 == e.length && 5242880 < e[0].fileSize && MsgBox.info("\u8be5\u56fe\u50cf\u8f83\u5927(".concat(Math.floor(e[0].fileSize / 1024 / 1024), "M)\uff0c\u4e0b\u8f7d\u9700\u8981\u8f83\u957f\u65f6\u95f4..."));
+            }
+          } else {
+            if (0 != b.hasError && 1 == b.hasError) {
+              b.imageInfo ? e.push(b.imageInfo) : console.warn("cacheTask.imageRetrieved result.imageInfo =", b.imageInfo);
+              console.error("\u67e5\u627e\u7f13\u5b58\u56fe\u50cf\u9519\u8bef\uff1a" + b.errorText);
+            } else {
+              if (b.imageInfo && b.imageFile) {
+                0 != b.imageInfo.cornerstoneImageId && "" != b.imageInfo.cornerstoneImageId || 0 != b.imageInfo.isAVI || (b.imageInfo.cornerstoneImageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(b.imageFile), a.images[b.imageInfo.index].cornerstoneImageId = b.imageInfo.cornerstoneImageId);
+                if (0 != b.imageInfo.cornerstoneImageId && "" != b.imageInfo.cornerstoneImageId) {
+                  try {
+                    0 == b.imageInfo.isDicom ? 0 == b.imageInfo.isAVI && cornerstone.loadAndCacheImage(b.imageInfo.imageUrl).then(function (a) {}) : cornerstone.loadAndCacheImage(b.imageInfo.cornerstoneImageId).then(function (a) {});
+                  } catch (r) {}
+                }
+                try {
+                  for (var h = __values(d._seriesViews), g = h.next(); !g.done; g = h.next()) {
+                    var q = g.value;
+                    try {
+                      q.showImage(b.imageInfo, b.imageFile);
+                    } catch (r) {
+                      console.error("\u663e\u793a\u56fe\u50cf\u9519\u8bef\uff1a" + r);
+                    }
+                  }
+                } catch (r) {
+                  f = {
+                    error: r
+                  };
+                } finally {
+                  try {
+                    if (g && !g.done && (k = h.return)) {
+                      k.call(h);
+                    }
+                  } finally {
+                    if (f) {
+                      throw f.error;
+                    }
+                  }
+                }
+              } else {
+                e.push(b.imageInfo);
+              }
+            }
+          }
+        });
+      }
+    };
+    c.prototype.onImageDownloaded = function (a) {
+      var b, c;
+      if (a.hasError) {
+        console.error("\u4e0b\u8f7d\u56fe\u50cf\u5931\u8d25\uff1a".concat(a.imageInfo.imageUrl));
+        this._seriesViews && this._seriesViews.forEach(function (b) {
+          if (0 != b.el.style.display && "none" != b.el.style.display) {
+            b.downloadImageFailed(a.imageInfo);
+          }
+        });
+      } else {
+        if (0 == a.imageFile) {
+          console.error("\u4e0b\u8f7d\u56fe\u50cf\u5931\u8d25\uff1a".concat(a.imageInfo.imageUrl));
+          this._seriesViews && this._seriesViews.forEach(function (b) {
+            if (0 != b.el.style.display && "none" != b.el.style.display) {
+              b.downloadImageFailed(a.imageInfo);
+            }
+          });
+        } else {
+          if (a.imageInfo && a.imageFile) {
+            if ((0 == a.imageInfo.cornerstoneImageId || "" == a.imageInfo.cornerstoneImageId) && 0 == a.imageInfo.isAVI) {
+              a.imageInfo.cornerstoneImageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(a.imageFile);
+              var d = Global.studies.find(function (b) {
+                return b.studyUid == a.imageInfo.series.study.studyUid;
+              });
+              if (null != d) {
+                d = d.series.find(function (b) {
+                  return b.seriesUid == a.imageInfo.series.seriesUid;
+                });
+                null != d && (d = d.images.find(function (b) {
+                  return b.imageId == a.imageInfo.imageId;
+                }), null != d && (d.cornerstoneImageId = a.imageInfo.cornerstoneImageId));
+              }
+            }
+            if (0 != a.imageInfo.cornerstoneImageId && "" != a.imageInfo.cornerstoneImageId) {
+              try {
+                0 == a.imageInfo.isDicom ? 0 == a.imageInfo.isAVI && cornerstone.loadAndCacheImage(a.imageInfo.imageUrl).then(function (a) {}) : cornerstone.loadAndCacheImage(a.imageInfo.cornerstoneImageId).then(function (a) {});
+              } catch (l) {}
+            }
+          }
+          if (1 == a.imageInfo.isAVI && a.imageInfo.index < a.imageInfo.series.images.length - 1) {
+            d = a.imageInfo.series.images[a.imageInfo.index + 1];
+            console.log("onImageDownloaded AVI", d.index);
+            try {
+              for (var e = __values(this._seriesViews), g = e.next(); !g.done; g = e.next()) g.value.showImage(d, a.imageFile);
+            } catch (l) {
+              b = {
+                error: l
+              };
+            } finally {
+              try {
+                if (g && !g.done && (c = e.return)) {
+                  c.call(e);
+                }
+              } finally {
+                if (b) {
+                  throw b.error;
+                }
+              }
+            }
+            Global.downloadImages(d.series.seriesUid, [d]);
+          }
+          if (this._seriesViews) {
+            this._seriesViews.forEach(function (b) {
+              if (0 != b.el.style.display && "none" != b.el.style.display) {
+                b.showImage(a.imageInfo, a.imageFile);
+              }
+            });
+          }
+        }
+      }
+    };
+    c.prototype.getCacheThumbnails = function (a) {
+      var b,
+        c,
+        d = this;
+      if (0 != a && 0 != a.series && 0 != a.series.length) {
+        var e = function (a) {
+          StoreManager.getThumb(a.seriesUid).then(function (b) {
+            if (b.file) {
+              if (d._seriesListView) {
+                var c = URL.createObjectURL(b.file);
+                d._seriesListView.showImage(b.id, c);
+              }
+            } else {
+              d.downloadThumbnail(a);
+            }
+          }).catch(function () {
+            d.downloadThumbnail(a);
+          });
+        };
+        try {
+          for (var g = __values(a.series), l = g.next(); !l.done; l = g.next()) e(l.value);
+        } catch (n) {
+          b = {
+            error: n
+          };
+        } finally {
+          try {
+            if (l && !l.done && (c = g.return)) {
+              c.call(g);
+            }
+          } finally {
+            if (b) {
+              throw b.error;
+            }
+          }
+        }
+      }
+    };
+    c.prototype.downloadThumbnail = function (a) {
+      var b = this;
+      if (0 != a.thumbnailUrl && "" != a.thumbnailUrl) {
+        MessageProxy.getImageAsBlob(a.thumbnailUrl, function (c) {
+          if (c.hasError) {
+            b.downloadThumbnail1(a.seriesUid, a.thumbnailUrl1);
+          } else {
+            if (0 == c.data) {
+              b.downloadThumbnail1(a.seriesUid, a.thumbnailUrl1);
+            } else {
+              b.onDownloadThumbnail(a.seriesUid, c.data);
+            }
+          }
+        });
+      }
+    };
+    c.prototype.downloadThumbnail1 = function (a, b) {
+      var c = this;
+      if (0 != b && "" != b) {
+        MessageProxy.getImageAsBlob(b, function (b) {
+          if (b.hasError) {
+            console.log("\u7f29\u7565\u56fe\u4e0b\u8f7d\u5931\u8d25\uff1a", b.errorText);
+          } else {
+            if (0 == b.data) {
+              MsgBox.error("\u4e0b\u8f7d\u5e8f\u5217\u7f29\u7565\u56fe\u5931\u8d25");
+            } else {
+              c.onDownloadThumbnail(a, b.data);
+            }
+          }
+        });
+      }
+    };
+    c.prototype.onDownloadThumbnail = function (a, b) {
+      if (this._seriesListView) {
+        var c = URL.createObjectURL(b);
+        this._seriesListView.showImage(a, c);
+      }
+      StoreManager.saveThumb(a, b).then().catch(function (a) {
+        console.log("\u4fdd\u5b58\u7f29\u7565\u56fe\u5931\u8d25\uff1a", a.message);
+      });
+    };
+    c.prototype.getFocusedSeriesView = function () {
+      if (0 == this._seriesViews || 0 == this._seriesViews.length) {
+        return null;
+      }
+      if (1 == this._seriesViews.length) {
+        return this._seriesViews[0];
+      }
+      for (var a = -1, b = 0; b < this._seriesViews.length; b++) if (this._seriesViews[b].isFocused) {
+        a = b;
+        break;
+      }
+      return -1 < a ? this._seriesViews[a] : null;
+    };
+    c.prototype.getEmptySeriesView = function () {
+      var a, b, c, d;
+      if (0 == this._seriesViews || 0 == this._seriesViews.length) {
+        return null;
+      }
+      try {
+        for (var e = __values(this._seriesViews), g = e.next(); !g.done; g = e.next()) {
+          var l = g.value,
+            n = 0;
+          try {
+            for (var m = (c = 0, __values(l.imageViews)), p = m.next(); !p.done; p = m.next()) if (0 == p.value.isDisplaying()) {
+              n += 1;
+            }
+          } catch (q) {
+            c = {
+              error: q
+            };
+          } finally {
+            try {
+              if (p && !p.done && (d = m.return)) {
+                d.call(m);
+              }
+            } finally {
+              if (c) {
+                throw c.error;
+              }
+            }
+          }
+          if (l.imageViews.length == n) {
+            return l;
+          }
+        }
+      } catch (q) {
+        a = {
+          error: q
+        };
+      } finally {
+        try {
+          if (g && !g.done && (b = e.return)) {
+            b.call(e);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+      return null;
+    };
+    c.prototype.setSeriesLayout = function (a, b) {
+      var c = this,
+        d = this._defaultFontSize / (this._seriesRowNum * this._imageRowNum);
+      if (.6 > d) {
+        d = .6;
+      }
+      var h = (100 / a).toFixed(2),
+        g = 100 / b,
+        l = this,
+        n = a * b,
+        m = this._layoutEl;
+      if (this._seriesViews.length < n) {
+        for (var p = this._seriesViews.length; p < n; p++) {
+          var q = new e.SeriesLayoutView(this._preCacheMode);
+          q.studies = Global.studies;
+          q.actionTag = this._actionTag;
+          q.ifCompare = this._ifCompare;
+          q.ifscroll = this._ifscroll;
+          q.seriesLayoutViewOptions = {
+            rulerAct: this._rulerAct || !0,
+            overlayAct: this._overlayAct || !0,
+            orientationAct: this._orientationAct || !0,
+            annotationAct: this._annotationAct || !0
+          };
+          q.cornerFontSize = d;
+          this._seriesViews.push(q);
+          m.appendChild(q.el);
+          q.getOtherSeriesLayoutView = function (a) {
+            for (var b = [], c = 0; c < l._seriesViews.length; c++) if (l._seriesViews[c].id != a) {
+              b.push(l._seriesViews[c]);
+            }
+            return b;
+          };
+          q.getScreenElements = function () {
+            var a = [];
+            c._seriesViews.forEach(function (b, d) {
+              if (d < c._seriesRowNum * c._seriesColNum) {
+                b.imageViews.forEach(function (b) {
+                  a.push(b);
+                });
+              }
+            });
+            return a;
+          };
+          q.sendViewPort = function (a, b, d, e) {
+            var f;
+            if ("scroll" == b && "up" != e && "down" != e) {
+              e = e.split(",");
+              var k = e[1];
+              f = parseInt(e[0]) - parseInt(k);
+            }
+            c._seriesViews.filter(function (a) {
+              return a.id != d.id;
+            }).forEach(function (c) {
+              "scroll" == b ? c.positionImage(c.firstImageIndex + f, !0) : c.imageViews.forEach(function (c) {
+                c.setViewPortParam(a, b);
+              });
+            });
+          };
+          q.focusChanged = function (a, b) {
+            c._seriesViews.forEach(function (d) {
+              if (d.viewId != a) {
+                d.isFocused = !1;
+              }
+              if (0 != d.hasImages) {
+                if (d.playing) {
+                  d.stopPlay();
+                  d.playing = !1;
+                  var e = document.querySelector(".btn-play");
+                  c._toolbarView.removeElementActive(e);
+                }
+                if (d.viewId == a) {
+                  0 != document.querySelectorAll(".series-list-item[series-id='" + b.seriesUid + "']")[0] && c._seriesListView.setActive(b.seriesUid);
+                  0 == Config.hideReport && l._activeSeriesid != a && c.loadRepData(b.study.studyUid);
+                  c._activeSeriesid = a;
+                }
+              }
+            });
+          };
+        }
+      }
+      this._seriesViews.forEach(function (a, b) {
+        a.isFocused = !1;
+      });
+      for (p = 0; p < n; p++) {
+        this._seriesViews[p].el.style.height = "".concat(h, "%");
+        this._seriesViews[p].el.style.width = "".concat(g, "%");
+        this._seriesViews[p].el.style.removeProperty("display");
+        this._seriesViews[p].resize();
+        p == n - 1 && this._seriesViews[p].imageViews.forEach(function (a) {
+          a.reRender = !0;
+        });
+      }
+      for (p = n; p < this._seriesViews.length; p++) this._seriesViews[p].el.style.display = "none";
+      this._seriesRowNum = a;
+      this._seriesColNum = b;
+    };
+    c.prototype.setImageLayout = function (a, b) {
+      this._imageRowNum = a;
+      this._imageColNum = b;
+      var c = this.getFocusedSeriesView();
+      if (c) {
+        c.prevImageIndex = 0;
+        c.setImageLayout(a, b);
+        1 == a * b && (c.prevRowNum = 1, c.prevColNum = 1);
+      }
+    };
+    c.prototype.setFocusedWWWL = function (a, b) {
+      this._seriesViews.forEach(function (c) {
+        if (c.isFocused) {
+          c.setWWWL(a, b);
+        }
+      });
+    };
+    c.prototype.setFocusedScale = function (a) {
+      this._seriesViews.forEach(function (b) {
+        if (b.isFocused) {
+          b.setScale(a);
+        }
+      });
+    };
+    c.prototype.parseActionTag = function (a) {
+      0 == this._3dDisplayed ? this._seriesViews.forEach(function (b) {
+        b.actionTag = a;
+      }) : this._image3dComponent && (this._image3dComponent.actionTag = a);
+    };
+    c.prototype.onceAction = function (a) {
+      var b;
+      this._seriesViews.forEach(function (a) {
+        if (a.isFocused) {
+          b = a;
+        }
+      });
+      if (null == b) {
+        b = this._seriesViews[0];
+      }
+      b.onceAction(a);
+    };
+    c.prototype.onceSet = function (a, b) {
+      "ruler" == a ? this._rulerAct = b : "overlay" == a ? this._overlayAct = b : "orientation" == a ? this._orientationAct = b : ("annotation" != a && (this._orientationAct = this._overlayAct = this._rulerAct = b), this._annotationAct = b);
+      this._seriesViews.forEach(function (c) {
+        c.onceSet(a, b);
+        if (null != c.currentSeries && 0 == c.currentSeries.index) {
+          c.imageViews[0].attachImage(c.currentSeries.images[0]);
+        }
+      });
+    };
+    return c;
+  }();
+  e.CloudImageView = d;
+})(pc || (pc = {}));
+var phone;
+(function (e) {
+  var d = function () {
+    function c(a) {
+      this._vflip = this._hflip = !1;
+      this._parentEl = a;
+      this.el = this.createElement();
+      this._parentEl.appendChild(this.el);
+    }
+    c.prototype.createElement = function () {
+      var a = document.createElement("div");
+      a.className = "orientationMarkers";
+      a.style.position = "absolute";
+      a.style.width = "100%";
+      a.style.height = "100%";
+      a.style.top = "0";
+      a.style.left = "0";
+      for (var b = 0; 4 > b; b++) {
+        var c = document.createElement("div");
+        c.style.position = "absolute";
+        c.style.color = "#fff";
+        c.style.textShadow = "1.5px 1.5px 1.5px #222";
+        var d = document.createElement("span");
+        d.className = "orientationMarker";
+        switch (b) {
+          case 0:
+            {
+              c.className = "mrtopmiddle";
+              c.style.top = "25px";
+              c.style.left = "50%";
+              c.style.visibility = "hidden";
+              break;
+            }
+          case 1:
+            {
+              c.className = "mrrightmiddle";
+              c.style.top = "50%";
+              c.style.left = "86%";
+              c.style.visibility = "hidden";
+              break;
+            }
+          case 2:
+            {
+              c.className = "mrbottommiddle";
+              c.style.bottom = "10px";
+              c.style.left = "50%";
+              break;
+            }
+          case 3:
+            {
+              c.className = "mrleftmiddle";
+              c.style.top = "50%";
+              c.style.left = "10px";
+            }
+        }
+        c.classList.add("orientationMarkerDiv");
+        c.appendChild(d);
+        a.appendChild(c);
+      }
+      return a;
+    };
+    c.prototype.calculateOrientationMarkers = function (a) {
+      var b = cornerstone.getEnabledElement(a),
+        c = cornerstone.metaData.get("imagePlaneModule", b.image.imageId),
+        b = "";
+      if (c.rowCosines) {
+        b = cornerstoneTools.orientation.getOrientationString(c.rowCosines);
+      }
+      var d = "";
+      if (c.columnCosines) {
+        d = cornerstoneTools.orientation.getOrientationString(c.columnCosines);
+      }
+      c = "";
+      if (b) {
+        c = cornerstoneTools.orientation.invertOrientationString(b);
+      }
+      var e = "";
+      if (d) {
+        e = cornerstoneTools.orientation.invertOrientationString(d);
+      }
+      this._markers = {
+        top: e,
+        bottom: d,
+        left: c,
+        right: b
+      };
+      b = a.querySelector(".mrtopmiddle .orientationMarker");
+      d = a.querySelector(".mrbottommiddle .orientationMarker");
+      c = a.querySelector(".mrrightmiddle .orientationMarker");
+      a = a.querySelector(".mrleftmiddle .orientationMarker");
+      b.textContent = "[" + this._markers.top + "]";
+      d.textContent = "[" + this._markers.bottom + "]";
+      c.textContent = "[" + this._markers.right + "]";
+      a.textContent = "[" + this._markers.left + "]";
+    };
+    c.prototype.updateOrientationMarkers = function (a, b, c) {
+      if (0 != this._markers) {
+        b = b.rotation;
+        var d = a.querySelector(".orientationMarkers");
+        a = d.querySelector(".mrtopmiddle .orientationMarker");
+        var e = d.querySelector(".mrbottommiddle .orientationMarker"),
+          f = d.querySelector(".mrrightmiddle .orientationMarker"),
+          d = d.querySelector(".mrleftmiddle .orientationMarker");
+        if (0 != c) {
+          switch (c) {
+            case "clock":
+              {
+                console.log("\u89d2\u5ea6\uff1a" + b, "\u6c34\u5e73\uff1a" + this._hflip, "\u5782\u76f4\uff1a" + this._vflip, "from:" + c);
+                if (0 == b && 0 == this._hflip && 0 == this._vflip || 360 == b && 0 == this._hflip && 0 == this._vflip || 180 == b && 1 == this._hflip && 1 == this._vflip) {
+                  a.textContent = "[" + this._markers.top + "]";
+                  e.textContent = "[" + this._markers.bottom + "]";
+                  f.textContent = "[" + this._markers.right + "]";
+                  d.textContent = "[" + this._markers.left + "]";
+                } else {
+                  if (90 == b && 0 == this._hflip && 0 == this._vflip || 270 == b && 1 == this._hflip && 1 == this._vflip || -90 == b && 1 == this._hflip && 1 == this._vflip) {
+                    a.textContent = "[" + this._markers.left + "]";
+                    e.textContent = "[" + this._markers.right + "]";
+                    f.textContent = "[" + this._markers.top + "]";
+                    d.textContent = "[" + this._markers.bottom + "]";
+                  } else {
+                    if (180 == b && 0 == this._hflip && 0 == this._vflip || 0 == b && 1 == this._hflip && 1 == this._vflip || 360 == b && 1 == this._hflip && 1 == this._vflip) {
+                      a.textContent = "[" + this._markers.bottom + "]";
+                      e.textContent = "[" + this._markers.top + "]";
+                      f.textContent = "[" + this._markers.left + "]";
+                      d.textContent = "[" + this._markers.right + "]";
+                    } else {
+                      if (270 == b && 0 == this._hflip && 0 == this._vflip || -90 == b && 0 == this._hflip && 0 == this._vflip || 90 == b && 1 == this._hflip && 1 == this._vflip) {
+                        a.textContent = "[" + this._markers.right + "]";
+                        e.textContent = "[" + this._markers.left + "]";
+                        f.textContent = "[" + this._markers.bottom + "]";
+                        d.textContent = "[" + this._markers.top + "]";
+                      } else {
+                        if (0 == b && 1 == this._hflip && 0 == this._vflip || 360 == b && 1 == this._hflip && 0 == this._vflip || 180 == b && 0 == this._hflip && 1 == this._vflip) {
+                          a.textContent = "[" + this._markers.top + "]";
+                          e.textContent = "[" + this._markers.bottom + "]";
+                          f.textContent = "[" + this._markers.left + "]";
+                          d.textContent = "[" + this._markers.right + "]";
+                        } else {
+                          if (90 == b && 1 == this._hflip && 0 == this._vflip || 270 == b && 0 == this._hflip && 1 == this._vflip || -90 == b && 0 == this._hflip && 1 == this._vflip) {
+                            a.textContent = "[" + this._markers.right + "]";
+                            e.textContent = "[" + this._markers.left + "]";
+                            f.textContent = "[" + this._markers.top + "]";
+                            d.textContent = "[" + this._markers.bottom + "]";
+                          } else {
+                            if (180 == b && 1 == this._hflip && 0 == this._vflip || 0 == b && 0 == this._hflip && 1 == this._vflip || 360 == b && 0 == this._hflip && 1 == this._vflip) {
+                              a.textContent = "[" + this._markers.bottom + "]";
+                              e.textContent = "[" + this._markers.top + "]";
+                              f.textContent = "[" + this._markers.right + "]";
+                              d.textContent = "[" + this._markers.left + "]";
+                            } else {
+                              if (270 == b && 1 == this._hflip && 0 == this._vflip || -90 == b && 1 == this._hflip && 0 == this._vflip || 90 == b && 0 == this._hflip && 1 == this._vflip) {
+                                a.textContent = "[" + this._markers.left + "]";
+                                e.textContent = "[" + this._markers.right + "]";
+                                f.textContent = "[" + this._markers.bottom + "]";
+                                d.textContent = "[" + this._markers.top + "]";
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                break;
+              }
+            case "fliphorizontal":
+              {
+                this._hflip = !this._hflip;
+                console.log("\u89d2\u5ea6\uff1a" + b, "\u6c34\u5e73\uff1a" + this._hflip, "\u5782\u76f4\uff1a" + this._vflip, "from:" + c);
+                if (0 == b || 180 == b || 360 == b) {
+                  c = f.textContent;
+                  f.textContent = d.textContent;
+                  d.textContent = c;
+                } else {
+                  if (270 == b || -90 == b || 90 == b) {
+                    c = e.textContent;
+                    e.textContent = a.textContent;
+                    a.textContent = c;
+                  }
+                }
+                break;
+              }
+            case "flipvertical":
+              {
+                this._vflip = !this._vflip;
+                console.log("\u89d2\u5ea6\uff1a" + b, "\u6c34\u5e73\uff1a" + this._hflip, "\u5782\u76f4\uff1a" + this._vflip, "from:" + c);
+                if (0 == b || 180 == b || 360 == b) {
+                  c = e.textContent;
+                  e.textContent = a.textContent;
+                  a.textContent = c;
+                } else {
+                  if (-90 == b || 90 == b || 270 == b) {
+                    c = f.textContent;
+                    f.textContent = d.textContent;
+                    d.textContent = c;
+                  }
+                }
+                break;
+              }
+            case "reset":
+              {
+                this._vflip = this._hflip = !1;
+                a.textContent = "[" + this._markers.top + "]";
+                e.textContent = "[" + this._markers.bottom + "]";
+                f.textContent = "[" + this._markers.right + "]";
+                d.textContent = "[" + this._markers.left + "]";
+              }
+          }
+        }
+      }
+    };
+    c.prototype.hidden = function () {
+      this.el.style.visibility = "hidden";
+    };
+    c.prototype.show = function () {
+      this.el.style.visibility = "visible";
+    };
+    return c;
+  }();
+  e.OrientationMarker = d;
+})(phone || (phone = {}));
+(function (e) {
+  var d = function () {
+    function c(a) {
+      this._parentEl = a;
+      this.el = this.createElement();
+      this._parentEl.appendChild(this.el);
+    }
+    c.prototype.createElement = function () {
+      var a = document.createElement("div");
+      a.className = "overlayDiv";
+      a.style.position = "absolute";
+      a.style.width = "100%";
+      a.style.height = "100%";
+      a.style.top = "0";
+      a.style.left = "0";
+      for (var b = 0; 4 > b; b++) {
+        var c = document.createElement("div");
+        c.style.position = "absolute";
+        c.style.margin = "3px";
+        c.style.color = " rgb(204,204,204)";
+        c.style.textShadow = "rgb(34, 34, 34) 1.5px 1.5px 1.5px";
+        c.style.touchAction = "none";
+        c.style.pointerEvents = "none";
+        switch (b) {
+          case 0:
+            {
+              c.className = "topleft";
+              c.style.top = "0";
+              c.style.left = "1px";
+              break;
+            }
+          case 1:
+            {
+              c.className = "topright";
+              c.style.top = "0";
+              c.style.right = "1px";
+              c.style.textAlign = "right";
+              break;
+            }
+          case 2:
+            {
+              c.className = "bottomleft";
+              c.style.bottom = "0";
+              c.style.left = "1px";
+              break;
+            }
+          case 3:
+            {
+              c.className = "bottomright";
+              c.style.bottom = "0";
+              c.style.right = "1px";
+              c.style.textAlign = "right";
+            }
+        }
+        c.classList.add("overlay");
+        a.appendChild(c);
+      }
+      return a;
+    };
+    c.prototype.showInfo = function (a, b) {
+      if ("object" == typeof b) {
+        this._overlayElement = this._parentEl.getElementsByClassName("overlayDiv")[0];
+        0 != this._overlayElement && (a = new ImageCornerInfo().parseCornerInfo(a, b), 0 != a && this.showCornerInfo(a));
+      }
+    };
+    c.prototype.showCornerInfo = function (a) {
+      if (0 != a.leftTop && 0 < a.leftTop.length) {
+        var b = this._overlayElement.getElementsByClassName("overlay")[0];
+        b.textContent = "";
+        a.leftTop.forEach(function (a) {
+          var c = document.createElement("div");
+          b.appendChild(c);
+          c.innerHTML = a;
+        });
+      }
+      if (0 != a.rightTop && 0 < a.rightTop.length) {
+        var c = this._overlayElement.getElementsByClassName("overlay")[1];
+        c.textContent = "";
+        a.rightTop.forEach(function (a) {
+          var b = document.createElement("div");
+          c.appendChild(b);
+          b.innerHTML = a;
+        });
+      }
+      if (0 != a.leftBottom && 0 < a.leftBottom.length) {
+        var d = this._overlayElement.getElementsByClassName("overlay")[2];
+        d.textContent = "";
+        a.leftBottom.forEach(function (a) {
+          var b = document.createElement("div");
+          d.appendChild(b);
+          b.innerHTML = a;
+        });
+      }
+      if (0 != a.rightBottom && 0 < a.rightBottom.length) {
+        var e = this._overlayElement.getElementsByClassName("overlay")[3];
+        e.textContent = "";
+        a.rightBottom.forEach(function (a) {
+          var b = document.createElement("div");
+          e.appendChild(b);
+          b.innerHTML = a;
+        });
+      }
+    };
+    c.prototype.hide = function () {
+      this.el.style.visibility = "hidden";
+    };
+    c.prototype.show = function () {
+      this.el.style.visibility = "visible";
+    };
+    return c;
+  }();
+  e.CornerInfoView = d;
+})(phone || (phone = {}));
+__values = this && this.__values || function (e) {
+  var d = "function" === typeof Symbol && Symbol.iterator,
+    c = d && e[d],
+    a = 0;
+  if (c) {
+    return c.call(e);
+  }
+  if (e && "number" === typeof e.length) {
+    return {
+      next: function () {
+        if (e && a >= e.length) {
+          e = 0;
+        }
+        return {
+          value: e && e[a++],
+          done: !e
+        };
+      }
+    };
+  }
+  throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+(function (e) {
+  var d = function () {
+    function c() {
+      this.el = document.createElement("div");
+      this.el.setAttribute("name", "setting");
+      this.el.style.position = "relative";
+      this.loadCss();
+      this.loadTemplate();
+    }
+    c.prototype.loadCss = function () {
+      Utils.addCssByLink("css/phone/SettingView.css");
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this;
+      MessageProxy.getTemplate("templates/phone/SettingView.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u8bbe\u7f6e\u89c6\u56fe\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+    };
+    c.prototype.initView = function (a) {
+      a = new DOMParser().parseFromString(a, "text/html");
+      this.el.innerHTML = a.querySelector("#settingTemplate").innerHTML;
+      this.bindButtonEvent();
+    };
+    c.prototype.bindButtonEvent = function () {
+      var a,
+        b,
+        c = this,
+        d = this.el.querySelectorAll(".setting-area .js-setting"),
+        e = function (a) {
+          new Hammer(a).on("tap", function (b) {
+            Utils.vibrate();
+            a.classList.contains("selected") ? (a.classList.remove("selected"), a.querySelector(".iconfont").classList.remove("icon-check-square"), a.querySelector(".iconfont").classList.add("icon-uncheck-square")) : (a.classList.add("selected"), a.querySelector(".iconfont").classList.remove("icon-uncheck-square"), a.querySelector(".iconfont").classList.add("icon-check-square"));
+          });
+        };
+      try {
+        for (var g = __values(d), l = g.next(); !l.done; l = g.next()) e(l.value);
+      } catch (n) {
+        a = {
+          error: n
+        };
+      } finally {
+        try {
+          if (l && !l.done && (b = g.return)) {
+            b.call(g);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+      new Hammer(this.el.querySelector(".cancel-button")).on("tap", function () {
+        Utils.vibrate();
+        c.hide();
+      });
+      new Hammer(this.el.querySelector(".ok-button")).on("tap", function () {
+        Utils.vibrate();
+        var a = !1,
+          b = !1,
+          d = !1;
+        if (c.el.querySelector(".setting-area .js-cornerInfo").classList.contains("selected")) {
+          a = !0;
+        }
+        if (c.el.querySelector(".setting-area .js-orientation").classList.contains("selected")) {
+          b = !0;
+        }
+        if (c.el.querySelector(".setting-area .js-ruler").classList.contains("selected")) {
+          d = !0;
+        }
+        c.hide();
+        if (0 != c.btnOKClicked) {
+          c.btnOKClicked(a, b, d);
+        }
+      });
+      [".ok-button", ".cancel-button"].forEach(function (a) {
+        ["touchstart", "touchend", "touchcancel"].forEach(function (b) {
+          c.el.querySelector(a).addEventListener(b, function (a) {
+            a.stopPropagation();
+            a.stopImmediatePropagation();
+          });
+        });
+      });
+    };
+    c.prototype.show = function (a, b, c) {
+      var d = this.el.querySelector(".setting-area .js-cornerInfo");
+      a ? (d.classList.add("selected"), d.querySelector(".iconfont").classList.remove("icon-uncheck-square"), d.querySelector(".iconfont").classList.add("icon-check-square")) : (d.classList.remove("selected"), d.querySelector(".iconfont").classList.remove("icon-check-square"), d.querySelector(".iconfont").classList.add("icon-uncheck-square"));
+      a = this.el.querySelector(".setting-area .js-orientation");
+      b ? (a.classList.add("selected"), a.querySelector(".iconfont").classList.remove("icon-uncheck-square"), a.querySelector(".iconfont").classList.add("icon-check-square")) : (a.classList.remove("selected"), a.querySelector(".iconfont").classList.remove("icon-check-square"), a.querySelector(".iconfont").classList.add("icon-uncheck-square"));
+      b = this.el.querySelector(".setting-area .js-ruler");
+      c ? (b.classList.add("selected"), b.querySelector(".iconfont").classList.remove("icon-uncheck-square"), b.querySelector(".iconfont").classList.add("icon-check-square")) : (b.classList.remove("selected"), b.querySelector(".iconfont").classList.remove("icon-check-square"), b.querySelector(".iconfont").classList.add("icon-uncheck-square"));
+      document.body.appendChild(this.el);
+    };
+    c.prototype.hide = function () {
+      this.el.remove();
+    };
+    return c;
+  }();
+  e.SettingView = d;
+})(phone || (phone = {}));
+(function (e) {
+  var d = function () {
+    function c() {
+      this.el = document.createElement("div");
+      this.el.setAttribute("name", "wwwcSetting");
+      this.el.style.position = "relative";
+      this.loadCss();
+      this.loadTemplate();
+    }
+    c.prototype.loadCss = function () {
+      Utils.addCssByLink("css/phone/WwwcSettingView.css");
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this;
+      MessageProxy.getTemplate("templates/phone/WwwcSettingView.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u7a97\u5bbd\u7a97\u4f4d\u8bbe\u7f6e\u89c6\u56fe\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+    };
+    c.prototype.initView = function (a) {
+      a = new DOMParser().parseFromString(a, "text/html");
+      this.el.innerHTML = a.querySelector("#wwwcSettingTemplate").innerHTML;
+      a = a.querySelector("#presetItemTemplate").innerHTML;
+      this.fillPresetList(a);
+      this.bindButtonEvent();
+    };
+    c.prototype.fillPresetList = function (a) {
+      var b = this;
+      if (0 != Config.presetWwwl && 0 != Config.presetWwwl.CT && 0 != Config.presetWwwl.CT.length) {
+        Config.presetWwwl.CT.forEach(function (c) {
+          var d = new DOMParser().parseFromString(a, "text/html");
+          d.querySelector(".preset-item").innerHTML = "".concat(c.name, "   ").concat(c.ww, " / ").concat(c.wl);
+          d.querySelector(".preset-item").setAttribute("ww", c.ww.toString());
+          d.querySelector(".preset-item").setAttribute("wc", c.wl.toString());
+          b.el.querySelector(".preset-list-scroller").appendChild(d.querySelector(".preset-item"));
+        });
+        var c = this;
+        this.el.querySelectorAll(".preset-item").forEach(function (a) {
+          a.addEventListener("tap", function () {
+            Utils.vibrate();
+            var a = this.getAttribute("ww"),
+              b = this.getAttribute("wc");
+            c.el.querySelector("#txtWW").value = a;
+            c.el.querySelector("#txtWC").value = b;
+          });
+        });
+        var d = this.getIScrollOptions(),
+          e = this.el.querySelector(".preset-list-wrapper");
+        this._presetScroll = new IScroll(e, d);
+      }
+    };
+    c.prototype.getIScrollOptions = function () {
+      return {
+        mouseWheel: !0,
+        scrollbars: "custom",
+        interactiveScrollbars: !0,
+        click: !0,
+        tap: !0,
+        preventDefault: !1,
+        scrollX: !1,
+        scrollY: !0,
+        fadeScrollbars: !1
+      };
+    };
+    c.prototype.bindButtonEvent = function () {
+      var a = this;
+      new Hammer(this.el.querySelector("#btnAddWW")).on("tap", function () {
+        Utils.vibrate();
+        a.changeValue("txtWW", "+");
+      });
+      new Hammer(this.el.querySelector("#btnSubWW")).on("tap", function () {
+        Utils.vibrate();
+        a.changeValue("txtWW", "-");
+      });
+      new Hammer(this.el.querySelector("#btnAddWC")).on("tap", function () {
+        Utils.vibrate();
+        a.changeValue("txtWC", "+");
+      });
+      new Hammer(this.el.querySelector("#btnSubWC")).on("tap", function () {
+        Utils.vibrate();
+        a.changeValue("txtWC", "-");
+      });
+      new Hammer(this.el.querySelector(".cancel-button")).on("tap", function () {
+        Utils.vibrate();
+        a.hide();
+      });
+      new Hammer(this.el.querySelector(".ok-button")).on("tap", function () {
+        Utils.vibrate();
+        var b = a.el.querySelector("#txtWW").value,
+          c = a.el.querySelector("#txtWC").value;
+        a.el.querySelector("#txtWW").classList.remove("error");
+        a.el.querySelector("#txtWC").classList.remove("error");
+        1 == isNaN(parseInt(b)) ? a.el.querySelector("#txtWW").classList.add("error") : 1 == isNaN(parseInt(c)) ? a.el.querySelector("#txtWC").classList.add("error") : (a.hide(), b = parseInt(b), c = parseInt(c), 0 != a.btnOKClicked && a.btnOKClicked(b, c));
+      });
+      [".ok-button", ".cancel-button"].forEach(function (b) {
+        ["touchstart", "touchend", "touchcancel"].forEach(function (c) {
+          a.el.querySelector(b).addEventListener(c, function (a) {
+            a.stopPropagation();
+            a.stopImmediatePropagation();
+          });
+        });
+      });
+    };
+    c.prototype.changeValue = function (a, b) {
+      var c = this.el.querySelector("#" + a).value;
+      if ("" != c) {
+        c = parseInt(c);
+        "+" == b ? this.el.querySelector("#" + a).value = (c + 5).toString() : "-" == b && (this.el.querySelector("#" + a).value = (c - 5).toString());
+      }
+    };
+    c.prototype.show = function (a, b) {
+      if (0 != a) {
+        this.el.querySelector("#txtWW").value = a.toString();
+      }
+      if (0 != b) {
+        this.el.querySelector("#txtWC").value = b.toString();
+      }
+      document.body.appendChild(this.el);
+    };
+    c.prototype.hide = function () {
+      this.el.remove();
+    };
+    return c;
+  }();
+  e.WwwcSettingView = d;
+})(phone || (phone = {}));
+(function (e) {
+  var d = function () {
+    function c(a) {
+      this._parentEl = a;
+      this.loadCss();
+      this.loadTemplate();
+    }
+    c.prototype.loadCss = function () {
+      Utils.addCssByLink("css/phone/ToolbarView.css");
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this;
+      MessageProxy.getTemplate("templates/phone/ToolbarView.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u5de5\u5177\u6761\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+    };
+    c.prototype.initView = function (a) {
+      a = new DOMParser().parseFromString(a, "text/html");
+      this._parentEl.innerHTML = a.querySelector("#toolbarTemplate").innerHTML;
+      a = a.querySelector("#toolbarMenuTemplate").innerHTML;
+      if (0 != a) {
+        this._parentEl.innerHTML += a;
+      }
+      this.bindButtonEvent();
+    };
+    c.prototype.bindButtonEvent = function () {
+      var a = this;
+      ".toolbar-menu-under;#btnResetImage;#btnInvertColor;#btnLineMeasure;#btnDeleteSelected;.btn-rotate-right;.btn-flip-horz;.btn-flip-vert;#btnSetLayout .btn-layout1;#btnSetLayout .btn-layout2;#btnSetLayout .btn-layout3;#btnSetWwwc;#btnSetting;#btnHelpInfo".split(";").forEach(function (b) {
+        ["touchstart", "touchend", "touchcancel"].forEach(function (c) {
+          var d = a._parentEl.querySelector(b);
+          if (0 != d) {
+            d.addEventListener(c, function (a) {
+              a.stopPropagation();
+            });
+          }
+        });
+      });
+      new Hammer(this._parentEl.querySelector(".btn-series")).on("tap", function () {
+        Utils.vibrate();
+        if (0 != a.btnSeriesClicked) {
+          a.btnSeriesClicked();
+        }
+      });
+      var b = this._parentEl.querySelector(".btn-scroll");
+      if (b) {
+        b.classList.add("active");
+        new Hammer(b).on("tap", function (b) {
+          Utils.vibrate();
+          b.preventDefault();
+          a._parentEl.querySelector(".btn-measure-point").classList.remove("active");
+          a._parentEl.querySelector(".btn-adjust-wwwc").classList.remove("active");
+          a._parentEl.querySelector(".btn-more").classList.remove("active");
+          b = a._parentEl.querySelector(".btn-scroll");
+          b.classList.contains("active") ? b.classList.remove("active") : b.classList.add("active");
+          if (0 != a.btnScrollClicked) {
+            a.btnScrollClicked(b.classList.contains("active"));
+          }
+        });
+      }
+      var c = this._parentEl.querySelector("#btnLineMeasure"),
+        d = this._parentEl.querySelector("#btnDeleteSelected");
+      new Hammer(this._parentEl.querySelector(".btn-adjust-wwwc")).on("tap", function (b) {
+        Utils.vibrate();
+        b.preventDefault();
+        a._parentEl.querySelector(".btn-measure-point").classList.remove("active");
+        a._parentEl.querySelector(".btn-more").classList.remove("active");
+        a._parentEl.querySelector(".btn-scroll").classList.remove("active");
+        if (0 != c) {
+          c.classList.remove("active");
+        }
+        if (0 != d) {
+          d.classList.remove("active");
+        }
+        b = a._parentEl.querySelector(".btn-more .iconfont");
+        if (b.classList.contains("icon-length")) {
+          b.classList.remove("icon-length");
+          b.classList.add("icon-other");
+        }
+        b = a._parentEl.querySelector(".btn-adjust-wwwc");
+        b.classList.contains("active") ? b.classList.remove("active") : b.classList.add("active");
+        if (0 != a.btnAdjustWwwcClicked) {
+          a.btnAdjustWwwcClicked(b.classList.contains("active"));
+        }
+      });
+      new Hammer(this._parentEl.querySelector(".btn-measure-point")).on("tap", function () {
+        Utils.vibrate();
+        a._parentEl.querySelector(".btn-adjust-wwwc").classList.remove("active");
+        a._parentEl.querySelector(".btn-more").classList.remove("active");
+        a._parentEl.querySelector(".btn-scroll").classList.remove("active");
+        if (0 != c) {
+          c.classList.remove("active");
+        }
+        if (0 != d) {
+          d.classList.remove("active");
+        }
+        var b = a._parentEl.querySelector(".btn-more .iconfont");
+        if (b.classList.contains("icon-length")) {
+          b.classList.remove("icon-length");
+          b.classList.add("icon-other");
+        }
+        b = a._parentEl.querySelector(".btn-measure-point");
+        b.classList.contains("active") ? b.classList.remove("active") : b.classList.add("active");
+        if (0 != a.btnMeasurePointClicked) {
+          a.btnMeasurePointClicked(b.classList.contains("active"));
+        }
+      });
+      if (0 != c) {
+        new Hammer(c).on("tap", function (b) {
+          Utils.vibrate();
+          a._parentEl.querySelector(".btn-adjust-wwwc").classList.remove("active");
+          a._parentEl.querySelector(".btn-measure-point").classList.remove("active");
+          a._parentEl.querySelector(".btn-scroll").classList.remove("active");
+          if (0 != d) {
+            d.classList.remove("active");
+          }
+          var e = a._parentEl.querySelector(".btn-more .iconfont");
+          c.classList.contains("active") ? (c.classList.remove("active"), e.classList.remove("icon-length"), e.classList.add("icon-other"), a._parentEl.querySelector(".btn-more").classList.remove("active")) : (c.classList.add("active"), e.classList.remove("icon-other"), e.classList.add("icon-length"), a._parentEl.querySelector(".btn-more").classList.add("active"));
+          a.hideMenu();
+          b.srcEvent.preventDefault();
+          b.srcEvent.stopPropagation();
+          b.srcEvent.stopImmediatePropagation();
+          if (0 != a.btnMeasureLineClicked) {
+            a.btnMeasureLineClicked(c.classList.contains("active"));
+          }
+        });
+      }
+      if (0 != d) {
+        new Hammer(d).on("tap", function () {
+          Utils.vibrate();
+          a.hideMenu();
+          if (0 != a.btnDeleteAllClicked) {
+            a.btnDeleteAllClicked();
+          }
+        });
+      }
+      new Hammer(this._parentEl.querySelector("#btnInvertColor")).on("tap", function () {
+        Utils.vibrate();
+        a.hideMenu();
+        if (0 != a.btnInvertColorClicked) {
+          a.btnInvertColorClicked();
+        }
+      });
+      new Hammer(this._parentEl.querySelector("#btnResetImage")).on("tap", function () {
+        Utils.vibrate();
+        a.hideMenu();
+        if (0 != a.btnResetImageClicked) {
+          a.btnResetImageClicked();
+        }
+      });
+      new Hammer(this._parentEl.querySelector("#btnMore")).on("tap", function () {
+        Utils.vibrate();
+        a.showMenu();
+      });
+      new Hammer(this._parentEl.querySelector(".toolbar-menu-under")).on("tap", function () {
+        Utils.vibrate();
+        a.hideMenu();
+      });
+      new Hammer(this._parentEl.querySelector("#btnSetWwwc")).on("tap", function () {
+        Utils.vibrate();
+        a.hideMenu();
+        if (0 != a.btnWwwcSettingClicked) {
+          a.btnWwwcSettingClicked();
+        }
+      });
+      new Hammer(this._parentEl.querySelector(".btn-rotate-right")).on("tap", function () {
+        Utils.vibrate();
+        a.hideMenu();
+        if (0 != a.btnRotateRightClicked) {
+          a.btnRotateRightClicked();
+        }
+      });
+      new Hammer(this._parentEl.querySelector(".btn-flip-horz")).on("tap", function () {
+        Utils.vibrate();
+        a.hideMenu();
+        if (0 != a.btnFlipHorzClicked) {
+          a.btnFlipHorzClicked();
+        }
+      });
+      new Hammer(this._parentEl.querySelector(".btn-flip-vert")).on("tap", function () {
+        Utils.vibrate();
+        a.hideMenu();
+        if (0 != a.btnFlipVertClicked) {
+          a.btnFlipVertClicked();
+        }
+      });
+      new Hammer(this._parentEl.querySelector("#btnSetLayout .btn-layout1")).on("tap", function () {
+        Utils.vibrate();
+        a.hideMenu();
+        if (0 != a.btnSetImageLayoutClicked) {
+          a.btnSetImageLayoutClicked(1, 1);
+        }
+      });
+      new Hammer(this._parentEl.querySelector("#btnSetLayout .btn-layout2")).on("tap", function () {
+        Utils.vibrate();
+        a.hideMenu();
+        if (0 != a.btnSetImageLayoutClicked) {
+          a.btnSetImageLayoutClicked(2, 1);
+        }
+      });
+      new Hammer(this._parentEl.querySelector("#btnSetLayout .btn-layout3")).on("tap", function () {
+        Utils.vibrate();
+        a.hideMenu();
+        if (0 != a.btnSetImageLayoutClicked) {
+          a.btnSetImageLayoutClicked(1, 2);
+        }
+      });
+      new Hammer(this._parentEl.querySelector("#btnSetting")).on("tap", function () {
+        Utils.vibrate();
+        a.hideMenu();
+        if (0 != a.btnSettingClicked) {
+          a.btnSettingClicked();
+        }
+      });
+      new Hammer(this._parentEl.querySelector("#btnHelpInfo")).on("tap", function () {
+        Utils.vibrate();
+        a.hideMenu();
+        if (0 != a.btnHelpClicked) {
+          a.btnHelpClicked();
+        }
+      });
+    };
+    c.prototype.showMenu = function () {
+      this._parentEl.querySelector(".toolbar-menu-under").style.display = "flex";
+      this._parentEl.querySelector(".toolbar-menu-wrapper").style.display = "block";
+    };
+    c.prototype.hideMenu = function () {
+      this._parentEl.querySelector(".toolbar-menu-under").style.display = "none";
+      this._parentEl.querySelector(".toolbar-menu-wrapper").style.display = "none";
+    };
+    c.prototype.disable = function () {
+      if (this._parentEl.querySelector(".toolbar-cover")) {
+        this._parentEl.querySelector(".toolbar-cover").style.display = "block";
+      }
+    };
+    c.prototype.enable = function () {
+      if (this._parentEl.querySelector(".toolbar-cover")) {
+        this._parentEl.querySelector(".toolbar-cover").style.display = "none";
+      }
+    };
+    return c;
+  }();
+  e.ToolbarView = d;
+})(phone || (phone = {}));
+__values = this && this.__values || function (e) {
+  var d = "function" === typeof Symbol && Symbol.iterator,
+    c = d && e[d],
+    a = 0;
+  if (c) {
+    return c.call(e);
+  }
+  if (e && "number" === typeof e.length) {
+    return {
+      next: function () {
+        if (e && a >= e.length) {
+          e = 0;
+        }
+        return {
+          value: e && e[a++],
+          done: !e
+        };
+      }
+    };
+  }
+  throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+(function (e) {
+  var d = function () {
+    function c(a) {
+      this._loaded = !1;
+      this._studyInfo = [];
+      this._parentEl = a;
+      this.loadCss();
+      this.loadTemplate();
+    }
+    c.prototype.loadCss = function () {
+      Utils.addCssByLink("css/phone/SeriesListView.css");
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this;
+      MessageProxy.getTemplate("templates/phone/SeriesListView.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u5e8f\u5217\u5217\u8868\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+    };
+    c.prototype.initView = function (a) {
+      var b,
+        c,
+        d = this;
+      a = new DOMParser().parseFromString(a, "text/html");
+      var e = document.createElement("div");
+      e.innerHTML = a.querySelector("#seriesListTemplate").innerHTML;
+      this._seriesListItem = a.querySelector("#seriesListItemTemplate").innerHTML;
+      this._seriesListHtml = a.querySelector("#seriesListTemplate").innerHTML;
+      for (e.querySelector("#scroller").innerHTML = ""; 0 < e.children.length;) this._parentEl.appendChild(e.children[0]);
+      a = this.getIScrollOptions();
+      this._seriesScroll = new IScroll(".series-list-wrapper", a);
+      this._loaded = !0;
+      if (0 != this._studyInfo && 0 != this._studyInfo.length) {
+        try {
+          for (var g = __values(this._studyInfo), l = g.next(); !l.done; l = g.next()) {
+            this.fillSeriesList(l.value);
+            this.show();
+            setTimeout(function () {
+              d.hide();
+            }, 2E3);
+          }
+        } catch (m) {
+          b = {
+            error: m
+          };
+        } finally {
+          try {
+            if (l && !l.done && (c = g.return)) {
+              c.call(g);
+            }
+          } finally {
+            if (b) {
+              throw b.error;
+            }
+          }
+        }
+      }
+      var n = this;
+      new Hammer(document.querySelector(".series-list-under")).on("tap", function (a) {
+        Utils.vibrate();
+        n.hide();
+        a.preventDefault();
+      });
+      if (b = document.querySelector(".series-list-close-wrapper")) {
+        new Hammer(b).on("tap", function (a) {
+          Utils.vibrate();
+          n.hide();
+          a.preventDefault();
+        });
+      }
+      document.querySelector(".series-list-wrapper").addEventListener("touchmove", function (a) {
+        a.preventDefault();
+      });
+      ["touchstart", "touchend", "touchcancel"].forEach(function (a) {
+        d._parentEl.querySelector(".series-list-under").addEventListener(a, function (a) {
+          a.preventDefault();
+          a.stopPropagation();
+          a.stopImmediatePropagation();
+        });
+      });
+    };
+    c.prototype.addStudyInfo = function (a) {
+      var b = this;
+      this._loaded ? (this.fillSeriesList(a), this.show(), setTimeout(function () {
+        b.hide();
+      }, 2E3)) : this._studyInfo.push(a);
+    };
+    c.prototype.fillSeriesList = function (a) {
+      var b = document.createElement("div");
+      b.innerHTML = this._seriesListHtml;
+      for (var c = document.getElementById("scroller"), d = b.getElementsByClassName("series-list")[0], e = d.getElementsByClassName("series-list-scroller")[0].innerHTML, b = 0; b < a.series.length; b++) e += this._seriesListItem;
+      d.getElementsByClassName("patient-name")[0].innerHTML = a.patientName;
+      if (a.studyTime) {
+        b = a.studyTime.substr(0, 10);
+        d.getElementsByClassName("study-time")[0].innerHTML = b.substr(0, 4) + "\u5e74" + parseInt(b.substr(5, 2)) + "\u6708" + parseInt(b.substr(8, 2)) + "\u65e5";
+      }
+      d.getElementsByClassName("modality-patient-id")[0].innerHTML = "[" + a.modality + "]" + (0 != a.patientId ? a.patientId : "");
+      d.getElementsByClassName("series-list-scroller")[0].innerHTML = e;
+      e = d.getElementsByClassName("series-list-scroller")[0];
+      for (b = 0; b < a.series.length; b++) {
+        var g = a.series[b];
+        e.querySelectorAll(".series-list-item")[b].setAttribute("study-id", a.studyUid);
+        e.querySelectorAll(".series-list-item")[b].setAttribute("series-id", g.seriesUid);
+        e.getElementsByClassName("series-list-item")[b].setAttribute("series-index", "".concat(g.seriesNumber));
+        e.getElementsByClassName("image-total")[b].innerText = "".concat(g.images.length, "\u56fe");
+        e.getElementsByClassName("series-index")[b].innerText = "".concat(g.seriesNumber);
+        e.getElementsByClassName("series-desc")[b].innerText = "".concat(g.seriesDesc);
+      }
+      c.appendChild(d);
+      this._seriesScroll.refresh();
+      var l = this,
+        n = d.getElementsByClassName("series-list-info")[0];
+      new Hammer(n).on("tap", function () {
+        "none" != d.getElementsByClassName("series-list-scroller")[0].style.display ? (d.getElementsByClassName("series-list-scroller")[0].style.display = "none", n.getElementsByClassName("series-list-icon")[0].style.transform = "rotate(0deg)") : (d.getElementsByClassName("series-list-scroller")[0].style.display = "flex", n.getElementsByClassName("series-list-icon")[0].style.transform = "rotate(-90deg)");
+        l._seriesScroll.refresh();
+      });
+      var m = e.getElementsByClassName("series-list-item");
+      a = function (a) {
+        new Hammer(m[a]).on("tap", function () {
+          Utils.vibrate();
+          var b = m[a].getAttribute("study-id"),
+            c = m[a].getAttribute("series-id");
+          -1 != m[a].className.search(/active/) ? l.hide() : 0 != l.seriesItemTapped && l.seriesItemTapped(b, c);
+        });
+      };
+      for (b = 0; b < m.length; b++) a(b);
+    };
+    c.prototype.getIScrollOptions = function () {
+      var a = {
+        mouseWheel: !0,
+        scrollbars: "custom",
+        interactiveScrollbars: !0,
+        click: !0,
+        tap: !0,
+        preventDefault: !1,
+        scrollX: !1,
+        scrollY: !0
+      };
+      Environment.isMobile ? a.fadeScrollbars = !0 : a.fadeScrollbars = !1;
+      return a;
+    };
+    c.prototype.sortNumber = function (a, b) {
+      return a.seriesNumber - b.seriesNumber;
+    };
+    c.prototype.setActive = function (a) {
+      if (0 < document.getElementsByClassName("series-list-item active").length) {
+        for (var b = 0; b < document.getElementsByClassName("series-list-item").length; b++) document.getElementsByClassName("series-list-item")[b].classList.remove("active");
+      }
+      document.querySelectorAll(".series-list-item[series-id='" + a + "']")[0].classList.add("active");
+    };
+    c.prototype.showImage = function (a, b) {
+      if (0 != a && "" != a && 0 != b && "" != b) {
+        document.querySelectorAll(".series-list-item[series-id='" + a + "']  img ")[0].setAttribute("src", b);
+      }
+    };
+    c.prototype.show = function () {
+      document.querySelector(".series-list-under").style.display = "block";
+      var a = document.querySelector(".series-list-box");
+      if (a) {
+        a.classList.remove("hide");
+        a.classList.add("show");
+      }
+    };
+    c.prototype.hide = function () {
+      document.querySelector(".series-list-under").style.display = "none";
+      var a = document.querySelector(".series-list-box");
+      a ? (a.classList.remove("show"), a.classList.add("hide")) : setTimeout(function () {
+        var a = document.querySelector(".series-list-box");
+        if (a) {
+          a.classList.remove("show");
+          a.classList.add("hide");
+        }
+      }, 200);
+    };
+    return c;
+  }();
+  e.SeriesListView = d;
+})(phone || (phone = {}));
+(function (e) {
+  var d = function () {
+    function c(a) {
+      var b = this;
+      if (0 === a) {
+        a = 50;
+      }
+      this._isPressed = !1;
+      this._pressedPoint = {
+        x: -1,
+        y: -1
+      };
+      this._sliderBlockPoint = {
+        x: -1,
+        y: -1
+      };
+      this._imageCount = this._currentImageIndex = 0;
+      this.el = document.createElement("div");
+      this.el.setAttribute("name", "slider");
+      this.el.style.position = "relative";
+      this.el.style.height = "100%";
+      this.el.style.width = "100%";
+      this.el.style.zIndex = a.toString();
+      this.loadCss();
+      this.loadTemplate();
+      if (Environment.isMobile) {
+        window.addEventListener("orientationchange", function () {
+          var a = b.el.querySelector(".image-slider-wrapper .slider-block .iconfont");
+          a.style.removeProperty("left");
+          a.style.removeProperty("top");
+          a = b.el.querySelector(".image-slider-wrapper .slider-tips");
+          a.style.removeProperty("left");
+          a.style.removeProperty("top");
+          setTimeout(function () {
+            b.setPosition(b._currentImageIndex);
+          }, 200);
+        });
+      }
+    }
+    Object.defineProperty(c.prototype, "currentImageIndex", {
+      get: function () {
+        return this._currentImageIndex;
+      },
+      set: function (a) {
+        this._currentImageIndex = a;
+        this.setPosition(this._currentImageIndex);
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "imageCount", {
+      get: function () {
+        return this._imageCount;
+      },
+      set: function (a) {
+        this._imageCount = a;
+        this.currentImageIndex = 0;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    c.prototype.loadCss = function () {
+      Utils.addCssByLink("css/phone/ImageSlider.css");
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this;
+      MessageProxy.getTemplate("templates/phone/ImageSlider.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u6ed1\u6746\u89c6\u56fe\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+    };
+    c.prototype.initView = function (a) {
+      a = new DOMParser().parseFromString(a, "text/html");
+      this.el.innerHTML = a.querySelector("#imageSliderTemplate").innerHTML;
+      this.setPosition(this._currentImageIndex);
+      this.bindEvent();
+    };
+    c.prototype.setPosition = function (a) {
+      if (0 != this._imageCount && 1 != this._isPressed && 0 != a) {
+        if (0 > a) {
+          a = 0;
+        }
+        if (a >= this._imageCount) {
+          a = this._imageCount - 1;
+        }
+        this._currentImageIndex = a;
+        a = this.el.querySelector(".slider-pole");
+        var b = this.el.querySelector(".image-slider-wrapper .slider-block .iconfont");
+        if (Environment.isPortrait) {
+          var c = a.offsetLeft;
+          if (0 < this._currentImageIndex) {
+            c = (this._currentImageIndex + 1) / this._imageCount * a.offsetWidth + a.offsetLeft;
+          }
+          b.style.left = c - b.offsetWidth / 2 + "px";
+        } else {
+          c = a.offsetTop;
+          0 < this._currentImageIndex && (c = (this._currentImageIndex + 1) / this._imageCount * a.offsetHeight + a.offsetTop);
+          b.style.top = c - b.offsetHeight / 2 + "px";
+        }
+      }
+    };
+    c.prototype.bindEvent = function () {
+      var a = this,
+        b = this.el.querySelector(".image-slider-wrapper .slider-block .iconfont");
+      ["touchstart", "touchmove", "touchend", "touchcancel"].forEach(function (c) {
+        b.addEventListener(c, function (b) {
+          a.processSliderBlockEvent(b);
+        });
+      });
+      var c = this.el.querySelector(".image-slider-wrapper .slider-arrow-start"),
+        d = this.el.querySelector(".image-slider-wrapper .slider-arrow-end");
+      ["touchstart", "touchend", "touchcancel"].forEach(function (b) {
+        c.addEventListener(b, function (b) {
+          a.processStartButtonEvent(b);
+        });
+        d.addEventListener(b, function (b) {
+          a.processEndButtonEvent(b);
+        });
+      });
+    };
+    c.prototype.processSliderBlockEvent = function (a) {
+      a.stopPropagation();
+      a.preventDefault();
+      var b = new UIEventParam();
+      b.type = a.type;
+      b.x = a.changedTouches[0].clientX;
+      b.y = a.changedTouches[0].clientY;
+      this.implementSliderBlockEvent(b);
+    };
+    c.prototype.implementSliderBlockEvent = function (a) {
+      var b = this.el.querySelector(".image-slider-wrapper .slider-block .iconfont"),
+        c = this.el.querySelector(".image-slider-wrapper .slider-tips");
+      if (a.type == UIEventType.touchStart || a.type == UIEventType.mouseDown) {
+        this._isPressed = !0;
+        this._pressedPoint.x = a.x;
+        this._pressedPoint.y = a.y;
+        this._sliderBlockPoint.x = b.offsetLeft;
+        this._sliderBlockPoint.y = b.offsetTop;
+        b.classList.add("active");
+      } else {
+        if (a.type == UIEventType.touchEnd || a.type == UIEventType.touchCancel || a.type == UIEventType.mouseUp) {
+          this._isPressed = !1;
+          this._pressedPoint.x = -1;
+          this._pressedPoint.y = -1;
+          b.classList.remove("active");
+          c.style.display = "none";
+        } else {
+          if (a.type == UIEventType.touchMove || a.type == UIEventType.mouseMove) {
+            if (0 == this._isPressed) {
+              return !1;
+            }
+            Environment.isPortrait ? this.dragSliderBlockHorz(a) : this.dragSliderBlockVert(a);
+            return !0;
+          }
+        }
+      }
+      return !1;
+    };
+    c.prototype.dragSliderBlockHorz = function (a) {
+      var b = this.el.querySelector(".image-slider-wrapper .slider-pole"),
+        c = this.el.querySelector(".image-slider-wrapper .slider-block .iconfont"),
+        d = this.el.querySelector(".image-slider-wrapper .slider-tips"),
+        e = c.offsetWidth;
+      a = this._sliderBlockPoint.x + (a.x - this._pressedPoint.x);
+      if (a < b.offsetLeft - e / 2) {
+        a = b.offsetLeft - e / 2;
+      }
+      if (a > b.offsetLeft + b.offsetWidth - e / 2) {
+        a = b.offsetLeft + b.offsetWidth - e / 2;
+      }
+      c.style.left = "".concat(a, "px");
+      b = this.calcImageNumberByWidth();
+      d.textContent = b.toString();
+      d.style.left = "".concat(a - 50, "px");
+      d.style.display = "block";
+      if (0 != this.sliderChanged) {
+        this.sliderChanged(b - 1);
+        this._currentImageIndex = b - 1;
+      }
+    };
+    c.prototype.dragSliderBlockVert = function (a) {
+      var b = this.el.querySelector(".image-slider-wrapper .slider-pole"),
+        c = this.el.querySelector(".image-slider-wrapper .slider-block .iconfont"),
+        d = this.el.querySelector(".image-slider-wrapper .slider-tips"),
+        e = c.offsetHeight;
+      a = this._sliderBlockPoint.y + (a.y - this._pressedPoint.y);
+      if (a < b.offsetTop - e / 2) {
+        a = b.offsetTop - e / 2;
+      }
+      if (a > b.offsetTop + b.offsetHeight - e / 2) {
+        a = b.offsetTop + b.offsetHeight - e / 2;
+      }
+      c.style.top = "".concat(a, "px");
+      b = this.calcImageNumberByHeight();
+      d.textContent = b.toString();
+      d.style.top = "".concat(a - 30, "px");
+      d.style.display = "block";
+      if (0 != this.sliderChanged) {
+        this.sliderChanged(b - 1);
+        this._currentImageIndex = b - 1;
+      }
+    };
+    c.prototype.calcImageNumberByWidth = function () {
+      var a = this.el.querySelector(".image-slider-wrapper .slider-pole"),
+        b = this.el.querySelector(".image-slider-wrapper .slider-block .iconfont"),
+        b = b.offsetLeft + b.offsetWidth / 2 - a.offsetLeft;
+      if (0 >= b) {
+        b = .1;
+      }
+      return Math.ceil(b / (a.offsetWidth / this._imageCount));
+    };
+    c.prototype.calcImageNumberByHeight = function () {
+      var a = this.el.querySelector(".image-slider-wrapper .slider-pole"),
+        b = this.el.querySelector(".image-slider-wrapper .slider-block .iconfont"),
+        b = b.offsetTop + b.offsetHeight / 2 - a.offsetTop;
+      if (0 >= b) {
+        b = .1;
+      }
+      return Math.ceil(b / (a.offsetHeight / this._imageCount));
+    };
+    c.prototype.processStartButtonEvent = function (a) {
+      var b = this;
+      a.stopPropagation();
+      a.preventDefault();
+      var c = this.el.querySelector(".image-slider-wrapper .slider-arrow-start");
+      if (a.type == UIEventType.touchStart || a.type == UIEventType.mouseDown) {
+        c.classList.add("active");
+        0 != this._pressHoldTimerId && (clearInterval(this._pressHoldTimerId), this._pressHoldTimerId = 0);
+        this._touchStartTimerId = setTimeout(function () {
+          b._pressHoldTimerId = setInterval(function () {
+            if (0 < b._currentImageIndex && 0 != b.sliderChanged) {
+              --b.currentImageIndex;
+              b.sliderChanged(b.currentImageIndex);
+            }
+          }, 100);
+        }, 1E3);
+        0 < this._currentImageIndex && 0 != this.sliderChanged && (--this.currentImageIndex, this.sliderChanged(this.currentImageIndex));
+      } else {
+        if (a.type == UIEventType.touchEnd || a.type == UIEventType.touchCancel || a.type == UIEventType.mouseUp) {
+          c.classList.remove("active");
+          0 != this._touchStartTimerId && (clearTimeout(this._touchStartTimerId), this._touchStartTimerId = 0);
+          0 != this._pressHoldTimerId && (clearInterval(this._pressHoldTimerId), this._pressHoldTimerId = 0);
+        }
+      }
+    };
+    c.prototype.processEndButtonEvent = function (a) {
+      var b = this;
+      a.stopPropagation();
+      a.preventDefault();
+      var c = this.el.querySelector(".image-slider-wrapper .slider-arrow-end");
+      if (a.type == UIEventType.touchStart || a.type == UIEventType.mouseDown) {
+        c.classList.add("active");
+        0 != this._pressHoldTimerId && (clearInterval(this._pressHoldTimerId), this._pressHoldTimerId = 0);
+        this._touchStartTimerId = setTimeout(function () {
+          b._pressHoldTimerId = setInterval(function () {
+            if (b._currentImageIndex < b.imageCount - 1 && 0 != b.sliderChanged) {
+              b.currentImageIndex += 1;
+              b.sliderChanged(b.currentImageIndex);
+            }
+          }, 100);
+        }, 1E3);
+        this._currentImageIndex < this.imageCount - 1 && 0 != this.sliderChanged && (this.currentImageIndex += 1, this.sliderChanged(this.currentImageIndex));
+      } else {
+        if (a.type == UIEventType.touchEnd || a.type == UIEventType.touchCancel || a.type == UIEventType.mouseUp) {
+          c.classList.remove("active");
+          0 != this._touchStartTimerId && (clearTimeout(this._touchStartTimerId), this._touchStartTimerId = 0);
+          0 != this._pressHoldTimerId && (clearInterval(this._pressHoldTimerId), this._pressHoldTimerId = 0);
+        }
+      }
+    };
+    c.prototype.show = function () {
+      this.el.style.removeProperty("display");
+      this.setPosition(this._currentImageIndex);
+    };
+    c.prototype.hide = function () {
+      this.el.style.display = "none";
+    };
+    return c;
+  }();
+  e.ImageSlider = d;
+})(phone || (phone = {}));
+__values = this && this.__values || function (e) {
+  var d = "function" === typeof Symbol && Symbol.iterator,
+    c = d && e[d],
+    a = 0;
+  if (c) {
+    return c.call(e);
+  }
+  if (e && "number" === typeof e.length) {
+    return {
+      next: function () {
+        if (e && a >= e.length) {
+          e = 0;
+        }
+        return {
+          value: e && e[a++],
+          done: !e
+        };
+      }
+    };
+  }
+  throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+(function (e) {
+  var d = function () {
+    function c() {
+      this.loadTemplate();
+    }
+    c.prototype.loadTemplate = function () {
+      var a = this;
+      MessageProxy.getTemplate("templates/phone/ExportImageMenuView.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u8bbe\u7f6e\u89c6\u56fe\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+    };
+    c.prototype.initView = function (a) {
+      a = new DOMParser().parseFromString(a, "text/html");
+      var b = document.createElement("div");
+      b.innerHTML = a.querySelector("#exportImageMenuTemplate").innerHTML;
+      this._el = b.children[0];
+      this.bindButtonEvent();
+    };
+    c.prototype.bindButtonEvent = function () {
+      var a,
+        b,
+        c = this,
+        d = this._el.querySelectorAll(".menu-area .js-menu-item"),
+        e = function (a) {
+          a.addEventListener("touchstart", function (b) {
+            b.stopPropagation();
+            Utils.vibrate();
+            b = "";
+            a.classList.contains("js-export-image-jpg") ? b = "image-jpg" : a.classList.contains("js-export-image-dicom") ? b = "image-dicom" : a.classList.contains("js-export-series-dicom") && (b = "series-dicom");
+            if ("" != b && c.menuItemClicked) {
+              c.menuItemClicked(b);
+            }
+            c.hide();
+          });
+        };
+      try {
+        for (var g = __values(d), l = g.next(); !l.done; l = g.next()) e(l.value);
+      } catch (n) {
+        a = {
+          error: n
+        };
+      } finally {
+        try {
+          if (l && !l.done && (b = g.return)) {
+            b.call(g);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+      this._el.querySelector(".menu-underlay").addEventListener("touchstart", function (a) {
+        Utils.vibrate();
+        c.hide();
+        a.preventDefault();
+      });
+    };
+    c.prototype.show = function (a, b) {
+      this._el.querySelector(".menu-wrapper").style.top = "".concat(b + 30, "px");
+      document.body.appendChild(this._el);
+    };
+    c.prototype.hide = function () {
+      this._el.remove();
+    };
+    return c;
+  }();
+  e.ExportImageMenuView = d;
+})(phone || (phone = {}));
+__awaiter = this && this.__awaiter || function (e, d, c, a) {
+  function b(a) {
+    return a instanceof c ? a : new c(function (b) {
+      b(a);
+    });
+  }
+  return new (c || (c = Promise))(function (c, k) {
+    function f(b) {
+      try {
+        l(a.next(b));
+      } catch (m) {
+        k(m);
+      }
+    }
+    function g(b) {
+      try {
+        l(a["throw"](b));
+      } catch (m) {
+        k(m);
+      }
+    }
+    function l(a) {
+      a.done ? c(a.value) : b(a.value).then(f, g);
+    }
+    l((a = a.apply(e, d || [])).next());
+  });
+};
+__generator = this && this.__generator || function (e, d) {
+  function c(b) {
+    return function (c) {
+      return a([b, c]);
+    };
+  }
+  function a(a) {
+    if (f) {
+      throw new TypeError("Generator is already executing.");
+    }
+    for (; b;) try {
+      f = 1;
+      if (k && (a[0] & 2 ? h = k["return"] : a[0] ? h = k["throw"] || ((h = k["return"]) && h.call(k), 0) : h = k.next) && !(h = h.call(k, a[1])).done) {
+        return h;
+      }
+      k = 0;
+      if (h) {
+        a = [a[0] & 2, h.value];
+      }
+      switch (a[0]) {
+        case 0:
+          {}
+        case 1:
+          {
+            h = a;
+            break;
+          }
+        case 4:
+          {
+            b.label++;
+            return {
+              value: a[1],
+              done: !1
+            };
+          }
+        case 5:
+          {
+            b.label++;
+            k = a[1];
+            a = [0];
+            continue;
+          }
+        case 7:
+          {
+            a = b.ops.pop();
+            b.trys.pop();
+            continue;
+          }
+        default:
+          {
+            if (!(h = b.trys, h = 0 < h.length && h[h.length - 1]) && (6 === a[0] || 2 === a[0])) {
+              b = 0;
+              continue;
+            }
+            if (3 === a[0] && (!h || a[1] > h[0] && a[1] < h[3])) {
+              b.label = a[1];
+            } else {
+              if (6 === a[0] && b.label < h[1]) {
+                b.label = h[1];
+                h = a;
+              } else {
+                if (h && b.label < h[2]) {
+                  b.label = h[2];
+                  b.ops.push(a);
+                } else {
+                  if (h[2]) {
+                    b.ops.pop();
+                  }
+                  b.trys.pop();
+                  continue;
+                }
+              }
+            }
+          }
+      }
+      a = d.call(e, b);
+    } catch (n) {
+      a = [6, n];
+      k = 0;
+    } finally {
+      f = h = 0;
+    }
+    if (a[0] & 5) {
+      throw a[1];
+    }
+    return {
+      value: a[0] ? a[1] : 0,
+      done: !0
+    };
+  }
+  var b = {
+      label: 0,
+      sent: function () {
+        if (h[0] & 1) {
+          throw h[1];
+        }
+        return h[1];
+      },
+      trys: [],
+      ops: []
+    },
+    f,
+    k,
+    h,
+    g;
+  g = {
+    next: c(0),
+    "throw": c(1),
+    "return": c(2)
+  };
+  "function" === typeof Symbol && (g[Symbol.iterator] = function () {
+    return this;
+  });
+  return g;
+};
+__values = this && this.__values || function (e) {
+  var d = "function" === typeof Symbol && Symbol.iterator,
+    c = d && e[d],
+    a = 0;
+  if (c) {
+    return c.call(e);
+  }
+  if (e && "number" === typeof e.length) {
+    return {
+      next: function () {
+        if (e && a >= e.length) {
+          e = 0;
+        }
+        return {
+          value: e && e[a++],
+          done: !e
+        };
+      }
+    };
+  }
+  throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+(function (e) {
+  var d = function () {
+    function c(a) {
+      this._imageShowed = this._isPlaying = this._seriesDownloading = !1;
+      this._dragPixelTotal = 0;
+      this._pixelsPerImage = 10;
+      this._actionTag = ActionTag.none;
+      this._rulerFlag = this._orientationFlag = this._cornerInfoFlag = !0;
+      this.el = document.createElement("div");
+      this.el.setAttribute("name", "image");
+      this.el.style.position = "relative";
+      this.el.style.height = "100%";
+      this.el.style.width = "100%";
+      this._loadingEl = document.createElement("div");
+      this._loadingEl.setAttribute("name", "loading");
+      this._loadingEl.style.position = "absolute";
+      this._loadingEl.style.height = "100%";
+      this._loadingEl.style.width = "100%";
+      this._loadingEl.style.display = "flex";
+      this._loadingEl.style.justifyContent = "center";
+      this._loadingEl.style.alignItems = "center";
+      var b = document.createElement("img");
+      b.src = "images/spinner-loader.svg";
+      this._loadingEl.appendChild(b);
+      if (a) {
+        this._parentEl = a;
+        this._parentEl.appendChild(this.el);
+        this.el.appendChild(this._loadingEl);
+      }
+      this._orientationMarker = new e.OrientationMarker(this.el);
+      this._cornerInfoView = new e.CornerInfoView(this.el);
+      this._ruler = new share.ImageRuler(this.el);
+      this._ruler.scaleChanged = this.onScaleChanged.bind(this);
+      this._dragProbe = new pc.DragProbe();
+      this.initView();
+      var c = this;
+      this.el.addEventListener("cornerstoneimagerendered", function (a) {
+        isNaN(a.detail.viewport.voi.windowCenter) || (a.detail.viewport.voi.windowCenter = parseInt(a.detail.viewport.voi.windowCenter));
+        var b = Math.round(a.detail.viewport.voi.windowWidth).toString(),
+          d = Math.round(a.detail.viewport.voi.windowCenter).toString();
+        a = a.detail.viewport.scale.toFixed(2).toString();
+        if (0 != c._curImageCornerInfo) {
+          c._curImageCornerInfo.windowWidth = b;
+          c._curImageCornerInfo.windowCenter = d;
+          c._curImageCornerInfo.zoomFactor = a;
+          c._cornerInfoView.showInfo(c._currentImage, c._curImageCornerInfo);
+        }
+      });
+      this.el.addEventListener("cornerstonetoolstouchstart", function (a) {
+        if ("" == c._actionTag) {
+          var b = a.detail.currentPoints.canvas,
+            d = a.detail.element;
+          Object.keys(cornerstoneTools).forEach(function (a) {
+            var c = cornerstoneTools[a];
+            if (a = cornerstoneTools.getToolState(d, a)) {
+              a.data.forEach(function (a) {
+                if ("function" === typeof c.pointNearTool && c.pointNearTool(d, a, b)) {
+                  cornerstoneTools.pan.disable(d);
+                  cornerstoneTools.panTouchDrag.deactivate(d);
+                }
+              });
+            }
+          });
+        }
+      });
+      this.el.addEventListener("cornerstonetoolstouchend", function (a) {
+        if ("" == c._actionTag) {
+          cornerstoneTools.pan.activate(a.detail.element, 1);
+        }
+      });
+    }
+    Object.defineProperty(c.prototype, "actionTag", {
+      get: function () {
+        return this._actionTag;
+      },
+      set: function (a) {
+        this._actionTag = a;
+        if (0 == this._isPlaying) {
+          this.activateTools();
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "cornerInfoFlag", {
+      get: function () {
+        return this._cornerInfoFlag;
+      },
+      set: function (a) {
+        this._cornerInfoFlag = a;
+        if (this.isDisplaying() && this._cornerInfoView) {
+          this._cornerInfoFlag ? 207 >= this.el.offsetWidth ? this._cornerInfoView.hide() : this._cornerInfoView.show() : this._cornerInfoView.hide();
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "orientationFlag", {
+      get: function () {
+        return this._orientationFlag;
+      },
+      set: function (a) {
+        this._orientationFlag = a;
+        if (this.isDisplaying() && this._orientationMarker) {
+          this._orientationFlag ? this._orientationMarker.show() : this._orientationMarker.hidden();
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "rulerFlag", {
+      get: function () {
+        return this._rulerFlag;
+      },
+      set: function (a) {
+        this._rulerFlag = a;
+        if (this.isDisplaying()) {
+          this._rulerFlag ? this._ruler.enable(this.el) : this._ruler.disable(this.el);
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "viewport", {
+      get: function () {
+        if (0 != this.isEnabledElement()) {
+          return cornerstone.getViewport(this.el);
+        }
+      },
+      set: function (a) {
+        this.setViewport(a);
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    c.prototype.initView = function () {
+      var a = this;
+      this.hideLoading();
+      this._exportImageMenuView = new e.ExportImageMenuView();
+      this._exportImageMenuView.menuItemClicked = function (b) {
+        a.exportImages(b);
+      };
+      cornerstoneTools.toolColors.setToolColor("#00AEB2");
+      var b = {
+          color: "#eaeadc",
+          lineWidth: 1,
+          shadowBlur: 6
+        },
+        c = {
+          invert: !0
+        };
+      if (cornerstoneTools.version.startsWith("2.")) {
+        cornerstoneTools.scaleOverlayTool.setConfiguration(b);
+        cornerstoneTools.zoom.setConfiguration(c);
+      }
+      this.el.addEventListener(cornerstoneTools.EVENTS.TOUCH_DRAG, function (b) {
+        a.onTouchDrag(b.detail);
+      });
+      this.el.addEventListener(cornerstoneTools.EVENTS.TOUCH_DRAG_END, function (b) {
+        a._dragPixelTotal = 0;
+      });
+      console.log("allowExportImage", Config.allowExportImage);
+      if (1 == Config.allowExportImage) {
+        this.el.addEventListener(cornerstoneTools.EVENTS.TOUCH_PRESS, function (b) {
+          a._cornerstoneImage = b.detail.image;
+          if (a._exportImageMenuView) {
+            Utils.vibrate();
+            a._exportImageMenuView.show(b.detail.currentPoints.page.x, b.detail.currentPoints.page.y);
+          }
+        });
+      }
+      if (Environment.isMobile) {
+        window.addEventListener("orientationchange", function () {
+          setTimeout(function () {
+            if (a.isEnabledElement()) {
+              a.resize();
+            }
+          }, 200);
+        });
+      }
+      document.addEventListener(Global.events.startPlay, function () {
+        a._isPlaying = !0;
+        a.deactivateTools();
+      });
+      document.addEventListener(Global.events.stopPlay, function () {
+        a._isPlaying = !1;
+        a.activateTools();
+      });
+    };
+    c.prototype.onTouchDrag = function (a) {
+      if (this.actionTag == ActionTag.none) {
+        this.deactivateTools();
+        this._dragPixelTotal += a.deltaPoints.client.y;
+        Math.abs(this._dragPixelTotal) > this._pixelsPerImage && (a = Math.floor(Math.abs(this._dragPixelTotal) / this._pixelsPerImage), this.swipeUpDown && (0 < this._dragPixelTotal ? this.swipeUpDown(a) : this.swipeUpDown(-a)), this._dragPixelTotal %= this._pixelsPerImage);
+      }
+    };
+    c.prototype.onScaleChanged = function (a) {
+      var b = cornerstone.getViewport(this.el),
+        c = cornerstoneTools.zoom.getConfiguration();
+      a = Math.pow(1.7, Math.log(b.scale) / Math.log(1.7) + a);
+      c.maxScale && a > c.maxScale ? b.scale = c.maxScale : c.minScale && a < c.minScale ? b.scale = c.minScale : b.scale = a;
+      cornerstone.setViewport(this.el, b);
+    };
+    c.prototype.attachImage = function (a) {
+      var b = this;
+      this._imageShowed = !1;
+      this._currentImage = a;
+      if (0 != a.cornerstoneImageId && "" != a.cornerstoneImageId) {
+        var c = cornerstone.imageCache.imageCache[a.cornerstoneImageId];
+        if (0 != c && 0 != c.image) {
+          this.displayImage(c.image);
+        }
+      } else {
+        "SC" == a.series.study.modality ? cornerstone.loadAndCacheImage(a.imageUrl).then(function (c) {
+          a.cornerstoneImageId = a.imageUrl;
+          a.isDicom = !1;
+          b.displayImage(c);
+        }, function (a) {
+          console.log("\u663e\u793a\u8d85\u58f0\u56fe\u50cf\u5931\u8d25\uff1a" + a);
+          MsgBox.error("\u663e\u793a\u8d85\u58f0\u56fe\u50cf\u5931\u8d25\uff1a" + a);
+        }) : (0 != this._loadingTimerId && (clearTimeout(this._loadingTimerId), this._loadingTimerId = 0, this.hideLoading()), 0 == this._imageShowed && (this._loadingTimerId = setTimeout(function () {}, 500)));
+      }
+    };
+    c.prototype.showImage = function (a, b) {
+      var c = this;
+      if (0 != a && 0 != this._currentImage && a.imageId == this._currentImage.imageId) {
+        this._imageShowed = !0;
+        0 != this._loadingTimerId && (clearTimeout(this._loadingTimerId), this._loadingTimerId = 0);
+        if (Utils.existCornerstoneCache(a)) {
+          this.displayImage(cornerstone.imageCache.imageCache[a.cornerstoneImageId].image);
+        } else {
+          if (0 == a.cornerstoneImageId || "" == a.cornerstoneImageId) {
+            a.cornerstoneImageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(b);
+          }
+          cornerstone.loadAndCacheImage(a.cornerstoneImageId).then(function (b) {
+            if (0 != a.cornerstoneImageId && "" != a.cornerstoneImageId) {
+              var d = cornerstoneWADOImageLoader.getImageFrame(a.cornerstoneImageId);
+              if (cornerstoneWADOImageLoader.isColorImage(d.photometricInterpretation) && 0 == d.planarConfiguration) {
+                d.planarConfiguration = 0;
+              }
+            }
+            c.displayImage(b);
+            c.hideLoading();
+          }, function (a) {
+            console.log("\u663e\u793a\u56fe\u50cf\u5931\u8d25\uff1a", a.error);
+            MsgBox.errorAlert("\u663e\u793a\u56fe\u50cf\u5931\u8d25\uff0c\u5efa\u8bae\u6e05\u9664\u6d4f\u89c8\u5668\u7f13\u5b58\u540e\u91cd\u65b0\u6253\u5f00\u56fe\u50cf\u3002" + a.error.constructor.name + " " + a.error.target);
+          });
+        }
+      }
+    };
+    c.prototype.displayImage = function (a) {
+      if (0 != a) {
+        if (0 == this.isEnabledElement()) {
+          this.enableElement();
+        }
+        this.isMutiFrameImage(a);
+        cornerstone.displayImage(this.el, a);
+        if (this._orientationMarker) {
+          this._orientationMarker.calculateOrientationMarkers(this.el);
+        }
+        var b = cornerstone.getViewport(this.el);
+        this._curImageCornerInfo = new ImageCornerInfo().getImageCornerInfo(a);
+        this._curImageCornerInfo.zoomFactor = b.scale.toFixed(2).toString();
+        if (this._cornerInfoView) {
+          this._cornerInfoView.showInfo(this._currentImage, this._curImageCornerInfo);
+        }
+        this._ruler.disable(this.el);
+        this.setOverlay();
+        if (0 == this._isPlaying) {
+          this.activateTools();
+        }
+        if (0 == this.isSynchronized()) {
+          this.getViewport && (a = this.getViewport(), this.setViewport(a));
+          this.addToSynchronizer();
+        }
+      }
+    };
+    c.prototype.isMutiFrameImage = function (a) {
+      var b = a.data.intString("x00280008") || 1;
+      a = a.imageId;
+      if (1 != b && 0 == this._mutiFrameToolbar) {
+        this._mutiFrameToolbar = new pc.mutiFrameToolbar(this.el);
+        this._mutiFrameToolbar.showImage = this.showMutiFrame.bind(this);
+      }
+      if (0 != this._mutiFrameToolbar) {
+        this._mutiFrameToolbar.resetMutiFrameState(a, b);
+      }
+    };
+    c.prototype.showMutiFrame = function (a) {
+      var b = this;
+      cornerstone.loadAndCacheImage(a).then(function (a) {
+        cornerstone.displayImage(b.el, a);
+      }, function (a) {
+        console.log("\u663e\u793a\u56fe\u50cf\u5931\u8d25\uff1a" + a);
+        b._mutiFrameToolbar.setStop();
+        MsgBox.error("\u663e\u793a\u56fe\u50cf\u5931\u8d25\uff1a" + a);
+      });
+    };
+    c.prototype.enableElement = function () {
+      if (1 != this.isEnabledElement()) {
+        0 == this.el.parentElement ? console.log("\u5143\u7d20\u672a\u7f6e\u4e8e DOM \u4e2d\uff0c\u65e0\u6cd5 cornerstone.enable") : (cornerstoneTools.version.startsWith("2.") && (cornerstoneTools.touchInput.enable(this.el), cornerstoneTools.zoomTouchPinch.activate(this.el), cornerstoneTools.panMultiTouch.activate(this.el)), cornerstone.enable(this.el));
+      }
+    };
+    c.prototype.isEnabledElement = function () {
+      var a,
+        b,
+        c = !1,
+        d = cornerstone.getEnabledElements();
+      try {
+        for (var e = __values(d), g = e.next(); !g.done; g = e.next()) if (g.value.element === this.el) {
+          c = !0;
+          break;
+        }
+      } catch (l) {
+        a = {
+          error: l
+        };
+      } finally {
+        try {
+          if (g && !g.done && (b = e.return)) {
+            b.call(e);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+      return c;
+    };
+    c.prototype.isDisplaying = function () {
+      if (0 == this.isEnabledElement()) {
+        return !1;
+      }
+      var a = cornerstone.getEnabledElement(this.el);
+      return 0 != a && 0 != a.image ? !0 : !1;
+    };
+    c.prototype.isSynchronized = function () {
+      var a,
+        b,
+        c = !1,
+        d = this.wwwcSynchronizer.getTargetElements();
+      try {
+        for (var e = __values(d), g = e.next(); !g.done; g = e.next()) if (g.value === this.el) {
+          c = !0;
+          break;
+        }
+      } catch (l) {
+        a = {
+          error: l
+        };
+      } finally {
+        try {
+          if (g && !g.done && (b = e.return)) {
+            b.call(e);
+          }
+        } finally {
+          if (a) {
+            throw a.error;
+          }
+        }
+      }
+      return c;
+    };
+    c.prototype.addToSynchronizer = function () {
+      var a, b, c, d;
+      if (0 == this.isDisplaying()) {
+        console.log("\u6ca1\u6709\u663e\u793a\u56fe\u50cf\u524d\uff0c\u5143\u7d20\u65e0\u6cd5\u52a0\u5165\u540c\u6b65\u5668");
+      } else {
+        if (this.wwwcSynchronizer) {
+          var e = !1,
+            g = this.wwwcSynchronizer.getTargetElements();
+          try {
+            for (var l = __values(g), n = l.next(); !n.done; n = l.next()) {
+              var m = n.value;
+              if (m === this.el) {
+                e = !0;
+                break;
+              }
+            }
+          } catch (r) {
+            a = {
+              error: r
+            };
+          } finally {
+            try {
+              if (n && !n.done && (b = l.return)) {
+                b.call(l);
+              }
+            } finally {
+              if (a) {
+                throw a.error;
+              }
+            }
+          }
+          if (0 == e) {
+            this.wwwcSynchronizer.add(this.el);
+          }
+        }
+        if (this.panZoomSynchronizer) {
+          e = !1;
+          g = this.panZoomSynchronizer.getTargetElements();
+          try {
+            for (var p = __values(g), q = p.next(); !q.done; q = p.next()) if (m = q.value, m === this.el) {
+              e = !0;
+              break;
+            }
+          } catch (r) {
+            c = {
+              error: r
+            };
+          } finally {
+            try {
+              if (q && !q.done && (d = p.return)) {
+                d.call(p);
+              }
+            } finally {
+              if (c) {
+                throw c.error;
+              }
+            }
+          }
+          if (0 == e) {
+            this.panZoomSynchronizer.add(this.el);
+          }
+        }
+      }
+    };
+    c.prototype.activateTools = function () {
+      if (0 != this.isEnabledElement()) {
+        this.deactivateTools();
+        var a = this.el;
+        if (cornerstoneTools.version.startsWith("2.")) {
+          switch (this._actionTag) {
+            case ActionTag.wwwl:
+              {
+                cornerstoneTools.wwwcTouchDrag.activate(a);
+                break;
+              }
+            case ActionTag.ctValue:
+              {
+                this._dragProbe.dragProbeTouch.activate(a);
+                break;
+              }
+            case ActionTag.annoLength:
+              {
+                cornerstoneTools.lengthTouch.activate(a);
+                break;
+              }
+            case ActionTag.annoDeleteSelected:
+              {
+                cornerstoneTools.eraser.activate(a);
+                cornerstoneTools.eraserTouch.activate(a);
+                break;
+              }
+            default:
+              {
+                cornerstoneTools.panTouchDrag.activate(a);
+              }
+          }
+        }
+      }
+    };
+    c.prototype.deactivateTools = function () {
+      if (0 != this.isDisplaying()) {
+        var a = this.el;
+        if (cornerstoneTools.version.startsWith("2.")) {
+          cornerstoneTools.wwwcTouchDrag.deactivate(a);
+          cornerstoneTools.panTouchDrag.deactivate(a);
+          cornerstoneTools.zoomTouchDrag.deactivate(a);
+          this._dragProbe.dragProbeTouch.deactivate(a);
+          cornerstoneTools.arrowAnnotate.deactivate(a);
+          cornerstoneTools.arrowAnnotateTouch.deactivate(a);
+          cornerstoneTools.length.deactivate(a);
+          cornerstoneTools.lengthTouch.deactivate(a);
+          cornerstoneTools.rectangleRoi.deactivate(a);
+          cornerstoneTools.rectangleRoiTouch.deactivate(a);
+          cornerstoneTools.ellipticalRoi.deactivate(a);
+          cornerstoneTools.ellipticalRoiTouch.deactivate(a);
+          cornerstoneTools.simpleAngle.deactivate(a);
+          cornerstoneTools.angleTouch.deactivate(a);
+          cornerstoneTools.eraser.deactivate(a);
+          cornerstoneTools.eraserTouch.deactivate(a);
+        }
+        cornerstoneTools.version.startsWith("3.");
+      }
+    };
+    c.prototype.setOverlay = function () {
+      if (0 != this.isEnabledElement()) {
+        this._cornerInfoView && (this._cornerInfoFlag ? 207 >= this.el.offsetWidth ? this._cornerInfoView.hide() : this._cornerInfoView.show() : this._cornerInfoView.hide());
+        this._orientationMarker && (this._orientationFlag ? this._orientationMarker.show() : this._orientationMarker.hidden());
+        this._ruler && (this._rulerFlag ? this._ruler.enable(this.el) : this._ruler.disable(this.el));
+      }
+    };
+    c.prototype.setViewport = function (a) {
+      if (0 != a && 0 != this.isEnabledElement()) {
+        var b = cornerstone.getViewport(this.el);
+        b.voi.windowWidth = a.voi.windowWidth;
+        b.voi.windowCenter = a.voi.windowCenter;
+        b.translation.x = a.translation.x;
+        b.translation.y = a.translation.y;
+        b.scale = a.scale;
+        b.invert = a.invert;
+        b.rotation = a.rotation;
+        b.hflip = a.hflip;
+        b.vflip = a.vflip;
+        cornerstone.setViewport(this.el, b);
+      }
+    };
+    c.prototype.resize = function () {
+      if (0 != this.isEnabledElement()) {
+        var a = cornerstone.getViewport(this.el),
+          b = a.translation.x,
+          c = a.translation.y;
+        cornerstone.resize(this.el);
+        a = cornerstone.getViewport(this.el);
+        a.translation.x = b;
+        a.translation.y = c;
+        cornerstone.setViewport(this.el, a);
+      }
+    };
+    c.prototype.remove = function () {
+      cornerstone.disable(this.el);
+      this.el.remove();
+    };
+    c.prototype.disableView = function () {
+      if (1 == this.isEnabledElement()) {
+        cornerstoneTools.version.startsWith("2.") && (cornerstoneTools.touchInput.disable(this.el), cornerstoneTools.zoomTouchPinch.deactivate(this.el));
+        cornerstone.disable(this.el);
+      }
+      if (this._orientationMarker) {
+        this._orientationMarker.hidden();
+      }
+      if (this._cornerInfoView) {
+        this._cornerInfoView.hide();
+      }
+      if (this._ruler) {
+        this._ruler.disable(this.el);
+      }
+    };
+    c.prototype.resetImage = function () {
+      if (0 != this.isEnabledElement()) {
+        var a = cornerstone.getViewport(this.el);
+        this._orientationMarker.updateOrientationMarkers(this.el, a, "reset");
+        cornerstone.reset(this.el);
+      }
+    };
+    c.prototype.invertColor = function () {
+      if (0 != this.isEnabledElement()) {
+        var a = cornerstone.getViewport(this.el);
+        a.invert = !a.invert;
+        cornerstone.setViewport(this.el, a);
+      }
+    };
+    c.prototype.rotateImage = function (a) {
+      if (0 != this.isEnabledElement()) {
+        var b = cornerstone.getViewport(this.el);
+        b.rotation = a;
+        cornerstone.setViewport(this.el, b);
+        this._orientationMarker.updateOrientationMarkers(this.el, b, "clock");
+      }
+    };
+    c.prototype.flipHorz = function () {
+      if (0 != this.isEnabledElement()) {
+        var a = cornerstone.getViewport(this.el);
+        a.hflip = !a.hflip;
+        cornerstone.setViewport(this.el, a);
+        this._orientationMarker.updateOrientationMarkers(this.el, a, "fliphorizontal");
+      }
+    };
+    c.prototype.flipVert = function () {
+      if (0 != this.isEnabledElement()) {
+        var a = cornerstone.getViewport(this.el);
+        a.vflip = !a.vflip;
+        cornerstone.setViewport(this.el, a);
+        this._orientationMarker.updateOrientationMarkers(this.el, a, "flipvertical");
+      }
+    };
+    c.prototype.setWwwc = function (a, b) {
+      if (0 != this.isEnabledElement()) {
+        var c = cornerstone.getViewport(this.el);
+        c.voi.windowWidth = a;
+        c.voi.windowCenter = b;
+        cornerstone.setViewport(this.el, c);
+      }
+    };
+    c.prototype.getWwwc = function () {
+      if (0 != this.isEnabledElement()) {
+        var a = cornerstone.getViewport(this.el);
+        return {
+          ww: Math.round(a.voi.windowWidth),
+          wc: Math.round(a.voi.windowCenter)
+        };
+      }
+    };
+    c.prototype.deleteAllAnnotations = function () {
+      if (this.isEnabledElement()) {
+        cornerstoneTools.globalImageIdSpecificToolStateManager.clear(this.el);
+        cornerstone.updateImage(this.el);
+      }
+    };
+    c.prototype.hideLoading = function () {
+      if (this._loadingEl) {
+        this._loadingEl.style.height = "0";
+        this._loadingEl.querySelector("img").style.display = "none";
+      }
+    };
+    c.prototype.showLoading = function () {
+      if (this._loadingEl) {
+        this._loadingEl.style.height = "100%";
+        this._loadingEl.querySelector("img").style.removeProperty("display");
+      }
+    };
+    c.prototype.exportImages = function (a) {
+      var b,
+        c,
+        d = this,
+        e = navigator.userAgent;
+      if (1 == e.includes("MicroMessenger") || 1 == e.includes("WeChat") || 1 == e.includes("Weixin")) {
+        MsgBox.info("\u5fae\u4fe1\u6d4f\u89c8\u5668\u4e0d\u652f\u6301\u4e0b\u8f7d\u6587\u4ef6\u3002<br>\u8bf7\u70b9\u51fb\u53f3\u4e0a\u89d2 ... \uff0c\u7136\u540e\u9009\u62e9\u201c\u5728\u6d4f\u89c8\u5668\u6253\u5f00\u201d\u3002");
+      } else {
+        if ("image-dicom" == a) {
+          0 != this._cornerstoneImage ? (b = this._cornerstoneImage.imageId, b = b.replace(":", "") + ".dcm", c = new Blob([this._cornerstoneImage.data.byteArray], {
+            type: "x-lml/x-evm"
+          }), c = URL.createObjectURL(c), Utils.downLoadUrl(c, b)) : MsgBox.error("\u5bfc\u51fa\u56fe\u50cf\u5931\u8d25\uff1a\u5185\u90e8\u9519\u8bef\u3002");
+        } else {
+          if ("image-jpg" == a) {
+            0 != this._currentImage && 0 != this._currentImage.jpgUrl ? (b = this._currentImage.cornerstoneImageId, 0 == b && (b = this._currentImage.imageId), b = b.replace(":", "") + ".jpg", function (a, b) {
+              return __awaiter(d, 0, 0, function () {
+                var c, d, e;
+                return __generator(this, function (f) {
+                  switch (f.label) {
+                    case 0:
+                      {
+                        return [4, fetch(a)];
+                      }
+                    case 1:
+                      {
+                        c = f.sent();
+                        return [4, c.blob()];
+                      }
+                    case 2:
+                      {
+                        d = f.sent();
+                        e = URL.createObjectURL(d);
+                        Utils.downLoadUrl(e, b);
+                        return [2];
+                      }
+                  }
+                });
+              });
+            }(this._currentImage.jpgUrl, b)) : MsgBox.error("\u5bfc\u51fa\u56fe\u50cf\u5931\u8d25\uff1a\u5185\u90e8\u9519\u8bef\u3002");
+          } else {
+            if ("series-dicom" == a) {
+              if (null == this._currentImage || null == this._currentImage.series) {
+                MsgBox.error("\u5bfc\u51fa\u56fe\u50cf\u5931\u8d25\uff1a\u5185\u90e8\u9519\u8bef\u3002");
+              } else {
+                if (1 == this._seriesDownloading) {
+                  MsgBox.info("\u6b63\u5728\u5bfc\u51fa\u5f53\u524d\u5e8f\u5217\u7684\u5168\u90e8\u56fe\u50cf\uff0c\u8bf7\u7b49\u5f85...");
+                } else {
+                  var g = 0,
+                    l = function (a) {
+                      g < d._currentImage.series.images.length || a.generateAsync({
+                        type: "blob"
+                      }).then(function (a) {
+                        a = URL.createObjectURL(a);
+                        Utils.downLoadUrl(a, "".concat(d._currentImage.series.study.patientName, "-series").concat(d._currentImage.series.seriesNumber, ".zip"));
+                        d._seriesDownloading = !1;
+                      });
+                    },
+                    n = function (a, b, c, e) {
+                      return __awaiter(d, 0, 0, function () {
+                        var d;
+                        return __generator(this, function (f) {
+                          switch (f.label) {
+                            case 0:
+                              {
+                                return [4, Global.downloadImage(b, c)];
+                              }
+                            case 1:
+                              {
+                                d = f.sent();
+                                a.file(e, d.imageFile);
+                                g += 1;
+                                l(a);
+                                return [2];
+                              }
+                          }
+                        });
+                      });
+                    };
+                  this._seriesDownloading = !0;
+                  var m = new JSZip();
+                  a = function (a) {
+                    var b = a.imageId + ".dcm";
+                    Global.getCachedImages(p._currentImage.series.seriesUid, [a], function (c) {
+                      0 != c.hasError && 1 == c.hasError ? n(m, d._currentImage.series.seriesUid, a, b) : c.imageInfo && c.imageFile ? (m.file(b, c.imageFile), g += 1, l(m)) : n(m, d._currentImage.series.seriesUid, a, b);
+                    });
+                  };
+                  var p = this;
+                  try {
+                    for (var q = __values(this._currentImage.series.images), r = q.next(); !r.done; r = q.next()) a(r.value);
+                  } catch (t) {
+                    b = {
+                      error: t
+                    };
+                  } finally {
+                    try {
+                      if (r && !r.done && (c = q.return)) {
+                        c.call(q);
+                      }
+                    } finally {
+                      if (b) {
+                        throw b.error;
+                      }
+                    }
+                  }
+                }
               }
             }
           }
         }
       }
-    }
-  } catch (_0x597bc3) {
-    console.error("获取剧情名称失败:", _0x597bc3);
+    };
+    return c;
+  }();
+  e.ImageView = d;
+})(phone || (phone = {}));
+__values = this && this.__values || function (e) {
+  var d = "function" === typeof Symbol && Symbol.iterator,
+    c = d && e[d],
+    a = 0;
+  if (c) {
+    return c.call(e);
   }
-  return "当前剧情";
-}
-function _0x1d8104() {
-  const _0x1f1e7d = document.createElement("div");
-  _0x1f1e7d.id = "savePanel";
-  _0x1f1e7d.style.cssText = "\n      position: fixed;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      width: 380px;\n      max-height: 75vh;\n      background: white;\n      border-radius: 20px;\n      padding: 0;\n      z-index: 99999;\n      display: none;\n      flex-direction: column;\n      box-shadow: 0 25px 50px rgba(0,0,0,0.15);\n      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n      overflow: hidden;\n      animation: fadeIn 0.3s ease;\n    ";
-  _0x1f1e7d.innerHTML = "\n      <div style=\"padding: 20px; border-bottom: 1px solid #f3f4f6;\">\n        <div style=\"display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;\">\n          <h2 style=\"color: #111827; margin: 0; font-size: 18px; font-weight: 600;\">存档管理</h2>\n          <button id=\"closeSavePanel\" style=\"\n            background: transparent;\n            border: none;\n            width: 32px;\n            height: 32px;\n            border-radius: 50%;\n            cursor: pointer;\n            color: #9ca3af;\n            font-size: 20px;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            transition: all 0.2s ease;\n          \">×</button>\n        </div>\n      </div>\n      <div style=\"flex: 1; padding: 16px; overflow-y: auto;\">\n        <div id=\"saveSlotsContainer\" style=\"display: flex; flex-direction: column; gap: 10px;\"></div>\n      </div>\n    ";
-  document.body.appendChild(_0x1f1e7d);
-  const _0x1caa81 = document.getElementById("closeSavePanel");
-  _0x1caa81.onmouseover = () => _0x1caa81.style.color = "#ef4444";
-  _0x1caa81.onmouseout = () => _0x1caa81.style.color = "#9ca3af";
-  _0x1caa81.onclick = () => {
-    _0x1f1e7d.style.animation = "fadeOut 0.3s ease";
-    setTimeout(() => {
-      _0x1f1e7d.style.display = "none";
-    }, 300);
-  };
-  _0x3c5540 = "save";
-  return _0x1f1e7d;
-}
-function _0x5a8d98() {
-  const _0xf98270 = document.getElementById("saveSlotsContainer");
-  if (!_0xf98270) {
-    return;
-  }
-  _0xf98270.innerHTML = "";
-  for (let _0x32b0aa = 1; _0x32b0aa <= _0x1e433c.SLOT_COUNT; _0x32b0aa++) {
-    const _0x140868 = document.createElement("div");
-    _0x140868.className = "save-slot";
-    _0x140868.style.cssText = "\n        padding: 14px;\n        background: #f9fafb;\n        border-radius: 12px;\n        cursor: pointer;\n        transition: all 0.2s ease;\n      ";
-    const _0x5d700f = "" + _0x1e433c.STORAGE_PREFIX + _0x151067 + "_" + _0x5d142b + "_" + _0x32b0aa;
-    const _0x27c7a7 = localStorage.getItem(_0x5d700f);
-    if (_0x27c7a7) {
-      {
-        try {
-          {
-            const _0x29cc30 = JSON.parse(_0x27c7a7);
-            const _0x5cab1a = _0x1ef036(JSON.stringify(_0x29cc30.data));
-            const _0x1cb9a2 = _0x29cc30.info?.["customName"] || "未命名存档";
-            const _0x529eec = _0x29cc30.info?.["saveTime"] ? new Date(_0x29cc30.info.saveTime).toLocaleString() : "未知时间";
-            _0x140868.innerHTML = "\n            <div style=\"display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;\">\n              <div style=\"font-weight: 600; color: #111827; font-size: 14px;\">存档 " + _0x32b0aa + "</div>\n              <div style=\"font-size: 12px; color: #6b7280;\">" + _0x529eec + "</div>\n            </div>\n            <div style=\"font-size: 13px; color: #4b5563; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\">\n              " + _0x1cb9a2 + "\n            </div>\n          ";
-            _0x140868.onmouseover = () => _0x140868.style.background = "#f3f4f6";
-            _0x140868.onmouseout = () => _0x140868.style.background = "#f9fafb";
-            _0x140868.onclick = () => {
-              _0x128fc7(_0x32b0aa);
-            };
-          }
-        } catch (_0x401681) {
-          _0x140868.innerHTML = "\n            <div style=\"display: flex; align-items: center; gap: 6px;\">\n              <div style=\"color: #ef4444; font-size: 13px; font-weight: 500;\">存档 " + _0x32b0aa + " - 数据损坏</div>\n            </div>\n          ";
+  if (e && "number" === typeof e.length) {
+    return {
+      next: function () {
+        if (e && a >= e.length) {
+          e = 0;
         }
+        return {
+          value: e && e[a++],
+          done: !e
+        };
       }
-    } else {
-      {
-        _0x140868.innerHTML = "\n          <div style=\"display: flex; align-items: center; gap: 6px; margin-bottom: 4px;\">\n            <div style=\"color: #6b7280; font-size: 14px; font-weight: 500;\">存档 " + _0x32b0aa + "</div>\n          </div>\n          <div style=\"font-size: 12px; color: #9ca3af;\">空存档位</div>\n        ";
-        _0x140868.onmouseover = () => _0x140868.style.background = "#f3f4f6";
-        _0x140868.onmouseout = () => _0x140868.style.background = "#f9fafb";
-        _0x140868.onclick = () => {
-          {
-            _0x128fc7(_0x32b0aa);
+    };
+  }
+  throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+(function (e) {
+  var d = function () {
+    function c(a) {
+      this._startImageIndex = 0;
+      this._imageViews = [];
+      this._failedImageNum = 0;
+      this._imageColNum = this._imageRowNum = 1;
+      this._preCacheMode = "all";
+      this._isCaching = !1;
+      this._currentRotateAngle = 0;
+      this._wwwcSynchronizer = new cornerstoneTools.Synchronizer(cornerstone.EVENTS.IMAGE_RENDERED, cornerstoneTools.wwwcSynchronizer);
+      this._panZoomSynchronizer = new cornerstoneTools.Synchronizer(cornerstone.EVENTS.IMAGE_RENDERED, cornerstoneTools.panZoomSynchronizer);
+      this._actionTag = ActionTag.none;
+      this._orientationFlag = this._cornerInfoFlag = !0;
+      this._rulerFlag = !1;
+      if (0 != a && "" != a) {
+        this._preCacheMode = a;
+      }
+      this._viewId = ++c.viewId;
+      this.el = document.createElement("div");
+      this.el.setAttribute("name", "series".concat(this._viewId));
+      this.el.style.position = "relative";
+      this.el.style.height = "100%";
+      this.el.style.width = "100%";
+      this.loadCss();
+      this.loadTemplate();
+    }
+    Object.defineProperty(c.prototype, "rowCount", {
+      get: function () {
+        return this._imageRowNum;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "colCount", {
+      get: function () {
+        return this._imageColNum;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "imageViews", {
+      get: function () {
+        return this._imageViews;
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "actionTag", {
+      get: function () {
+        return this._actionTag;
+      },
+      set: function (a) {
+        this._actionTag = a;
+        this._imageViews.forEach(function (b) {
+          b.actionTag = a;
+        });
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "cornerInfoFlag", {
+      get: function () {
+        return this._cornerInfoFlag;
+      },
+      set: function (a) {
+        this._cornerInfoFlag = a;
+        this._imageViews.forEach(function (b) {
+          b.cornerInfoFlag = a;
+        });
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "orientationFlag", {
+      get: function () {
+        return this._orientationFlag;
+      },
+      set: function (a) {
+        this._orientationFlag = a;
+        this._imageViews.forEach(function (b) {
+          b.orientationFlag = a;
+        });
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "rulerFlag", {
+      get: function () {
+        return this._rulerFlag;
+      },
+      set: function (a) {
+        this._rulerFlag = a;
+        this._imageViews.forEach(function (b) {
+          b.rulerFlag = a;
+        });
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    Object.defineProperty(c.prototype, "viewport", {
+      get: function () {
+        if (0 != this._imageViews.length) {
+          return this._imageViews[0].viewport;
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    c.prototype.loadCss = function () {
+      Utils.addCssByLink("css/phone/SeriesView.css");
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this;
+      MessageProxy.getTemplate("templates/phone/SeriesView.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u5e03\u5c40\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+    };
+    c.prototype.initView = function (a) {
+      var b = this;
+      a = new DOMParser().parseFromString(a, "text/html");
+      this.el.innerHTML = a.querySelector("#seriesViewTemplate").innerHTML;
+      this.setImageLayout(this._imageRowNum, this._imageColNum);
+      if ("all" == this._preCacheMode) {
+        this._downloadProgressBar = new share.DownloadProgressBarMo(this.el);
+        this._downloadProgressBar.downloadCompleted = function () {
+          b._isCaching = !1;
+          if (b.downloadCompleted) {
+            b.downloadCompleted(b._currentSeries);
           }
         };
       }
-    }
-    _0xf98270.appendChild(_0x140868);
-  }
-}
-function _0x128fc7(_0x2230fb) {
-  if (!_0x517e44) {
-    _0x3f051d("请开始游戏后再存档", "error");
-    return;
-  }
-  _0xb5f559("请输入存档名称", "我的存档 " + _0x2230fb, _0x249465 => {
-    if (!_0x249465 || _0x249465.trim() === "") {
-      {
-        _0x3f051d("存档名称不能为空", "error");
-        return;
-      }
-    }
-    if (_0x249465.length > 20) {
-      _0x3f051d("存档名称不能超过20个字符", "error");
-      return;
-    }
-    const _0x4a8dbf = {};
-    let _0xade412 = false;
-    for (const _0x34491c of Object.keys(localStorage)) {
-      {
-        _0x34491c.startsWith("save") && _0x34491c !== "saveData" && (_0x34491c.includes("_" + _0x151067 + "_") || _0x34491c.includes("uid" + _0x151067) || !_0x34491c.includes("_uid") && !_0x34491c.includes("uid")) && (_0x4a8dbf[_0x34491c] = localStorage.getItem(_0x34491c), _0xade412 = true, _0x36cca6 === 1 && _0x1571ce("收集存档数据: " + _0x34491c, "info"));
-      }
-    }
-    if (!_0xade412) {
-      for (const _0x3d37c6 of Object.keys(localStorage)) {
-        _0x3d37c6.startsWith("save") && _0x3d37c6 !== "saveData" && (_0x4a8dbf[_0x3d37c6] = localStorage.getItem(_0x3d37c6), _0xade412 = true, _0x36cca6 === 1 && _0x1571ce("收集存档数据: " + _0x3d37c6, "info"));
-      }
-    }
-    if (!_0xade412) {
-      _0x3f051d("未检测到游戏存档数据", "warning");
-      _0x36cca6 === 1 && _0x1571ce("未检测到游戏存档数据", "warning");
-      return;
-    }
-    const _0x216560 = new Date();
-    const _0x378209 = {
-      saveTime: _0x216560.getTime(),
-      gameName: document.title || "未知游戏",
-      storyName: _0x526c60(),
-      gameId: _0x5d142b,
-      customName: _0x249465,
-      uid: _0x151067,
-      cookieid: _0x517e44
     };
-    const _0x16b13e = "" + _0x1e433c.STORAGE_PREFIX + _0x151067 + "_" + _0x5d142b + "_" + _0x2230fb;
-    const _0x14ef78 = {
-      data: _0x4a8dbf,
-      info: _0x378209
-    };
-    _0x36cca6 === 1 && (_0x1571ce("===== 存档内容详情 =====", "success"), _0x1571ce("存档信息:", "info"), _0x1571ce(_0x378209, "info"), _0x1571ce("===== 存档数据 =====", "success"), Object.entries(_0x4a8dbf).forEach(([_0x3dedf9, _0x115655]) => {
-      _0x1571ce(_0x3dedf9 + ":", "info");
-      try {
-        const _0x44b4db = JSON.parse(_0x115655);
-        _0x1571ce(_0x44b4db, "api");
-      } catch (_0x362f92) {
-        {
-          _0x1571ce(_0x115655, "info");
+    c.prototype.openSeries = function (a) {
+      var b, c, d, e;
+      if (0 != a && 0 != a.images && 0 != a.images.length) {
+        this._currentSeries = a;
+        this._failedImageNum = this._startImageIndex = 0;
+        if (this._downloadProgressBar) {
+          this._downloadProgressBar.imageCount = this._currentSeries.images.length;
         }
-      }
-    }));
-    localStorage.setItem(_0x16b13e, JSON.stringify(_0x14ef78));
-    _0x36cca6 === 1 && (_0x1571ce("===== 存档保存完成 =====", "success"), _0x1571ce("保存位置: " + _0x16b13e, "success"));
-    _0x3f051d("已保存到存档 " + _0x2230fb, "success");
-    _0x5a8d98();
-  });
-}
-function _0x2e2e98(_0x163d1a) {
-  const _0x1c57b9 = "" + _0x1e433c.STORAGE_PREFIX + _0x151067 + "_" + _0x5d142b + "_" + _0x163d1a;
-  const _0x369efb = localStorage.getItem(_0x1c57b9);
-  if (!_0x369efb) {
-    {
-      _0x3f051d("该存档位为空", "warning");
-      return;
-    }
-  }
-  try {
-    const _0x416465 = JSON.parse(_0x369efb);
-    for (const _0x230eb7 of Object.keys(localStorage)) {
-      _0x230eb7.startsWith("save") && _0x230eb7 !== "saveData" && _0x230eb7.indexOf(_0x151067) !== -1 && localStorage.removeItem(_0x230eb7);
-    }
-    Object.entries(_0x416465.data).forEach(([_0x3a5d3f, _0x2cda20]) => {
-      {
-        if (_0x3a5d3f.startsWith("save") && _0x3a5d3f !== "saveData") {
-          {
-            localStorage.setItem(_0x3a5d3f, _0x2cda20);
+        try {
+          for (var g = __values(this._imageViews), l = g.next(); !l.done; l = g.next()) l.value.disableView();
+        } catch (p) {
+          b = {
+            error: p
+          };
+        } finally {
+          try {
+            if (l && !l.done && (c = g.return)) {
+              c.call(g);
+            }
+          } finally {
+            if (b) {
+              throw b.error;
+            }
           }
         }
-      }
-    });
-    _0x3f051d("已读取存档 " + _0x163d1a + "，即将刷新页面", "success");
-    setTimeout(() => location.reload(), 1500);
-  } catch (_0x507f8d) {
-    {
-      _0x3f051d("存档数据损坏", "error");
-    }
-  }
-}
-function _0x409830() {
-  if (!document.querySelector("canvas")) {
-    setTimeout(_0x409830, 100);
-    return;
-  }
-  const _0x97ca0f = document.createElement("style");
-  _0x97ca0f.textContent = "\n      @keyframes fadeIn {\n        from { opacity: 0; }\n        to { opacity: 1; }\n      }\n\n      @keyframes fadeOut {\n        from { opacity: 1; }\n        to { opacity: 0; }\n      }\n\n      @keyframes fadeInRight {\n        from {\n          opacity: 0;\n          transform: translateX(20px);\n        }\n        to {\n          opacity: 1;\n          transform: translateX(0);\n        }\n      }\n\n      @keyframes fadeOutRight {\n        from {\n          opacity: 1;\n          transform: translateX(0);\n        }\n        to {\n          opacity: 0;\n          transform: translateX(20px);\n        }\n      }\n\n      @keyframes scaleIn {\n        from {\n          opacity: 0;\n          transform: scale(0.95);\n        }\n        to {\n          opacity: 1;\n          transform: scale(1);\n        }\n      }\n\n      #main-button {\n        position: fixed;\n        top: 20px;\n        left: 20px;\n        z-index: 10000;\n        background: white;\n        border-radius: 12px;\n        padding: 8px 16px;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        cursor: pointer;\n        box-shadow: 0 4px 12px rgba(0,0,0,0.1);\n        transition: all 0.2s ease;\n        border: none;\n        -webkit-tap-highlight-color: transparent;\n        font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n        font-weight: 600;\n        font-size: 16px;\n        color: #f97316;\n      }\n\n      #main-button:hover {\n        transform: translateY(-2px);\n        box-shadow: 0 6px 16px rgba(0,0,0,0.15);\n      }\n\n      .menu-container {\n        position: fixed;\n        left: 20px;\n        top: 76px;\n        background: white;\n        border-radius: 16px;\n        padding: 8px;\n        z-index: 9999;\n        box-shadow: 0 10px 25px rgba(0,0,0,0.1);\n        min-width: 180px;\n        display: none;\n        animation: scaleIn 0.2s ease;\n      }\n\n      .menu-item {\n        padding: 12px 16px;\n        border-radius: 10px;\n        cursor: pointer;\n        transition: all 0.2s ease;\n        font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n        font-size: 14px;\n        font-weight: 500;\n        color: #4b5563;\n        display: flex;\n        align-items: center;\n        gap: 10px;\n      }\n\n      .menu-item:hover {\n        background: #f3f4f6;\n        color: #111827;\n      }\n\n      .menu-icon {\n        width: 20px;\n        height: 20px;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        color: #6b7280;\n      }\n\n      @media (max-width: 768px) {\n        #main-button {\n          width: 52px;\n          height: 52px;\n        }\n\n        .menu-container {\n          min-width: 200px;\n        }\n\n        .menu-item {\n          padding: 14px 16px;\n          font-size: 15px;\n        }\n      }\n    ";
-  document.head.appendChild(_0x97ca0f);
-  const _0x1f67b = document.createElement("button");
-  _0x1f67b.id = "main-button";
-  _0x1f67b.innerHTML = "橙光";
-  document.body.appendChild(_0x1f67b);
-  const _0x2d3be0 = document.createElement("div");
-  _0x2d3be0.className = "menu-container";
-  document.body.appendChild(_0x2d3be0);
-  const _0x55b21d = () => {
-    if (_0x2d3be0.style.display === "block") {
-      _0x2d3be0.style.animation = "fadeOut 0.2s ease";
-      setTimeout(() => {
-        _0x2d3be0.style.display = "none";
-      }, 200);
-    } else {
-      {
-        _0x2d3be0.style.display = "block";
-        _0x2d3be0.style.animation = "scaleIn 0.2s ease";
-      }
-    }
-  };
-  _0x1f67b.addEventListener("click", _0x16fd3b => {
-    _0x16fd3b.stopPropagation();
-    _0x55b21d();
-  });
-  const _0x32dfeb = (_0x392476, _0x1c9ae1, _0x22da07) => {
-    const _0x260d13 = document.createElement("div");
-    _0x260d13.className = "menu-item";
-    _0x260d13.innerHTML = "\n        <div class=\"menu-icon\">" + _0x392476 + "</div>\n        <div>" + _0x1c9ae1 + "</div>\n      ";
-    _0x260d13.onclick = () => {
-      _0x22da07();
-      _0x55b21d();
-    };
-    _0x2d3be0.appendChild(_0x260d13);
-    return _0x260d13;
-  };
-  _0x32dfeb("\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M3 6H21M3 12H21M3 18H21\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n    ", "商城", () => {
-    {
-      const _0x4998d9 = document.getElementById("shopPanel") || _0x294f4();
-      _0x4998d9.style.display = "flex";
-      _0x1827f7();
-    }
-  });
-  _0x32dfeb("\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n        <path d=\"M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n    ", "修改UID", () => {
-    _0xb5f559("请输入UID", _0x151067, _0x31bc10 => {
-      _0x31bc10 && !isNaN(_0x31bc10) ? (_0x151067 = _0x31bc10, localStorage.setItem("desiredUid", _0x31bc10), _0x3f051d("UID修改成功", "success")) : _0x3f051d("请输入有效的UID", "error");
-    });
-  });
-  _0x32dfeb("\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M12 8V12L15 15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n    ", "修改累充", () => {
-    _0xb5f559("请输入累充数量", _0x49520d, _0x11052f => {
-      _0x11052f && !isNaN(_0x11052f) ? (_0x49520d = _0x11052f, localStorage.setItem("lc", _0x49520d), _0x3f051d("累充数量修改成功", "success")) : _0x3f051d("请输入有效的数量", "error");
-    });
-  });
-  _0x32dfeb("\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M9 3H15M3 6H21M19 6L18.2987 16.5193C18.1935 18.0975 16.9422 19.3 15.3613 19.3H8.63874C7.05778 19.3 5.80647 18.0975 5.70132 16.5193L5 6M10 10V15M14 10V15\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n    ", "存档管理", () => {
-    const _0x1dd016 = document.getElementById("savePanel") || _0x1d8104();
-    _0x1dd016.style.display = "flex";
-    _0x5a8d98();
-  });
-  _0x32dfeb("\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M15 3H21M21 3V9M21 3L14 10M9 21H3M3 21V15M3 21L10 14\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n    ", "全屏切换", () => {
-    _0x4fb86a = !_0x4fb86a;
-    !document.fullscreenElement ? document.documentElement.requestFullscreen() : document.exitFullscreen();
-  });
-  _0x36cca6 === 1 && _0x32dfeb("\n        <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path d=\"M12 9V13M12 17H12.01M3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n        </svg>\n      ", "显示日志", () => {
-    {
-      const _0xb57633 = document.getElementById("logPanel") || _0x5e619d();
-      _0xb57633.style.display === "flex" ? (_0xb57633.style.animation = "fadeOut 0.3s ease", setTimeout(() => _0xb57633.style.display = "none", 300)) : (_0xb57633.style.display = "flex", _0xb57633.style.animation = "fadeIn 0.3s ease");
-    }
-  });
-  _0x32dfeb("\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M13 10V3L4 14H11V21L20 10H13Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n    ", "隐藏菜单", () => {
-    {
-      _0x1f67b.style.display = "none";
-      const _0x37f913 = document.createElement("div");
-      _0x37f913.style.cssText = "\n        position: fixed;\n        top: 20px;\n        left: 0;\n        width: 6px;\n        height: 40px;\n        background: #3b82f6;\n        border-radius: 0 4px 4px 0;\n        cursor: pointer;\n        z-index: 1000;\n        transition: all 0.2s ease;\n        box-shadow: 0 2px 8px rgba(0,0,0,0.1);\n      ";
-      _0x37f913.onmouseover = () => _0x37f913.style.width = "10px";
-      _0x37f913.onmouseout = () => _0x37f913.style.width = "6px";
-      _0x37f913.onclick = () => {
-        _0x37f913.remove();
-        _0x1f67b.style.display = "flex";
-      };
-      document.body.appendChild(_0x37f913);
-    }
-  });
-  document.addEventListener("click", _0x38f9a7 => {
-    {
-      if (!_0x2d3be0.contains(_0x38f9a7.target) && _0x38f9a7.target !== _0x1f67b) {
-        {
-          if (_0x2d3be0.style.display === "block") {
-            {
-              _0x2d3be0.style.animation = "fadeOut 0.2s ease";
-              setTimeout(() => {
-                _0x2d3be0.style.display = "none";
-              }, 200);
+        this.attachImage(0);
+        try {
+          for (var n = __values(this._imageViews), m = n.next(); !m.done; m = n.next()) m.value.actionTag = Global.actionTag;
+        } catch (p) {
+          d = {
+            error: p
+          };
+        } finally {
+          try {
+            if (m && !m.done && (e = n.return)) {
+              e.call(n);
+            }
+          } finally {
+            if (d) {
+              throw d.error;
             }
           }
         }
       }
-    }
-  });
-}
-const _0xecc17c = {
-  get: function () {
-    return window.hxsj;
-  },
-  set: function (_0x3a07f6) {
-    window.hxsj = _0x3a07f6;
-    if (!_0x3a07f6) {
-      return;
-    }
-  }
-};
-Object.defineProperty(Object.prototype, "scene", _0xecc17c);
-const _0x4decd2 = window.requestAnimationFrame;
-window.requestAnimationFrame = function (_0xa0e26f) {
-  if (_0xa0e26f.name === "f") {
-    return;
-  }
-  return _0x4decd2(_0xa0e26f);
-};
-function _0x19c9ac() {
-  const _0x2345f5 = Object.keys(localStorage);
-  _0x2345f5.forEach(_0x2393db => {
-    _0x2393db.startsWith("save") && localStorage.removeItem(_0x2393db);
-  });
-  const _0x3c2712 = Storage.prototype.setItem;
-  const _0x5ca7fe = Storage.prototype.removeItem;
-  const _0x5f3fd3 = Storage.prototype.clear;
-  Storage.prototype.setItem = function (_0x444ff3, _0x443d9b) {
-    {
-      _0x3c2712.call(this, _0x444ff3, _0x443d9b);
-      this === window.localStorage && _0x444ff3.startsWith("save") && window.dispatchEvent(new CustomEvent("localStorageChange", {
-        detail: {
-          key: _0x444ff3,
-          newValue: _0x443d9b,
-          oldValue: localStorage.getItem(_0x444ff3)
+    };
+    c.prototype.attachImage = function (a) {
+      if (0 != this._currentSeries && 0 != this._currentSeries.images && 0 != this._currentSeries.images.length) {
+        if (0 > a) {
+          a = 0;
         }
-      }));
+        if (a >= this._currentSeries.images.length) {
+          a = this._currentSeries.images.length - 1;
+        }
+        this._startImageIndex = a;
+        for (var b = 0; b < this.imageViews.length; b++) b < this._currentSeries.images.length ? this._imageViews[b].attachImage(this._currentSeries.images[a + b]) : this._imageViews[b].disableView();
+      }
+    };
+    c.prototype.showImage = function (a, b) {
+      var c, d;
+      if (0 != this._currentSeries && 0 != this._currentSeries.images && 0 != this._currentSeries.images.length && a.series.study.studyUid == this._currentSeries.study.studyUid && a.series.seriesUid == this._currentSeries.seriesUid && a.series.seriesNumber == this._currentSeries.seriesNumber) {
+        var e = 0;
+        try {
+          for (var g = __values(this._currentSeries.images), l = g.next(); !l.done; l = g.next()) if (0 != l.value.cornerstoneImageId) {
+            e += 1;
+          }
+        } catch (n) {
+          c = {
+            error: n
+          };
+        } finally {
+          try {
+            if (l && !l.done && (d = g.return)) {
+              d.call(g);
+            }
+          } finally {
+            if (c) {
+              throw c.error;
+            }
+          }
+        }
+        if ("all" == this._preCacheMode) {
+          this._downloadProgressBar.set(e + this._failedImageNum);
+        }
+        this._imageViews.forEach(function (c) {
+          c.showImage(a, b);
+        });
+      }
+    };
+    c.prototype.downloadImageFailed = function (a) {
+      if (0 != this._currentSeries && 0 != this._currentSeries.images && 0 != this._currentSeries.images.length && a.series.study.studyUid == this._currentSeries.study.studyUid && a.series.seriesUid == this._currentSeries.seriesUid && a.series.seriesNumber == this._currentSeries.seriesNumber) {
+        console.log("downloadImageFailed", this._failedImageNum);
+        this._failedImageNum += 1;
+      }
+    };
+    c.prototype.setImageLayout = function (a, b) {
+      var c,
+        d,
+        h = this;
+      this._imageRowNum = a;
+      this._imageColNum = b;
+      var g = (100 / a).toFixed(2),
+        l = Math.floor(100 / b);
+      a *= b;
+      b = this.el.querySelector(".image-view-container");
+      if (this._imageViews.length < a) {
+        for (var n = this._imageViews.length; n < a; n++) {
+          var m = new e.ImageView(b);
+          m.actionTag = this._actionTag;
+          m.cornerInfoFlag = this._cornerInfoFlag;
+          m.orientationFlag = this._orientationFlag;
+          m.rulerFlag = this._rulerFlag;
+          m.wwwcSynchronizer = this._wwwcSynchronizer;
+          m.panZoomSynchronizer = this._panZoomSynchronizer;
+          m.getViewport = function () {
+            return h.viewport;
+          };
+          m.swipeUpDown = function (a) {
+            if (0 == h._isCaching) {
+              h.attachImage(h._startImageIndex + a);
+              h.setPosition && h.setPosition(h._startImageIndex);
+            }
+          };
+          this._imageViews.push(m);
+        }
+      }
+      if (this._imageViews.length > a) {
+        for (n = a; n < this._imageViews.length; n++) this._imageViews[n].remove();
+      }
+      this._imageViews.splice(a, this._imageViews.length - a);
+      try {
+        for (var p = __values(this._imageViews), q = p.next(); !q.done; q = p.next()) {
+          var r = q.value;
+          r.el.style.height = "".concat(g, "%");
+          r.el.style.width = "".concat(l, "%");
+          r.resize();
+        }
+      } catch (t) {
+        c = {
+          error: t
+        };
+      } finally {
+        try {
+          if (q && !q.done && (d = p.return)) {
+            d.call(p);
+          }
+        } finally {
+          if (c) {
+            throw c.error;
+          }
+        }
+      }
+      this.attachImage(this._startImageIndex);
+    };
+    c.prototype.previousImage = function () {
+      var a = this._startImageIndex - 1;
+      if (0 > a) {
+        return -1;
+      }
+      this.attachImage(a);
+      return a;
+    };
+    c.prototype.nextImage = function () {
+      var a = this._startImageIndex + 1;
+      if (a >= this._currentSeries.images.length) {
+        return this._startImageIndex = -1;
+      }
+      this.attachImage(a);
+      return a;
+    };
+    c.prototype.getWwwc = function () {
+      if (0 != this._currentSeries && 0 != this._imageViews.length) {
+        return this._imageViews[0].getWwwc();
+      }
+    };
+    c.prototype.setWwwc = function (a, b) {
+      if (0 != this._currentSeries) {
+        this._imageViews.forEach(function (c) {
+          c.setWwwc(a, b);
+        });
+      }
+    };
+    c.prototype.invertColor = function () {
+      if (0 != this._currentSeries) {
+        this._currentSeries.state.invert = !this._currentSeries.state.invert;
+        this._imageViews.forEach(function (a) {
+          a.invertColor();
+        });
+      }
+    };
+    c.prototype.resetImage = function () {
+      this._currentRotateAngle = 0;
+      if (0 != this._currentSeries) {
+        this._imageViews.forEach(function (a) {
+          a.resetImage();
+        });
+      }
+    };
+    c.prototype.rotateImage = function () {
+      var a = this;
+      if (0 != this._currentSeries) {
+        this._currentRotateAngle += 90;
+        this._currentRotateAngle %= 360;
+        this._imageViews.forEach(function (b) {
+          b.rotateImage(a._currentRotateAngle);
+        });
+      }
+    };
+    c.prototype.flipHorz = function () {
+      if (0 != this._currentSeries) {
+        this._imageViews.forEach(function (a) {
+          a.flipHorz();
+        });
+      }
+    };
+    c.prototype.flipVert = function () {
+      if (0 != this._currentSeries) {
+        this._imageViews.forEach(function (a) {
+          a.flipVert();
+        });
+      }
+    };
+    c.prototype.deleteAllAnnotations = function () {
+      this._imageViews.forEach(function (a) {
+        a.deleteAllAnnotations();
+      });
+    };
+    c.viewId = 0;
+    return c;
+  }();
+  e.SeriesView = d;
+})(phone || (phone = {}));
+__values = this && this.__values || function (e) {
+  var d = "function" === typeof Symbol && Symbol.iterator,
+    c = d && e[d],
+    a = 0;
+  if (c) {
+    return c.call(e);
+  }
+  if (e && "number" === typeof e.length) {
+    return {
+      next: function () {
+        if (e && a >= e.length) {
+          e = 0;
+        }
+        return {
+          value: e && e[a++],
+          done: !e
+        };
+      }
+    };
+  }
+  throw new TypeError(d ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+(function (e) {
+  var d = function () {
+    function c(a, b, c) {
+      this._preCacheMode = "all";
+      this._isPlaying = !1;
+      this._cacheTask = new CacheTask();
+      0 != a && 0 != a.length || 0 != b && "" != b ? (this._studyIds = a, 0 != c && "" != c && (this._preCacheMode = c), this.el = document.createElement("div"), this.el.setAttribute("name", "frame"), this.el.style.position = "relative", this.el.style.height = "100%", this.el.style.width = "100%", this.loadCss(), this.loadTemplate()) : MsgBox.errorAlert("\u65e0\u6548\u7684\u53c2\u6570\uff1astudyIds/token");
+    }
+    Object.defineProperty(c.prototype, "actionTag", {
+      get: function () {
+        return this._seriesView ? this._seriesView.actionTag : ActionTag.none;
+      },
+      set: function (a) {
+        if (this._seriesView) {
+          this._seriesView.actionTag = a;
+        }
+      },
+      enumerable: !1,
+      configurable: !0
+    });
+    c.prototype.loadCss = function () {
+      Utils.addCssByLink("css/phone/CloudImageView.css");
+    };
+    c.prototype.loadTemplate = function () {
+      var a = this;
+      MessageProxy.getTemplate("templates/phone/CloudImageView.html", function (b) {
+        b.hasError ? MsgBox.errorAlert("\u6a21\u677f\u52a0\u8f7d\u5931\u8d25\uff1a".concat(b.errorText)) : a.initView(b.data);
+      });
+    };
+    c.prototype.initView = function (a) {
+      var b = this;
+      a = new DOMParser().parseFromString(a, "text/html");
+      this.el.innerHTML = a.querySelector("#mainTemplate").innerHTML;
+      this.createToolbarView();
+      this.createSeriesView();
+      this.createSeriesListView();
+      this.createOtherViews();
+      Global.imageDownloaded = this.onImageDownloaded.bind(this);
+      this._studyIds.forEach(function (a) {
+        b.loadData(a);
+      });
+      var c = this.el.querySelector(".cine-button-container .js-btn-cine");
+      ["touchstart", "touchend", "touchcancel"].forEach(function (a) {
+        c.addEventListener(a, function (a) {
+          b.processPlayEvent(a);
+        });
+      });
+    };
+    c.prototype.createToolbarView = function () {
+      var a = this,
+        b = document.querySelector("#toolbarContainer");
+      this._toolbarView = new e.ToolbarView(b);
+      this._toolbarView.btnSeriesClicked = function () {
+        if (0 != a._seriesListView) {
+          a._seriesListView.show();
+        }
+      };
+      this._toolbarView.btnScrollClicked = function (b) {
+        b ? (a.actionTag = ActionTag.none, Global.actionTag = ActionTag.none) : (a.actionTag = ActionTag.pan, Global.actionTag = ActionTag.pan);
+      };
+      this._toolbarView.btnAdjustWwwcClicked = function (b) {
+        b ? (a.actionTag = ActionTag.wwwl, Global.actionTag = ActionTag.wwwl) : (a.actionTag = ActionTag.pan, Global.actionTag = ActionTag.pan);
+      };
+      this._toolbarView.btnMeasurePointClicked = function (b) {
+        b ? (a.actionTag = ActionTag.ctValue, Global.actionTag = ActionTag.ctValue) : (a.actionTag = ActionTag.pan, Global.actionTag = ActionTag.pan);
+      };
+      this._toolbarView.btnMeasureLineClicked = function (b) {
+        b ? (a.actionTag = ActionTag.annoLength, Global.actionTag = ActionTag.annoLength) : (a.actionTag = ActionTag.pan, Global.actionTag = ActionTag.pan);
+      };
+      this._toolbarView.btnDeleteSelectedClicked = function (b) {
+        b ? (a.actionTag = ActionTag.annoDeleteSelected, Global.actionTag = ActionTag.annoDeleteSelected) : (a.actionTag = ActionTag.pan, Global.actionTag = ActionTag.pan);
+      };
+      this._toolbarView.btnDeleteAllClicked = function () {
+        a._seriesView.deleteAllAnnotations();
+      };
+      this._toolbarView.btnInvertColorClicked = function () {
+        if (a._seriesView) {
+          a._seriesView.invertColor();
+        }
+      };
+      this._toolbarView.btnResetImageClicked = function () {
+        if (a._seriesView) {
+          a._seriesView.resetImage();
+        }
+      };
+      this._toolbarView.btnRotateRightClicked = function () {
+        if (a._seriesView) {
+          a._seriesView.rotateImage();
+        }
+      };
+      this._toolbarView.btnFlipHorzClicked = function () {
+        if (a._seriesView) {
+          a._seriesView.flipHorz();
+        }
+      };
+      this._toolbarView.btnFlipVertClicked = function () {
+        if (a._seriesView) {
+          a._seriesView.flipVert();
+        }
+      };
+      this._toolbarView.btnWwwcSettingClicked = function () {
+        if (0 != a._wwwcSettingView) {
+          var b, c;
+          if (0 != a._seriesView) {
+            var d = a._seriesView.getWwwc();
+            if (0 != d) {
+              b = d.ww;
+              c = d.wc;
+            }
+          }
+          a._wwwcSettingView.show(b, c);
+        }
+      };
+      this._toolbarView.btnSetImageLayoutClicked = function (b, c) {
+        if (a._seriesView) {
+          a._seriesView.setImageLayout(b, c);
+        }
+      };
+      this._toolbarView.btnSettingClicked = function () {
+        if (0 != a._settingView) {
+          var b = !0,
+            c = !0,
+            d = !0;
+          if (a._seriesView) {
+            b = a._seriesView.cornerInfoFlag;
+            c = a._seriesView.orientationFlag;
+            d = a._seriesView.rulerFlag;
+          }
+          a._settingView.show(b, c, d);
+        }
+      };
+      this._toolbarView.btnHelpClicked = function () {
+        if (0 != a._helpView) {
+          a._helpView.show();
+        }
+      };
+    };
+    c.prototype.createSeriesView = function () {
+      var a = this,
+        b = document.querySelector(".series-view-container");
+      this._seriesView = new e.SeriesView(this._preCacheMode);
+      this._seriesView.downloadCompleted = function (b) {
+        a._toolbarView.enable();
+        if (1 < b.imageTotal) {
+          a.el.querySelector(".cine-button-container").style.removeProperty("display");
+          0 != a._imageSlider && a._imageSlider.show();
+        }
+      };
+      this._seriesView.setPosition = function (b) {
+        if (0 != a._imageSlider) {
+          a._imageSlider.setPosition(b);
+        }
+      };
+      b.appendChild(this._seriesView.el);
+      this._seriesView.rulerFlag = !1;
+    };
+    c.prototype.createSeriesListView = function () {
+      var a = this;
+      this._seriesListView = new e.SeriesListView(this.el);
+      this._seriesListView.seriesItemTapped = function (b, c) {
+        var d = Global.studies.find(function (a) {
+          return a.studyUid == b;
+        });
+        if (null != d) {
+          d = d.series.find(function (a) {
+            return a.seriesUid == c;
+          });
+          null != d && (a.stopPlay(), a._cacheTask.cancel(), null != d.images && a.openSeries(d), a._seriesListView.hide());
+        }
+      };
+    };
+    c.prototype.createOtherViews = function () {
+      var a = this;
+      this._imageSlider = new e.ImageSlider();
+      this._imageSlider.sliderChanged = function (b) {
+        if (a._seriesView) {
+          a._seriesView.attachImage(b);
+        }
+      };
+      this.el.querySelector(".image-slider-container").appendChild(this._imageSlider.el);
+      this._imageSlider.hide();
+      this._wwwcSettingView = new e.WwwcSettingView();
+      this._wwwcSettingView.btnOKClicked = function (b, c) {
+        if (a._seriesView) {
+          a._seriesView.setWwwc(b, c);
+        }
+      };
+      this._settingView = new e.SettingView();
+      this._settingView.btnOKClicked = function (b, c, d) {
+        if (a._seriesView) {
+          a._seriesView.cornerInfoFlag = b;
+          a._seriesView.orientationFlag = c;
+          a._seriesView.rulerFlag = d;
+        }
+      };
+    };
+    c.prototype.loadData = function (a) {
+      var b = this;
+      Progress.start();
+      Global.getStudyInfo(a, function (a) {
+        var c, d;
+        if (a.hasError) {
+          Progress.done();
+        } else {
+          if (null == a.studyInfo || 0 == a.studyInfo.length) {
+            Progress.done();
+          } else {
+            var e = function (a) {
+              Global.getImageInfo(a.studyUid, function (c) {
+                null == c ? Progress.done() : (Progress.done(), null != b._seriesListView && b._seriesListView.addStudyInfo(a), b.getCacheThumbnails(c), 0 == Global.studies.findIndex(function (a) {
+                  return a.studyId == c.studyId || a.studyUid == c.studyUid || a.risStudyUid == c.risStudyUid;
+                }) && b.openSeries(c.series[0]));
+              });
+            };
+            try {
+              for (var f = __values(a.studyInfo), n = f.next(); !n.done; n = f.next()) e(n.value);
+            } catch (m) {
+              c = {
+                error: m
+              };
+            } finally {
+              try {
+                if (n && !n.done && (d = f.return)) {
+                  d.call(f);
+                }
+              } finally {
+                if (c) {
+                  throw c.error;
+                }
+              }
+            }
+          }
+        }
+      });
+    };
+    c.prototype.getCacheThumbnails = function (a) {
+      var b,
+        c,
+        d = this;
+      if (0 != a && 0 != a.series && 0 != a.series.length) {
+        var e = function (a) {
+          StoreManager.getThumb(a.seriesUid).then(function (b) {
+            if (b.file) {
+              if (d._seriesListView) {
+                var c = URL.createObjectURL(b.file);
+                d._seriesListView.showImage(b.id, c);
+              }
+            } else {
+              d.downloadThumbnail(a);
+            }
+          }).catch(function () {
+            d.downloadThumbnail(a);
+          });
+        };
+        try {
+          for (var g = __values(a.series), l = g.next(); !l.done; l = g.next()) e(l.value);
+        } catch (n) {
+          b = {
+            error: n
+          };
+        } finally {
+          try {
+            if (l && !l.done && (c = g.return)) {
+              c.call(g);
+            }
+          } finally {
+            if (b) {
+              throw b.error;
+            }
+          }
+        }
+      }
+    };
+    c.prototype.downloadThumbnail = function (a) {
+      var b = this;
+      if (0 != a.thumbnailUrl && "" != a.thumbnailUrl) {
+        MessageProxy.getImageAsBlob(a.thumbnailUrl, function (c) {
+          if (c.hasError) {
+            b.downloadThumbnail1(a.seriesUid, a.thumbnailUrl1);
+          } else {
+            if (0 == c.data) {
+              b.downloadThumbnail1(a.seriesUid, a.thumbnailUrl1);
+            } else {
+              b.onDownloadThumbnail(a.seriesUid, c.data);
+            }
+          }
+        });
+      }
+    };
+    c.prototype.downloadThumbnail1 = function (a, b) {
+      var c = this;
+      if (0 != b && "" != b) {
+        MessageProxy.getImageAsBlob(b, function (b) {
+          if (b.hasError) {
+            console.log("\u7f29\u7565\u56fe\u4e0b\u8f7d\u5931\u8d25\uff1a", b.errorText);
+          } else {
+            if (0 == b.data) {
+              MsgBox.error("\u4e0b\u8f7d\u5e8f\u5217\u7f29\u7565\u56fe\u5931\u8d25");
+            } else {
+              c.onDownloadThumbnail(a, b.data);
+            }
+          }
+        });
+      }
+    };
+    c.prototype.onDownloadThumbnail = function (a, b) {
+      if (this._seriesListView) {
+        var c = URL.createObjectURL(b);
+        this._seriesListView.showImage(a, c);
+      }
+      StoreManager.saveThumb(a, b).then().catch(function (a) {
+        console.log("\u4fdd\u5b58\u7f29\u7565\u56fe\u5931\u8d25\uff1a", a.message);
+      });
+    };
+    c.prototype.onImageDownloaded = function (a) {
+      if (a.hasError) {
+        MsgBox.error("\u4e0b\u8f7d\u56fe\u50cf\u5931\u8d25\uff1a".concat(a.imageInfo.imageUrl));
+        this._seriesView.downloadImageFailed(a.imageInfo);
+      } else {
+        if (0 == a.imageFile) {
+          MsgBox.error("\u4e0b\u8f7d\u56fe\u50cf\u5931\u8d25\uff1a".concat(a.imageInfo.imageUrl));
+          this._seriesView.downloadImageFailed(a.imageInfo);
+        } else {
+          if (a.imageInfo && a.imageFile) {
+            if (0 == a.imageInfo.cornerstoneImageId || "" == a.imageInfo.cornerstoneImageId) {
+              a.imageInfo.cornerstoneImageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(a.imageFile);
+              var b = Global.studies.find(function (b) {
+                return b.studyUid == a.imageInfo.series.study.studyUid;
+              });
+              if (null != b) {
+                b = b.series.find(function (b) {
+                  return b.seriesUid == a.imageInfo.series.seriesUid;
+                });
+                null != b && (b = b.images.find(function (b) {
+                  return b.imageId == a.imageInfo.imageId;
+                }), null != b && (b.cornerstoneImageId = a.imageInfo.cornerstoneImageId));
+              }
+            }
+            if (0 != a.imageInfo.cornerstoneImageId && "" != a.imageInfo.cornerstoneImageId) {
+              try {
+                0 == a.imageInfo.isDicom ? 0 == a.imageInfo.isAVI && cornerstone.loadAndCacheImage(a.imageInfo.imageUrl).then(function (a) {}) : cornerstone.loadAndCacheImage(a.imageInfo.cornerstoneImageId).then(function (a) {});
+              } catch (f) {}
+            }
+          }
+          if (1 == a.imageInfo.isAVI && a.imageInfo.index < a.imageInfo.series.images.length - 1) {
+            b = a.imageInfo.series.images[a.imageInfo.index + 1];
+            console.log("onImageDownloaded AVI", b.index);
+            this._seriesView.showImage(b, a.imageFile);
+            Global.downloadImages(b.series.seriesUid, [b]);
+          }
+          if (this._seriesView) {
+            this._seriesView.showImage(a.imageInfo, a.imageFile);
+          }
+        }
+      }
+    };
+    c.prototype.openSeries = function (a) {
+      var b = this;
+      if (null != this._seriesView) {
+        if (null == a.images) {
+          MsgBox.error("\u7f3a\u5c11\u56fe\u50cf\u6570\u636e\u3002");
+        } else {
+          this._seriesView.openSeries(a);
+          if (0 != this._imageSlider) {
+            this._imageSlider.imageCount = a.images.length;
+          }
+          if ("all" == this._preCacheMode) {
+            this._toolbarView.disable();
+          }
+          var c = this.el.querySelector(".cine-button-container");
+          1 >= a.imageTotal ? (c.style.display = "none", 0 != this._imageSlider && this._imageSlider.hide()) : "all" == this._preCacheMode ? (c.style.display = "none", 0 != this._imageSlider && this._imageSlider.hide()) : (c.style.removeProperty("display"), 0 != this._imageSlider && this._imageSlider.show());
+          for (var c = [], d = this._seriesView.rowCount * this._seriesView.colCount, e = 0; e < d; e++) if (e < a.images.length) {
+            var g = a.images[e];
+            Utils.existCornerstoneCache(g) ? this._seriesView.showImage(g) : c.push(g);
+          } else {
+            this._seriesView.imageViews[e].disableView();
+          }
+          if (0 < c.length) {
+            this.downloadImages(a, c, !0);
+          }
+          if ("no" != this._preCacheMode) {
+            setTimeout(function () {
+              var c = b._seriesView.rowCount * b._seriesView.colCount,
+                d = 0;
+              "all" == b._preCacheMode ? d = a.images.length : 0 < b._preCacheMode && 0 < a.images.length && (b._preCacheMode > a.images.length ? d = a.images.length : d = b._preCacheMode);
+              for (var e = []; c < d; c++) {
+                var f = a.images[c];
+                Utils.existCornerstoneCache(f) ? b._seriesView.showImage(f) : e.push(f);
+              }
+              if (0 < e.length) {
+                b.downloadAndCacheImages(a, e);
+              }
+            }, 1E3);
+          }
+        }
+      }
+    };
+    c.prototype.downloadImages = function (a, b, c) {
+      var d = this;
+      if (0 === c) {
+        c = !1;
+      }
+      if (0 != b && 0 != b.length) {
+        var e = [];
+        Global.getCachedImages(a.seriesUid, b, function (b) {
+          if (1 == b.taskCompleted) {
+            if (0 < e.length) {
+              Global.downloadImages(a.seriesUid, e, c);
+            }
+          } else {
+            if (0 != b.hasError && 1 == b.hasError) {
+              b.imageInfo ? e.push(b.imageInfo) : console.warn("cacheTask.imageRetrieved result.imageInfo =", b.imageInfo);
+              console.error("\u67e5\u627e\u7f13\u5b58\u56fe\u50cf\u9519\u8bef\uff1a" + b.errorText);
+            } else {
+              if (b.imageInfo && b.imageFile) {
+                if (0 == b.imageInfo.cornerstoneImageId || "" == b.imageInfo.cornerstoneImageId) {
+                  b.imageInfo.cornerstoneImageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(b.imageFile);
+                  a.images[b.imageInfo.index].cornerstoneImageId = b.imageInfo.cornerstoneImageId;
+                }
+                if (0 != b.imageInfo.cornerstoneImageId && "" != b.imageInfo.cornerstoneImageId) {
+                  try {
+                    0 == b.imageInfo.isDicom ? 0 == b.imageInfo.isAVI && cornerstone.loadAndCacheImage(b.imageInfo.imageUrl).then(function (a) {}) : cornerstone.loadAndCacheImage(b.imageInfo.cornerstoneImageId).then(function (a) {});
+                  } catch (l) {}
+                }
+                try {
+                  d._seriesView.showImage(b.imageInfo, b.imageFile);
+                } catch (l) {
+                  console.error("\u663e\u793a\u56fe\u50cf\u9519\u8bef\uff1a" + l);
+                }
+              } else {
+                e.push(b.imageInfo);
+              }
+            }
+          }
+        });
+      }
+    };
+    c.prototype.downloadAndCacheImages = function (a, b) {
+      var c = this;
+      if (0 != b && 0 != b.length) {
+        var d = [];
+        this._cacheTask.retrieve(b, function (b) {
+          if (1 == b.taskCompleted) {
+            if (0 < d.length) {
+              Global.downloadImages(a.seriesUid, d, !1);
+            }
+          } else {
+            if (0 != b.hasError && 1 == b.hasError) {
+              b.imageInfo ? d.push(b.imageInfo) : console.warn("cacheTask.imageRetrieved result.imageInfo =", b.imageInfo);
+              console.error("\u67e5\u627e\u7f13\u5b58\u56fe\u50cf\u9519\u8bef\uff1a" + b.errorText);
+            } else {
+              if (b.imageInfo && b.imageFile) {
+                if (0 == b.imageInfo.cornerstoneImageId || "" == b.imageInfo.cornerstoneImageId) {
+                  b.imageInfo.cornerstoneImageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(b.imageFile);
+                  a.images[b.imageInfo.index].cornerstoneImageId = b.imageInfo.cornerstoneImageId;
+                }
+                if (0 != b.imageInfo.cornerstoneImageId && "" != b.imageInfo.cornerstoneImageId) {
+                  try {
+                    0 == b.imageInfo.isDicom ? 0 == b.imageInfo.isAVI && cornerstone.loadAndCacheImage(b.imageInfo.imageUrl).then(function (a) {}) : cornerstone.loadAndCacheImage(b.imageInfo.cornerstoneImageId).then(function (a) {});
+                  } catch (g) {}
+                }
+                try {
+                  c._seriesView.showImage(b.imageInfo, b.imageFile);
+                } catch (g) {
+                  console.error("\u663e\u793a\u56fe\u50cf\u9519\u8bef\uff1a" + g);
+                }
+              } else {
+                d.push(b.imageInfo);
+              }
+            }
+          }
+        });
+      }
+    };
+    c.prototype.processPlayEvent = function (a) {
+      a.stopPropagation();
+      a.preventDefault();
+      var b = this.el.querySelector(".cine-button-container .image-cine-button");
+      if (a.type == UIEventType.mouseDown || a.type == UIEventType.touchStart) {
+        b.classList.add("active");
+      } else {
+        if (a.type == UIEventType.mouseUp || a.type == UIEventType.touchEnd || a.type == UIEventType.touchCancel) {
+          b.classList.remove("active");
+          0 == this._isPlaying ? this.startPlay() : this.stopPlay();
+        }
+      }
+    };
+    c.prototype.startPlay = function () {
+      var a = this,
+        b = this.el.querySelector(".cine-button-container .image-cine-button");
+      b.querySelector(".btn-play-icon").style.display = "none";
+      b.querySelector(".btn-stop-icon").style.display = "block";
+      if (0 != this._playTimerId) {
+        clearInterval(this._playTimerId);
+        this._playTimerId = 0;
+      }
+      this._playTimerId = setInterval(function () {
+        var b = a._seriesView.nextImage();
+        0 <= b ? 0 != a._imageSlider && (a._imageSlider.currentImageIndex = b) : a.stopPlay();
+      }, 200);
+      this._isPlaying = !0;
+      document.dispatchEvent(new CustomEvent(Global.events.startPlay));
+    };
+    c.prototype.stopPlay = function () {
+      var a = this.el.querySelector(".cine-button-container .image-cine-button");
+      a.querySelector(".btn-play-icon").style.removeProperty("display");
+      a.querySelector(".btn-stop-icon").style.display = "none";
+      if (0 != this._playTimerId) {
+        clearInterval(this._playTimerId);
+        this._playTimerId = 0;
+      }
+      this._isPlaying = !1;
+      document.dispatchEvent(new CustomEvent(Global.events.stopPlay));
+    };
+    return c;
+  }();
+  e.CloudImageView = d;
+})(phone || (phone = {}));
+var CloudImageComponent = function () {
+  function e(d, c) {
+    Environment.isMobile ? this.el = new phone.CloudImageView(d, c.token, c.preCacheMode).el : this.el = new pc.CloudImageView(d, c).el;
+    this.initCornerstone(c);
+  }
+  e.prototype.initCornerstone = function (d) {
+    cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
+    cornerstoneWADOImageLoader.configure({
+      useWebWorkers: !0
+    });
+    cornerstoneWebImageLoader.external.cornerstone = cornerstone;
+    var c = 1610612736;
+    if (null != d && 0 != d.preCacheMode && "" != d.preCacheMode && NaN != Number(d.preCacheMode) && 500 < Number(d.preCacheMode) && 1E3 >= Number(d.preCacheMode)) {
+      c = 1048576 * Number(d.preCacheMode);
+    }
+    cornerstone.imageCache.setMaximumSizeBytes(c);
+    if (cornerstoneTools.version.startsWith("3.")) {
+      cornerstoneTools.init();
     }
   };
-  const _0x26174e = {
-    once: true
+  return e;
+}();
+function getLutDescriptor(e, d) {
+  if (e.elements[d] && 6 === e.elements[d].length) {
+    return [e.uint16(d, 0), e.uint16(d, 1), e.uint16(d, 2)];
+  }
+}
+function getLutData(e, d, c) {
+  for (var a = [], b = e.elements[d], f = 0; f < c[0]; f++) 16 === c[2] ? a[f] = e.uint16(d, f) : a[f] = e.byteArray[f + b.dataOffset];
+  return a;
+}
+function populatePaletteColorLut(e, d) {
+  d.redPaletteColorLookupTableDescriptor = getLutDescriptor(e, "x00281101");
+  d.greenPaletteColorLookupTableDescriptor = getLutDescriptor(e, "x00281102");
+  d.bluePaletteColorLookupTableDescriptor = getLutDescriptor(e, "x00281103");
+  if (0 === d.redPaletteColorLookupTableDescriptor[0]) {
+    d.redPaletteColorLookupTableDescriptor[0] = 65536;
+    d.greenPaletteColorLookupTableDescriptor[0] = 65536;
+    d.bluePaletteColorLookupTableDescriptor[0] = 65536;
+  }
+  var c = e.elements.x00281201.length === d.redPaletteColorLookupTableDescriptor[0] ? 8 : 16;
+  if (d.redPaletteColorLookupTableDescriptor[2] !== c) {
+    d.redPaletteColorLookupTableDescriptor[2] = c;
+    d.greenPaletteColorLookupTableDescriptor[2] = c;
+    d.bluePaletteColorLookupTableDescriptor[2] = c;
+  }
+  d.redPaletteColorLookupTableData = getLutData(e, "x00281201", d.redPaletteColorLookupTableDescriptor);
+  d.greenPaletteColorLookupTableData = getLutData(e, "x00281202", d.greenPaletteColorLookupTableDescriptor);
+  d.bluePaletteColorLookupTableData = getLutData(e, "x00281203", d.bluePaletteColorLookupTableDescriptor);
+}
+function metaDataProvider(e, d) {
+  if ("imagePixelModule" !== e) {
+    return null;
+  }
+  e = cornerstoneWADOImageLoader.wadouri.parseImageId(d);
+  e = cornerstoneWADOImageLoader.wadouri.dataSetCacheManager.get(e.url);
+  d = {
+    samplesPerPixel: e.uint16("x00280002"),
+    photometricInterpretation: e.string("x00280004"),
+    rows: e.uint16("x00280010"),
+    columns: e.uint16("x00280011"),
+    bitsAllocated: e.uint16("x00280100"),
+    bitsStored: e.uint16("x00280101"),
+    highBit: e.uint16("x00280102"),
+    pixelRepresentation: e.uint16("x00280103"),
+    planarConfiguration: e.uint16("x00280006"),
+    pixelAspectRatio: e.string("x00280034")
   };
-  window.addEventListener("localStorageChange", function (_0x387841) {
-    const {
-      key: _0x8f45ba,
-      newValue: _0x590d17,
-      oldValue: _0x4df15f
-    } = _0x387841.detail;
-    _0x517e44 = _0x8f45ba;
-  }, _0x26174e);
-  _0x231766();
-  if (document.readyState === "complete") {
-    {
-      setTimeout(_0x409830, 1000);
+  if ("PALETTE COLOR" === d.photometricInterpretation && e.elements.x00281101) {
+    populatePaletteColorLut(e, d);
+  }
+  return d;
+}
+var CloudImageComponentOptions = function () {
+  return function () {};
+}();
+document.addEventListener("DOMContentLoaded", function () {
+  new IndexView();
+});
+var IndexView = function () {
+  function e() {
+    var d = UrlHelper.parse("studyid"),
+      c = UrlHelper.parse("hisapplyid"),
+      a = UrlHelper.parse("imageid"),
+      b = UrlHelper.parse("objectuid"),
+      e = UrlHelper.parse("series");
+    if (0 != d && "" != d || 0 != c && "" != c || 0 != a && "" != a || 0 != b && "" != b || 0 != e && "" != e) {
+      var k = [];
+      if (0 != d || "" != d) {
+        0 < d.indexOf(",") ? (k = d.split(","), k.forEach(function (a) {
+          a.trim();
+        })) : k.push(d);
+      }
+      d = new CloudImageComponentOptions();
+      if (0 != c && "" != c) {
+        d.hisApplyId = c;
+      }
+      if (0 != a && "" != a) {
+        d.imageId = a;
+      }
+      if (0 != b && "" != b) {
+        d.objectUid = b;
+      }
+      if (0 != e && "" != e) {
+        d.seriesFolder = e;
+      }
+      c = UrlHelper.parse("token");
+      if (0 != c) {
+        d.token = c;
+      }
+      c = UrlHelper.parse("precache");
+      if (0 != c) {
+        d.preCacheMode = c;
+      }
+      c = UrlHelper.parse("toolwrap");
+      0 != c ? (d.toolWrap = c, "" == d.toolWrap && (d.toolWrap = "no")) : d.toolWrap = "no";
+      c = UrlHelper.parse("embed");
+      if (0 != c) {
+        d.embed = Number(c);
+      }
+      a = UrlHelper.parse("layout");
+      if (0 != a) {
+        a = a.toLowerCase();
+        b = a.indexOf("x");
+        0 < b && (c = a.substr(0, b), a = a.substr(b + 1), 0 < c.length && 0 < a.length && (c = parseInt(c), a = parseInt(a), 0 == isNaN(c) && 0 == isNaN(a) && (1 > c && (c = 1), 6 < c && (c = 6), 1 > a && (a = 1), 6 < a && (a = 6), d.seriesLayoutRows = c, d.seriesLayoutCols = a)));
+      }
+      c = UrlHelper.parse("conferenceid");
+      if (0 != c) {
+        d.conferenceId = c;
+      }
+      c = UrlHelper.parse("hospitalid");
+      if (0 != c) {
+        MessageProxy.hospitalId = c;
+      }
+      "node" == Config.serviceType ? (MessageProxy.queryPath = MessageProxy.sqlFolder, MessageProxy.insertPath = MessageProxy.sqlFolder, MessageProxy.updatePath = MessageProxy.sqlFolder, MessageProxy.deletePath = MessageProxy.sqlFolder) : "java" == Config.serviceType && (MessageProxy.queryPath = "qry", MessageProxy.insertPath = "add", MessageProxy.updatePath = "mdf", MessageProxy.deletePath = "rmv");
+      this.loadViews(k, d);
+      this.loadContextMenuTemplate();
+      this.bindStopContextMenu();
+      document.body.addEventListener("touchmove", function (a) {
+        a.preventDefault();
+      });
+    } else {
+      MsgBox.errorAlert("\u8c03\u7528\u9519\u8bef\uff1a\u65e0\u6548\u7684\u53c2\u6570 (studyid / hisapplyid)");
     }
-  } else {
-    window.addEventListener("load", () => {
-      {
-        setTimeout(_0x409830, 1000);
+  }
+  e.prototype.loadContextMenuTemplate = function () {
+    var d = this;
+    MessageProxy.getTemplate("templates/pc/contextMenu.html", function (c) {
+      c.hasError ? MsgBox.errorAlert("imageView\u6a21\u677f\u52a0\u8f7d\u5931\u8d25\uff1a".concat(c.errorText)) : d.initContextMenu(c.data);
+    });
+  };
+  e.prototype.initContextMenu = function (d) {
+    d = new DOMParser().parseFromString(d, "text/html");
+    var c = document.createElement("div");
+    c.innerHTML = d.querySelector("#contextMenuTemplate").innerHTML;
+    this._contextMenuEl = c.querySelector(".contextMenu");
+  };
+  e.prototype.controlContextMenu = function (d, c) {
+    var a = document.querySelector("#pageContent"),
+      b = a.querySelector(".contextMenu");
+    "on" == d ? (d = c.clientY + "px", this._contextMenuEl.style.left = c.clientX + "px", this._contextMenuEl.style.top = d, b || a.appendChild(this._contextMenuEl)) : b && (this._contextMenuEl.removeAttribute("style"), a.removeChild(this._contextMenuEl));
+  };
+  e.prototype.loadViews = function (d, c) {
+    d = new CloudImageComponent(d, c);
+    document.querySelector("#pageContent").appendChild(d.el);
+  };
+  e.prototype.getParents = function (d, c) {
+    for (; !(d == document.body || "image" == c && 0 != d.getAttribute("name") && -1 != d.getAttribute("name").indexOf("image") || "imageContainer" == c && d.classList.contains("image-view-container") || "series" == c && 0 != d.getAttribute("name") && -1 != d.getAttribute("name").indexOf("series"));) d = d.parentElement;
+    return d;
+  };
+  e.prototype.hideContextMenu = function (d, c) {
+    var a = c.target;
+    if (this._contextMenuEl.contains(a)) {
+      c = {};
+      a = a.getAttribute("alt");
+      a == Global.events.contextMenu.exportSeriesDicom ? c.detail = {
+        target: this.getParents(d, "series"),
+        action: a
+      } : c.detail = {
+        target: d,
+        action: a
+      };
+      d = new CustomEvent(Global.events.contextMenu.eventName, c);
+      document.dispatchEvent(d);
+    }
+    this.controlContextMenu("off");
+    document.removeEventListener("click", this._hideContextMenuCallback);
+    this._hideContextMenuCallback = 0;
+  };
+  e.prototype.bindStopContextMenu = function () {
+    var d = this,
+      c = !1,
+      a = !1,
+      b = 0,
+      e = 0;
+    document.addEventListener("mousedown", function (a) {
+      if (2 == a.button) {
+        b = a.x;
+        e = a.y;
+        c = !0;
       }
     });
-  }
-  window.buyItem = _0x33748d;
-  _0x580555();
-  _0x36cca6 === 1 && setTimeout(() => {
-    const _0x31169a = document.getElementById("logPanel") || _0x5e619d();
-    _0x31169a.style.display = "flex";
-    _0x1571ce("开发者模式已启动", "success");
-  }, 1500);
-}
-_0x19c9ac();
+    document.addEventListener("mousemove", function (d) {
+      if (1 == c && (1 < Math.abs(d.x - b) || 1 < Math.abs(d.y - e))) {
+        a = !0;
+      }
+    });
+    document.oncontextmenu = function (b) {
+      if (1 == Config.allowExportImage && 0 == a) {
+        var e = b.target,
+          f = d.getParents(e, "image"),
+          e = d.getParents(e, "imageContainer");
+        if (0 != d._hideContextMenuCallback) {
+          document.removeEventListener("click", d._hideContextMenuCallback);
+        }
+        if (e.classList.contains("image-view-container")) {
+          d.controlContextMenu("on", b);
+          d._hideContextMenuCallback = d.hideContextMenu.bind(d, f);
+          document.addEventListener("click", d._hideContextMenuCallback);
+        }
+      }
+      setTimeout(function () {
+        a = c = !1;
+      }, 100);
+      return !1;
+    };
+  };
+  return e;
+}();
