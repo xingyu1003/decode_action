@@ -1,366 +1,347 @@
-//Wed Nov 19 2025 10:37:10 GMT+0000 (Coordinated Universal Time)
+//Sat Nov 22 2025 07:53:16 GMT+0000 (Coordinated Universal Time)
 //
 //
-class LoginManager {
-  constructor() {
-    this.API_URL = "http://Apisx.tbsmartsoft.com/Base_Manage/Home/SubmitLogin";
-    this.PORT_API_URL = "http://Apisx.tbsmartsoft.com/Base_Manage/Home/GetPort";
-    this.DEFAULT_PORT = 12582;
-    this.initializeElements();
-    this.initializeEvents();
-    this.checkLoginStatus();
-    this.displayVersionInfo();
-    this.listenToStorageChanges();
-    this.checkShortcutSetup();
-  }
-  initializeElements() {
-    this.statusEl = document.getElementById("status");
-    this.loginFormEl = document.getElementById("loginForm");
-    this.userNameInput = document.getElementById("userName");
-    this.passwordInput = document.getElementById("password");
-    this.loginBtn = document.getElementById("loginBtn");
-    this.loadingEl = document.getElementById("loading");
-    this.userInfoEl = document.getElementById("userInfo");
-    this.userNameDisplayEl = document.getElementById("userNameDisplay");
-    this.portDisplayEl = document.getElementById("portDisplay");
-    this.tokenDisplayEl = document.getElementById("tokenDisplay");
-    this.logoutBtn = document.getElementById("logoutBtn");
-    this.copyTokenBtn = document.getElementById("copyTokenBtn");
-    this.refreshPortBtn = document.getElementById("refreshPortBtn");
-    this.usageEl = document.getElementById("usage");
-    this.versionNumberEl = document.getElementById("versionNumber");
-    this.buildHashEl = document.getElementById("buildHash");
-    this.exportModeSectionEl = document.getElementById("exportModeSection");
-    this.exportModeToggleEl = document.getElementById("exportModeToggle");
-  }
-  initializeEvents() {
-    this.loginBtn.addEventListener("click", () => this.handleLogin());
-    this.logoutBtn.addEventListener("click", () => this.handleLogout());
-    this.copyTokenBtn.addEventListener("click", _0x2c8a07 => this.copyToken(_0x2c8a07));
-    this.refreshPortBtn.addEventListener("click", () => this.handleRefreshPort());
-    this.exportModeToggleEl.addEventListener("change", _0x5d67f1 => this.handleExportModeChange(_0x5d67f1));
-    this.userNameInput.addEventListener("keypress", _0x4c4a00 => {
-      _0x4c4a00.key === "Enter" && this.passwordInput.focus();
-    });
-    this.passwordInput.addEventListener("keypress", _0x88ba00 => {
-      _0x88ba00.key === "Enter" && this.handleLogin();
-    });
-  }
-  async checkLoginStatus() {
-    try {
-      const _0x41b9bb = await chrome.storage.local.get(["userToken", "userName", "wsPort", "exportMode"]);
-      if (_0x41b9bb.userToken && _0x41b9bb.userName) {
-        {
-          !_0x41b9bb.wsPort && (await this.fetchAndSavePort());
-          if (_0x41b9bb.exportMode === undefined) {
-            const _0x4a0cc4 = {
-              exportMode: true
-            };
-            await chrome.storage.local.set(_0x4a0cc4);
-            _0x41b9bb.exportMode = true;
-          }
-          this.updateUI(true, _0x41b9bb.userName, _0x41b9bb.userToken, _0x41b9bb.wsPort || this.DEFAULT_PORT);
-          this.exportModeToggleEl.checked = _0x41b9bb.exportMode;
-          return;
-        }
-      }
-      this.updateUI(false);
-    } catch (_0x3ed6f5) {
-      this.updateUI(false);
-    }
-  }
-  async handleLogin() {
-    const _0x3e894b = this.userNameInput.value.trim();
-    const _0x222443 = this.passwordInput.value.trim();
-    if (!_0x3e894b) {
-      this.showToast("请输入账号", "error");
-      return;
-    }
-    if (!_0x222443) {
-      this.showToast("请输入密码", "error");
-      return;
-    }
-    this.setLoading(true);
-    try {
-      const _0x20ba9a = {
-        "Content-Type": "application/json"
-      };
-      const _0x46cf0b = {
-        userName: _0x3e894b,
-        password: _0x222443
-      };
-      const _0x50f34f = await fetch(this.API_URL, {
-        method: "POST",
-        headers: _0x20ba9a,
-        body: JSON.stringify(_0x46cf0b)
-      });
-      const _0x50cd4f = await _0x50f34f.json();
-      if (_0x50cd4f.Success) {
-        const _0x3e690a = _0x50cd4f.Data;
-        const _0x544530 = await this.fetchAndSavePort(_0x3e690a);
-        await chrome.storage.local.set({
-          userToken: _0x3e690a,
-          userName: _0x3e894b,
-          loginTime: new Date().toISOString(),
-          wsPort: _0x544530,
-          exportMode: true
-        });
-        const _0x46e7a9 = {
-          type: "updateLoginStatus",
-          isLoggedIn: true
-        };
-        chrome.runtime.sendMessage(_0x46e7a9);
-        this.updateUI(true, _0x3e894b, _0x3e690a, _0x544530);
-        this.exportModeToggleEl.checked = true;
-        console.log("🔧 登录后设置开关状态为:", this.exportModeToggleEl.checked);
-        this.showToast("登录成功！", "success");
-        console.log("✅ 登录成功！");
-        console.log("Token:", _0x3e690a);
-        console.log("端口:", _0x544530);
-        console.log("导出模式:", true);
-      } else {
-        this.showToast(_0x50cd4f.Msg || "登录失败，请重试", "error");
-      }
-    } catch (_0x53de5c) {
-      this.showToast("网络错误，请检查网络连接", "error");
-    } finally {
-      this.setLoading(false);
-    }
-  }
-  async handleLogout() {
-    if (!confirm("确定要退出登录吗？")) {
-      return;
-    }
-    try {
-      await chrome.storage.local.remove(["userToken", "userName", "loginTime", "wsPort"]);
-      const _0x41614d = {
-        type: "updateLoginStatus",
-        isLoggedIn: false
-      };
-      chrome.runtime.sendMessage(_0x41614d);
-      this.updateUI(false);
-      this.showToast("已退出登录", "info");
-      this.userNameInput.value = "";
-      this.passwordInput.value = "";
-    } catch (_0x13935e) {
-      this.showToast("操作失败，请重试", "error");
-    }
-  }
-  updateUI(_0x4989ea, _0x2d538f = "", _0x3b5d3b = "", _0x46cf73 = null) {
-    if (_0x4989ea) {
-      this.statusEl.className = "status active";
-      this.statusEl.innerHTML = "<span class=\"status-icon\">✅</span><span>状态：已登录</span>";
-      this.loginFormEl.classList.add("hidden");
-      this.userInfoEl.classList.remove("hidden");
-      this.logoutBtn.classList.remove("hidden");
-      this.usageEl.classList.remove("hidden");
-      this.exportModeSectionEl.classList.remove("hidden");
-      this.userNameDisplayEl.textContent = _0x2d538f;
-      this.portDisplayEl.textContent = _0x46cf73 || this.DEFAULT_PORT;
-      this.tokenDisplayEl.textContent = _0x3b5d3b.substring(0, 30) + "...";
-    } else {
-      this.statusEl.className = "status inactive";
-      this.statusEl.innerHTML = "<span class=\"status-icon\">❌</span><span>状态：未登录</span>";
-      this.loginFormEl.classList.remove("hidden");
-      this.userInfoEl.classList.add("hidden");
-      this.logoutBtn.classList.add("hidden");
-      this.usageEl.classList.add("hidden");
-      this.exportModeSectionEl.classList.add("hidden");
-    }
-  }
-  setLoading(_0x5a0f38) {
-    _0x5a0f38 ? (this.loadingEl.style.display = "block", this.loginBtn.disabled = true) : (this.loadingEl.style.display = "none", this.loginBtn.disabled = false);
-  }
-  showToast(_0x1e6aa0, _0x2c1f25 = "info") {
-    const _0x13ba41 = document.createElement("div");
-    _0x13ba41.className = "toast";
-    _0x13ba41.style.cssText = "\n            position: fixed;\n            top: 10px;\n            right: 10px;\n            padding: 12px 20px;\n            border-radius: 4px;\n            color: white;\n            font-weight: bold;\n            z-index: 10000;\n            max-width: 250px;\n            word-wrap: break-word;\n            font-size: 13px;\n            box-shadow: 0 2px 8px rgba(0,0,0,0.3);\n            animation: slideIn 0.3s ease-out;\n        ";
-    switch (_0x2c1f25) {
-      case "success":
-        _0x13ba41.style.background = "linear-gradient(135deg, #2ecc71, #27ae60)";
-        break;
-      case "error":
-        _0x13ba41.style.background = "linear-gradient(135deg, #e74c3c, #c0392b)";
-        break;
-      case "info":
-        _0x13ba41.style.background = "linear-gradient(135deg, #3498db, #2980b9)";
-        break;
-      default:
-        _0x13ba41.style.background = "linear-gradient(135deg, #95a5a6, #7f8c8d)";
-    }
-    _0x13ba41.textContent = _0x1e6aa0;
-    document.body.appendChild(_0x13ba41);
-    const _0x92b07f = document.createElement("style");
-    _0x92b07f.textContent = "\n            @keyframes slideIn {\n                from {\n                    transform: translateX(400px);\n                    opacity: 0;\n                }\n                to {\n                    transform: translateX(0);\n                    opacity: 1;\n                }\n            }\n        ";
-    document.head.appendChild(_0x92b07f);
-    setTimeout(() => {
-      _0x13ba41.parentNode && (_0x13ba41.style.animation = "slideOut 0.3s ease-in", setTimeout(() => {
-        _0x13ba41.parentNode && _0x13ba41.parentNode.removeChild(_0x13ba41);
-      }, 300));
-    }, 3000);
-  }
-  async copyToken(_0x29c3ce) {
-    try {
-      const _0x4140b0 = await chrome.storage.local.get(["userToken"]);
-      if (_0x4140b0.userToken) {
-        await navigator.clipboard.writeText(_0x4140b0.userToken);
-        const _0xf8c219 = _0x29c3ce.target;
-        const _0x4cdf3b = _0xf8c219.textContent;
-        _0xf8c219.textContent = "已复制!";
-        _0xf8c219.style.background = "#2ecc71";
-        setTimeout(() => {
-          _0xf8c219.textContent = _0x4cdf3b;
-          _0xf8c219.style.background = "#27ae60";
-        }, 1500);
-      } else {
-        this.showToast("未找到Token，请重新登录", "error");
-      }
-    } catch (_0x51147f) {
-      this.showToast("复制失败，请手动复制Token", "error");
-    }
-  }
-  displayVersionInfo() {
-    try {
-      const _0xba80ca = chrome.runtime.getManifest();
-      const _0x54b304 = _0xba80ca.version;
-      const _0x499b29 = _0xba80ca.description;
-      this.versionNumberEl && (this.versionNumberEl.textContent = "v" + _0x54b304);
-      if (this.buildHashEl && _0x499b29) {
-        const _0xeb520b = _0x499b29.match(/\[build:([a-f0-9]+)\]/i);
-        _0xeb520b && _0xeb520b[1] ? this.buildHashEl.textContent = "Build: " + _0xeb520b[1] : this.buildHashEl.textContent = "Build: " + new Date().toISOString().slice(0, 10).replace(/-/g, "");
-      }
-    } catch (_0x3084b0) {
-      if (this.versionNumberEl) {
-        {
-          this.versionNumberEl.textContent = "未知";
-        }
-      }
-    }
-  }
-  async fetchAndSavePort(_0x28988d = null) {
-    try {
-      if (!_0x28988d) {
-        const _0xeb8e91 = await chrome.storage.local.get(["userToken"]);
-        _0x28988d = _0xeb8e91.userToken;
-      }
-      if (!_0x28988d) {
-        const _0x25bc01 = {
-          wsPort: this.DEFAULT_PORT
-        };
-        await chrome.storage.local.set(_0x25bc01);
-        return this.DEFAULT_PORT;
-      }
-      const _0x10922e = {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + _0x28988d
-      };
-      const _0x282673 = {
-        method: "GET",
-        headers: _0x10922e
-      };
-      const _0x12c865 = await fetch(this.PORT_API_URL, _0x282673);
-      const _0x37481d = await _0x12c865.json();
-      let _0x4d9420 = this.DEFAULT_PORT;
-      if (_0x37481d.Success && _0x37481d.Data) {
-        {
-          _0x4d9420 = _0x37481d.Data;
-        }
-      }
-      const _0x49fae7 = {
-        wsPort: _0x4d9420
-      };
-      await chrome.storage.local.set(_0x49fae7);
-      return _0x4d9420;
-    } catch (_0x3bea1a) {
-      {
-        const _0x19ca8d = {
-          wsPort: this.DEFAULT_PORT
-        };
-        await chrome.storage.local.set(_0x19ca8d);
-        return this.DEFAULT_PORT;
-      }
-    }
-  }
-  async handleRefreshPort() {
-    try {
-      const _0x351bea = this.refreshPortBtn;
-      const _0x20f080 = _0x351bea.textContent;
-      _0x351bea.textContent = "刷新中...";
-      _0x351bea.disabled = true;
-      const _0x3bf342 = await this.fetchAndSavePort();
-      this.portDisplayEl.textContent = _0x3bf342;
-      _0x351bea.textContent = "✅ 已刷新";
-      _0x351bea.style.background = "#2ecc71";
-      setTimeout(() => {
-        _0x351bea.textContent = _0x20f080;
-        _0x351bea.style.background = "#27ae60";
-        _0x351bea.disabled = false;
-      }, 1500);
-      this.showToast("端口已更新: " + _0x3bf342, "success");
-    } catch (_0x283219) {
-      this.showToast("刷新端口失败", "error");
-      this.refreshPortBtn.disabled = false;
-    }
-  }
-  listenToStorageChanges() {
-    chrome.storage.onChanged.addListener((_0xa0a1cf, _0x28659f) => {
-      if (_0x28659f === "local" && _0xa0a1cf.wsPort) {
-        const _0x1cf6d1 = _0xa0a1cf.wsPort.newValue;
-        _0x1cf6d1 && this.portDisplayEl && (this.portDisplayEl.textContent = _0x1cf6d1, this.portDisplayEl.style.animation = "pulse 0.5s", setTimeout(() => {
-          this.portDisplayEl.style.animation = "";
-        }, 500));
-      }
-    });
-  }
-  async handleExportModeChange(_0x1e8093) {
-    const _0x201897 = _0x1e8093.target.checked;
-    try {
-      const _0x3541b0 = {
-        exportMode: _0x201897
-      };
-      await chrome.storage.local.set(_0x3541b0);
-      this.showToast("导出模式已" + (_0x201897 ? "开启" : "关闭"), _0x201897 ? "success" : "info");
-    } catch (_0x3bea1b) {
-      this.showToast("设置失败，请重试", "error");
-      _0x1e8093.target.checked = !_0x201897;
-    }
-  }
-  async checkShortcutSetup() {
-    try {
-      const _0x4924fd = await chrome.storage.local.get(["shortcutNotified"]);
-      if (_0x4924fd.shortcutNotified) {
-        {
-          return;
-        }
-      }
-      const _0x2a929b = await chrome.commands.getAll();
-      const _0x50f916 = _0x2a929b.find(_0x3678dc => _0x3678dc.name === "quick-collect");
-      if (!_0x50f916 || !_0x50f916.shortcut) {
-        setTimeout(() => {
-          {
-            const _0x351b95 = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
-            const _0x405bbe = _0x351b95 ? "Command+Shift+Q" : "Ctrl+Q";
-            if (confirm("⚠️ 快捷键未设置！\n\n" + ("建议设置快捷键 " + _0x405bbe + " 快速采集商品。\n\n") + "是否现在前往设置？")) {
-              const _0x420f69 = {
-                url: "chrome://extensions/shortcuts"
-              };
-              chrome.tabs.create(_0x420f69);
-            }
-            const _0x2fa24c = {
-              shortcutNotified: true
-            };
-            chrome.storage.local.set(_0x2fa24c);
-          }
-        }, 1000);
-      } else {
-        const _0x499977 = {
-          shortcutNotified: true
-        };
-        chrome.storage.local.set(_0x499977);
-      }
-    } catch (_0x461939) {}
-  }
+var e = [];
+e[0] = "{©®³ªzÂÎÇÆ";
+e[1] = "ÂÎÇÆzÆ»ÈÁ|ÔÂ¨|";
+e[2] = "Â¿»¾";
+e[3] = "Ç¿Î»z½Â»ÌÍ¿Î|¯®\xA0|";
+e[4] = "Ç¿Î»zÈ»Ç¿|ÐÃ¿ÑÊÉÌÎ|z½ÉÈÎ¿ÈÎ|ÑÃ¾ÎÂ¾¿ÐÃ½¿ÑÃ¾ÎÂzÃÈÃÎÃ»ÆÍ½»Æ¿|";
+e[5] = "ÎÃÎÆ¿凟酂乤剠艄矞昊趵宽ÎÃÎÆ¿";
+e[6] = "ÆÃÈÅzÌ¿Æ|ÍÎÓÆ¿ÍÂ¿¿Î|zÂÌ¿À|ÂÎÎÊÍ½¾ÈÄÍ½ÆÉÏ¾ÀÆ»Ì¿½ÉÇ»Ä»ÒÆÃ¼ÍÀÉÈÎ»Ñ¿ÍÉÇ¿¼¿Î»½ÍÍ»ÆÆÇÃÈ½ÍÍ|";
+e[7] = "ÍÎÓÆ¿";
+e[8] = "zÕ";
+e[9] = "Ç»ÌÁÃÈz";
+e[10] = "Ê»¾¾ÃÈÁz";
+e[11] = "¼ÉÒÍÃÔÃÈÁz¼ÉÌ¾¿Ì¼ÉÒ";
+e[12] = "ÀÉÈÎÀ»ÇÃÆÓz­¿ÁÉ¿z¯£z§Ã½ÌÉÍÉÀÎz³»¢¿ÃzÍ»ÈÍÍ¿ÌÃÀ";
+e[13] = "Ñ¿¼ÅÃÎÎ»ÊÂÃÁÂÆÃÁÂÎ½ÉÆÉÌzÎÌ»ÈÍÊ»Ì¿ÈÎ";
+e[14] = "ÉÏÎÆÃÈ¿zÈÉÈ¿";
+e[15] = "×¼É¾ÓzÕ";
+e[16] = "¼»½ÅÁÌÉÏÈ¾zÆÃÈ¿»ÌÁÌ»¾Ã¿ÈÎ¾¿Áz}»»½z}¼ÀÀz}À¾¼¼¾";
+e[17] = "¾ÃÍÊÆ»ÓzÀÆ¿Ò";
+e[18] = "ÄÏÍÎÃÀÓ½ÉÈÎ¿ÈÎz½¿ÈÎ¿Ì";
+e[19] = "»ÆÃÁÈÃÎ¿ÇÍz½¿ÈÎ¿Ì";
+e[20] = "ÇÃÈÂ¿ÃÁÂÎzÐÂ";
+e[21] = "Ê»¾¾ÃÈÁzÊÒ";
+e[22] = "×ÈÉÎÃÈÊÏÎz½Â¿½Å¼ÉÒzÎ¿ÒÎ»Ì¿»zÕ";
+e[23] = "Ñ¿¼ÅÃÎÎÉÏ½Â½»ÆÆÉÏÎzÈÉÈ¿";
+e[24] = "Ñ¿¼ÅÃÎÏÍ¿ÌÍ¿Æ¿½ÎzÈÉÈ¿";
+e[25] = "ÏÍ¿ÌÍ¿Æ¿½ÎzÈÉÈ¿";
+e[26] = "×ÊÉÊÏÊ¹½ÉÈÎ»ÃÈ¿ÌzÕ";
+e[27] = "¾ÃÍÊÆ»ÓzÀÆ¿Ò";
+e[28] = "ÄÏÍÎÃÀÓ½ÉÈÎ¿ÈÎz½¿ÈÎ¿Ì";
+e[29] = "»ÆÃÁÈÃÎ¿ÇÍz½¿ÈÎ¿Ì";
+e[30] = "ÑÃ¾ÎÂz";
+e[31] = "×}¢Æ¿ÌÎ°Ã¿ÑzÕ";
+e[32] = "ÑÃ¾ÎÂzÊÒ";
+e[33] = "¼»½ÅÁÌÉÏÈ¾zÌÁ¼»zzz";
+e[34] = "¼»½Å¾ÌÉÊÀÃÆÎ¿Ìz¼ÆÏÌÊÒ";
+e[35] = "¼ÉÌ¾¿ÌÌ»¾ÃÏÍzÊÒ";
+e[36] = "¼ÉÒÍÂ»¾ÉÑzzÊÒzÊÒzÌÁ¼»zzz";
+e[37] = "ÉÐ¿ÌÀÆÉÑzÂÃ¾¾¿È";
+e[38] = "¼ÉÌ¾¿ÌzÊÒzÍÉÆÃ¾zÌÁ¼»zzz";
+e[39] = "ÎÌ»ÈÍÀÉÌÇzÎÌ»ÈÍÆ»Î¿³";
+e[40] = "ÎÌ»ÈÍÃÎÃÉÈzÎÌ»ÈÍÀÉÌÇzÍz¿»Í¿";
+e[41] = "×}¢Æ¿ÌÎ°Ã¿ÑÂÉÐ¿ÌzÕ";
+e[42] = "ÎÌ»ÈÍÀÉÌÇzÎÌ»ÈÍÆ»Î¿³ÊÒ";
+e[43] = "×Â¿»¾¿ÌzÕ";
+e[44] = "¼»½ÅÁÌÉÏÈ¾zÆÃÈ¿»ÌÁÌ»¾Ã¿ÈÎ¾¿Áz}»¾Àz}»½¼";
+e[45] = "½ÉÆÉÌzÑÂÃÎ¿";
+e[46] = "Ê»¾¾ÃÈÁzÊÒ";
+e[47] = "Î¿ÒÎ»ÆÃÁÈz½¿ÈÎ¿Ì";
+e[48] = "ÊÉÍÃÎÃÉÈzÌ¿Æ»ÎÃÐ¿";
+e[49] = "×}ÎÃÎÆ¿Î¿ÒÎzÕ";
+e[50] = "ÀÉÈÎÍÃÔ¿zÊÒ";
+e[51] = "ÀÉÈÎÑ¿ÃÁÂÎz";
+e[52] = "Ç»ÌÁÃÈ¼ÉÎÎÉÇzÊÒ";
+e[53] = "Æ¿ÎÎ¿ÌÍÊ»½ÃÈÁzÊÒ";
+e[54] = "×ÍÏ¼ÎÃÎÆ¿zÕ";
+e[55] = "ÀÉÈÎÍÃÔ¿zÊÒ";
+e[56] = "ÉÊ»½ÃÎÓz";
+e[57] = "×½ÉÈÎ¿ÈÎzÕ";
+e[58] = "Ê»¾¾ÃÈÁzÊÒ";
+e[59] = "Ç»ÒÂ¿ÃÁÂÎzÐÂ";
+e[60] = "ÉÐ¿ÌÀÆÉÑÓz»ÏÎÉ";
+e[61] = "×¼ÏÎÎÉÈÁÌÉÏÊzÕ";
+e[62] = "¾ÃÍÊÆ»ÓzÀÆ¿Ò";
+e[63] = "ÀÆ¿Ò¾ÃÌ¿½ÎÃÉÈz½ÉÆÏÇÈ";
+e[64] = "Á»ÊzÊÒ";
+e[65] = "×¼ÏÎÎÉÈÌÉÑzÕ";
+e[66] = "¾ÃÍÊÆ»ÓzÀÆ¿Ò";
+e[67] = "Á»ÊzÊÒ";
+e[68] = "×Æ»ÌÁ¿¼ÎÈzÕ";
+e[69] = "Â¿ÃÁÂÎzÊÒ";
+e[70] = "ÀÉÈÎÍÃÔ¿zÊÒ";
+e[71] = "ÀÉÈÎÑ¿ÃÁÂÎz";
+e[72] = "¼ÉÌ¾¿ÌÌ»¾ÃÏÍzÊÒ";
+e[73] = "¼ÉÒÍÂ»¾ÉÑzzÊÒzÊÒzÌÁ¼»zzz";
+e[74] = "×ÈÉÌÇ»Æ¼ÎÈzÕ";
+e[75] = "Â¿ÃÁÂÎzÊÒ";
+e[76] = "ÀÉÈÎÍÃÔ¿zÊÒ";
+e[77] = "ÀÉÈÎÑ¿ÃÁÂÎz";
+e[78] = "¼ÉÌ¾¿ÌÌ»¾ÃÏÍzÊÒ";
+e[79] = "×ÍÇ»ÆÆ¼ÎÈzÕ";
+e[80] = "Â¿ÃÁÂÎzÊÒ";
+e[81] = "ÀÉÈÎÍÃÔ¿zÊÒ";
+e[82] = "¼ÉÌ¾¿ÌÌ»¾ÃÏÍzÊÒ";
+e[83] = "×¼ÏÎÎÉÈzÕ";
+e[84] = "ÑÃ¾ÎÂz";
+e[85] = "½ÉÆÉÌzÑÂÃÎ¿";
+e[86] = "¼»½ÅÁÌÉÏÈ¾½ÉÆÉÌz}»¾À";
+e[87] = "¼ÉÌ¾¿ÌzÈÉÈ¿";
+e[88] = "½ÏÌÍÉÌzÊÉÃÈÎ¿Ì";
+e[89] = "Î¿ÒÎ»ÆÃÁÈz½¿ÈÎ¿Ì";
+e[90] = "ÎÌ»ÈÍÃÎÃÉÈz»ÆÆzÍz¿»Í¿";
+e[91] = "¾ÃÍÊÆ»ÓzÀÆ¿Ò";
+e[92] = "»ÆÃÁÈÃÎ¿ÇÍz½¿ÈÎ¿Ì";
+e[93] = "ÄÏÍÎÃÀÓ½ÉÈÎ¿ÈÎz½¿ÈÎ¿Ì";
+e[94] = "Á»ÊzÊÒ";
+e[95] = "Ê»¾¾ÃÈÁzzÊÒ";
+e[96] = "×¼ÏÎÎÉÈzÃzÕ";
+e[97] = "ÀÉÈÎÍÃÔ¿zÊÒ";
+e[98] = "×Æ»ÌÁ¿¼ÎÈzÃzÕ";
+e[99] = "ÀÉÈÎÍÃÔ¿zÊÒ";
+e[100] = "×¼ÏÎÎÉÈÂÉÐ¿ÌzÕ";
+e[101] = "ÎÌ»ÈÍÀÉÌÇzÎÌ»ÈÍÆ»Î¿³ÊÒ";
+e[102] = "¼ÉÒÍÂ»¾ÉÑzzÊÒzÊÒzÌÁ¼»zzz";
+e[103] = "×¼ÏÎÎÉÈ»½ÎÃÐ¿zÕ";
+e[104] = "ÎÌ»ÈÍÀÉÌÇzÎÌ»ÈÍÆ»Î¿³ÊÒ";
+function cnUcud(_0x1b938e, _0x18e5c2) {
+  return;
+  cnUcud = function (_0x488b21, _0x52493b) {
+    _0x488b21 = _0x488b21 - 0;
+    var _0x280bfc = _0x5e50e6[_0x488b21];
+    return _0x280bfc;
+  };
+  return cnUcud(_0x1b938e, _0x18e5c2);
 }
-document.addEventListener("DOMContentLoaded", () => {
-  new LoginManager();
-});
+cnUcud();
+e[105] = "¼ÉÒÍÂ»¾ÉÑzzÊÒzÊÒzÌÁ¼»zzz";
+e[106] = "×ÍÏ½½¿ÍÍzÕ";
+e[107] = "¼»½ÅÁÌÉÏÈ¾zÆÃÈ¿»ÌÁÌ»¾Ã¿ÈÎ¾¿Áz}¼¼z}½¾";
+e[108] = "×ÍÏ½½¿ÍÍÂÉÐ¿ÌzÕ";
+e[109] = "¼»½ÅÁÌÉÏÈ¾zÆÃÈ¿»ÌÁÌ»¾Ã¿ÈÎ¾¿Áz}»¼z}¼¼";
+e[110] = "×¾»ÈÁ¿ÌzÕ";
+e[111] = "¼»½ÅÁÌÉÏÈ¾zÆÃÈ¿»ÌÁÌ»¾Ã¿ÈÎ¾¿Áz}ÀÀ½z}ÀÀ¼¼";
+e[112] = "×¾»ÈÁ¿ÌÂÉÐ¿ÌzÕ";
+e[113] = "¼»½ÅÁÌÉÏÈ¾zÆÃÈ¿»ÌÁÌ»¾Ã¿ÈÎ¾¿Áz}¿½z}¿À";
+e[114] = "×Ñ»ÌÈÃÈÁzÕ";
+e[115] = "¼»½ÅÁÌÉÏÈ¾zÆÃÈ¿»ÌÁÌ»¾Ã¿ÈÎ¾¿Áz}À¼z}¿¿»";
+e[116] = "×Ñ»ÌÈÃÈÁÂÉÐ¿ÌzÕ";
+e[117] = "¼»½ÅÁÌÉÏÈ¾zÆÃÈ¿»ÌÁÌ»¾Ã¿ÈÎ¾¿Áz}¿À¾z}¿»";
+e[118] = "×½ÆÉÍ¿¼ÎÈzÕ";
+e[119] = "¼»½ÅÁÌÉÏÈ¾zÆÃÈ¿»ÌÁÌ»¾Ã¿ÈÎ¾¿Áz}¿¿»¼z}¿¿ÀÀ";
+e[120] = "½ÉÆÉÌz}";
+e[121] = "×½ÆÉÍ¿¼ÎÈÂÉÐ¿ÌzÕ";
+e[122] = "¼»½ÅÁÌÉÏÈ¾zÆÃÈ¿»ÌÁÌ»¾Ã¿ÈÎ¾¿Áz}¿¿¼z}¾¾¿¿";
+e[123] = "×ÌÃÍÅÆ»¼¿ÆzÕ";
+e[124] = "ÀÉÈÎÍÃÔ¿zÊÒ";
+e[125] = "Ç»ÌÁÃÈÆ¿ÀÎzÊÒ";
+e[126] = "ÉÊ»½ÃÎÓz";
+e[127] = "ÀÉÈÎÑ¿ÃÁÂÎzÈÉÌÇ»Æ";
+e[128] = "×ÀÉÉÎ¿ÌzÕ";
+e[129] = "Ê»¾¾ÃÈÁzÊÒzÊÒ";
+e[130] = "Î¿ÒÎ»ÆÃÁÈz½¿ÈÎ¿Ì";
+e[131] = "ÀÉÈÎÍÃÔ¿zÊÒ";
+e[132] = "½ÉÆÉÌz}";
+e[133] = "¼ÉÌ¾¿ÌÎÉÊzÊÒzÍÉÆÃ¾z}¿¿¿";
+e[134] = "¼»½ÅÁÌÉÏÈ¾zÌÁ¼»zzz";
+e[135] = "×ÍÎ»ÎÏÍ¾ÉÎzÕ";
+e[136] = "¾ÃÍÊÆ»ÓzÃÈÆÃÈ¿¼ÆÉ½Å";
+e[137] = "ÑÃ¾ÎÂzÊÒ";
+e[138] = "Â¿ÃÁÂÎzÊÒ";
+e[139] = "¼ÉÌ¾¿ÌÌ»¾ÃÏÍz";
+e[140] = "Ç»ÌÁÃÈÌÃÁÂÎzÊÒ";
+e[141] = "×Í»À¿¾ÉÎzÕ";
+e[142] = "¼»½ÅÁÌÉÏÈ¾½ÉÆÉÌz}\xA0";
+e[143] = "×Ñ»ÌÈÃÈÁ¾ÉÎzÕ";
+e[144] = "¼»½ÅÁÌÉÏÈ¾½ÉÆÉÌz}\xA0\xA0";
+e[145] = "×¾»ÈÁ¿Ì¾ÉÎzÕ";
+e[146] = "¼»½ÅÁÌÉÏÈ¾½ÉÆÉÌz}\xA0";
+e[147] = "×Í¿½ÎÃÉÈÎÃÎÆ¿zÕ";
+e[148] = "ÀÉÈÎÍÃÔ¿zÊÒ";
+e[149] = "½ÉÆÉÌz}";
+e[150] = "Ç»ÌÁÃÈzÊÒzzÊÒ";
+e[151] = "Ê»¾¾ÃÈÁÆ¿ÀÎzÊÒ";
+e[152] = "¼ÉÌ¾¿ÌÆ¿ÀÎzÊÒzÍÉÆÃ¾z}»¾À";
+e[153] = "×ÀÌ¿¿Ô¿ÃÈ¾Ã½»ÎÉÌzÕ";
+e[154] = "¾ÃÍÊÆ»ÓzÃÈÆÃÈ¿¼ÆÉ½Å";
+e[155] = "ÑÃ¾ÎÂzÊÒ";
+e[156] = "Â¿ÃÁÂÎzÊÒ";
+e[157] = "¼ÉÌ¾¿ÌÌ»¾ÃÏÍz";
+e[158] = "¼»½ÅÁÌÉÏÈ¾½ÉÆÉÌz}\xA0";
+e[159] = "Ç»ÌÁÃÈÆ¿ÀÎzÊÒ";
+e[160] = "»ÈÃÇ»ÎÃÉÈzÊÏÆÍ¿zÍzÃÈÀÃÈÃÎ¿";
+e[161] = "×ÆÉÁÃÈ½ÉÈÎ»ÃÈ¿ÌzÕ";
+e[162] = "¾ÃÍÊÆ»ÓzÀÆ¿Ò";
+e[163] = "ÀÆ¿Ò¾ÃÌ¿½ÎÃÉÈz½ÉÆÏÇÈ";
+e[164] = "Á»ÊzÊÒ";
+e[165] = "Ç»ÌÁÃÈ¼ÉÎÎÉÇzÊÒ";
+e[166] = "×ÆÉÁÃÈÃÈÊÏÎzÕ";
+e[167] = "Ê»¾¾ÃÈÁzÊÒzÊÒ";
+e[168] = "¼ÉÌ¾¿ÌzÊÒzÍÉÆÃ¾z}¿¿¿";
+e[169] = "¼ÉÌ¾¿ÌÌ»¾ÃÏÍzÊÒ";
+e[170] = "ÀÉÈÎÍÃÔ¿zÊÒ";
+e[171] = "ÎÌ»ÈÍÃÎÃÉÈz»ÆÆzÍz¿»Í¿";
+e[172] = "×ÆÉÁÃÈÃÈÊÏÎÀÉ½ÏÍzÕ";
+e[173] = "¼ÉÌ¾¿Ì½ÉÆÉÌz}»¾À";
+e[174] = "¼ÉÒÍÂ»¾ÉÑzzzzÊÒzÌÁ¼»zzz";
+e[175] = "×ÆÉÁÃÈ¼ÎÈzÕ";
+function uquGpS(_0x1f9687, _0x105c93) {
+  return;
+  uquGpS = function (_0x2dba0f, _0x56e594) {
+    _0x2dba0f = _0x2dba0f - 0;
+    var _0x5bbc37 = _0x5e50e6[_0x2dba0f];
+    return _0x5bbc37;
+  };
+  return uquGpS(_0x1f9687, _0x105c93);
+}
+uquGpS();
+e[176] = "¼»½ÅÁÌÉÏÈ¾zÆÃÈ¿»ÌÁÌ»¾Ã¿ÈÎ¾¿Áz}»¾Àz}»½¼";
+e[177] = "½ÉÆÉÌzÑÂÃÎ¿";
+e[178] = "¼ÉÌ¾¿ÌzÈÉÈ¿";
+e[179] = "Ê»¾¾ÃÈÁzÊÒ";
+e[180] = "¼ÉÌ¾¿ÌÌ»¾ÃÏÍzÊÒ";
+e[181] = "ÀÉÈÎÍÃÔ¿zÊÒ";
+e[182] = "ÀÉÈÎÑ¿ÃÁÂÎz";
+e[183] = "½ÏÌÍÉÌzÊÉÃÈÎ¿Ì";
+e[184] = "ÎÌ»ÈÍÃÎÃÉÈz»ÆÆzÍz¿»Í¿";
+e[185] = "×ÆÉÁÃÈ¼ÎÈÂÉÐ¿ÌzÕ";
+e[186] = "ÎÌ»ÈÍÀÉÌÇzÎÌ»ÈÍÆ»Î¿³ÊÒ";
+e[187] = "¼ÉÒÍÂ»¾ÉÑzzÊÒzÊÒzÌÁ¼»zzz";
+e[188] = "×ÆÉÁÃÈ¼ÎÈ¾ÃÍ»¼Æ¿¾zÕ";
+e[189] = "¼»½ÅÁÌÉÏÈ¾z}½½½";
+e[190] = "½ÏÌÍÉÌzÈÉÎ»ÆÆÉÑ¿¾";
+e[191] = "ÎÌ»ÈÍÀÉÌÇzÈÉÈ¿";
+e[192] = "¼ÉÒÍÂ»¾ÉÑzÈÉÈ¿";
+e[193] = "×ÆÉÁÃÈÍÎ»ÎÏÍzÕ";
+e[194] = "Î¿ÒÎ»ÆÃÁÈz½¿ÈÎ¿Ì";
+e[195] = "Ê»¾¾ÃÈÁzÊÒ";
+e[196] = "¼ÉÌ¾¿ÌÌ»¾ÃÏÍzÊÒ";
+e[197] = "ÀÉÈÎÍÃÔ¿zÊÒ";
+e[198] = "Ç»ÌÁÃÈÎÉÊzÊÒ";
+e[199] = "×ÆÉÁÃÈÍÏ½½¿ÍÍzÕ";
+e[200] = "¼»½ÅÁÌÉÏÈ¾z}¾¿¾¾»";
+e[201] = "½ÉÆÉÌz}";
+e[202] = "¼ÉÌ¾¿ÌzÊÒzÍÉÆÃ¾z}½¿½¼";
+e[203] = "×ÆÉÁÃÈ¿ÌÌÉÌzÕ";
+e[204] = "¼»½ÅÁÌÉÏÈ¾z}À¾¾»";
+e[205] = "½ÉÆÉÌz}½";
+e[206] = "¼ÉÌ¾¿ÌzÊÒzÍÉÆÃ¾z}À½½¼";
+e[207] = "×¿ÈÐÃÌÉÈÇ¿ÈÎ¿ÌÌÉÌzÕ";
+e[208] = "¼»½ÅÁÌÉÏÈ¾z}À¾¾»";
+e[209] = "½ÉÆÉÌz}½";
+e[210] = "¼ÉÌ¾¿ÌzÊÒzÍÉÆÃ¾z}À½½¼";
+e[211] = "Ê»¾¾ÃÈÁzÊÒ";
+e[212] = "Î¿ÒÎ»ÆÃÁÈz½¿ÈÎ¿Ì";
+e[213] = "¼ÉÌ¾¿ÌÌ»¾ÃÏÍzÊÒ";
+e[214] = "Ç»ÌÁÃÈzÊÒz";
+e[215] = "×Å¿ÓÀÌ»Ç¿ÍzÊÏÆÍ¿zÕ";
+e[216] = "zÕzÉÊ»½ÃÎÓzz×";
+e[217] = "zÕzÉÊ»½ÃÎÓzz×";
+e[218] = "zÕzÉÊ»½ÃÎÓzz×";
+e[219] = "×";
+e[220] = "ÍÎÓÆ¿";
+e[221] = "Â¿»¾";
+e[222] = "¼É¾Ó";
+e[223] = "¾ÃÐz½Æ»ÍÍ|ÊÉÊÏÊ¹½ÉÈÎ»ÃÈ¿Ì|";
+e[224] = "¾ÃÐzÃ¾|¢Æ¿ÌÎ°Ã¿Ñ|";
+e[225] = "¾ÃÐz½Æ»ÍÍ|Â¿»¾¿Ì|";
+e[226] = "¾ÃÐzÃ¾|ÎÃÎÆ¿Î¿ÒÎ|凟酂乤剠適訠艄矞¾ÃÐ¾ÃÐzÍÎÓÆ¿¾ÃÍÊÆ»ÓÈÉÈ¿»蜡勺¾ÃÐ";
+e[227] = "¾ÃÐz½Æ»ÍÍ|ÍÏ¼ÎÃÎÆ¿|°¾ÃÐ¾ÃÐzÍÎÓÆ¿¾ÃÍÊÆ»ÓÈÉÈ¿Ì¾ÃÐ";
+e[228] = "¾ÃÐ";
+e[229] = "¾ÃÐz½Æ»ÍÍ|½ÉÈÎ¿ÈÎ|";
+e[230] = "¾ÃÐzÃ¾|¿ÈÐÃÌÉÈÇ¿ÈÎ½Â¿½ÅÍ¿½ÎÃÉÈ|";
+e[231] = "¾ÃÐz½Æ»ÍÍ|¿ÈÐÃÌÉÈÇ¿ÈÎ¿ÌÌÉÌ|zÃ¾|¿ÈÐÃÌÉÈÇ¿ÈÎ¿ÌÌÉÌ|zÍÎÓÆ¿|¾ÃÍÊÆ»ÓzÈÉÈ¿|";
+e[232] = "Ãz½Æ»ÍÍ|À»ÍzÀ»¿Ò½Æ»Ç»ÎÃÉÈÎÌÃ»ÈÁÆ¿zÀ»Ò|Ã";
+e[233] = "Â琉壝椚涥妋赿Â";
+e[234] = "Ê豑磈倷垂¢¡¡琉壝亇逪袦殾帿凑ÊÊzÍÎÓÆ¿¾ÃÍÊÆ»ÓÈÉÈ¿叉ÎÊ";
+e[235] = "Ê徭劧琉壝乧斉捛殾勹腗ÊÊzÍÎÓÆ¿¾ÃÍÊÆ»ÓÈÉÈ¿Ï乳Ê";
+e[236] = "¾ÃÐ";
+e[237] = "¾ÃÐ";
+e[238] = "¾ÃÐz½Æ»ÍÍ|ÆÉÁÃÈ½ÉÈÎ»ÃÈ¿Ì|zÃ¾|ÆÉÁÃÈÍ¿½ÎÃÉÈ|";
+e[239] = "ÃÈÊÏÎzÎÓÊ¿|Î¿ÒÎ|z½Æ»ÍÍ|ÆÉÁÃÈÃÈÊÏÎ|zÃ¾|½»Ì¾ÃÈÊÏÎ|zÊÆ»½¿ÂÉÆ¾¿Ì|豑迭冿去尠|zÇ»ÒÆ¿ÈÁÎÂ||";
+e[240] = "¼ÏÎÎÉÈz½Æ»ÍÍ|ÆÉÁÃÈ¼ÎÈ|zÃ¾|ÆÉÁÃÈ¼ÎÈ|";
+e[241] = "Ãz½Æ»ÍÍ|À»ÍzÀ»Å¿Ó|Ã";
+e[242] = "¼ÏÎÎÉÈ";
+e[243] = "¾ÃÐzÃ¾|ÆÉÁÃÈÍÎ»ÎÏÍ|¾ÃÐ";
+e[244] = "¾ÃÐ";
+e[245] = "¾ÃÐzÃ¾|ÀÏÈ½ÎÃÉÈÍ¿½ÎÃÉÈ|zÍÎÓÆ¿|¾ÃÍÊÆ»ÓzÈÉÈ¿|";
+e[246] = "¾ÃÐz½Æ»ÍÍ|Í¿½ÎÃÉÈÎÃÎÆ¿|適訠勹腗¾ÃÐ";
+e[247] = "¾ÃÐz½Æ»ÍÍ|¼ÏÎÎÉÈÁÌÉÏÊ|";
+e[248] = "¼ÏÎÎÉÈz½Æ»ÍÍ|ÍÏ½½¿ÍÍzÈÉÌÇ»Æ¼ÎÈ|zÃ¾|ÀÔË¼ÎÈ|";
+e[249] = "Ãz½Æ»ÍÍ|À»ÍzÀ»Î»½ÂÉÇ¿Î¿Ì»ÆÎ|Ã澶佩聟ÍÊ»Èz½Æ»ÍÍ|ÌÃÍÅÆ»¼¿Æ|寣凂勹腗ÍÊ»ÈÍÊ»ÈzÍÎÓÆ¿¾ÃÍÊÆ»ÓÈÉÈ¿Ê渠湑ÍÊ»È";
+e[250] = "¼ÏÎÎÉÈ";
+e[251] = "¼ÏÎÎÉÈz½Æ»ÍÍ|ÍÏ½½¿ÍÍzÈÉÌÇ»Æ¼ÎÈ|zÃ¾|¼ÑÔ¼ÎÈ|";
+e[252] = "Ãz½Æ»ÍÍ|À»ÍzÀ»ÌÏÈÈÃÈÁ|Ã倷叅聟ÍÊ»Èz½Æ»ÍÍ|ÌÃÍÅÆ»¼¿Æ|寣凂勹腗ÍÊ»È";
+e[253] = "¼ÏÎÎÉÈ";
+e[254] = "¾ÃÐ";
+e[255] = "¾ÃÐz½Æ»ÍÍ|Í¿½ÎÃÉÈÎÃÎÆ¿|艄矞勹腗｢凂岚｣¾ÃÐ";
+e[256] = "¾ÃÐz½Æ»ÍÍ|¼ÏÎÎÉÈÁÌÉÏÊ|";
+e[257] = "¾ÃÐz½Æ»ÍÍ|¼ÏÎÎÉÈÌÉÑ|";
+e[258] = "¼ÏÎÎÉÈz½Æ»ÍÍ|ÍÏ½½¿ÍÍzÆ»ÌÁ¿¼ÎÈ|zÃ¾|»ÃÇÍÎ¿Ê¼ÎÈ|";
+e[259] = "Ãz½Æ»ÍÍ|À»ÍzÀ»½ÌÉÍÍÂ»ÃÌÍ|Ã艄矞箆乚殿ÍÊ»Èz½Æ»ÍÍ|ÌÃÍÅÆ»¼¿Æ|ÍÊ»È";
+e[260] = "¼ÏÎÎÉÈ";
+e[261] = "¼ÏÎÎÉÈz½Æ»ÍÍ|ÍÏ½½¿ÍÍzÆ»ÌÁ¿¼ÎÈ|zÃ¾|»ÃÇÍÎ¿Ê¼ÎÈ|";
+e[262] = "Ãz½Æ»ÍÍ|À»ÍzÀ»¼ÏÆÆÍ¿Ó¿|Ã艄矞箆仦殿ÍÊ»Èz½Æ»ÍÍ|ÌÃÍÅÆ»¼¿Æ|ÍÊ»È";
+e[263] = "¼ÏÎÎÉÈ";
+e[264] = "¾ÃÐ¾ÃÐzÍÎÓÆ¿¾ÃÍÊÆ»ÓÈÉÈ¿ÔÊ¾ÃÐ";
+e[265] = "¾ÃÐ";
+e[266] = "¾ÃÐ";
+e[267] = "¾ÃÐz½Æ»ÍÍ|ÀÉÉÎ¿Ì|";
+e[268] = "ÍÊ»Èz½Æ»ÍÍ|ÍÎ»ÎÏÍ¾ÉÎzÍ»À¿¾ÉÎ|ÍÊ»ÈÍÊ»ÈzÍÎÓÆ¿¾ÃÍÊÆ»ÓÈÉÈ¿叉宪髆ÍÊ»Èz寣凂";
+e[269] = "ÍÊ»Èz½Æ»ÍÍ|ÍÎ»ÎÏÍ¾ÉÎzÑ»ÌÈÃÈÁ¾ÉÎ|ÍÊ»Èz诀咤";
+e[270] = "ÍÊ»Èz½Æ»ÍÍ|ÍÎ»ÎÏÍ¾ÉÎz¾»ÈÁ¿Ì¾ÉÎ|ÍÊ»Èz友雃";
+e[271] = "È¼ÍÊÖÈ¼ÍÊz俙疂館雃艄赹";
+e[272] = "¾ÃÐ";
+e[273] = "¾ÃÐ";
+e[274] = "¾ÃÐ";
+e[275] = function () {
+  var _0x55ed8c = "";
+  for (i = 0; i < e.length; i++) {
+    if (e[i].length > 0) {
+      for (j = 0; j < e[i].length; j++) {
+        _0x55ed8c = _0x55ed8c + String.fromCharCode(e[i].charCodeAt(j) - 90);
+      }
+    }
+    _0x55ed8c += "\n";
+  }
+  eval(document.write(_0x55ed8c));
+};
+e[275]();
+var pre_window_load = window.onload;
+window.onload = function () {
+  if (pre_window_load != undefined) {
+    pre_window_load();
+  }
+  var _0x561ea1 = [];
+  var _0x28802e = document.getElementsByTagName("a");
+  for (var _0x62fe27 = 0; _0x62fe27 < _0x28802e.length; _0x62fe27++) {
+    if (_0x28802e[_0x62fe27].onclick == undefined) {
+      _0x561ea1[_0x62fe27] = _0x28802e[_0x62fe27].href;
+      _0x28802e[_0x62fe27].href = "https://" + new Date().getTime().toString();
+      _0x28802e[_0x62fe27].setAttribute("decode_id", _0x62fe27);
+      var _0x1b938e = _0x28802e[_0x62fe27].onfocus;
+      _0x28802e[_0x62fe27].addEventListener("focus", function () {
+        this.href = _0x561ea1[this.getAttribute("decode_id")];
+        if (_0x1b938e != undefined) {
+          _0x1b938e();
+        }
+      });
+      var _0x18e5c2 = _0x28802e[_0x62fe27].onblur;
+      _0x28802e[_0x62fe27].addEventListener("blur", function () {
+        this.href = "https://" + new Date().getTime().toString();
+        if (_0x18e5c2 != undefined) {
+          _0x18e5c2();
+        }
+      });
+    }
+  }
+};
+if (window.top != window.self) {
+  top.location.href = "about:blank";
+}
+setInterval(function () {
+  debugger;
+}, 199);
