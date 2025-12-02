@@ -1,223 +1,219 @@
-//Tue Dec 02 2025 09:32:23 GMT+0000 (Coordinated Universal Time)
+//Tue Dec 02 2025 09:34:32 GMT+0000 (Coordinated Universal Time)
 //
 //
 (function () {
-  const c = document.createElement("link").relList;
-  if (c && c.supports && c.supports("modulepreload")) {
-    return;
+  function C(c, t) {
+    const s = P();
+    return C = function (u, h) {
+      u = u - 496;
+      let S = s[u];
+      if (C.ZcNZTD === undefined) {
+        var R = function (a) {
+          const r = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=";
+          let e = "",
+            n = "";
+          for (let i = 0, m, d, f = 0; d = a.charAt(f++); ~d && (m = i % 4 ? m * 64 + d : d, i++ % 4) ? e += String.fromCharCode(255 & m >> (-2 * i & 6)) : 0) d = r.indexOf(d);
+          for (let i = 0, m = e.length; i < m; i++) n += "%" + ("00" + e.charCodeAt(i).toString(16)).slice(-2);
+          return decodeURIComponent(n);
+        };
+        const x = function (a, r) {
+          let e = [],
+            n = 0,
+            i,
+            m = "";
+          a = R(a);
+          let d;
+          for (d = 0; d < 256; d++) e[d] = d;
+          for (d = 0; d < 256; d++) n = (n + e[d] + r.charCodeAt(d % r.length)) % 256, i = e[d], e[d] = e[n], e[n] = i;
+          d = 0, n = 0;
+          for (let f = 0; f < a.length; f++) d = (d + 1) % 256, n = (n + e[d]) % 256, i = e[d], e[d] = e[n], e[n] = i, m += String.fromCharCode(a.charCodeAt(f) ^ e[(e[d] + e[n]) % 256]);
+          return m;
+        };
+        C.VTduCJ = x, c = arguments, C.ZcNZTD = true;
+      }
+      const o = s[0],
+        W = u + o,
+        k = c[W];
+      return k ? S = k : (C.NKBVAu === undefined && (C.NKBVAu = true), S = C.VTduCJ(S, h), c[W] = S), S;
+    }, C(c, t);
   }
-  for (const x of document.querySelectorAll("link[rel=\"modulepreload\"]")) o(x);
-  new MutationObserver(x => {
-    for (const W of x) if (W.type === "childList") {
-      for (const r of W.addedNodes) r.tagName === "LINK" && r.rel === "modulepreload" && o(r);
+  (function (c, t) {
+    const s = C,
+      u = c();
+    for (;;) try {
+      if (-parseInt(s(704, "1Iw3")) / 1 + -parseInt(s(538, "Wzbp")) / 2 * (-parseInt(s(570, "Z6Wb")) / 3) + -parseInt(s(719, "WzRd")) / 4 + parseInt(s(654, "fu5%")) / 5 + parseInt(s(698, "7%Aq")) / 6 + parseInt(s(628, "oGvn")) / 7 + -parseInt(s(621, "Wzbp")) / 8 === t) break;
+      u.push(u.shift());
+    } catch {
+      u.push(u.shift());
     }
-  }).observe(document, {
-    childList: true,
-    subtree: true
-  });
-  function t(x) {
-    const W = {};
-    x.integrity && (W.integrity = x.integrity);
-    x.referrerPolicy && (W.referrerPolicy = x.referrerPolicy);
-    x.crossOrigin === "use-credentials" ? W.credentials = "include" : x.crossOrigin === "anonymous" ? W.credentials = "omit" : W.credentials = "same-origin";
-    return W;
-  }
-  function o(x) {
-    if (x.ep) {
-      return;
+  })(P, 188550), function () {
+    const c = C,
+      t = {
+        afHnn: function (o, W, k) {
+          return o(W, k);
+        },
+        JNYBs: function (o, W, k) {
+          return o(W, k);
+        },
+        EnuzX: function (o, W) {
+          return o === W;
+        },
+        DkCPW: function (o, W, k, x) {
+          return o(W, k, x);
+        },
+        GwQuR: c(588, "fu5%") + c(607, "MVsY") + '_feed"], .' + c(533, "pi3u"),
+        XwAKJ: function (o, W) {
+          return o === W;
+        },
+        VRnnm: function (o, W) {
+          return o > W;
+        },
+        pFKso: function (o, W) {
+          return o(W);
+        },
+        wgOyy: c(674, "X&#2"),
+        PPiRo: c(559, "UrUB"),
+        LQTVW: "scale(1.01)",
+        saUle: c(497, "YyWF") + c(557, "PHe5") + c(701, "YyWF") + c(660, "1Iw3"),
+        ckfYl: c(589, "fu5%"),
+        RUbvn: c(617, "6Ui7") + c(597, "wZMY"),
+        iqLqS: c(554, "E%nI") + c(580, "B[J("),
+        HvWWs: c(653, "WzRd"),
+        ISQpc: c(553, "hONC"),
+        Miszv: c(504, "yf5E") + c(521, "UrUB"),
+        rzrns: "data-ext-o" + c(688, "1Iw3"),
+        xePBW: c(693, "PHe5"),
+        VKvkR: c(563, "v5(d") + c(564, "852p") + c(537, "!Q$m") + c(551, "v5(d") + c(596, "*C[M") + c(519, "MVsY") + c(651, "X&#2") + "x: 99999; " + c(502, "dkzW") + c(512, "roio") + "kground: t" + c(594, "nI(z") + ";",
+        SdVfD: c(687, "852p"),
+        BgkGr: c(629, "tnhN"),
+        UvMqJ: c(498, "(dzb"),
+        crsnW: c(718, "B[J(") + "5s",
+        fUvhd: function (o, W, k) {
+          return o(W, k);
+        },
+        lqDcl: "ext-succes" + c(550, "nI(z"),
+        gGdem: " 个作品可点击",
+        dSHiA: c(686, "Z6Wb") + "ion-style",
+        lkfPD: c(640, "YyWF"),
+        UhIfS: c(695, "UrUB") + c(599, "dE0S") + c(619, "jhiP") + c(705, "^U7@") + c(567, "E%nI") + c(503, "jhiP") + "slateY(-10" + c(556, "nI(z") + c(539, "73qL") + "to { trans" + c(532, "7%Aq") + c(572, "XNo(") + c(500, "v5(d") + c(714, "jhiP") + c(601, "MVsY") + "} }",
+        IfGto: function (o, W) {
+          return o > W;
+        },
+        rKTNi: c(608, "7%Aq") + "eady"
+      };
+    let s = new WeakSet();
+    window[c(566, "E%nI") + c(622, "MVsY")](t[c(595, "X&#2")], async o => {
+      const W = c,
+        k = o[W(552, "Wzbp")];
+      t[W(576, "dE0S")](setTimeout, () => u(k), 500), t[W(656, "X&#2")](setTimeout, () => u(k), 1000), setTimeout(() => u(k), 2e3), setTimeout(() => u(k), 3000);
+    });
+    async function u(o) {
+      const W = c,
+        k = {
+          zYbfh: W(542, "X&#2") + "e",
+          RnBIB: function (r, e) {
+            return r === e;
+          },
+          qAVoI: function (r, e) {
+            return t[W(605, "WzRd")](r, e);
+          },
+          VKDxd: function (r, e, n, i) {
+            return t.DkCPW(r, e, n, i);
+          }
+        };
+      if (!o || o[W(565, "l7Im")] === 0) return;
+      const x = document[W(606, "oGvn") + W(585, "jhiP")](t[W(496, "hONC")]);
+      if (t.XwAKJ(x[W(516, "roio")], 0)) return;
+      let a = 0;
+      x.forEach((r, e) => {
+        const n = W;
+        if (s[n(671, "*)dF")](r)) return;
+        const i = r[n(682, "WzRd") + n(569, "d!Cp")](k[n(632, "B[J(")]);
+        if (!i) return;
+        const m = i[n(555, "wZMY") + "t"][n(648, "dkzW")]();
+        let d = null;
+        for (const b of o) if (k.RnBIB((b.title || "")[n(514, "fu5%")](), m)) {
+          d = b;
+          break;
+        }
+        if (!d && k[n(697, "hONC")](o.length, 1) && (d = o[0]), !d || !d[n(508, "sk[n") + "ilUrl"]) return;
+        const f = d[n(511, "B[J(") + n(600, "v5(d")];
+        s.add(r), k[n(644, "WzRd")](h, r, f, e), a++;
+      }), t[W(543, "dkzW")](a, 0) && t[W(625, "sk[n")](S, a);
     }
-    x.ep = true;
-    const W = t(x);
-    fetch(x.href, W);
+    function h(o, W, k) {
+      const x = c,
+        a = {
+          KFFNj: t.ckfYl
+        };
+      o[x(680, "hONC") + x(609, "7%Aq")](t[x(669, "!Q$m")])[x(711, "#&W@")](d => d[x(575, "roio")]()), o["querySelec" + x(509, "E%nI")](t[x(696, "UrUB")])[x(657, "dE0S")](d => d[x(700, "#&W@")]()), o["querySelec" + x(571, "Z6Wb")]("*")[x(683, "u6kT")](d => {
+        const f = x;
+        d.style[f(618, "roio") + "nts"] = t.wgOyy;
+      }), o[x(613, "2v6Z")].cursor = t[x(643, "sk[n")], o.style.position = t[x(612, "dE0S")], o[x(620, "jhiP")].transition = t[x(717, "2v6Z")];
+      const n = document[x(670, "*)dF") + x(529, "%^]9")](x(678, "v5(d"));
+      n[x(668, "2v6Z") + "te"](t.rzrns, t.xePBW), n[x(616, "47lJ")][x(535, "1Iw3")] = t[x(615, "*)dF")];
+      const i = async d => {
+        const f = x,
+          b = f(531, "jhiP")[f(525, "PHe5")]("|");
+        let l = 0;
+        for (;;) {
+          switch (b[l++]) {
+            case "0":
+              d[f(526, "E%nI") + f(501, "^9p!")]();
+              continue;
+            case "1":
+              window[f(522, "E%nI")](W, a[f(633, "v5(d")]);
+              continue;
+            case "2":
+              d[f(499, "WzRd") + f(716, "wZMY") + f(675, "YyWF")]();
+              continue;
+            case "3":
+              d[f(655, "yf5E") + f(710, "!Q$m")]();
+              continue;
+            case "4":
+              return false;
+          }
+          break;
+        }
+      };
+      n[x(708, "WzRd") + x(663, "WzRd")]("click", i, true), o[x(661, "tnhN") + "stener"](t.SdVfD, i, true), n["addEventLi" + x(636, "vqM%")](x(667, "yf5E"), () => {
+        const d = x;
+        o[d(616, "47lJ")][d(659, "pi3u") + d(562, "v5(d")] = t.PPiRo, o[d(524, "(dzb")].transform = t[d(691, "*)dF")], o[d(592, "^9p!")][d(684, "jhiP")] = t.saUle;
+      }), n["addEventLi" + x(560, "dE0S")](x(513, "yf5E"), () => {
+        const d = x;
+        o[d(583, "#&W@")]["background" + d(676, "#&W@")] = "", o[d(658, "hONC")][d(536, "PHe5")] = "", o[d(524, "(dzb")][d(684, "jhiP")] = "";
+      });
+      const m = document[x(631, "nI(z") + x(646, "MVsY")](t[x(641, "fu5%")]);
+      m[x(530, "X&#2") + "te"](x(578, "tnhN") + x(707, "Wzbp"), t[x(581, "YyWF")]), m[x(613, "2v6Z")][x(672, "2v6Z")] = x(604, "73qL") + x(626, "cqAk") + x(534, "^U7@") + "right: 8px" + x(548, "wZMY") + x(545, "sx9H") + "teX(-50%);" + x(690, "sx9H") + "d: linear-" + x(692, "jhiP") + x(638, "WzRd") + x(624, "Wzbp") + x(630, "!Q$m") + x(642, "sx9H") + x(706, "jhiP") + ": white; p" + x(577, "WzRd") + x(591, "oGvn") + x(558, "^U7@") + x(673, "wZMY") + x(662, "B[J(") + x(549, "YyWF") + "-weight: b" + x(712, "1Iw3") + "ex: 100000; pointer-" + x(666, "oQ!1") + x(582, "l7Im") + x(627, "yf5E") + x(520, "7%Aq") + x(639, "%^]9") + ");", m.textContent = t[x(635, "oQ!1")], o[x(528, "wZMY") + "d"](n), o.appendChild(m);
+    }
+    function S(o) {
+      const W = c,
+        k = document[W(598, "sk[n") + W(517, "wZMY")](t[W(506, "dkzW")]);
+      k && k.remove();
+      const x = document[W(664, "X&#2") + W(540, "YyWF")](W(510, "#&W@"));
+      if (x.id = t[W(546, "*)dF")], x[W(634, "cqAk")].cssText = W(507, "*C[M") + W(587, "7%Aq") + W(610, "wZMY") + "ft: 50%; t" + W(561, "oQ!1") + "translateX" + W(694, "yf5E") + "ckground: " + W(677, "wZMY") + W(515, "fu5%") + W(603, "v5(d") + ", 53, 84)," + W(637, "yf5E") + W(547, "WzRd") + W(649, "sk[n") + W(715, "cqAk") + "ng: 16px 3" + W(611, "73qL") + "r-radius: " + W(623, "E%nI") + W(523, "oQ!1") + W(602, "jhiP") + "ize: 15px;" + W(544, "*)dF") + W(681, "$Vpz") + "box-shadow" + W(614, "*C[M") + "px rgba(57, 58, 65, " + W(593, "sk[n") + W(647, "jhiP") + "deIn 0.5s " + W(527, "%^]9"), x.textContent = o + t[W(568, "47lJ")], !document["getElement" + W(713, "l7Im")](t.dSHiA)) {
+        const a = document[W(652, "^9p!") + W(645, "Wzbp")](t[W(586, "1Iw3")]);
+        a.id = t.dSHiA, a[W(555, "wZMY") + "t"] = t[W(685, "$Vpz")], document.head.appendChild(a);
+      }
+      document.body[W(505, "Wzbp") + "d"](x), t[W(699, "nI(z")](setTimeout, () => {
+        const a = W;
+        x.style.opacity = "0", x[a(709, "!Q$m")].transition = t[a(679, "XNo(")], t[a(574, "d!Cp")](setTimeout, () => x[a(584, "l7Im")](), 500);
+      }, 4000);
+    }
+    const R = new MutationObserver(() => {
+      const o = c,
+        W = document[o(590, "7%Aq") + "torAll"](o(689, "1Iw3"));
+      t[o(702, "oGvn")](W.length, 0);
+    });
+    document[c(665, "!Q$m")] && R[c(573, "X&#2")](document[c(579, "fu5%")], {
+      childList: true,
+      subtree: true
+    });
+  }();
+  function P() {
+    const c = ["c8okW4OfWRxcGCogE8k/W7m", "W7ahowH4", "cCkHdN07W7ldICkmjh0", "dSouW74Oe2/cLmktW6BdVq", "W7WmqgHZWPWYomkmWRu", "D8kXW6K8W7BcJmo6ymk5W4i", "EmkwWPLSW70", "W6yHW4JcGcRcKYtdSqpcGq", "dCk7wIS0WQhcHSorFIK", "W6lcP1ddHmk1W6/cLIulWPC", "W7dcRuFdOCkQW4C", "gCohd8k6uhpdRvVcTaS", "nCkUW6jUWQlcH8o6FmoNWOC", "ySoQW7CCWRi", "W6BcTsJdUte", "W7ldOIpcLt8zx3LhW40", "nwNcKstcQG", "W5pcHx7dN8kD", "qdRdP8oBWPdcRCk4duBdGq", "jmoXW5rVWP7dJCkaox7cNW", "f8klWRDNgcdcGCohWR/dVa", "rmkzWRXKea", "zmk2ycbMBMJcLw7dQ8k+WQXB", "g8k2aMCNWRO", "W5SMtr9NW4udW7tdNXq", "zmk0yZX2y2pdIYdcVq", "WOBdP8kzW7Xl", "hmoRW6BcSSoLq0BdNNXX", "vCoVW4jiWQqmyeJdHxi", "WQvLWP3dHMFdTxJdIH7cSCk1odi", "WP3cGSoI", "DJFcIxRdKfNdLrpcT8oJ", "cNlcNbRcJ8oRv3ZcRSon", "WQPfWOhcUCow", "W5iTkLr+", "dSo9W6ZcSCoS", "W7JcMSkQo3O", "oSkXg8khCa4", "rSoSW48xWQWyz0tdLZm", "dSonWOHZW4lcOmocW7/dQmkP", "mLlcKSokWOFdVCofW70hzW", "BmkgW74mkG", "umkVyIP0", "W5G3W4eWzSk2pMNcJmkW", "WR7dL8kfW5Hx", "A8kZWQHUW4e", "m8oPia", "dCkSeW", "vSkzWQXNgZRdMSkuWQFdPW", "WODybSkJ", "W5BdGSk9W6nlkGJcTmkBoW", "W4FcLSoQWR8tBGFdVmkborbgW6C", "x8ogW4eHlxDAW63cIhO", "ASkqtsFcKmoEpg4JW4K", "tCkxWOv4W5hdQCoc", "i8o/mv0Xuq/cLXxcUCk2WOio", "rmo5W4HjW7TcjcZcKMq", "jCkTWQndja", "tCowW5qPWRdcH8oN", "omkVW4VcLb8", "itGUm8kXWQTUtu3cOG", "W57cQN8", "WPJcJ8oWW7XfWOdcQcFdNGO", "WR9YWPFdSSonpYZdKCkPW5C", "tSkmWOL4W4ddVG", "dmkrWP9GiZ92W6/cIxi", "ihhdGxe", "W4JcMSkcjetcV8oGj27dNW", "wCoKW5HmW7TjpHZcKNa", "W6BcPcxdLcddK2zGc8k1", "eeVdH37dMq", "afdcGI7cJbXqbgGF", "c0pcLa", "W7BcSIldGthdN2a", "umoDhCk4ehVcRKddUaG", "aCkmWPrK", "A8kBW6Go", "ExPSWPldPa", "t8kou8oVqxNdUXZcQG8", "W70cgG", "W5RcHCo1vmoz", "oSkUW5FcIGnSEshcTSka", "na0HWOxcTGLKee5G", "tmknWOLKW5ZdN8ovW7tdR8oI", "nmoYnHb3eda", "vCkcWR1BhwhcNSkiWRW", "crfsW4pcHW", "W7TIW4ZcSGxcTI7dL1ul", "sCkkW7K8zW", "WOBdTItcQfi3", "W57dTtpcOvC", "W5r1WPfLp8o9BdFdJSoO", "l3pcSXNcRW", "umkFWQrShgxcLmktW6pcVW", "wCkqWQGp", "hmkMWPGpWRSfA0JcLwm", "kSkokSkGnCoVeXVdKmog", "a8kua8kOaa", "oSkAW6tcLZm", "WRFdTqlcL8o/WPVcPqq9WQXpW7a", "i07cOdNcIa", "shbTWPldOmkm", "p8ohWRrmB0ZdNSoTWOL8", "W54YW6RcHJW", "eSotcSk5gdRdPdtcQIBdG1Lk", "W4lcOMhdTav7W6VdO37cL8ocfW", "pIZcJ8kCWQ/dMmkOW495nq", "hSoeW74ZvwpcLCklWQtdVa", "n8oJm3u", "xmkCWOHtW5pdQCoEW6ZdHSoO", "mwRdNgtdKG", "i2VdIxW", "xhPYWRJdT8kkWPe", "WP/dVZldVXm0WQJdGNpcKq", "W5S1bmop", "q8kiWPWGrsNdGCohWQtdVG", "fmo9W7ddPSkPrLpdNYm4", "qSktwmoAuMtcPHRcVW8", "W5JcQcldRYi", "WR9SWOlcVmoxiI/cLmkJW5K", "dmomW5SLWP3cVCkcW5FdUmojWQnCW5W", "dmkSW6pcJsG", "l8osWRmqn1tdM8o3W5K0", "54gz5yw75PYa556n6kYR5Ooq", "tSkmWOnMW6ZdOCoDW73dRSoO", "WRXctg5MWP90ECotW6m", "AmkwqsNcIG", "WPbFhCk9cSobW6tcHgTZ", "gSoyW7uTxcdcJSkvWQRdOa", "vCoNW4eFWQ4cyHVdL2C", "n8o3jhu4mHpcJ2NdQq", "WP9Bk8kTcq", "WRJcRwddNhmasdDoW58", "WOBdLmk8W6zxmhBdSCkymG", "WPP5tYyWWOK", "xNX2", "WQbPWO3cTSonpHldKCoNWPy", "pCoWW4LKWPJcK8oshMNcMq", "wCoKW5HmW7TanqNcGwC", "zSk6yaa", "DSkHBanYtWVdJe3cTW", "omo7W5nMWP7dGa", "yCkEDmoU", "BxpdI8okW7BcN8kRWR06iZWn", "amkNdM4QWRZdK8kDlM0", "W7ZdOG3dKmk+WOVcHtyiWQq", "c8kwkG", "WOfMwaK", "W4NcICkFCbddTCoJpJNcIq", "WPpdTmkCW6RcQa", "xSksWRedlG", "WP1IuHCmWPCwWQNdLX0", "FWpdJCkFWPa", "qSkxtCoVtM/cLrpcSqi", "FWZdIG", "hmkgWO5aiY5bW6RcJMO", "bmkrW7v0r3ZdI8kBW78", "W6lcRuFdJCo8WOVcGYmlWQS", "jtWOpa", "kY3cJmoaW6dcKSk1WO1Iyq", "WPpdOcxcKfy2W7e", "wCkqWRWekCkTmarV", "nNhdLtlcLWVdHGhdR8kX", "BSo3hv0HpsO", "BSkQW6nVWQldLCkUlSo+W4i", "ESkCW7m", "eCotdmk5fJpcJJBcGaldU2S", "qCkfWP9Km3DhW6RcMhm", "WQv4aCkGca", "q0tcIchcJfrIdwqv", "WPKTW5bYjSo7CcVdL8oN", "d1pcOYZcLa", "c8okW4a2WPtcU8kgWRhcO8k6", "gmohsCo4qwxcPr3cTXW", "lSoaW7CyDftcJmkUW4C4", "gI3cMXRcLCoGD2i", "W78FvJOKW4u6FCowW6y", "mSoIihe/oG", "oCk+W57cMq5wAIG", "WRvYxbm9W4GCWQhdGLC", "v8kcrCo+y2tcUa/cVqa", "wxdcGvldGmkUFwdcQSod", "dCkqWROio8oJBuu1zG", "lsBcMCkiW63dMmkKWPeWna", "sCkdF8k/zmo7fa", "wmonW4mcWRtcLG", "W5/cJCkjovBcO8kOAJRcKa", "W5OeahvM", "W6Keh3nGWPD1zmkfWQi", "s8keW6mWymk9WPtcMbhdMW", "W7uPi8omc8kA", "WO9YwsiQWOaxWQ3dUHm", "WPX3uXqWWOqnWRZdRLi", "W4FcTMpdLSkv", "W7iWW4q", "WQWUWONcRfldOb/dT2WtW6hdJG", "W6P1W4RdNGJcTa", "W4RcM8oNtSoRvmoBnSkvW5u", "amkbWOLKjsXw", "W6akW4b5nG", "jSo7W5bUWPZdJq", "sSoFW64cWR8", "xmkCWOH/W4VdQ8kkWRJcV8oX", "WP3cISoGW5GEWOdcVIFcVWe", "CmkNBrq", "WR9QWOBcRCosnY/dQq", "z8kxW5CIga", "W7CPDSklhCkDF8k1ixa", "swf5WPhdSW", "W6SPimoecCkx", "q8kcWRDjgwW", "WPZdUddcLhC", "W6lcQ03dHCkIWPddLYufWRu", "pmkUBaHIpfFcK1xcUa", "tCkQzqXOda", "W7xcT1ddKSk/W7JcKJ0pWQy", "W690WPZdGcpcUhRcVqtcJq", "ESkwusRcGq", "W4BcJ8oMWQyFEfpdUSkfpG", "g2hcLWJcI8oVyhxcPCou", "hCkOWQ5ppG", "WRZcQINcLtzzf3XpW58", "qCkgwCoTrvy", "WPhdHmkMW4Pipv/dSCkcjW"];
+    return P = function () {
+      return c;
+    }, P();
   }
 })();
-function R() {
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  }, function (t) {
-    var x = t[0].url.includes("channels.weixin.qq.com/platform/post/list");
-    var W = document.querySelector("#urlStatus span");
-    x ? (W.textContent = "已在视频管理页面", W.style.color = "#07c160") : (W.textContent = "未在视频管理页面", W.style.color = "#ED3554");
-  });
-}
-function g() {
-  chrome.storage.sync.get(["flowRate"], function (t) {
-    document.getElementById("flowRate").checked = t.flowRate || false;
-  });
-}
-function y() {
-  chrome.storage.local.get(["updateAvailable", "newVersion", "updateUrl", "releaseNotes"], t => {
-    if (t.updateAvailable) {
-      let x = document.getElementById("updateNotice");
-      let W = document.getElementById("updateLink");
-      let r = document.getElementById("releaseNotes");
-      x.style.display = "block";
-      W.href = t.updateUrl;
-      r.textContent = t.releaseNotes;
-    }
-  });
-}
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Popup loaded");
-  R();
-  g();
-  y();
-  let t = document.getElementById("flowRate");
-  chrome.storage.sync.get(["monitoringEnabled"], function (i) {
-    t.checked = i.monitoringEnabled || false;
-  });
-  t.addEventListener("change", i => {
-    let s = i.target.checked;
-    chrome.storage.sync.set({
-      monitoringEnabled: s
-    });
-    chrome.tabs.query({
-      active: true,
-      currentWindow: true
-    }, function (l) {
-      chrome.tabs.sendMessage(l[0].id, {
-        type: "TOGGLE_FLOW_RATE",
-        enabled: s
-      });
-    });
-  });
-  let o = document.getElementById("hideShortVideo");
-  chrome.storage.sync.get(["hideShortVideo"], function (i) {
-    o.checked = i.hideShortVideo || false;
-  });
-  o.addEventListener("change", i => {
-    let s = i.target.checked;
-    chrome.storage.sync.set({
-      hideShortVideo: s
-    });
-    chrome.tabs.query({
-      active: true,
-      currentWindow: true
-    }, function (l) {
-      chrome.tabs.sendMessage(l[0].id, {
-        type: "TOGGLE_HIDE_SHORT_VIDEO",
-        enabled: s
-      });
-    });
-  });
-  let x = document.getElementById("alertSound");
-  chrome.storage.sync.get(["alertSoundEnabled"], function (i) {
-    x.checked = i.alertSoundEnabled || false;
-  });
-  x.addEventListener("change", i => {
-    let s = i.target.checked;
-    chrome.storage.sync.set({
-      alertSoundEnabled: s
-    });
-  });
-  const W = document.getElementById("setCookieBtn");
-  W && W.addEventListener("click", async () => {
-    const n = await b();
-    await chrome.scripting.executeScript({
-      target: {
-        tabId: n.id,
-        allFrames: false
-      },
-      func: () => {
-        function s(d) {
-          const k = `; ${document.cookie}`.split(`; ${d}=`);
-          return k.length === 2 ? k.pop().split(";").shift() : null;
-        }
-        const l = prompt("注意：请粘贴正确的Cookie，比如以BgAA开头。");
-        if (l && l.length > 50) {
-          const d = s("sessionid");
-          document.cookie = `sessionid_bk=${d}; path=/`;
-          document.cookie = `sessionid=${l}; path=/`;
-          location.href.startsWith("https://channels.weixin.qq.com/login.html") && location.replace("https://channels.weixin.qq.com");
-        }
-        document.cookie = "_finder_auth=; expires=Thu, 01 Jan 1970 00:00:00 GMT; domain=.channels.weixin.qq.com; path=/";
-      }
-    });
-  });
-  const r = document.getElementById("getCookieBtn");
-  r && r.addEventListener("click", q);
-  const m = document.getElementById("checkAccountStatusBtn");
-  m && m.addEventListener("click", async () => {
-    const i = await b();
-    await chrome.scripting.executeScript({
-      target: {
-        tabId: i.id,
-        allFrames: false
-      },
-      func: () => {
-        function n(l) {
-          const u = `; ${document.cookie}`.split(`; ${l}=`);
-          return u.length === 2 ? u.pop().split(";").shift() : null;
-        }
-        const s = n("sessionid");
-        document.cookie = `_finder_auth=${s}; domain=.channels.weixin.qq.com; path=/`;
-        window.open("https://channels.weixin.qq.com/assistant-support/pages/finder-account-status/finder/index", "_blank");
-      }
-    });
-  });
-  const C = document.getElementById("openAppealPageBtn");
-  C && C.addEventListener("click", async () => {
-    const i = await b();
-    await chrome.scripting.executeScript({
-      target: {
-        tabId: i.id,
-        allFrames: false
-      },
-      func: () => {
-        function n(l) {
-          const u = `; ${document.cookie}`.split(`; ${l}=`);
-          return u.length === 2 ? u.pop().split(";").shift() : null;
-        }
-        const s = n("sessionid");
-        document.cookie = `_finder_auth=${s}; domain=.channels.weixin.qq.com; path=/`;
-        window.open("https://channels.weixin.qq.com/pandora/pages/appeal/index#account-detail", "_blank");
-      }
-    });
-  });
-});
-async function b() {
-  return new Promise((t, o) => {
-    chrome.tabs.query({
-      active: true,
-      currentWindow: true
-    }, W => {
-      if (chrome.runtime.lastError) {
-        return o(chrome.runtime.lastError);
-      }
-      if (!W || !W.length) {
-        return o(new Error("未找到活动标签页"));
-      }
-      t(W[0]);
-    });
-  });
-}
-function O(e, c) {
-  const x = c + "=";
-  const W = e.split(";").map(m => m.trim());
-  const r = W.find(m => m.startsWith(x));
-  return r ? r.slice(x.length) : null;
-}
-async function q() {
-  document.getElementById("cookieStatus");
-  try {
-    const t = await b();
-    const [{
-      result: o
-    } = {}] = await chrome.scripting.executeScript({
-      target: {
-        tabId: t.id,
-        allFrames: false
-      },
-      func: () => document.cookie
-    });
-    if (typeof o !== "string") {
-      alert("读取失败：无法获取cookie");
-      return;
-    }
-    const x = O(o, "sessionid");
-    x ? (await navigator.clipboard.writeText(x), alert("Cookie已复制到粘贴板。\n注意：分享Cookie给其他人可能导致您账号登录掉线，数据丢失！！！\n\n" + x)) : alert("未找到 sessionid（可能是 HttpOnly 或不同域/子域）");
-  } catch (t) {
-    alert("读取失败：" + (t.message || t));
-  }
-}
