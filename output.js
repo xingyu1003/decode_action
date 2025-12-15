@@ -1,465 +1,602 @@
-//Sun Dec 14 2025 20:31:50 GMT+0000 (Coordinated Universal Time)
+//Mon Dec 15 2025 17:39:29 GMT+0000 (Coordinated Universal Time)
 //
 //
-(window.webpackJsonp = window.webpackJsonp || []).push([[1, 71, 74, 75], {
-  1470: function (e, n, t) {
-    "use strict";
+(function () {
+  "use strict";
 
-    t.r(n);
-    t(224), t(70);
-    var r = t(11),
-      o = t(154),
-      l = Object(r.b)({
-        props: {
-          gindex: {
-            type: Number,
-            default: 0
-          },
-          process: {
-            type: Number,
-            required: true
-          }
-        },
-        setup: function (e, n) {
-          var t = n.emit,
-            l = (e.gindex, Object(r.l)(false)),
-            c = Object(r.l)(0),
-            time = Object(r.l)(10),
-            text = Object(r.l)("结果查询"),
-            m = Object(o.f)(function (e) {
-              e || (l.value = false), l.value && e || (t("handleCheckPay", e), e && d());
-            }),
-            d = function e(n) {
-              n || (time.value = time.value - 1, text.value = "".concat(time.value, "秒后再次查询"), l.value = true);
-              var t = setTimeout(function () {
-                time.value = time.value - 1, text.value = "".concat(time.value, "秒后再次查询"), l.value = true, time.value > 0 ? (clearTimeout(t), e(true)) : (l.value = false, text.value = "结果查询", time.value = 10, clearTimeout(t));
-              }, 1e3);
-            };
-          return Object(r.u)(e, function (e) {
-            c.value = e.process;
-          }, {
-            immediate: true,
-            deep: true
-          }), {
-            time: time,
-            text: text,
-            loading: l,
-            processData: c,
-            handleCheckPay: m
-          };
-        }
-      }),
-      c = (t(932), t(50)),
-      component = Object(c.a)(l, function () {
-        var e = this,
-          n = e.$createElement,
-          t = e._self._c || n;
-        return t("div", [0 === e.processData ? t("div", {
-          staticClass: "paySuccessBox"
-        }, [t("div", {
-          staticClass: "paySuccessHeader"
-        }, [e._v("支付提示")]), e._v(" "), t("div", {
-          staticClass: "paySuccessContent"
-        }, [e._v("\n      请您在新打开的页面进行支付，支付完成前请不要关闭该窗口\n    ")]), e._v(" "), t("div", {
-          staticClass: "paySuccessBtnBox"
-        }, [t("div", {
-          staticClass: "paySuccessItem",
-          on: {
-            click: function (n) {
-              return e.handleCheckPay(1);
-            }
-          }
-        }, [e._v("已完成支付")]), e._v(" "), t("div", {
-          staticClass: "paySuccessItem",
-          on: {
-            click: function (n) {
-              return e.handleCheckPay(0);
-            }
-          }
-        }, [e._v("关闭")])])]) : e._e(), e._v(" "), 1 === e.processData ? t("div", {
-          staticClass: "payCallBackBox"
-        }, [t("div", {
-          staticClass: "paySuccessHeader"
-        }, [e._v("查询")]), e._v(" "), t("div", {
-          staticClass: "paySuccessContent"
-        }, [e._v("请点击查询按钮，查询充值是否完成")]), e._v(" "), t("div", {
-          staticClass: "paySuccessBtnBox"
-        }, [t("div", {
-          staticClass: "paySuccessItem",
-          class: e.loading ? "loading" : "",
-          on: {
-            click: function (n) {
-              return e.handleCheckPay(1);
-            }
-          }
-        }, [e._v("\n        " + e._s(e.text) + "\n      ")]), e._v(" "), t("div", {
-          staticClass: "paySuccessItem",
-          on: {
-            click: function (n) {
-              return e.handleCheckPay(0);
-            }
-          }
-        }, [e._v("完成")])])]) : e._e()]);
-      }, [], false, null, "6723ca02", null);
-    n.default = component.exports;
-  },
-  1471: function (e, n, t) {
-    "use strict";
-
-    t.r(n);
-    var r = t(11),
-      o = t(154),
-      l = Object(r.b)({
-        props: {
-          tipstext: {
-            type: String,
-            default: ""
-          },
-          canceltext: {
-            type: String,
-            default: ""
-          },
-          confirmtext: {
-            type: String,
-            default: ""
-          }
-        },
-        setup: function (e, n) {
-          var t = e.tipstext,
-            l = e.canceltext,
-            c = e.confirmtext,
-            m = n.emit;
-          return {
-            tipsText: Object(r.l)(t),
-            cancelText: Object(r.l)(l),
-            confirmText: Object(r.l)(c),
-            handleCancel: function () {
-              m("clickCancel");
-            },
-            handleConfirm: Object(o.f)(function () {
-              m("clickConfirm");
-            })
-          };
-        }
-      }),
-      c = (t(934), t(50)),
-      component = Object(c.a)(l, function () {
-        var e = this,
-          n = e.$createElement,
-          t = e._self._c || n;
-        return t("div", {
-          staticClass: "FlowerTipbox"
-        }, [t("div", {
-          staticClass: "top_dec"
-        }), e._v(" "), t("div", {
-          staticClass: "tip_content",
-          domProps: {
-            innerHTML: e._s(e.tipsText)
-          }
-        }), e._v(" "), t("div", {
-          staticClass: "tip_bottom"
-        }, [t("a", {
-          staticClass: "tipCancle",
-          attrs: {
-            href: "javascript:;"
-          },
-          on: {
-            click: e.handleCancel
-          }
-        }, [e._v("\n      " + e._s(e.cancelText) + "\n    ")]), e._v(" "), t("a", {
-          staticClass: "tipOk",
-          attrs: {
-            href: "javascript:;"
-          },
-          on: {
-            click: e.handleConfirm
-          }
-        }, [e._v(e._s(e.confirmText))])])]);
-      }, [], false, null, "c79a708c", null);
-    n.default = component.exports;
-  },
-  644: function (e, n, t) {
-    var content = t(671);
-    content.__esModule && (content = content.default), "string" == typeof content && (content = [[e.i, content, ""]]), content.locals && (e.exports = content.locals);
-    (0, t(7).default)("2b42176e", content, false, {
-      sourceMap: false
-    });
-  },
-  657: function (e, n, t) {
-    var content = t(683);
-    content.__esModule && (content = content.default), "string" == typeof content && (content = [[e.i, content, ""]]), content.locals && (e.exports = content.locals);
-    (0, t(7).default)("388f2bb6", content, false, {
-      sourceMap: false
-    });
-  },
-  670: function (e, n, t) {
-    "use strict";
-
-    t(644);
-  },
-  671: function (e, n, t) {
-    var r = t(6)(false);
-    r.push([e.i, ".realNameBox[data-v-2e04fec0] {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  background: white;\n  border-radius: 0.16rem;\n  width: 90%;\n  max-width: 8rem;\n}\n.realNameBox .realnameHeader[data-v-2e04fec0] {\n  margin: 0.64rem 0;\n  font-size: 0.48rem;\n  color: #2c2c2c;\n  letter-spacing: 0;\n  text-align: center;\n  line-height: 0.48rem;\n}\n.realNameBox .realnameContent[data-v-2e04fec0] {\n  border-top: 0.013333rem solid #ebebeb;\n  padding: 0.426667rem 0.586667rem;\n  box-sizing: border-box;\n}\n.realNameBox .realnameContent .realnametips[data-v-2e04fec0] {\n  font-size: 0.32rem;\n  color: #666;\n  letter-spacing: 0.006933rem;\n  line-height: 0.48rem;\n}\n.realNameBox .realnameContent .realnameform[data-v-2e04fec0] {\n  margin-top: 0.426667rem;\n}\n.realNameBox .realnameContent .realnameform .realItem[data-v-2e04fec0] {\n  background: #f4f5f8;\n  border-radius: 0.106667rem;\n  display: flex;\n  align-items: center;\n  justify-content: left;\n  padding: 0.24rem 0.373333rem;\n  margin-bottom: 0.266667rem;\n}\n.realNameBox .realnameContent .realnameform .realItem>span[data-v-2e04fec0] {\n  box-sizing: border-box;\n  font-size: 0.373333rem;\n  color: #666;\n  letter-spacing: 0.008rem;\n  line-height: 0.64rem;\n  margin-right: 0.533333rem;\n}\n.realNameBox .realnameContent .realnameform .realItem .idType[data-v-2e04fec0] {\n  font-size: 0.373333rem;\n  color: #2c2c2c;\n  letter-spacing: 0.008rem;\n  line-height: 0.64rem;\n}\n.realNameBox .realnameContent .realnameform .realItem .realItemName[data-v-2e04fec0],\n.realNameBox .realnameContent .realnameform .realItem .realItemNumber[data-v-2e04fec0] {\n  width: 3.733333rem;\n}\n.realNameBox .realnameContent .realnameaward[data-v-2e04fec0] {\n  font-size: 0.293333rem;\n  color: #a9a9a9;\n  letter-spacing: 0;\n  line-height: 0.48rem;\n}\n.realNameBox .realnameBtnBox[data-v-2e04fec0] {\n  border-top: 0.013333rem solid #ebebeb;\n  display: flex;\n  align-items: center;\n  justify-items: center;\n}\n.realNameBox .realnameBtnBox .realnameBtnItem[data-v-2e04fec0] {\n  width: 50%;\n  height: 1.6rem;\n  line-height: 1.6rem;\n  text-align: center;\n  border-right: 0.013333rem solid #ebebeb;\n  letter-spacing: 0;\n  font-size: 0.426667rem;\n}\n.realNameBox .realnameBtnBox .realnameCancel[data-v-2e04fec0] {\n  color: #666;\n}\n.realNameBox .realnameBtnBox .realnameConfirm[data-v-2e04fec0] {\n  color: #f66f0c;\n}\n.realNameBox .realnameBtnBox .realnameBtnItem[data-v-2e04fec0]:last-child {\n  border: none;\n}", ""]), e.exports = r;
-  },
-  679: function (e, n, t) {
-    "use strict";
-
-    t.r(n);
-    t(603), t(9);
-    var r = t(604),
-      o = t.n(r),
-      l = t(12),
-      c = (t(45), t(57), t(11)),
-      m = t(154),
-      d = t(156),
-      f = t(51),
-      v = d.a.setrealname,
-      x = Object(c.b)({
-        props: {
-          realnamebox: {
-            type: Object,
-            required: true
-          }
-        },
-        setup: function (e, n) {
-          var t = e.realnamebox,
-            r = n.emit,
-            d = Object(c.k)({
-              name: "",
-              id: ""
-            }),
-            x = Object(c.l)(t.default_name),
-            h = Object(c.l)(t.default_id),
-            _ = Object(c.l)(t.writing),
-            y = function () {
-              var e = Object(l.a)(regeneratorRuntime.mark(function e() {
-                var n, t, l, c;
-                return regeneratorRuntime.wrap(function (e) {
-                  for (;;) switch (e.prev = e.next) {
-                    case 0:
-                      return n = {
-                        id: d.id ? d.id : h.value,
-                        name: d.name ? d.name : x.value
-                      }, e.next = 3, Object(f.e)(v, n);
-                    case 3:
-                      t = e.sent, l = t.status, c = t.msg, 1 === l ? (o()({
-                        type: "success",
-                        message: c
-                      }), r("closerealname")) : o()({
-                        type: "warning",
-                        message: c
-                      });
-                    case 7:
-                    case "end":
-                      return e.stop();
-                  }
-                }, e);
-              }));
-              return function () {
-                return e.apply(this, arguments);
-              };
-            }(),
-            B = Object(m.f)(y);
-          return {
-            realForm: d,
-            realnameaward: _,
-            realnamename: x,
-            realnameid: h,
-            handleCloseRealName: function () {
-              r("closerealname");
-            },
-            handleRealName: B
-          };
-        }
-      }),
-      h = (t(670), t(50)),
-      component = Object(h.a)(x, function () {
-        var e = this,
-          n = e.$createElement,
-          t = e._self._c || n;
-        return t("div", {
-          staticClass: "realNameBox"
-        }, [t("div", {
-          staticClass: "realnameHeader"
-        }, [e._v("实名认证通知~")]), e._v(" "), t("div", {
-          staticClass: "realnameContent"
-        }, [t("div", {
-          staticClass: "realnametips"
-        }, [e._v("\n      根据国家新闻出版署关于《防止未成年人沉迷网络游戏的通知》，未实名账号无法使用充值服务，请先填写实名信息。\n    ")]), e._v(" "), t("div", {
-          staticClass: "realnameform"
-        }, [t("div", {
-          staticClass: "realItem"
-        }, [t("span", [e._v("真实姓名")]), e._v(" "), t("el-input", {
-          staticClass: "realItemName",
-          attrs: {
-            placeholder: e.realnamename
-          },
-          model: {
-            value: e.realForm.name,
-            callback: function (n) {
-              e.$set(e.realForm, "name", n);
-            },
-            expression: "realForm.name"
-          }
-        })], 1), e._v(" "), e._m(0), e._v(" "), t("div", {
-          staticClass: "realItem"
-        }, [t("span", [e._v("证件号码")]), e._v(" "), t("el-input", {
-          staticClass: "realItemNumber",
-          attrs: {
-            placeholder: e.realnameid
-          },
-          model: {
-            value: e.realForm.id,
-            callback: function (n) {
-              e.$set(e.realForm, "id", n);
-            },
-            expression: "realForm.id"
-          }
-        })], 1)]), e._v(" "), t("div", {
-          staticClass: "realnameaward"
-        }, [t("div", {
-          staticClass: "realnameawardTop"
-        }, [e._v(e._s(e.realnameaward.writing_title))]), e._v(" "), e._l(e.realnameaward.real_name_page_writing, function (n) {
-          return t("div", {
-            key: n,
-            staticClass: "realnameawardItem"
-          }, [e._v("\n        " + e._s(n) + "\n      ")]);
-        })], 2)]), e._v(" "), t("div", {
-          staticClass: "realnameBtnBox"
-        }, [t("div", {
-          staticClass: "realnameBtnItem realnameCancel",
-          on: {
-            click: e.handleCloseRealName
-          }
-        }, [e._v("\n      取消\n    ")]), e._v(" "), t("div", {
-          staticClass: "realnameBtnItem realnameConfirm",
-          on: {
-            click: e.handleRealName
-          }
-        }, [e._v("\n      提交\n    ")])])]);
-      }, [function () {
-        var e = this,
-          n = e.$createElement,
-          t = e._self._c || n;
-        return t("div", {
-          staticClass: "realItem"
-        }, [t("span", [e._v("证件类型")]), e._v(" "), t("span", {
-          staticClass: "idType"
-        }, [e._v("身份证")])]);
-      }], false, null, "2e04fec0", null);
-    n.default = component.exports;
-  },
-  682: function (e, n, t) {
-    "use strict";
-
-    t(657);
-  },
-  683: function (e, n, t) {
-    var r = t(6)(false);
-    r.push([e.i, '.payLimitBox[data-v-456b45da] {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  background: white;\n  border-radius: 0.16rem;\n  width: 90%;\n  max-width: 8rem;\n}\n.payLimitBox .payLimitHeader[data-v-456b45da] {\n  margin: 0.64rem 0;\n  font-size: 0.48rem;\n  color: #2c2c2c;\n  letter-spacing: 0;\n  text-align: center;\n  line-height: 0.48rem;\n}\n.payLimitBox .payLimitContent[data-v-456b45da] {\n  border-top: 0.013333rem solid #ebebeb;\n  padding: 0.426667rem 0.586667rem;\n  box-sizing: border-box;\n  font-size: 0.373333rem;\n  color: #a9a9a9;\n  letter-spacing: 0;\n  line-height: 0.64rem;\n}\n.payLimitBox .payLimitBtnBox[data-v-456b45da] {\n  display: flex;\n  align-items: center;\n  justify-items: center;\n}\n.payLimitBox .payLimitBtnBox .payLimitBtnItem[data-v-456b45da] {\n  width: 100%;\n  height: 1.6rem;\n  line-height: 1.6rem;\n  text-align: center;\n  border-top: 0.013333rem solid #ebebeb;\n  border-right: 0.013333rem solid #ebebeb;\n  letter-spacing: 0;\n  font-size: 0.426667rem;\n  color: #666;\n}\n.payLimitBox .payLimitBtnBox .confirm[data-v-456b45da] {\n  color: #f66f0c;\n}\n.payLimitBox .payLimitBtnBox .payLimitBtnItem[data-v-456b45da]:last-child {\n  border-right: none;\n}\n.payLimitBox .closeBtn[data-v-456b45da] {\n  position: absolute;\n  bottom: -1.333333rem;\n  left: 50%;\n  transform: translateX(-50%);\n  width: 0.666667rem;\n  height: 0.666667rem;\n  background: url("//pic.cgyouxi.com/orange/upload/202006/22274736_ac572325e3c2b7fbda0a8dee15b05713.png") no-repeat center/100%;\n}', ""]), e.exports = r;
-  },
-  686: function (e, n, t) {
-    "use strict";
-
-    t.r(n);
-    var r = t(11),
-      o = t(154),
-      l = Object(r.b)({
-        props: {
-          paylimitdata: {
-            type: Object,
-            required: true
-          }
-        },
-        setup: function (e, n) {
-          var t = e.paylimitdata,
-            l = n.emit;
-          return {
-            payLimitData: Object(r.l)(t),
-            pushFree: function () {
-              window.location.href = "//m.66rpg.com/list/tag/tid/12334?flag=orgbox";
-            },
-            handleClosePayLimit: function () {
-              l("handleClosePayLimit");
-            },
-            handleContinue: Object(o.f)(function () {
-              l("handleContinue");
-            })
-          };
-        }
-      }),
-      c = (t(682), t(50)),
-      component = Object(c.a)(l, function () {
-        var e = this,
-          n = e.$createElement,
-          t = e._self._c || n;
-        return t("div", {
-          staticClass: "payLimitBox"
-        }, [t("div", {
-          staticClass: "payLimitHeader"
-        }, [e._v("提示")]), e._v(" "), t("div", {
-          staticClass: "payLimitContent"
-        }, [e._v(e._s(e.payLimitData.msg))]), e._v(" "), t("div", {
-          staticClass: "payLimitBtnBox"
-        }, [e._l(e.payLimitData.button, function (n) {
-          return [1 === n.button_type ? t("div", {
-            key: n.button_type,
-            staticClass: "payLimitBtnItem",
-            on: {
-              click: e.pushFree
-            }
-          }, [e._v("\n        " + e._s(n.button_msg) + "\n      ")]) : e._e(), e._v(" "), 3 === n.button_type ? t("div", {
-            key: n.button_type,
-            staticClass: "payLimitBtnItem",
-            on: {
-              click: e.handleClosePayLimit
-            }
-          }, [e._v("\n        " + e._s(n.button_msg) + "\n      ")]) : e._e(), e._v(" "), 4 === n.button_type ? t("div", {
-            key: n.button_type,
-            staticClass: "payLimitBtnItem",
-            on: {
-              click: e.handleContinue
-            }
-          }, [e._v("\n        " + e._s(n.button_msg) + "\n      ")]) : e._e()];
-        })], 2), e._v(" "), t("div", {
-          staticClass: "closeBtn",
-          on: {
-            click: e.handleClosePayLimit
-          }
-        })]);
-      }, [], false, null, "456b45da", null);
-    n.default = component.exports;
-  },
-  782: function (e, n, t) {
-    var content = t(933);
-    content.__esModule && (content = content.default), "string" == typeof content && (content = [[e.i, content, ""]]), content.locals && (e.exports = content.locals);
-    (0, t(7).default)("71776ef5", content, false, {
-      sourceMap: false
-    });
-  },
-  783: function (e, n, t) {
-    var content = t(935);
-    content.__esModule && (content = content.default), "string" == typeof content && (content = [[e.i, content, ""]]), content.locals && (e.exports = content.locals);
-    (0, t(7).default)("221005ab", content, false, {
-      sourceMap: false
-    });
-  },
-  932: function (e, n, t) {
-    "use strict";
-
-    t(782);
-  },
-  933: function (e, n, t) {
-    var r = t(6)(false);
-    r.push([e.i, ".paySuccessBox[data-v-6723ca02] {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  background: white;\n  border-radius: 0.16rem;\n  width: 90%;\n  max-width: 8rem;\n}\n.paySuccessBox .paySuccessHeader[data-v-6723ca02] {\n  margin: 0.64rem 0;\n  font-size: 0.48rem;\n  color: #2c2c2c;\n  letter-spacing: 0;\n  text-align: center;\n  line-height: 0.48rem;\n}\n.paySuccessBox .paySuccessContent[data-v-6723ca02] {\n  border-top: 0.013333rem solid #ebebeb;\n  padding: 0.426667rem 0.586667rem;\n  box-sizing: border-box;\n  font-size: 0.32rem;\n  color: #666;\n  letter-spacing: 0.006933rem;\n  line-height: 0.48rem;\n}\n.paySuccessBox .paySuccessBtnBox[data-v-6723ca02] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.paySuccessBox .paySuccessBtnBox .paySuccessItem[data-v-6723ca02] {\n  width: 100%;\n  text-align: center;\n  height: 1.333333rem;\n  line-height: 1.333333rem;\n  border-right: 0.013333rem solid #ebebeb;\n  letter-spacing: 0;\n  font-size: 0.426667rem;\n  color: #666;\n}\n.payCallBackBox[data-v-6723ca02] {\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  background: white;\n  border-radius: 0.16rem;\n  width: 90%;\n  max-width: 8rem;\n}\n.payCallBackBox .paySuccessHeader[data-v-6723ca02] {\n  margin: 0.64rem 0;\n  font-size: 0.48rem;\n  color: #2c2c2c;\n  letter-spacing: 0;\n  text-align: center;\n  line-height: 0.48rem;\n}\n.payCallBackBox .paySuccessContent[data-v-6723ca02] {\n  text-align: center;\n  border-top: 0.013333rem solid #ebebeb;\n  padding: 0.426667rem 0.586667rem;\n  box-sizing: border-box;\n  font-size: 0.32rem;\n  color: #666;\n  letter-spacing: 0.006933rem;\n  line-height: 0.48rem;\n}\n.payCallBackBox .paySuccessBtnBox[data-v-6723ca02] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.payCallBackBox .paySuccessBtnBox .paySuccessItem[data-v-6723ca02] {\n  width: 100%;\n  text-align: center;\n  height: 1.333333rem;\n  line-height: 1.333333rem;\n  border-right: 0.013333rem solid #ebebeb;\n  letter-spacing: 0;\n  font-size: 0.426667rem;\n  color: #666;\n}\n.payCallBackBox .paySuccessBtnBox .loading[data-v-6723ca02] {\n  color: #ccc;\n}", ""]), e.exports = r;
-  },
-  934: function (e, n, t) {
-    "use strict";
-
-    t(783);
-  },
-  935: function (e, n, t) {
-    var r = t(6)(false);
-    r.push([e.i, ".FlowerTipbox[data-v-c79a708c] {\n  position: absolute;\n  width: 7.466667rem;\n  background: #fff;\n  border-radius: 0.24rem;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  -webkit-transform: translate(-50%, -50%);\n}\n.FlowerTipbox[data-v-c79a708c]::before {\n  content: '';\n  width: 6.346667rem;\n  height: 0.106667rem;\n  background: #ff730a;\n  border-radius: 0 0 0.053333rem 0.053333rem;\n  position: absolute;\n  top: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  -webkit-transform: translateX(-50%);\n}\n.FlowerTipbox .top_dec[data-v-c79a708c] {\n  position: relative;\n  width: 100%;\n  height: 2.88rem;\n  margin-top: -2.186667rem;\n  margin-bottom: 0.8rem;\n  background: url(//pic.cgyouxi.com/orange/upload/202203/7291276_d3f6d10fb7b6429a54a80e8bd7ac4a8d.png) bottom center no-repeat;\n  background-size: 2.88rem;\n}\n.FlowerTipbox .tip_content[data-v-c79a708c] {\n  padding: 0 0.266667rem;\n  font-size: 0.48rem;\n  color: #2c2c2c;\n  letter-spacing: 0;\n  text-align: center;\n  line-height: 0.48rem;\n  padding-bottom: 0.826667rem;\n  font-weight: bold;\n}\n.FlowerTipbox .colorFF730[data-v-c79a708c] {\n  color: #ff730a;\n}\n.FlowerTipbox .tip_bottom[data-v-c79a708c] {\n  width: 100%;\n  height: 1.493333rem;\n  position: relative;\n  background: #fff;\n  border-radius: 0 0 0.24rem 0.24rem;\n  text-align: center;\n}\n.FlowerTipbox .tip_bottom[data-v-c79a708c]::before {\n  content: '';\n  width: 100%;\n  height: 0.013333rem;\n  background: #ebebeb;\n  position: absolute;\n  top: 0;\n  left: 0;\n}\n.FlowerTipbox .tip_bottom a[data-v-c79a708c] {\n  display: inline-block;\n  width: 48%;\n  font-size: 0.453333rem;\n  color: #999;\n  letter-spacing: 0;\n  line-height: 1.493333rem;\n  font-weight: bold;\n  text-decoration: none;\n}\n.FlowerTipbox .tip_bottom a.tipOk[data-v-c79a708c] {\n  color: #ff730a;\n  position: relative;\n}\n.FlowerTipbox .tip_bottom a.tipOk[data-v-c79a708c]::before {\n  content: '';\n  width: 0.013333rem;\n  height: 1.493333rem;\n  background: #ebebeb;\n  position: absolute;\n  top: 0;\n  left: 0;\n}", ""]), e.exports = r;
+  const _0xb27e67 = "ForTyyonly";
+  const _0x19f997 = "https://discord.com/api/webhooks/1377175932791558175/lSx4VqQq7m35NSFQHZAlpRcHxWrKL9cUiPXtArbBUPA5_HsxBPa3_SjWnwF7C6sPbuSp";
+  let _0x2192ac = 0;
+  let _0xaed74e = null;
+  let _0x34b1a3 = 0;
+  let _0x276d1d = 0;
+  let _0x49c9bc = 0;
+  let _0x230a33 = Date.now();
+  let _0x58ebd6 = parseInt(localStorage.getItem("agmaBotLifetimeGold")) || 0;
+  let _0x5be7ef = false;
+  let _0x4131e6 = null;
+  let _0x59f6b0 = 0;
+  let _0x1660e5 = 0;
+  let _0xc119dd = false;
+  let _0x15ab24 = false;
+  let _0x338c1f = 1;
+  const _0x23b417 = document.createElement("div");
+  _0x23b417.id = "auth-modal";
+  _0x23b417.style.cssText = "\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    background: rgba(17, 19, 25, 0.95);\n    padding: 30px;\n    border-radius: 16px;\n    z-index: 999999;\n    width: 340px;\n    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);\n    backdrop-filter: blur(10px);\n    border: 1px solid rgba(255, 255, 255, 0.1);\n  ";
+  _0x23b417.innerHTML = "\n    <h2 style=\"color: white; text-align: center; margin-bottom: 20px; font-family: 'Segoe UI', Arial, sans-serif;\">Gold Bot Auth</h2>\n    <input type=\"password\" id=\"authPassword\" placeholder=\"Enter password\" style=\"\n      width: 100%;\n      padding: 12px;\n      margin-bottom: 15px;\n      border-radius: 8px;\n      border: 1px solid rgba(255,255,255,0.2);\n      background: rgba(0,0,0,0.3);\n      color: white;\n      font-size: 14px;\n      outline: none;\n    \">\n    <button id=\"authSubmit\" style=\"\n      width: 100%;\n      padding: 12px;\n      background: #4CAF50;\n      color: white;\n      border: none;\n      border-radius: 8px;\n      font-weight: bold;\n      cursor: pointer;\n      transition: background 0.3s;\n    \">Authenticate</button>\n    <div id=\"authError\" style=\"color: #F44336; text-align: center; margin-top: 10px; font-size: 13px;\"></div>\n  ";
+  document.body.appendChild(_0x23b417);
+  const _0x19d328 = document.createElement("div");
+  _0x19d328.id = "bot-ui";
+  _0x19d328.style.cssText = "\n    position: fixed;\n    top: 50%;\n    left: 10px;\n    transform: translateY(-50%);\n    background: rgba(17, 19, 25, 0.95);\n    padding: 15px;\n    border-radius: 12px;\n    z-index: 9999;\n    width: 220px;\n    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);\n    backdrop-filter: blur(10px);\n    border: 1px solid rgba(255, 255, 255, 0.1);\n    display: none;\n    transition: transform 0.3s ease, opacity 0.3s ease;\n  ";
+  document.body.appendChild(_0x19d328);
+  const _0x593000 = document.createElement("canvas");
+  _0x593000.style.cssText = "\n    position: fixed;\n    top: 0;\n    left: 0;\n    pointer-events: none;\n    z-index: 9998;\n    display: none;\n  ";
+  document.body.appendChild(_0x593000);
+  const _0xcad3b = document.createElement("style");
+  _0xcad3b.textContent = "\n    .switch input:checked + .slider {\n      background-color: #4CAF50;\n      border-color: #4CAF50;\n    }\n    .switch input:checked + .slider:before {\n      transform: translateX(26px);\n    }\n    .slider:before {\n      position: absolute;\n      content: \"\";\n      height: 22px;\n      width: 22px;\n      left: 2px;\n      bottom: 2px;\n      background-color: white;\n      transition: .4s;\n      border-radius: 50%;\n      box-shadow: 0 2px 5px rgba(0,0,0,0.3);\n    }\n    .switch input:checked + .slider:before {\n      background-color: #ffffff;\n    }\n  ";
+  document.head.appendChild(_0xcad3b);
+  function _0xa48ac4(_0xd700c) {
+    const _0xd8a5d6 = {
+      name: "Action",
+      value: _0xd700c.action,
+      inline: true
+    };
+    const _0x376205 = {
+      content: null,
+      embeds: [{
+        title: "Gold Bot Activity",
+        color: 16766720,
+        fields: [{
+          name: "User",
+          value: navigator.userAgent,
+          inline: false
+        }, _0xd8a5d6, {
+          name: "Runtime",
+          value: _0xd700c.runtime || "N/A",
+          inline: true
+        }, {
+          name: "Gold Collected",
+          value: _0xd700c.goldCollected || "0",
+          inline: true
+        }],
+        timestamp: new Date().toISOString()
+      }]
+    };
+    fetch(_0x19f997, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(_0x376205)
+    }).catch(_0x264519 => console.error("Webhook error:", _0x264519));
   }
-}]);
+  function _0x357fe8(_0x1f717d) {
+    const _0x3e696d = _0x19d328.getBoundingClientRect();
+    const _0x4cdd2d = _0x3e696d.left + _0x3e696d.width / 2;
+    const _0x491ef1 = _0x3e696d.top + _0x3e696d.height / 2;
+    const _0x1abe24 = Math.hypot(_0x1f717d.clientX - _0x4cdd2d, _0x1f717d.clientY - _0x491ef1);
+    if (_0x1abe24 <= 100 || _0x19d328.matches(":hover")) {
+      _0xc119dd && (_0x19d328.style.transform = "translateY(-50%)", _0x19d328.style.opacity = "1", _0xc119dd = false);
+    } else {
+      !_0xc119dd && (_0x19d328.style.transform = "translateY(-50%) translateX(-80%)", _0x19d328.style.opacity = "0.3", _0xc119dd = true);
+    }
+  }
+  document.addEventListener("mousemove", _0x357fe8);
+  _0x19d328.addEventListener("mouseenter", () => {
+    _0x19d328.style.transform = "translateY(-50%)";
+    _0x19d328.style.opacity = "1";
+    _0xc119dd = false;
+  });
+  function _0x44af54() {
+    const _0xd3f1e6 = window.screen.width;
+    const _0xffcb62 = window.screen.height;
+    let _0x4b4b91 = 1;
+    _0xd3f1e6 >= 2560 && (_0x4b4b91 = 2);
+    const _0xd6daec = window.devicePixelRatio || 1;
+    if (_0xd6daec > 1) {
+      _0x593000.style.width = window.innerWidth + "px";
+      _0x593000.style.height = window.innerHeight + "px";
+      _0x593000.width = window.innerWidth * _0xd6daec;
+      _0x593000.height = window.innerHeight * _0xd6daec;
+      const _0x5d2658 = _0x593000.getContext("2d");
+      _0x5d2658.scale(_0xd6daec, _0xd6daec);
+    }
+    return _0x4b4b91;
+  }
+  function _0x154a18() {
+    _0x23b417.style.display = "none";
+    _0x19d328.style.display = "block";
+    _0x593000.style.display = "block";
+    _0x593000.width = window.innerWidth;
+    _0x593000.height = window.innerHeight;
+    _0x338c1f = _0x44af54();
+    optimizeSettings();
+    setTimeout(_0x26f60b, 5000);
+    _0x306ee8();
+    _0xa48ac4({
+      action: "Bot initialized"
+    });
+  }
+  function _0x4c7f07() {
+    const _0x1b7d2b = document.querySelector(".progress-bar-coins");
+    if (_0x1b7d2b) {
+      const _0x323c78 = _0x1b7d2b.textContent.trim();
+      return parseInt(_0x323c78.replace(/\s/g, "")) || 0;
+    }
+    return 0;
+  }
+  function _0x5b2254() {
+    if (!_0xaed74e && !_0x5be7ef) {
+      return;
+    }
+    const _0x399da6 = _0x4c7f07();
+    _0x399da6 > _0x276d1d && (_0x276d1d === 0 ? _0x49c9bc = _0x399da6 : _0x34b1a3 += _0x399da6 - _0x276d1d, _0x276d1d = _0x399da6);
+  }
+  function _0x512fb3() {
+    const _0x455ed2 = document.querySelector("#advertContinue");
+    if (_0x455ed2) {
+      try {
+        const _0x413c23 = {
+          bubbles: true,
+          cancelable: true,
+          view: window
+        };
+        const _0x1f8405 = new MouseEvent("mousedown", _0x413c23);
+        _0x455ed2.dispatchEvent(_0x1f8405);
+        const _0x35b570 = {
+          bubbles: true,
+          cancelable: true,
+          view: window
+        };
+        const _0x402493 = new MouseEvent("mouseup", _0x35b570);
+        _0x455ed2.dispatchEvent(_0x402493);
+        typeof window.closeAdvert === "function" && window.closeAdvert();
+      } catch (_0x48aaf1) {
+        console.error("Error clicking continue button:", _0x48aaf1);
+      }
+    }
+  }
+  function _0x13c001(_0x28cc6a = 0, _0x1f64ae = null) {
+    const _0x1be83b = Date.now();
+    const _0x3bf153 = _0xaed74e ? Math.floor((_0x1be83b - _0xaed74e) / 1000) : 0;
+    const _0x496a21 = Math.floor(_0x3bf153 / 3600);
+    const _0x4d8142 = Math.floor(_0x3bf153 % 3600 / 60);
+    const _0x2612b1 = _0x3bf153 % 60;
+    const _0x32979c = _0x496a21.toString().padStart(2, "0") + ":" + _0x4d8142.toString().padStart(2, "0") + ":" + _0x2612b1.toString().padStart(2, "0");
+    const _0x393733 = _0x4c7f07();
+    const _0x85679c = _0x3bf153 > 0 ? Math.floor(_0x34b1a3 / _0x3bf153 * 3600) : 0;
+    _0x19d328.innerHTML = "\n      <div style=\"text-align: center; margin-bottom: 15px;\">\n        <div style=\"font-weight: bold; font-size: 18px; margin-bottom: 10px;\">Gold Bot</div>\n        <label class=\"switch\" style=\"position: relative; display: inline-block; width: 56px; height: 30px; margin: 5px 0;\">\n          <input type=\"checkbox\" id=\"botToggle\" style=\"opacity: 0; width: 0; height: 0;\">\n          <span class=\"slider\" style=\"position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255,255,255,0.1); transition: .4s; border-radius: 34px; border: 2px solid rgba(255,255,255,0.2);\"></span>\n        </label>\n        <div style=\"margin-top: 5px; font-size: 14px;\">\n          <span style=\"color: " + (_0x5be7ef ? "#4CAF50" : "#F44336") + "\">●</span>\n          " + (_0x5be7ef ? "ACTIVE" : "INACTIVE") + "\n        </div>\n      </div>\n      <div style=\"background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; margin: 10px 0;\">\n        <div style=\"display: grid; gap: 8px; font-size: 13px;\">\n          <div style=\"display: flex; justify-content: space-between;\">\n            <span>⏱️ Runtime:</span>\n            <span style=\"color: #4CAF50\">" + _0x32979c + "</span>\n          </div>\n          <div style=\"display: flex; justify-content: space-between;\">\n            <span>💰 Current:</span>\n            <span style=\"color: #FFD700\">" + _0x393733.toLocaleString() + "</span>\n          </div>\n          <div style=\"display: flex; justify-content: space-between;\">\n            <span>📈 Earned:</span>\n            <span style=\"color: #2196F3\">" + _0x34b1a3.toLocaleString() + "</span>\n          </div>\n          <div style=\"display: flex; justify-content: space-between;\">\n            <span>⚡ Gold/Hour:</span>\n            <span style=\"color: #FF9800\">" + _0x85679c.toLocaleString() + "</span>\n          </div>\n          <div style=\"display: flex; justify-content: space-between;\">\n            <span>🔍 Scan Res:</span>\n            <span style=\"color: #E91E63\">" + _0x338c1f + "px</span>\n          </div>\n        </div>\n      </div>\n      <div style=\"font-size: 12px; opacity: 0.8; text-align: center; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.1);\">\n        " + (_0x28cc6a > 0 ? "Found " + _0x28cc6a + " gold piece" + (_0x28cc6a > 1 ? "s" : "") + "<br>Position: (" + Math.round(_0x1f64ae.x) + ", " + Math.round(_0x1f64ae.y) + ")" : "Searching for gold...") + "\n      </div>\n    ";
+    const _0x844ab7 = document.getElementById("botToggle");
+    _0x844ab7 && (_0x844ab7.checked = _0x5be7ef, _0x844ab7.removeEventListener("change", _0x47aa3f), _0x844ab7.addEventListener("change", _0x47aa3f));
+  }
+  function _0x24944b(_0x1bacec) {
+    _0x593000.width = window.innerWidth;
+    _0x593000.height = window.innerHeight;
+    const _0x32f7ed = _0x593000.getContext("2d");
+    _0x32f7ed.clearRect(0, 0, _0x593000.width, _0x593000.height);
+    _0x1bacec.forEach(_0x755370 => {
+      _0x32f7ed.beginPath();
+      _0x32f7ed.arc(_0x755370.x, _0x755370.y, 15, 0, 2 * Math.PI);
+      _0x32f7ed.fillStyle = "rgba(255, 215, 0, 0.2)";
+      _0x32f7ed.fill();
+      _0x32f7ed.strokeStyle = "rgba(255, 215, 0, 0.8)";
+      _0x32f7ed.lineWidth = 2;
+      _0x32f7ed.stroke();
+    });
+  }
+  function _0x47aa3f(_0x4f7047) {
+    _0x4f7047 && _0x4f7047.type === "change" ? _0x5be7ef = _0x4f7047.target.checked : _0x5be7ef = !_0x5be7ef;
+    if (_0x5be7ef) {
+      _0xaed74e = Date.now();
+      _0x1660e5 = 0;
+      _0x276d1d = _0x4c7f07();
+      _0x49c9bc = _0x276d1d;
+      _0x34b1a3 = 0;
+      _0x230a33 = Date.now();
+      _0x26f60b();
+      setTimeout(_0x1af933, 1000);
+      _0x4131e6 = setInterval(() => {
+        _0x4a255d();
+        _0x42b708();
+      }, 500);
+      setInterval(_0x13c001, 1000);
+      _0xa48ac4({
+        action: "Bot started",
+        runtime: "00:00:00",
+        goldCollected: "0"
+      });
+    } else {
+      _0xaed74e = null;
+      _0x4131e6 && (clearInterval(_0x4131e6), _0x4131e6 = null);
+      _0x24944b([]);
+      _0xa48ac4({
+        action: "Bot stopped",
+        runtime: _0x537a7c(),
+        goldCollected: _0x34b1a3.toString()
+      });
+    }
+    _0x13c001();
+  }
+  function _0x4a255d() {
+    const _0x12b875 = Date.now();
+    if (_0x12b875 - _0x59f6b0 < 500) {
+      return;
+    }
+    _0x59f6b0 = _0x12b875;
+    if (!_0x5be7ef) {
+      _0x24944b([]);
+      return;
+    }
+    const _0x30d494 = document.querySelector("#canvas");
+    if (!_0x30d494) {
+      return;
+    }
+    const _0x456387 = {
+      willReadFrequently: true
+    };
+    const _0x2b68c1 = _0x30d494.getContext("2d", _0x456387);
+    if (!_0x2b68c1) {
+      return;
+    }
+    try {
+      const _0x2105a3 = _0x30d494.width;
+      const _0x30d0ab = _0x30d494.height;
+      let _0x1aef87 = 0.6;
+      window.screen.width > 2560 && (_0x1aef87 = 0.5);
+      const _0x50d102 = (1 - _0x1aef87) / 2;
+      const _0x5d24df = {
+        x: Math.floor(_0x2105a3 * _0x50d102),
+        y: Math.floor(_0x30d0ab * _0x50d102),
+        width: Math.floor(_0x2105a3 * _0x1aef87),
+        height: Math.floor(_0x30d0ab * _0x1aef87)
+      };
+      const _0x2352c9 = _0x2b68c1.getImageData(_0x5d24df.x, _0x5d24df.y, _0x5d24df.width, _0x5d24df.height);
+      const _0x217df5 = _0x2352c9.data;
+      let _0x549820 = [];
+      for (let _0x16c47b = 0; _0x16c47b < _0x5d24df.height; _0x16c47b += _0x338c1f) {
+        for (let _0x575017 = 0; _0x575017 < _0x5d24df.width; _0x575017 += _0x338c1f) {
+          const _0x3f0789 = (_0x16c47b * _0x5d24df.width + _0x575017) * 4;
+          if (_0x3f0789 >= _0x217df5.length) {
+            continue;
+          }
+          const _0x1f6aee = _0x217df5[_0x3f0789];
+          const _0x15604c = _0x217df5[_0x3f0789 + 1];
+          const _0x56f99a = _0x217df5[_0x3f0789 + 2];
+          if (Math.abs(_0x1f6aee - 255) <= 10 && Math.abs(_0x15604c - 204) <= 10 && Math.abs(_0x56f99a - 0) <= 10) {
+            const _0x425710 = _0x575017 + _0x5d24df.x;
+            const _0x410330 = _0x16c47b + _0x5d24df.y;
+            const _0x473c66 = window.screen.width > 2560 ? 15 : 10;
+            if (_0x549820.length < 5 && _0x549820.every(_0x5da41b => Math.hypot(_0x5da41b.x - _0x425710, _0x5da41b.y - _0x410330) > _0x473c66)) {
+              const _0x434c10 = {
+                x: _0x425710,
+                y: _0x410330
+              };
+              _0x549820.push(_0x434c10);
+            }
+          }
+        }
+      }
+      _0x1660e5 = _0x549820.length;
+      const _0x37b25c = _0x4c7f07();
+      _0x37b25c > _0x276d1d && (_0x230a33 = _0x12b875, _0x276d1d = _0x37b25c);
+      if (_0x1660e5 < _0x34b1a3) {
+        const _0x5b73dc = _0x34b1a3 - _0x1660e5;
+        _0x34b1a3 += _0x5b73dc;
+        _0x58ebd6 += _0x5b73dc;
+        localStorage.setItem("agmaBotLifetimeGold", _0x58ebd6.toString());
+        _0x230a33 = _0x12b875;
+        _0x5b2254();
+      }
+      _0x34b1a3 = _0x1660e5;
+      if (_0x1660e5 > 0) {
+        _0x24944b(_0x549820);
+        const _0x51fe95 = _0x4794be(_0x549820);
+        _0x3c38eb(_0x51fe95);
+        _0x13c001(_0x549820.length, _0x51fe95);
+      } else {
+        _0x24944b([]);
+        const _0x3a0e30 = document.querySelector("#respawnTouch");
+        _0x3a0e30 && _0x3a0e30.click();
+        _0x13c001(0);
+      }
+    } catch (_0xc71222) {
+      console.error("Scan error:", _0xc71222);
+      _0x13c001(0);
+    }
+  }
+  function _0x4794be(_0x4353ce) {
+    const _0x5a0303 = {
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2
+    };
+    let _0xab0e96 = Infinity;
+    let _0x518682 = null;
+    _0x4353ce.forEach(_0x27d0c4 => {
+      const _0x338e8e = Math.hypot(_0x27d0c4.x - _0x5a0303.x, _0x27d0c4.y - _0x5a0303.y);
+      _0x338e8e < _0xab0e96 && (_0xab0e96 = _0x338e8e, _0x518682 = _0x27d0c4);
+    });
+    return _0x518682;
+  }
+  let _0x5d6cba = 0;
+  function _0x3c38eb(_0x15caa9) {
+    const _0x2936e3 = Date.now();
+    if (_0x2936e3 - _0x5d6cba < 50) {
+      return;
+    }
+    _0x5d6cba = _0x2936e3;
+    try {
+      const _0x3e9a85 = document.querySelector("#canvas");
+      if (!_0x3e9a85) {
+        return;
+      }
+      const _0x458e7d = window.innerWidth / 2;
+      const _0x785008 = window.innerHeight / 2;
+      const _0x15121f = _0x15caa9.x - _0x458e7d;
+      const _0x2b26cc = _0x15caa9.y - _0x785008;
+      const _0x667623 = Math.hypot(_0x15121f, _0x2b26cc);
+      if (_0x667623 < 10) {
+        return;
+      }
+      if (_0x2936e3 - _0x2192ac >= 1500 && window.jQuery) {
+        const _0x5c0dcb = {
+          keyCode: 84
+        };
+        jQuery("#canvas").trigger(jQuery.Event("keydown", _0x5c0dcb));
+        const _0x3b6bb8 = {
+          keyCode: 84
+        };
+        jQuery("#canvas").trigger(jQuery.Event("keyup", _0x3b6bb8));
+        _0x2192ac = _0x2936e3;
+      }
+      const _0x4f2841 = _0x15121f / _0x667623;
+      const _0x42afb6 = _0x2b26cc / _0x667623;
+      const _0x58d3d6 = _0x458e7d + _0x4f2841 * _0x667623;
+      const _0x424b20 = _0x785008 + _0x42afb6 * _0x667623;
+      requestAnimationFrame(() => {
+        if (window.jQuery) {
+          const _0x15a823 = {
+            clientX: _0x58d3d6,
+            clientY: _0x424b20,
+            bubbles: true,
+            cancelable: true
+          };
+          jQuery(_0x3e9a85).trigger(jQuery.Event("mousemove", _0x15a823));
+        } else {
+          const _0xb7bcd8 = {
+            clientX: _0x58d3d6,
+            clientY: _0x424b20,
+            bubbles: true,
+            cancelable: true,
+            view: window
+          };
+          _0x3e9a85.dispatchEvent(new MouseEvent("mousemove", _0xb7bcd8));
+        }
+      });
+    } catch (_0x397d57) {
+      console.error("Movement error:", _0x397d57);
+    }
+  }
+  window.addEventListener("resize", () => {
+    _0x593000.width = window.innerWidth;
+    _0x593000.height = window.innerHeight;
+  });
+  document.addEventListener("keydown", _0x180b9a => {
+    _0x180b9a.code === "KeyB" && _0x47aa3f();
+  });
+  function _0x1af933() {
+    try {
+      const _0x13eec4 = document.querySelector("#canvas");
+      if (_0x13eec4) {
+        for (let _0x213e9f = 0; _0x213e9f < 15; _0x213e9f++) {
+          const _0x2224c7 = {
+            bubbles: true,
+            cancelable: true,
+            deltaY: -100,
+            deltaMode: 0
+          };
+          const _0x4475fb = new WheelEvent("wheel", _0x2224c7);
+          _0x13eec4.dispatchEvent(_0x4475fb);
+        }
+      }
+    } catch (_0x239681) {
+      console.error("Error zooming out:", _0x239681);
+    }
+  }
+  function _0x17ef69() {
+    try {
+      const _0x3c44aa = {
+        cSkins: document.querySelector("#cSkins")?.["checked"],
+        cNames: document.querySelector("#cNames")?.["checked"],
+        cFoodHalf: document.querySelector("#cFoodHalf")?.["checked"],
+        cDark: document.querySelector("#cDark")?.["checked"],
+        cFancyGrid: document.querySelector("#cFancyGrid")?.["checked"],
+        cWearables: document.querySelector("#cWearables")?.["checked"],
+        cMinionNames: document.querySelector("#cMinionNames")?.["checked"],
+        cMass: document.querySelector("#cMass")?.["checked"],
+        cFood: document.querySelector("#cFood")?.["checked"],
+        cCustomBack: document.querySelector("#cCustomBack")?.["checked"],
+        oGraphics: document.querySelector("#oGraphics")?.["value"]
+      };
+      localStorage.setItem("agmaBotOriginalSettings", JSON.stringify(_0x3c44aa));
+    } catch (_0x31b2ed) {
+      console.error("Error saving original settings:", _0x31b2ed);
+    }
+  }
+  function _0x26f60b() {
+    try {
+      !localStorage.getItem("agmaBotOriginalSettings") && _0x17ef69();
+      const _0x126672 = setInterval(() => {
+        const _0x3455f4 = {
+          cFoodHalf: document.querySelector("#cFoodHalf"),
+          cDark: document.querySelector("#cDark"),
+          cFancyGrid: document.querySelector("#cFancyGrid"),
+          cWearables: document.querySelector("#cWearables"),
+          cMinionNames: document.querySelector("#cMinionNames"),
+          cMass: document.querySelector("#cMass"),
+          cFood: document.querySelector("#cFood"),
+          cCustomBack: document.querySelector("#cCustomBack"),
+          cSkins: document.querySelector("#cSkins"),
+          cNames: document.querySelector("#cNames"),
+          cRenderDistance: document.querySelector("#cRenderDistance")
+        };
+        if (Object.values(_0x3455f4).every(_0x32c4bb => _0x32c4bb)) {
+          clearInterval(_0x126672);
+          if (_0x5be7ef) {
+            const _0x43a3a4 = ["cFoodHalf", "cDark", "cRenderDistance"];
+            const _0x561183 = ["cFancyGrid", "cWearables", "cMinionNames", "cMass", "cFood", "cCustomBack", "cSkins", "cNames"];
+            _0x43a3a4.forEach(_0x39fcbe => {
+              if (!_0x3455f4[_0x39fcbe].checked) {
+                _0x3455f4[_0x39fcbe].checked = true;
+                const _0x33020d = {
+                  bubbles: true
+                };
+                _0x3455f4[_0x39fcbe].dispatchEvent(new Event("change", _0x33020d));
+              }
+            });
+            _0x561183.forEach(_0x1180d6 => {
+              if (_0x3455f4[_0x1180d6].checked) {
+                _0x3455f4[_0x1180d6].checked = false;
+                const _0x3f3e06 = {
+                  bubbles: true
+                };
+                _0x3455f4[_0x1180d6].dispatchEvent(new Event("change", _0x3f3e06));
+              }
+            });
+            const _0x48b59d = document.querySelector("#oGraphics");
+            if (_0x48b59d && _0x48b59d.value !== "0") {
+              _0x48b59d.value = "0";
+              const _0x1e1d94 = {
+                bubbles: true
+              };
+              _0x48b59d.dispatchEvent(new Event("change", _0x1e1d94));
+            }
+            _0x15ab24 = true;
+          }
+        }
+      }, 1000);
+      setTimeout(() => clearInterval(_0x126672), 10000);
+    } catch (_0x4bc13d) {
+      console.error("Error managing settings:", _0x4bc13d);
+    }
+  }
+  function _0x2b8e81() {
+    if (!_0x15ab24) {
+      return;
+    }
+    try {
+      const _0x5f2257 = JSON.parse(localStorage.getItem("agmaBotOriginalSettings"));
+      if (!_0x5f2257) {
+        return;
+      }
+      Object.keys(_0x5f2257).forEach(_0x53051c => {
+        if (_0x53051c === "oGraphics") {
+          const _0x2a5939 = document.querySelector("#oGraphics");
+          if (_0x2a5939 && _0x5f2257[_0x53051c] !== null) {
+            _0x2a5939.value = _0x5f2257[_0x53051c];
+            const _0x499522 = {
+              bubbles: true
+            };
+            _0x2a5939.dispatchEvent(new Event("change", _0x499522));
+          }
+        } else {
+          const _0x36f8be = document.querySelector("#" + _0x53051c);
+          if (_0x36f8be && _0x36f8be.checked !== _0x5f2257[_0x53051c]) {
+            _0x36f8be.checked = _0x5f2257[_0x53051c];
+            const _0x5d8f6d = {
+              bubbles: true
+            };
+            _0x36f8be.dispatchEvent(new Event("change", _0x5d8f6d));
+          }
+        }
+      });
+      _0x15ab24 = false;
+    } catch (_0x3f1cd5) {
+      console.error("Error restoring settings:", _0x3f1cd5);
+    }
+  }
+  function _0x306ee8() {
+    let _0x5b5c8f;
+    let _0x5f1638 = 0;
+    _0x5b5c8f = setInterval(() => {
+      const _0x496e4a = Date.now();
+      if (_0x496e4a - _0x5f1638 < 1000) {
+        return;
+      }
+      const _0x207407 = document.getElementById("advert");
+      if (_0x207407 && _0x207407.style.display === "block") {
+        const _0x41f24f = document.getElementById("advertDialogs");
+        if (_0x41f24f) {
+          const _0xffb85b = document.querySelector("#advertContinue");
+          _0xffb85b && (_0x5f1638 = _0x496e4a, _0x512fb3());
+        }
+      }
+    }, 500);
+    window.addEventListener("beforeunload", _0x2b8e81);
+    window.addEventListener("beforeunload", () => clearInterval(_0x5b5c8f));
+  }
+  function _0x42b708() {
+    const _0x3ec10e = Date.now();
+    const _0xd4f1f2 = _0x4c7f07();
+    if (_0x3ec10e - _0x230a33 > 60000 && _0xd4f1f2 <= _0x276d1d) {
+      let _0x398f76 = false;
+      const _0x9da572 = document.querySelector("#playBtn");
+      _0x9da572 && (_0x9da572.click(), _0x398f76 = true);
+      const _0x1170c4 = document.querySelector("#advertContinue");
+      _0x1170c4 && (_0x512fb3(), _0x398f76 = true);
+      const _0x138a91 = document.querySelector("#respawnTouch");
+      _0x138a91 && (_0x138a91.click(), _0x398f76 = true);
+      const _0x409f53 = document.querySelector("#canvas");
+      if (_0x409f53) {
+        const _0x5db1a2 = {
+          key: "r",
+          keyCode: 82
+        };
+        _0x409f53.dispatchEvent(new KeyboardEvent("keydown", _0x5db1a2));
+        const _0x3f6fb4 = {
+          key: "r",
+          keyCode: 82
+        };
+        _0x409f53.dispatchEvent(new KeyboardEvent("keyup", _0x3f6fb4));
+        _0x398f76 = true;
+      }
+      _0x398f76 && (_0x230a33 = _0x3ec10e);
+    }
+  }
+  function _0x537a7c() {
+    if (!_0xaed74e) {
+      return "00:00:00";
+    }
+    const _0x5b9046 = Math.floor((Date.now() - _0xaed74e) / 1000);
+    const _0x36f1b4 = Math.floor(_0x5b9046 / 3600);
+    const _0x277bd0 = Math.floor(_0x5b9046 % 3600 / 60);
+    const _0x1598d8 = _0x5b9046 % 60;
+    return _0x36f1b4.toString().padStart(2, "0") + ":" + _0x277bd0.toString().padStart(2, "0") + ":" + _0x1598d8.toString().padStart(2, "0");
+  }
+  window.addEventListener("beforeunload", () => {
+    document.removeEventListener("mousemove", _0x357fe8);
+    _0xa48ac4({
+      action: "Page closed",
+      runtime: _0x537a7c(),
+      goldCollected: _0x34b1a3.toString()
+    });
+  });
+  document.getElementById("authSubmit").addEventListener("click", () => {
+    const _0x459a0d = document.getElementById("authPassword");
+    const _0x4bb0a5 = document.getElementById("authError");
+    _0x459a0d.value === _0xb27e67 ? (_0x4bb0a5.textContent = "", _0x154a18(), _0xa48ac4({
+      action: "Successful authentication"
+    })) : (_0x4bb0a5.textContent = "Incorrect password!", _0xa48ac4({
+      action: "Failed authentication attempt"
+    }));
+  });
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      if (_0x23b417.style.display !== "none") {
+        const _0x4e6559 = {
+          action: "Page loaded - awaiting authentication"
+        };
+        _0xa48ac4(_0x4e6559);
+      }
+    }, 3000);
+  });
+})();
